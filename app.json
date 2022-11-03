@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "voiding-diary",
-    "slug": "voiding-diary",
+    "name": "Stroke Management",
+    "slug": "stroke-mgmt",
     "version": "1.0.0",
     "orientation": "portrait",
     "entryPoint": "src/index.ts",

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "voiding-diary",
-    "slug": "voiding-diary",
+    "name": "tejp3-pathaliases-didi-expo",
+    "slug": "tejp3-pathaliases-didi-expo",
     "version": "1.0.0",
     "orientation": "portrait",
     "entryPoint": "src/index.ts",
@@ -15,9 +15,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

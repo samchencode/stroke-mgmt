@@ -1,7 +1,6 @@
 {
   "name": "stroke-mgmt",
   "version": "1.0.0",
-  "main": "src/index.ts",
   "license": "GPL-3",
   "scripts": {
     "start": "expo start --tunnel",

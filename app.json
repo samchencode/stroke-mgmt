@@ -4,7 +4,6 @@
     "slug": "tejp3-pathaliases-didi-expo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "entryPoint": "src/index.ts",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

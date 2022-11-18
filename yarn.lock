@@ -1463,7 +1463,7 @@
     json5 "^1.0.1"
     write-file-atomic "^2.3.0"
 
-"@expo/metro-config@~0.5.0", "@expo/metro-config@~0.5.1":
+"@expo/metro-config@^0.5.1", "@expo/metro-config@~0.5.0", "@expo/metro-config@~0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@expo/metro-config/-/metro-config-0.5.1.tgz#58c715041e1773ad653519535c017138bfc766de"
   integrity sha512-Rvy4ZFgKNDfXO401z2OQF8fWbPj1lLVDL4GF1aqCIhCDHCKrezbwB0xejpcUyndJRCxBL2BMAM+P24t6cKv9Fw==

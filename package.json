@@ -12,6 +12,7 @@
     "test": "jest --forceExit"
   },
   "dependencies": {
+    "@expo/metro-config": "^0.5.1",
     "@types/node": "^18.11.9",
     "didi": "^8.0.0",
     "expo": "~47.0.3",

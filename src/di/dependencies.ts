@@ -1,6 +1,6 @@
-import { factory as App } from '@/App';
+import { factory as App } from '@/view/App';
 
-export default {
+export const module = {
   // VALUES
   foo: ['value', 'foo'],
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -7,6 +8,7 @@ function factory(foo: string) {
       <View style={styles.container}>
         <Text>Open up App.tsx to start working on your app!</Text>
         <Text>{foo}</Text>
+        {/* eslint-disable-next-line react/style-prop-object */}
         <StatusBar style="auto" />
       </View>
     );

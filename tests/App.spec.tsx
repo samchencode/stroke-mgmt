@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { factory as AppFactory } from '@/App';
+import { factory as AppFactory } from '@/view/App';
 
 describe('<App />', () => {
   it('has 1 child', () => {

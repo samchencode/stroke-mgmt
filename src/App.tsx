@@ -1,14 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-const ComponentFactory = (foo: string) => () => {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Text>{foo}</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+function factory(foo: string) {
+  return function App() {
+    return (
+      <View style={styles.container}>
+        <Text>Open up App.tsx to start working on your app!</Text>
+        <Text>{foo}</Text>
+        <StatusBar style="auto" />
+      </View>
+    );
+  };
 }
 
 const styles = StyleSheet.create({
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
   },
 });
 
-type Type = ReturnType<typeof ComponentFactory>;
+type Type = ReturnType<typeof factory>;
 
-export default ComponentFactory;
+export { factory };
 export type { Type };

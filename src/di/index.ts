@@ -1,6 +1,6 @@
-import { Injector } from "didi";
-import module from "@/di/dependencies";
+import { Injector } from 'didi';
+import { module } from '@/di/dependencies';
 
 const container = new Injector([module]);
 
-export default container;
+export { container };

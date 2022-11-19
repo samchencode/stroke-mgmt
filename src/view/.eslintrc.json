@@ -1,0 +1,18 @@
+{
+  "env": {
+    "react-native/react-native": true
+  },
+  "rules": {
+    // prevent eslint to complain about the "styles" variable being used before it was defined
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "variables": false }
+    ],
+    // ignore errors for the react-navigation package
+    "react/prop-types": [
+      "error",
+      { "ignore": ["navigation", "navigation.navigate"] }
+    ],
+    "react/static-property-placement": ["error", "static public field"]
+  }
+}

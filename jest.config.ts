@@ -1,7 +1,7 @@
 import type { Config } from '@jest/types';
 import { pathsToModuleNameMapper } from 'ts-jest';
-import { compilerOptions } from './tsconfig.json';
 import { defaults } from 'ts-jest/presets';
+import { compilerOptions } from './tsconfig.json';
 
 const config: Config.InitialOptions = {
   ...defaults,
@@ -21,7 +21,7 @@ const config: Config.InitialOptions = {
       babelConfig: true,
     },
   },
-  modulePathIgnorePatterns: ['<rootDir>/dist']
+  modulePathIgnorePatterns: ['<rootDir>/dist'],
 };
 
 export default config;

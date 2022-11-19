@@ -9,18 +9,18 @@ const config: Config.InitialOptions = {
   verbose: true,
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      {
+        isolatedModules: true,
+        babelConfig: true,
+      },
+    ],
   },
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/',
   }),
   testEnvironment: 'node',
-  globals: {
-    'ts-jest': {
-      isolatedModules: true,
-      babelConfig: true,
-    },
-  },
   modulePathIgnorePatterns: ['<rootDir>/dist'],
 };
 

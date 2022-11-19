@@ -1,5 +1,12 @@
 {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "typescript.preferences.importModuleSpecifier": "non-relative"
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "editor.snippetSuggestions": "bottom",
+  "emmet.includeLanguages": {
+    "ejs": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "j69.ejs-beautify"
+  }
 }

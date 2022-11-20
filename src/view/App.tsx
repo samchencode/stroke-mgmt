@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import type { Type as StrokeFactsScreen } from '@/view/stroke-facts-screen';
+import type { Type as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 
 function factory(StrokeFactsScreen: StrokeFactsScreen) {
   return function App() {

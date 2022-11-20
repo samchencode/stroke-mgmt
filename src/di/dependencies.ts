@@ -10,7 +10,7 @@ import { ExpoAssetFileSystem } from '@/infrastructure/file-system/expo-asset/Exp
 import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
 import { EjsArticleRenderer } from '@/infrastructure/rendering/ejs/EjsArticleRenderer';
 import { factory as App } from '@/view/App';
-import { factory as StrokeFactsScreen } from '@/view/stroke-facts-screen';
+import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 
 export const module = {
   // APPLICATION

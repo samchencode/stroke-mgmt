@@ -10,4 +10,4 @@ interface ArticleRepository {
   getAllArticles(): Promise<Article[]>;
 }
 
-export { ArticleRepository };
+export type { ArticleRepository };

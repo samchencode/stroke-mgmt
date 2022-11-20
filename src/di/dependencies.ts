@@ -13,6 +13,7 @@ import { factory as App } from '@/view/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import { factory as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
 import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
+import { factory as Router } from '@/view/Router';
 
 export const module = {
   // APPLICATION
@@ -32,6 +33,7 @@ export const module = {
 
   // TEMPLATES
   App: ['factory', App],
+  Router: ['factory', Router],
   StrokeFactsScreen: ['factory', StrokeFactsScreen],
   StrokeSignsScreen: ['factory', StrokeSignsScreen],
   DisclaimerModal: ['factory', DisclaimerModal],

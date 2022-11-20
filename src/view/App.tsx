@@ -1,25 +1,19 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import type { Type as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import type { Type as Router } from '@/view/Router';
 
-function factory(StrokeSignsScreen: StrokeFactsScreen) {
+function factory(Router: Router) {
   return function App() {
     return (
-      <View style={styles.container}>
-        <StrokeSignsScreen />
+      <NavigationContainer>
+        <Router />
         {/* eslint-disable-next-line react/style-prop-object */}
         <StatusBar style="auto" />
-      </View>
+      </NavigationContainer>
     );
   };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 type Type = ReturnType<typeof factory>;
 

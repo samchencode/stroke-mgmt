@@ -13,7 +13,7 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
     const { width, height } = useWindowDimensions();
 
     return (
-      <View>
+      <View style={styles.container}>
         <WebView
           source={{ html }}
           originWhitelist={['*']}
@@ -23,6 +23,12 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
     );
   };
 }
+
+const styles = {
+  container: {
+    flex: 1,
+  },
+};
 
 export { factory };
 export type Type = ReturnType<typeof factory>;

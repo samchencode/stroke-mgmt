@@ -12,6 +12,7 @@ import { EjsArticleRenderer } from '@/infrastructure/rendering/ejs/EjsArticleRen
 import { factory as App } from '@/view/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import { factory as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
+import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
 
 export const module = {
   // APPLICATION
@@ -33,4 +34,5 @@ export const module = {
   App: ['factory', App],
   StrokeFactsScreen: ['factory', StrokeFactsScreen],
   StrokeSignsScreen: ['factory', StrokeSignsScreen],
+  DisclaimerModal: ['factory', DisclaimerModal],
 };

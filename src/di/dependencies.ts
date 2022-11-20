@@ -11,6 +11,7 @@ import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArt
 import { EjsArticleRenderer } from '@/infrastructure/rendering/ejs/EjsArticleRenderer';
 import { factory as App } from '@/view/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
+import { factory as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
 
 export const module = {
   // APPLICATION
@@ -31,4 +32,5 @@ export const module = {
   // TEMPLATES
   App: ['factory', App],
   StrokeFactsScreen: ['factory', StrokeFactsScreen],
+  StrokeSignsScreen: ['factory', StrokeSignsScreen],
 };

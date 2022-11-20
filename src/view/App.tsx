@@ -3,11 +3,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import type { Type as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 
-function factory(StrokeFactsScreen: StrokeFactsScreen) {
+function factory(StrokeSignsScreen: StrokeFactsScreen) {
   return function App() {
     return (
       <View style={styles.container}>
-        <StrokeFactsScreen />
+        <StrokeSignsScreen />
         {/* eslint-disable-next-line react/style-prop-object */}
         <StatusBar style="auto" />
       </View>

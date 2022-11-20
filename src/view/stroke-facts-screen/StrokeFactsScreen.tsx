@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
-import type { GetStrokeFactsAction } from '@/application/GetStrokeFactsAction';
+import type { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 
-function factory(getStrokeFactsAction: GetStrokeFactsAction) {
+function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
   return function StrokeFactsScreen() {
     const [html, setHtml] = useState('');
     useEffect(() => {
-      getStrokeFactsAction
-        .execute()
-        .then((article) => setHtml(article.getHtml()));
+      renderStrokeFactsAction.execute().then((h) => setHtml(h));
     }, []);
 
     const { width, height } = useWindowDimensions();

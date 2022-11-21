@@ -17,7 +17,7 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
     const webViewHeight = height * 0.6;
 
     const handlePressButton = useCallback(() => {
-      navigation.navigate('DisclaimerModal');
+      navigation.reset({ index: 0, routes: [{ name: 'HomeScreen' }] });
     }, [navigation]);
 
     return (

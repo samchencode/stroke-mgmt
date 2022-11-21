@@ -7,6 +7,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { Type as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import type { Type as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
+import type { Type as HomeScreen } from '@/view/HomeScreen';
 import type { Type as DisclaimerModal } from '@/view/DisclaimerModal';
 
 type AppNavigationParams = {
@@ -26,6 +27,7 @@ const RootStack = createNativeStackNavigator<RootNavigationParams>();
 function factory(
   StrokeFactsScreen: StrokeFactsScreen,
   StrokeSignsScreen: StrokeSignsScreen,
+  HomeScreen: HomeScreen,
   DisclaimerModal: DisclaimerModal
 ) {
   function AppNavigation() {
@@ -39,6 +41,7 @@ function factory(
           name="StrokeSignsScreen"
           component={StrokeSignsScreen}
         />
+        <AppStack.Screen name="HomeScreen" component={HomeScreen} />
       </AppStack.Navigator>
     );
   }
@@ -51,7 +54,11 @@ function factory(
         }}
       >
         <RootStack.Screen name="App" component={AppNavigation} />
-        <RootStack.Screen name="DisclaimerModal" component={DisclaimerModal} />
+        <RootStack.Screen
+          name="DisclaimerModal"
+          component={DisclaimerModal}
+          options={{ presentation: 'transparentModal' }}
+        />
       </RootStack.Navigator>
     );
   };

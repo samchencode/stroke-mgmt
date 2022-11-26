@@ -20,6 +20,7 @@
     "ejs": "^3.1.8",
     "expo": "~47.0.3",
     "expo-asset": "~8.6.2",
+    "expo-constants": "~14.0.2",
     "expo-file-system": "~15.1.1",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.4",

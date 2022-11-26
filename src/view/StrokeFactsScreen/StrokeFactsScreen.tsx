@@ -3,6 +3,7 @@ import { StyleSheet, View, useWindowDimensions, Button } from 'react-native';
 import { WebView } from 'react-native-webview';
 import type { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import type { AppNavigationProps } from '@/view/Router';
+import { StatusBar } from '@/view/StatusBar';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
   return function StrokeFactsScreen({
@@ -22,6 +23,7 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
 
     return (
       <View style={styles.container}>
+        <StatusBar textColor="auto" />
         <View style={{ height: webViewHeight }}>
           <WebView
             source={{ html }}

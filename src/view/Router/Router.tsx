@@ -36,10 +36,12 @@ function factory(
         <AppStack.Screen
           name="StrokeFactsScreen"
           component={StrokeFactsScreen}
+          options={{ headerShown: false }}
         />
         <AppStack.Screen
           name="StrokeSignsScreen"
           component={StrokeSignsScreen}
+          options={{ headerShown: false }}
         />
         <AppStack.Screen name="HomeScreen" component={HomeScreen} />
       </AppStack.Navigator>

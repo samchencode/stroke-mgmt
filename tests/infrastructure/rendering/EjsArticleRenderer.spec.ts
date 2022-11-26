@@ -10,11 +10,16 @@ describe('EjsArticleRenderer', () => {
         '@/infrastructure/rendering/ejs/templates/article.ejs',
         () => 0
       );
+      jest.doMock(
+        '@/infrastructure/rendering/ejs/templates/disclaimer.ejs',
+        () => 1
+      );
     });
 
     it('should be created given file system with template', () => {
       const ffs = new FakeFileSystem({
         0: '<html><head><title><%= title %></title></head><body><%= body %></body></html>',
+        1: '<html><head><title><%= title %></title></head><body><%= body %></body></html>',
       });
       const create = () => new EjsArticleRenderer(ffs);
       expect(create).not.toThrowError();
@@ -30,11 +35,16 @@ describe('EjsArticleRenderer', () => {
         '@/infrastructure/rendering/ejs/templates/article.ejs',
         () => 0
       );
+      jest.doMock(
+        '@/infrastructure/rendering/ejs/templates/disclaimer.ejs',
+        () => 1
+      );
     });
 
     beforeEach(() => {
       ffs = new FakeFileSystem({
         0: '<html><head><title><%= title %></title></head><body><%- body %></body></html>',
+        1: '<html><head><title><%= title %></title></head><body><%- body %></body></html>',
       });
     });
 

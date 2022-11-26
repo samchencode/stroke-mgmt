@@ -9,39 +9,36 @@ export const fakeArticles: FakeArticle[] = [
   {
     id: '-2',
     title: 'Disclaimer',
-    html: `The materials presented in this app are for educational purposes only`,
+    html: `<p>The materials presented in this app are for educational purposes only</p>`,
     designation: 'DISCLAIMER',
   },
   {
     id: '-1',
     title: 'Stroke Signs',
     html: `
-    Sudden numbness. 
-
-    Sudden confusion. 
-
-    Sudden trouble seeing. 
-
-    Sudden trouble walking, dizziness, or loss of balance. 
-
-    Sudden severe headache with no known cause.`,
+    <h1>Are you having a stroke?</h1>
+    <ul>
+    <li>Sudden numbness.</li>
+    <li>Sudden confusion.</li>
+    <li>Sudden trouble seeing.</li>
+    <li>Sudden trouble walking, dizziness, or loss of balance.</li>
+    <li>Sudden severe headache with no known cause.</li>
+    </ul>`,
     designation: 'STROKE_SIGNS',
   },
   {
     id: '0',
     title: 'Stroke Facts',
     html: `
-    1.9 million cells die in each minute of stroke.
-
-    Early treatment is associated with better outcomes.
-            
-    Stroke with large vessels occlusion (LVO) is associated with severe life threatening stroke.
-    
-    Stroke patients with LVO can receive mechanical removal of clot up to 24 hours and save lives with good functional outcomes
-    
-    Patients with stroke with vertebral (VA) and basilar artery (BA) LVO could be treated beyond 24 hours.
-    
-    VA and BA stroke can’t be evaluated by all stroke scales. If not detected and treated in timely manner, which may leads to death unfortunately.`,
+    <h1>Stroke Facts</h1>
+    <ul>
+    <li>1.9 million cells die in each minute of stroke.</li>
+    <li>Early treatment is associated with better outcomes.</li>
+    <li>Stroke with large vessels occlusion (LVO) is associated with severe life threatening stroke.</li>
+    <li>Stroke patients with LVO can receive mechanical removal of clot up to 24 hours and save lives with good functional outcomes</li>
+    <li>Patients with stroke with vertebral (VA) and basilar artery (BA) LVO could be treated beyond 24 hours.</li>
+    <li>VA and BA stroke can’t be evaluated by all stroke scales. If not detected and treated in timely manner, which may leads to death unfortunately.</li>
+    </ul>`,
     designation: 'STROKE_FACTS',
   },
   {

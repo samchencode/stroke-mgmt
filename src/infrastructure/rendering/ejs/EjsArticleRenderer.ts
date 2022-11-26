@@ -8,7 +8,9 @@ class EjsArticleRenderer implements ArticleRenderer {
 
   fs: FileSystem;
 
-  template: ejs.TemplateFunction | null = null;
+  articleTemplate: ejs.TemplateFunction | null = null;
+
+  disclaimerTemplate: ejs.TemplateFunction | null = null;
 
   constructor(fileSystem: FileSystem) {
     this.fs = fileSystem;
@@ -18,24 +20,35 @@ class EjsArticleRenderer implements ArticleRenderer {
   }
 
   private async init(): Promise<void> {
-    const templateStr = await this.fs.getAssetAsString(
+    const articleTemplate = await this.fs.getAssetAsString(
       // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
       require('@/infrastructure/rendering/ejs/templates/article.ejs')
     );
-    this.template = ejs.compile(templateStr);
+    this.articleTemplate = ejs.compile(articleTemplate);
+    const disclaimerTemplate = await this.fs.getAssetAsString(
+      // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
+      require('@/infrastructure/rendering/ejs/templates/disclaimer.ejs')
+    );
+    this.disclaimerTemplate = ejs.compile(disclaimerTemplate);
   }
 
   async renderArticle(article: Article): Promise<string> {
     await this.ready;
-    if (!this.template) throw new Error('EJS template not found');
-    return this.template({
+    if (!this.articleTemplate) throw new Error('Article template not found');
+    return this.articleTemplate({
       title: article.getTitle(),
       body: article.getHtml(),
     });
   }
 
   async renderDisclaimer(article: Article): Promise<string> {
-    return this.renderArticle(article);
+    await this.ready;
+    if (!this.disclaimerTemplate)
+      throw new Error('Disclaimer template not found');
+    return this.disclaimerTemplate({
+      title: article.getTitle(),
+      body: article.getHtml(),
+    });
   }
 
   async renderStrokeFacts(article: Article): Promise<string> {

@@ -9,7 +9,7 @@ export const fakeArticles: FakeArticle[] = [
   {
     id: '-2',
     title: 'Disclaimer',
-    html: `<p>The materials presented in this app are for educational purposes only</p>`,
+    html: `<h1>Dear colleague,</h1><p>Optimal management of your patient is based on your examination and evaluation of the patient at the bedside. This guide cannot good clinical judgement from a board certified physician. The materials presented in this app are for educational purposes only.</p>`,
     designation: 'DISCLAIMER',
   },
   {

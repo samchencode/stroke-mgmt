@@ -45,7 +45,10 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  button: { alignSelf: 'flex-start', marginLeft: theme.spaces.md },
+  button: {
+    alignSelf: 'flex-start',
+    marginLeft: theme.spaces.md,
+  },
 });
 
 export { factory };

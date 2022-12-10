@@ -8,17 +8,34 @@
   <title><%= title %></title>
   <style>
     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    h1 {
+      margin-bottom: 16px;
+    }
+
     p {
-      text-align: center;
+      text-align: left;
     }
   </style>
 </head>
 
 <body>
   <%- body %>
+
+  <script>
+    var height = document.body.offsetHeight;
+    var width = document.body.offsetWidth;
+    var dims = {
+      height: height,
+      width: width
+    }
+    window.ReactNativeWebView.postMessage(JSON.stringify(dims))
+  </script>
 </body>
 
 </html>

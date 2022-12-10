@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 999,
     height: 40,
-    paddingLeft: 24,
-    paddingRight: 24,
+    paddingLeft: theme.spaces.lg,
+    paddingRight: theme.spaces.lg,
   },
   contentContainer: {
     flex: 1,

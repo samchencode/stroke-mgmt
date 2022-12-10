@@ -12,6 +12,10 @@ class ArticleId {
   is(v: ArticleId) {
     return this.id === v.getId();
   }
+
+  toString() {
+    return this.getId();
+  }
 }
 
 export { ArticleId };

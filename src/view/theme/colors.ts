@@ -5,4 +5,6 @@ export const colors = {
   onBackground: '#000000',
   surface: '#ffffff',
   onSurface: '#000000',
+  surfaceVariant: '#eeeeee',
+  onSurfaceVariant: '#000000',
 };

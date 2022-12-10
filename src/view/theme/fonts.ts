@@ -6,4 +6,9 @@ export const fonts: { [key: string]: TextStyle } = {
     fontSize: 14,
     fontWeight: '500',
   },
+  bodyLarge: {
+    lineHeight: 24,
+    fontSize: 16,
+    fontWeight: '400',
+  },
 };

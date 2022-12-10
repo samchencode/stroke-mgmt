@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { StatusBar } from '@/view/StatusBar';
-import { theme } from '@/view/theme';
 import type { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
 import type { AppNavigationProps } from '@/view/Router';
 import type { RenderArticleAction } from '@/application/RenderArticleAction';
@@ -24,19 +23,12 @@ function factory(
         .then((h) => setHtml(h));
     }, [id]);
 
-    const { width, height } = useWindowDimensions();
-    const webViewHeight = height * 0.6;
+    const { width } = useWindowDimensions();
 
     return (
       <View style={styles.container}>
-        <StatusBar textColor="auto" backgroundColor={theme.colors.background} />
-        <View style={{ height: webViewHeight }}>
-          <WebView
-            source={{ html }}
-            originWhitelist={['*']}
-            style={{ width }}
-          />
-        </View>
+        <StatusBar textColor="auto" translucent />
+        <WebView source={{ html }} originWhitelist={['*']} style={{ width }} />
       </View>
     );
   };

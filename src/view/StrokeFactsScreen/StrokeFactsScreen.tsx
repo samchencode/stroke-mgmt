@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, View, useWindowDimensions, Button } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
 import type { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import type { AppNavigationProps } from '@/view/Router';
 import { StatusBar } from '@/view/StatusBar';
+import { Button } from '@/view/components';
+import { theme } from '@/view/theme';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
   return function StrokeFactsScreen({
@@ -23,7 +25,7 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
 
     return (
       <View style={styles.container}>
-        <StatusBar textColor="auto" />
+        <StatusBar textColor="auto" backgroundColor={theme.colors.background} />
         <View style={{ height: webViewHeight }}>
           <WebView
             source={{ html }}
@@ -31,7 +33,11 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
             style={{ width }}
           />
         </View>
-        <Button title="Got it!" onPress={handlePressButton} />
+        <Button
+          title="Got it!"
+          onPress={handlePressButton}
+          style={styles.button}
+        />
       </View>
     );
   };
@@ -39,6 +45,7 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  button: { alignSelf: 'flex-start', marginLeft: theme.spaces.md },
 });
 
 export { factory };

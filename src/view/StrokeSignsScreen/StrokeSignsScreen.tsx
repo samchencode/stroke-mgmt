@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, View, useWindowDimensions, Button } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
 import type { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import type { AppNavigationProps } from '@/view/Router';
 import { StatusBar } from '@/view/StatusBar';
+import { Button } from '@/view/components';
+import { theme } from '@/view/theme';
 
 function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
   return function StrokeSignsScreen({
@@ -23,7 +25,7 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
 
     return (
       <View style={styles.container}>
-        <StatusBar textColor="auto" />
+        <StatusBar textColor="auto" backgroundColor={theme.colors.background} />
         <View style={{ height: webViewHeight }}>
           <WebView
             source={{ html }}
@@ -31,17 +33,19 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
             style={{ width }}
           />
         </View>
-        <Button title="No, I'm here to learn" onPress={handlePressButton} />
+        <Button
+          title="No, I'm here to learn"
+          onPress={handlePressButton}
+          style={styles.button}
+        />
       </View>
     );
   };
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
+  container: { flex: 1 },
+  button: { alignSelf: 'flex-start', marginLeft: theme.spaces.md },
 });
 
 export { factory };

@@ -1,7 +1,8 @@
 import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import type { Article, ArticleId } from '@/domain/models/Article';
-import { View } from 'react-native';
 import { ArticleRow } from '@/view/HomeScreen/components/ArticleList/ArticleRow';
+import { theme } from '@/view/theme';
 
 type ArticleListProps = {
   data: Article[];
@@ -11,6 +12,7 @@ type ArticleListProps = {
 function ArticleList({ data, onSelectArticle }: ArticleListProps) {
   return (
     <View>
+      <Text style={styles.title}>Articles</Text>
       {data.map((a) => (
         <ArticleRow
           key={a.getId().toString()}
@@ -22,5 +24,14 @@ function ArticleList({ data, onSelectArticle }: ArticleListProps) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    marginLeft: theme.spaces.lg,
+    lineHeight: 60,
+    fontSize: 42,
+    fontWeight: 'bold',
+  },
+});
 
 export { ArticleList };

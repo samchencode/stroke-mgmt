@@ -3,6 +3,7 @@
   "editor.formatOnSave": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "editor.snippetSuggestions": "bottom",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "emmet.includeLanguages": {
     "ejs": "html"
   },

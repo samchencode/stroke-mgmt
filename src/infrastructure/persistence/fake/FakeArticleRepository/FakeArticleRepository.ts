@@ -1,7 +1,7 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
-import { fakeArticles } from '@/infrastructure/persistence/fake/fakeArticles';
+import { fakeArticles } from '@/infrastructure/persistence/fake/FakeArticleRepository/fakeArticles';
 
 class FakeArticleRepository implements ArticleRepository {
   fakeArticles = fakeArticles.slice();

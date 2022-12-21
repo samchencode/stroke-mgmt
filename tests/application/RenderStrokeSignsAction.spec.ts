@@ -1,6 +1,6 @@
 import { GetStrokeSignsAction } from '@/application/GetStrokeSignsAction';
 import { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
-import type { ArticleRenderer } from '@/domain/ports/ArticleRenderer';
+import type { ArticleRenderer } from '@/domain/models/Article';
 import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
 
 const stubRenderer: ArticleRenderer = {

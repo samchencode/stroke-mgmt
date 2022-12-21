@@ -1,5 +1,5 @@
 import { Designation } from '@/domain/models/Article';
-import type { ArticleRepository } from '@/domain/ports/ArticleRepository';
+import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
 
 class GetStrokeSignsAction {
   private repo: ArticleRepository;

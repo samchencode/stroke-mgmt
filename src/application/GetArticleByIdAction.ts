@@ -1,5 +1,5 @@
 import type { ArticleId } from '@/domain/models/Article';
-import type { ArticleRepository } from '@/domain/ports/ArticleRepository';
+import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
 
 class GetArticleByIdAction {
   repo: ArticleRepository;

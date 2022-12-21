@@ -1,4 +1,4 @@
-import type { ArticleRepository } from '@/domain/ports/ArticleRepository';
+import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
 
 class GetAllArticlesAction {
   repo: ArticleRepository;

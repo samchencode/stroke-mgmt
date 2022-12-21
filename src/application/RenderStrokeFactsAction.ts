@@ -1,5 +1,5 @@
 import type { GetStrokeFactsAction } from '@/application/GetStrokeFactsAction';
-import type { ArticleRenderer } from '@/domain/ports/ArticleRenderer';
+import type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
 
 class RenderStrokeFactsAction {
   getStrokeFacts: GetStrokeFactsAction;

@@ -1,5 +1,5 @@
 import type { GetStrokeSignsAction } from '@/application/GetStrokeSignsAction';
-import type { ArticleRenderer } from '@/domain/ports/ArticleRenderer';
+import type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
 
 class RenderStrokeSignsAction {
   getStrokeSigns: GetStrokeSignsAction;

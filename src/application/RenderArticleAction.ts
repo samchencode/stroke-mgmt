@@ -1,5 +1,5 @@
 import type { Article } from '@/domain/models/Article';
-import type { ArticleRenderer } from '@/domain/ports/ArticleRenderer';
+import type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
 
 class RenderArticleAction {
   renderer: ArticleRenderer;

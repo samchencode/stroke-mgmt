@@ -1,6 +1,6 @@
 import { RenderArticleAction } from '@/application/RenderArticleAction';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
-import type { ArticleRenderer } from '@/domain/ports/ArticleRenderer';
+import type { ArticleRenderer } from '@/domain/models/Article';
 
 const stubRenderer: ArticleRenderer = {
   renderArticle: jest.fn().mockResolvedValue('rendered article'),

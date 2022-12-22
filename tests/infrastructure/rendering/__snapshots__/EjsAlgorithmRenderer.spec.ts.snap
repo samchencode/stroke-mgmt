@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
+"<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GWNS Algorithm</title>
+</head>
+
+<body>
+  All need immediate Rx and activate brain attack team immediately. ABCT = (airway, breathing, circulation, time of stroke onset). Endotracheal intubation if compromised airway or GCS less than eight. Maintain SBP 140 to 180 mmHg. HR 60-100. Establish IV access and hydration is recommended based on height/weight and clinical scenarios
+</body>
+
+</html>"
+`;
+
+exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
+"<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABCTs</title>
+</head>
+
+<body>
+  ABCT = (airway, breathing, circulation, time of stroke onset)
+</body>
+
+</html>"
+`;

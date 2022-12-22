@@ -7,11 +7,12 @@ import {
   Outcome,
   Switch,
   SwitchId,
+  TextAlgorithm,
 } from '@/domain/models/Algorithm';
 
 const gwnsAlgorithm = (() => {
   const info = new AlgorithmInfo({
-    id: new AlgorithmId('0'),
+    id: new AlgorithmId('1'),
     title: 'GWNS Algorithm',
     body: 'All need immediate Rx and activate brain attack team immediately. ABCT = (airway, breathing, circulation, time of stroke onset). Endotracheal intubation if compromised airway or GCS less than eight. Maintain SBP 140 to 180 mmHg. HR 60-100. Establish IV access and hydration is recommended based on height/weight and clinical scenarios',
     outcomes: [
@@ -54,4 +55,25 @@ const gwnsAlgorithm = (() => {
   return new ScoredAlgorithm({ info, switches });
 })();
 
-export { gwnsAlgorithm };
+const abctAlgorithm = (() => {
+  const info = new AlgorithmInfo({
+    id: new AlgorithmId('0'),
+    title: 'ABCTs',
+    body: 'ABCT = (airway, breathing, circulation, time of stroke onset)',
+    outcomes: [
+      new Outcome({
+        title: 'Stable',
+        body: 'Proceed to GWNS algorithm',
+        next: gwnsAlgorithm,
+      }),
+      new Outcome({
+        title: 'Not Stable',
+        body: 'Stabilize ABCTs before continuing!',
+      }),
+    ],
+  });
+
+  return new TextAlgorithm({ info });
+})();
+
+export const algorithms = [gwnsAlgorithm, abctAlgorithm];

@@ -1,6 +1,7 @@
 import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
 import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
+import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import { NoSwitchesError } from '@/domain/models/Algorithm/NoSwitchesError';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type { Switch } from '@/domain/models/Algorithm/Switch';
@@ -76,6 +77,10 @@ class ScoredAlgorithm implements Algorithm {
       ...params,
     };
     return new ScoredAlgorithm(newParams);
+  }
+
+  acceptVisitor(v: AlgorithmVisitor): void {
+    v.visitScoredAlgorithm(this);
   }
 }
 

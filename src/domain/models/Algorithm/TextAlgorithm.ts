@@ -1,6 +1,7 @@
 import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
 import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
+import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 
 type TextAlgorithmParams = {
@@ -37,6 +38,10 @@ class TextAlgorithm implements Algorithm {
 
   is(other: Algorithm): boolean {
     return other.getId().is(this.getId());
+  }
+
+  acceptVisitor(v: AlgorithmVisitor): void {
+    v.visitTextAlgorithm(this);
   }
 }
 

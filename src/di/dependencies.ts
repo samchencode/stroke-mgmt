@@ -9,6 +9,7 @@ import { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import { ExpoAssetFileSystem } from '@/infrastructure/file-system/expo-asset/ExpoAssetFileSystem';
 import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
+import { FakeAlgorithmRepository } from '@/infrastructure/persistence/fake/FakeAlgorithmRepository';
 import { EjsArticleRenderer } from '@/infrastructure/rendering/ejs/EjsArticleRenderer';
 import { factory as App } from '@/view/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
@@ -32,6 +33,7 @@ export const module = {
 
   // INFRASTRUCTURE
   articleRepository: ['type', FakeArticleRepository],
+  algorithmRepository: ['type', FakeAlgorithmRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   articleRenderer: ['type', EjsArticleRenderer],
 

@@ -21,12 +21,10 @@ class EjsArticleRenderer implements ArticleRenderer {
 
   private async init(): Promise<void> {
     const articleTemplate = await this.fs.getAssetAsString(
-      // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
       require('@/infrastructure/rendering/ejs/templates/article.ejs')
     );
     this.articleTemplate = ejs.compile(articleTemplate);
     const disclaimerTemplate = await this.fs.getAssetAsString(
-      // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
       require('@/infrastructure/rendering/ejs/templates/disclaimer.ejs')
     );
     this.disclaimerTemplate = ejs.compile(disclaimerTemplate);

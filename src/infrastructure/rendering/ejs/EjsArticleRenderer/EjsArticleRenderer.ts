@@ -6,13 +6,13 @@ import type { FileSystem } from '@/infrastructure/file-system/FileSystem';
 class EjsArticleRenderer implements ArticleRenderer {
   ready: Promise<void>;
 
-  fs: FileSystem;
+  fs: FileSystem<unknown>;
 
   articleTemplate: ejs.TemplateFunction | null = null;
 
   disclaimerTemplate: ejs.TemplateFunction | null = null;
 
-  constructor(fileSystem: FileSystem) {
+  constructor(fileSystem: FileSystem<unknown>) {
     this.fs = fileSystem;
     this.ready = new Promise((s) => {
       this.init().then(s);

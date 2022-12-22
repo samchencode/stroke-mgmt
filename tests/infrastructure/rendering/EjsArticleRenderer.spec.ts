@@ -1,53 +1,32 @@
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
-import { FakeFileSystem } from '@/infrastructure/file-system/fake/FakeFileSystem';
+import { NodeFileSystem } from '@/infrastructure/file-system/node/NodeFileSystem';
 import { EjsArticleRenderer } from '@/infrastructure/rendering/ejs/EjsArticleRenderer';
 
 describe('EjsArticleRenderer', () => {
-  describe('Instantiation', () => {
-    beforeAll(() => {
-      jest.resetModules();
-      jest.doMock(
-        '@/infrastructure/rendering/ejs/EjsArticleRenderer/article.ejs',
-        () => 0
-      );
-      jest.doMock(
-        '@/infrastructure/rendering/ejs/EjsArticleRenderer/disclaimer.ejs',
-        () => 1
-      );
-    });
+  let fs: NodeFileSystem;
 
+  beforeAll(() => {
+    jest.resetModules();
+    jest.doMock(
+      '@/infrastructure/rendering/ejs/EjsArticleRenderer/article.ejs',
+      () => '@/infrastructure/rendering/ejs/EjsArticleRenderer/article.ejs'
+    );
+    jest.doMock(
+      '@/infrastructure/rendering/ejs/EjsArticleRenderer/disclaimer.ejs',
+      () => '@/infrastructure/rendering/ejs/EjsArticleRenderer/disclaimer.ejs'
+    );
+
+    fs = new NodeFileSystem();
+  });
+
+  describe('Instantiation', () => {
     it('should be created given file system with template', () => {
-      const ffs = new FakeFileSystem({
-        0: '<html><head><title><%= title %></title></head><body><%= body %></body></html>',
-        1: '<html><head><title><%= title %></title></head><body><%= body %></body></html>',
-      });
-      const create = () => new EjsArticleRenderer(ffs);
+      const create = () => new EjsArticleRenderer(fs);
       expect(create).not.toThrowError();
     });
   });
 
   describe('Behavior', () => {
-    let ffs: FakeFileSystem;
-
-    beforeAll(() => {
-      jest.resetModules();
-      jest.doMock(
-        '@/infrastructure/rendering/ejs/EjsArticleRenderer/article.ejs',
-        () => 0
-      );
-      jest.doMock(
-        '@/infrastructure/rendering/ejs/EjsArticleRenderer/disclaimer.ejs',
-        () => 1
-      );
-    });
-
-    beforeEach(() => {
-      ffs = new FakeFileSystem({
-        0: '<html><head><title><%= title %></title></head><body><%- body %></body></html>',
-        1: '<html><head><title><%= title %></title></head><body><%- body %></body></html>',
-      });
-    });
-
     it('should render article title and html', async () => {
       const article = new Article({
         id: new ArticleId('0'),
@@ -56,11 +35,22 @@ describe('EjsArticleRenderer', () => {
         designation: Designation.ARTICLE,
       });
 
-      const renderer = new EjsArticleRenderer(ffs);
+      const renderer = new EjsArticleRenderer(fs);
       const html = await renderer.renderArticle(article);
-      const expected =
-        '<html><head><title>hello world</title></head><body><h1>foo bar</h1></body></html>';
-      expect(html).toBe(expected);
+      expect(html).toMatchSnapshot();
+    });
+
+    it('should render disclaimer html', async () => {
+      const article = new Article({
+        id: new ArticleId('1'),
+        title: 'hello world',
+        html: '<h1>foo bar</h1>',
+        designation: Designation.DISCLAIMER,
+      });
+
+      const renderer = new EjsArticleRenderer(fs);
+      const html = await renderer.renderDisclaimer(article);
+      expect(html).toMatchSnapshot();
     });
   });
 });

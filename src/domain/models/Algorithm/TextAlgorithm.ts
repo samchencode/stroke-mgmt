@@ -19,7 +19,7 @@ class TextAlgorithm implements Algorithm {
     return this.info.getOutcomes();
   }
 
-  hasOutcome(): boolean {
+  hasOutcomes(): boolean {
     const outcomes = this.info.getOutcomes();
     return outcomes.length > 0;
   }

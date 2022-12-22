@@ -7,7 +7,7 @@ interface Algorithm {
   getTitle(): string;
   getBody(): string;
   getOutcomes(): Outcome[];
-  hasOutcome(): boolean;
+  hasOutcomes(): boolean;
   is(other: Algorithm): boolean;
   acceptVisitor(v: AlgorithmVisitor): void;
 }

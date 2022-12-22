@@ -23,13 +23,13 @@ class ScoredAlgorithm implements Algorithm {
   }
 
   getOutcomes(): Outcome[] {
-    if (!this.hasOutcome()) return [];
+    if (!this.hasOutcomes()) return [];
     const outcomes = this.info.getOutcomes();
     const score = this.calculateScore();
     return outcomes.filter((o) => o.checkCriterion(score));
   }
 
-  hasOutcome(): boolean {
+  hasOutcomes(): boolean {
     const hasUnsetSwitches = !!this.switches.find((s) => !s.isSet());
     const outcomes = this.info.getOutcomes();
     if (hasUnsetSwitches || outcomes.length === 0) return false;

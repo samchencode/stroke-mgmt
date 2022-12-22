@@ -58,7 +58,7 @@ describe('TextAlgorithm', () => {
     });
 
     it('should have outcome', () => {
-      expect(algo.hasOutcome()).toBe(true);
+      expect(algo.hasOutcomes()).toBe(true);
     });
 
     it('should provide outcome', () => {
@@ -75,7 +75,7 @@ describe('TextAlgorithm', () => {
       const noOutcomesAlgo = new TextAlgorithm({
         info: noOutcomesAlgoInfo,
       });
-      expect(noOutcomesAlgo.hasOutcome()).toBe(false);
+      expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
     });
 
     it('should get next algorithm', () => {

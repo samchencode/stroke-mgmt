@@ -72,13 +72,13 @@ describe('ScoredAlgorithm', () => {
     });
 
     it('should have not outcome before switch is set', () => {
-      expect(algo.hasOutcome()).toBe(false);
+      expect(algo.hasOutcomes()).toBe(false);
     });
 
     it('should set switch', () => {
-      expect(algo.hasOutcome()).toBe(false);
+      expect(algo.hasOutcomes()).toBe(false);
       const newAlgo = algo.toggleSwitch(aSwitch);
-      expect(newAlgo.hasOutcome()).toBe(true);
+      expect(newAlgo.hasOutcomes()).toBe(true);
       expect(newAlgo.getOutcomes()).toHaveLength(1);
     });
 
@@ -93,9 +93,9 @@ describe('ScoredAlgorithm', () => {
         info: noOutcomesAlgoInfo,
         switches: [aSwitch],
       });
-      expect(noOutcomesAlgo.hasOutcome()).toBe(false);
+      expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
       noOutcomesAlgo = noOutcomesAlgo.toggleSwitch(aSwitch);
-      expect(noOutcomesAlgo.hasOutcome()).toBe(false);
+      expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
     });
 
     it('should return empty array calling getOutcomes with no outcomes defined', () => {

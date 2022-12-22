@@ -1,7 +1,7 @@
 import ejs from 'ejs';
 import type { Article } from '@/domain/models/Article';
 import type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
-import type { FileSystem } from '@/application/ports/FileSystem';
+import type { FileSystem } from '@/infrastructure/file-system/FileSystem';
 
 class EjsArticleRenderer implements ArticleRenderer {
   ready: Promise<void>;

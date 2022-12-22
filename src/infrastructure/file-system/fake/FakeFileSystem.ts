@@ -1,4 +1,4 @@
-import type { FileSystem } from '@/application/ports/FileSystem';
+import type { FileSystem } from '@/infrastructure/file-system/FileSystem';
 
 type StubbedFiles = { [path: number]: string };
 

@@ -1,6 +1,6 @@
 import * as ExpoFileSystem from 'expo-file-system';
 import { Asset } from 'expo-asset';
-import type { FileSystem } from '@/application/ports/FileSystem';
+import type { FileSystem } from '@/infrastructure/file-system/FileSystem';
 
 class ExpoAssetFileSystem implements FileSystem {
   async getAssetAsString(virtualAssetModule: string | number) {

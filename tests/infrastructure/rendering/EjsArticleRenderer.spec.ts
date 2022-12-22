@@ -7,11 +7,11 @@ describe('EjsArticleRenderer', () => {
     beforeAll(() => {
       jest.resetModules();
       jest.doMock(
-        '@/infrastructure/rendering/ejs/templates/article.ejs',
+        '@/infrastructure/rendering/ejs/EjsArticleRenderer/article.ejs',
         () => 0
       );
       jest.doMock(
-        '@/infrastructure/rendering/ejs/templates/disclaimer.ejs',
+        '@/infrastructure/rendering/ejs/EjsArticleRenderer/disclaimer.ejs',
         () => 1
       );
     });
@@ -32,11 +32,11 @@ describe('EjsArticleRenderer', () => {
     beforeAll(() => {
       jest.resetModules();
       jest.doMock(
-        '@/infrastructure/rendering/ejs/templates/article.ejs',
+        '@/infrastructure/rendering/ejs/EjsArticleRenderer/article.ejs',
         () => 0
       );
       jest.doMock(
-        '@/infrastructure/rendering/ejs/templates/disclaimer.ejs',
+        '@/infrastructure/rendering/ejs/EjsArticleRenderer/disclaimer.ejs',
         () => 1
       );
     });

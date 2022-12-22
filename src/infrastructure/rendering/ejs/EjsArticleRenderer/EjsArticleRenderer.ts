@@ -21,11 +21,11 @@ class EjsArticleRenderer implements ArticleRenderer {
 
   private async init(): Promise<void> {
     const articleTemplate = await this.fs.getAssetAsString(
-      require('@/infrastructure/rendering/ejs/templates/article.ejs')
+      require('@/infrastructure/rendering/ejs/EjsArticleRenderer/article.ejs')
     );
     this.articleTemplate = ejs.compile(articleTemplate);
     const disclaimerTemplate = await this.fs.getAssetAsString(
-      require('@/infrastructure/rendering/ejs/templates/disclaimer.ejs')
+      require('@/infrastructure/rendering/ejs/EjsArticleRenderer/disclaimer.ejs')
     );
     this.disclaimerTemplate = ejs.compile(disclaimerTemplate);
   }

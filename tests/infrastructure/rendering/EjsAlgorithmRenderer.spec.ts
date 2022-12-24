@@ -18,6 +18,10 @@ describe('EjsAlgorithmRenderer', () => {
       () =>
         '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/scoredAlgorithm.ejs'
     );
+    jest.doMock(
+      '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/outcome.ejs',
+      () => '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/outcome.ejs'
+    );
     fs = new NodeFileSystem();
     repo = new FakeAlgorithmRepository();
   });
@@ -33,14 +37,14 @@ describe('EjsAlgorithmRenderer', () => {
     it('should render text algorithm', async () => {
       const textAlgo = await repo.getById(new AlgorithmId('0'));
       const renderer = new EjsAlgorithmRenderer(fs);
-      const result = await renderer.render(textAlgo);
+      const result = await renderer.renderAlgorithm(textAlgo);
       expect(result).toMatchSnapshot();
     });
 
     it('should render scored algorithm', async () => {
       const scoredAlgo = await repo.getById(new AlgorithmId('1'));
       const renderer = new EjsAlgorithmRenderer(fs);
-      const result = await renderer.render(scoredAlgo);
+      const result = await renderer.renderAlgorithm(scoredAlgo);
       expect(result).toMatchSnapshot();
     });
   });

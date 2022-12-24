@@ -107,43 +107,26 @@
 
     .template.outcomes__list-item {
       margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
 
     .template.outcomes__list-item:first-child {
       margin-top: 8px;
     }
 
-    .template.outcomes__summary {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      user-select: none;
-    }
-
-    .template.outcomes__title {
-      display: inline-block;
-      /* title-large */
-      line-height: 32px;
-      font-size: 24px;
-      font-weight: 400;
-    }
-
-    .template.outcomes__body {
-      margin-top: 8px;
-      /* body-medium */
+    .template.outcomes__button {
+      background-color: black;
+      color: white;
+      border-radius: 999px;
+      height: 40px;
+      padding: 0 24px;
+      /* label-large */
       line-height: 20px;
       font-size: 14px;
-      letter-spacing: 0.25px;
-      font-weight: 400;
-    }
-
-    .template.outcomes__title::before {
-      content: '\25b6';
-      display: inline-block;
-    }
-
-    .template.outcomes__dropdown[open] .template.outcomes__title::before {
-      transform: rotate(90deg);
+      letter-spacing: 0.1px;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -175,16 +158,7 @@
     <ul class="template outcomes__list">
       <% for(const outcome of algorithm.getOutcomes()) { %>
       <li class="template outcomes__list-item">
-        <details class="template outcomes__dropdown" <%= algorithm.getOutcomes().length == 1 ? "open" : ""%>>
-          <summary class="template outcomes__summary">
-            <h2 class="template outcomes__title">
-              <%- outcome.getTitle() %>
-            </h2>
-          </summary>
-          <p class="template outcomes__body">
-            <%- outcome.getBody() %>
-          </p>
-        </details>
+        <button class="template outcomes__button"><%- outcome.getTitle() %></button>
       </li>
       <% } %>
     </ul>

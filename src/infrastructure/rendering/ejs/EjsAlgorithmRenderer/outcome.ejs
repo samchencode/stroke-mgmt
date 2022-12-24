@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= outcome.getTitle() %></title>
+</head>
+
+<body>
+  <header>
+    <h1><%- outcome.getTitle() %></h1>
+  </header>
+  <main>
+    <p><%- outcome.getBody() %></p>
+    <% if(outcome.getNext()) { %>
+    <button>Next</button>
+    <% } %>
+  </main>
+</body>
+
+</html>
+<!-- 
+<details class="template outcomes__dropdown" <%= algorithm.getOutcomes().length == 1 ? "open" : ""%>>
+  <summary class="template outcomes__summary">
+    <h2 class="template outcomes__title">
+      <%- outcome.getTitle() %>
+    </h2>
+  </summary>
+  <p class="template outcomes__body">
+    <%- outcome.getBody() %>
+  </p>
+</details> -->

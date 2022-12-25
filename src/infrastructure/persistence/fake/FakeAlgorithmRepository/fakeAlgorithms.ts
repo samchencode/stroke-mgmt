@@ -13,8 +13,9 @@ import {
 const gwnsAlgorithm = (() => {
   const info = new AlgorithmInfo({
     id: new AlgorithmId('1'),
-    title: 'GWNS Algorithm',
+    title: 'GWNS',
     body: 'All need immediate Rx and activate brain attack team immediately. ABCT = (airway, breathing, circulation, time of stroke onset). Endotracheal intubation if compromised airway or GCS less than eight. Maintain SBP 140 to 180 mmHg. HR 60-100. Establish IV access and hydration is recommended based on height/weight and clinical scenarios',
+    summary: 'Use after you know the ABCTs are stable',
     outcomes: [
       new Outcome({
         title: 'LVO',
@@ -60,6 +61,7 @@ const abctAlgorithm = (() => {
     id: new AlgorithmId('0'),
     title: 'ABCTs',
     body: 'ABCT = (airway, breathing, circulation, time of stroke onset)',
+    summary: 'If patient meets AHA stroke criteria, check ABCTs!',
     outcomes: [
       new Outcome({
         title: 'Stable',

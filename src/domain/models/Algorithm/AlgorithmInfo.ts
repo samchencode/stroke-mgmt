@@ -5,6 +5,7 @@ type AlgorithmParams = {
   id: AlgorithmId;
   title: string;
   body: string;
+  summary: string;
   outcomes: Outcome[];
 };
 
@@ -15,13 +16,16 @@ class AlgorithmInfo {
 
   private body: string;
 
+  private summary: string;
+
   private outcomes: Outcome[];
 
-  constructor({ id, title, body, outcomes }: AlgorithmParams) {
+  constructor({ id, title, body, outcomes, summary }: AlgorithmParams) {
     this.id = id;
     this.title = title;
     this.body = body;
     this.outcomes = outcomes;
+    this.summary = summary;
   }
 
   getId() {
@@ -38,6 +42,10 @@ class AlgorithmInfo {
 
   getOutcomes() {
     return this.outcomes;
+  }
+
+  getSummary() {
+    return this.summary;
   }
 }
 

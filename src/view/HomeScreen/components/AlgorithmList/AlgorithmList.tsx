@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import type { StyleProp, ViewStyle } from 'react-native';
 import { theme } from '@/view/theme';
+import type { Algorithm } from '@/domain/models/Algorithm';
+import { AlgorithmId } from '@/domain/models/Algorithm';
 import { AlgorithmItem } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmItem';
 
-const myArrayOfNames = ['alg1', 'alg2', 'alg3', 'alg4'];
+type AlgorithmListProps = {
+  data: Algorithm[];
+  onSelectAlgorithm: (id: AlgorithmId) => void;
+  style?: StyleProp<ViewStyle>;
+};
 
-function AlgorithmList() {
+function AlgorithmList({
+  data,
+  onSelectAlgorithm,
+  style = {},
+}: AlgorithmListProps) {
+  const handleSelectAlgorithm = useCallback(
+    (id: string) => {
+      const algorithmId = new AlgorithmId(id);
+      onSelectAlgorithm(algorithmId);
+    },
+    [onSelectAlgorithm]
+  );
   return (
-    <View>
+    <View style={style}>
       <Text style={styles.title}>Algorithms</Text>
-      <ScrollView horizontal style={styles.carousel}>
-        {myArrayOfNames.map((v) => (
-          <AlgorithmItem name={v} />
+      <ScrollView horizontal style={styles.scrollview}>
+        {data.map((algorithm) => (
+          <AlgorithmItem
+            id={algorithm.getId().toString()}
+            name={algorithm.getTitle()}
+            key={algorithm.getId().toString()}
+            body={algorithm.getSummary()}
+            onPress={handleSelectAlgorithm}
+            style={styles.item}
+          />
         ))}
       </ScrollView>
     </View>
@@ -22,22 +47,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  carousel: {
-    height: 150,
+  title: theme.fonts.displayMedium,
+  scrollview: {
+    marginTop: theme.spaces.md,
   },
-  image: { width: 100, height: 100 },
-  title: {
-    marginLeft: theme.spaces.lg,
-    lineHeight: 60,
-    fontSize: 42,
-    fontWeight: 'bold',
-  },
-  algotext: {
-    fontSize: 10,
-  },
-  square: {
-    marginRight: theme.spaces.md,
-    backgroundColor: 'gold',
+  item: {
+    marginRight: theme.spaces.sm,
   },
 });
 

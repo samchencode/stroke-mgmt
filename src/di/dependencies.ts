@@ -18,6 +18,8 @@ import { factory as HomeScreen } from '@/view/HomeScreen';
 import { factory as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
 import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
 import { factory as Router } from '@/view/Router';
+import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
+import { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 
 export const module = {
   // APPLICATION
@@ -26,7 +28,9 @@ export const module = {
   getDisclaimerAction: ['type', GetDisclaimerAction],
   getStrokeFactsAction: ['type', GetStrokeFactsAction],
   getStrokeSignsAction: ['type', GetStrokeSignsAction],
+  getAllAlgorithmsAction: ['type', GetAllAlgorithmsAction],
   renderArticleAction: ['type', RenderArticleAction],
+  renderAlgorithmAction: ['type', RenderAlgorithmAction],
   renderDisclaimerAction: ['type', RenderDisclaimerAction],
   renderStrokeFactsAction: ['type', RenderStrokeFactsAction],
   renderStrokeSignsAction: ['type', RenderStrokeSignsAction],

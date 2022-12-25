@@ -15,13 +15,13 @@ type StatusBarProps = {
 };
 
 function StatusBar({
-  animated,
-  textColor,
-  hidden,
-  backgroundColor,
-  translucent,
-  hideTransitionAnimation,
-  networkActivityIndicatorVisible,
+  animated = undefined,
+  textColor = undefined,
+  hidden = undefined,
+  backgroundColor = undefined,
+  translucent = undefined,
+  hideTransitionAnimation = undefined,
+  networkActivityIndicatorVisible = undefined,
 }: StatusBarProps) {
   return (
     <View
@@ -43,15 +43,5 @@ function StatusBar({
     </View>
   );
 }
-
-StatusBar.defaultProps = {
-  animated: undefined,
-  textColor: undefined,
-  hidden: undefined,
-  backgroundColor: undefined,
-  translucent: undefined,
-  hideTransitionAnimation: undefined,
-  networkActivityIndicatorVisible: undefined,
-};
 
 export { StatusBar };

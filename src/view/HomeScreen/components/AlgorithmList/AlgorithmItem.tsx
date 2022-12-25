@@ -1,37 +1,61 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import type { ViewStyle, StyleProp } from 'react-native';
 import { theme } from '@/view/theme';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 type AlgorithmItemProps = {
+  id: string;
   name: string;
+  body: string;
+  onPress: (id: string) => void;
+  style?: StyleProp<ViewStyle>;
 };
 
-function AlgorithmItem({ name }: AlgorithmItemProps) {
+function AlgorithmItem({
+  id,
+  name,
+  body,
+  onPress,
+  style = {},
+}: AlgorithmItemProps) {
   return (
-    <View style={styles.square}>
-      <Image
-        source={{ uri: 'https://placeimg.com/640/480/any' }}
-        style={styles.image}
-      />
-      <Text style={styles.algotext}>{name}</Text>
-    </View>
+    <TouchableHighlight
+      onPress={useCallback(() => onPress(id), [onPress, id])}
+      underlayColor={theme.colors.background}
+    >
+      <View style={[styles.container, style]}>
+        <Image
+          source={{ uri: `https://robohash.org/${name}.png` }}
+          style={styles.image}
+        />
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>{name}</Text>
+          <Text style={styles.body}>{body}</Text>
+        </View>
+      </View>
+    </TouchableHighlight>
   );
 }
 
 const styles = StyleSheet.create({
-  image: { width: 100, height: 100 },
-  title: {
-    marginLeft: theme.spaces.lg,
-    lineHeight: 60,
-    fontSize: 42,
-    fontWeight: 'bold',
+  container: {
+    width: 150,
+    backgroundColor: theme.colors.surface,
+    borderRadius: 12,
   },
-  algotext: {
-    fontSize: 10,
+  contentContainer: {
+    padding: theme.spaces.sm,
   },
-  square: {
-    marginRight: theme.spaces.md,
-    backgroundColor: 'gold',
+  image: {
+    height: 150,
+    backgroundColor: 'navy',
+    borderRadius: 12,
+  },
+  title: theme.fonts.titleMedium,
+  body: {
+    marginTop: theme.spaces.sm,
+    ...theme.fonts.bodyMedium,
   },
 });
 

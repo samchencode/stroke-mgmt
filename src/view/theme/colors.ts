@@ -3,8 +3,8 @@ export const colors = {
   onPrimary: '#ffffff',
   background: '#ffffff',
   onBackground: '#000000',
-  surface: '#ffffff',
+  surface: '#efefef',
   onSurface: '#000000',
   surfaceVariant: '#eeeeee',
   onSurfaceVariant: '#000000',
-};
+} as const;

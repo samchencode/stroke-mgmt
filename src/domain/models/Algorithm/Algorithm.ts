@@ -5,6 +5,7 @@ import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 interface Algorithm {
   getId(): AlgorithmId;
   getTitle(): string;
+  getSummary(): string;
   getBody(): string;
   getOutcomes(): Outcome[];
   hasOutcomes(): boolean;

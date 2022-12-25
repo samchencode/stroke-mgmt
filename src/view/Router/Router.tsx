@@ -11,6 +11,7 @@ import type { Type as HomeScreen } from '@/view/HomeScreen';
 import type { Type as DisclaimerModal } from '@/view/DisclaimerModal';
 import type { Type as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
 import type { ArticleId } from '@/domain/models/Article';
+import { theme } from '@/view/theme';
 
 type AppNavigationParams = {
   StrokeFactsScreen: undefined;
@@ -36,7 +37,13 @@ function factory(
 ) {
   function AppNavigation() {
     return (
-      <AppStack.Navigator>
+      <AppStack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.colors.surface,
+          },
+        }}
+      >
         <AppStack.Screen
           name="StrokeFactsScreen"
           component={StrokeFactsScreen}
@@ -47,7 +54,11 @@ function factory(
           component={StrokeSignsScreen}
           options={{ headerShown: false }}
         />
-        <AppStack.Screen name="HomeScreen" component={HomeScreen} />
+        <AppStack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{ title: '' }}
+        />
         <AppStack.Screen
           name="ArticleViewerScreen"
           component={ArticleViewerScreen}

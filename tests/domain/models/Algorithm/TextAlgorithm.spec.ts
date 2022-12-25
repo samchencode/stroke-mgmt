@@ -11,6 +11,7 @@ describe('TextAlgorithm', () => {
       const info = new AlgorithmInfo({
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         id: new AlgorithmId('0'),
         outcomes: [],
       });
@@ -29,6 +30,7 @@ describe('TextAlgorithm', () => {
       const nextInfo = new AlgorithmInfo({
         title: 'next algo',
         body: 'this is the next body text',
+        summary: 'summary text',
         id: new AlgorithmId('1'),
         outcomes: [new Outcome({ title: 'title', body: 'body' })],
       });
@@ -42,6 +44,7 @@ describe('TextAlgorithm', () => {
       const info = new AlgorithmInfo({
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         id: new AlgorithmId('0'),
         outcomes: [outcome],
       });
@@ -70,6 +73,7 @@ describe('TextAlgorithm', () => {
         id: new AlgorithmId('2'),
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         outcomes: [],
       });
       const noOutcomesAlgo = new TextAlgorithm({

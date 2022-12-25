@@ -36,6 +36,10 @@ class TextAlgorithm implements Algorithm {
     return this.info.getBody();
   }
 
+  getSummary(): string {
+    return this.info.getSummary();
+  }
+
   is(other: Algorithm): boolean {
     return other.getId().is(this.getId());
   }

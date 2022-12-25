@@ -18,6 +18,7 @@ describe('ScoredAlgorithm', () => {
         id: new AlgorithmId('0'),
         title: 'my algo',
         body: 'body text',
+        summary: 'summary text',
         outcomes: [],
       });
 
@@ -49,6 +50,7 @@ describe('ScoredAlgorithm', () => {
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         outcomes: [outcome],
       });
 
@@ -87,6 +89,7 @@ describe('ScoredAlgorithm', () => {
         id: new AlgorithmId('2'),
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         outcomes: [],
       });
       let noOutcomesAlgo = new ScoredAlgorithm({
@@ -103,6 +106,7 @@ describe('ScoredAlgorithm', () => {
         id: new AlgorithmId('2'),
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         outcomes: [],
       });
       const noOutcomesAlgo = new ScoredAlgorithm({
@@ -127,6 +131,7 @@ describe('ScoredAlgorithm', () => {
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         outcomes: [gt5Outcome],
       });
 
@@ -163,6 +168,7 @@ describe('ScoredAlgorithm', () => {
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         outcomes: [gt5Outcome, lt7Outcome],
       });
 
@@ -192,6 +198,7 @@ describe('ScoredAlgorithm', () => {
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
+        summary: 'summary text',
         outcomes: [outcome],
       });
       const create = () => new ScoredAlgorithm({ info, switches: [] });

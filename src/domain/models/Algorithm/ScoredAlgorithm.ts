@@ -62,6 +62,10 @@ class ScoredAlgorithm implements Algorithm {
     return this.info.getBody();
   }
 
+  getSummary(): string {
+    return this.info.getSummary();
+  }
+
   getSwitches(): Switch[] {
     return this.switches;
   }

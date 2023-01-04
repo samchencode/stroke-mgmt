@@ -10,7 +10,9 @@ import type { Type as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
 import type { Type as HomeScreen } from '@/view/HomeScreen';
 import type { Type as DisclaimerModal } from '@/view/DisclaimerModal';
 import type { Type as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
+import type { Type as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
 import type { ArticleId } from '@/domain/models/Article';
+import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { theme } from '@/view/theme';
 
 type AppNavigationParams = {
@@ -18,6 +20,7 @@ type AppNavigationParams = {
   StrokeSignsScreen: undefined;
   HomeScreen: undefined;
   ArticleViewerScreen: { id: ArticleId };
+  AlgorithmViewerScreen: { id: AlgorithmId };
 };
 
 type RootNavigationParams = {
@@ -33,7 +36,8 @@ function factory(
   StrokeSignsScreen: StrokeSignsScreen,
   HomeScreen: HomeScreen,
   DisclaimerModal: DisclaimerModal,
-  ArticleViewerScreen: ArticleViewerScreen
+  ArticleViewerScreen: ArticleViewerScreen,
+  AlgorithmViewerScreen: AlgorithmViewerScreen
 ) {
   function AppNavigation() {
     return (
@@ -62,6 +66,10 @@ function factory(
         <AppStack.Screen
           name="ArticleViewerScreen"
           component={ArticleViewerScreen}
+        />
+        <AppStack.Screen
+          name="AlgorithmViewerScreen"
+          component={AlgorithmViewerScreen}
         />
       </AppStack.Navigator>
     );

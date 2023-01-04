@@ -32,9 +32,12 @@ function factory(
       [navigation]
     );
 
-    const handleSelectAlgorithm = useCallback((id: AlgorithmId) => {
-      alert(`Pressed algorithm with id of ${id.toString()}`);
-    }, []);
+    const handleSelectAlgorithm = useCallback(
+      (id: AlgorithmId) => {
+        navigation.navigate('AlgorithmViewerScreen', { id });
+      },
+      [navigation]
+    );
 
     return (
       <ScrollView style={styles.container}>

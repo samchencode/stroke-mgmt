@@ -16,10 +16,13 @@ import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import { factory as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
 import { factory as HomeScreen } from '@/view/HomeScreen';
 import { factory as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
+import { factory as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
 import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
 import { factory as Router } from '@/view/Router';
 import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
+import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
+import { EjsAlgorithmRenderer } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
 
 export const module = {
   // APPLICATION
@@ -29,6 +32,7 @@ export const module = {
   getStrokeFactsAction: ['type', GetStrokeFactsAction],
   getStrokeSignsAction: ['type', GetStrokeSignsAction],
   getAllAlgorithmsAction: ['type', GetAllAlgorithmsAction],
+  getAlgorithmByIdAction: ['type', GetAlgorithmByIdAction],
   renderArticleAction: ['type', RenderArticleAction],
   renderAlgorithmAction: ['type', RenderAlgorithmAction],
   renderDisclaimerAction: ['type', RenderDisclaimerAction],
@@ -40,6 +44,7 @@ export const module = {
   algorithmRepository: ['type', FakeAlgorithmRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   articleRenderer: ['type', EjsArticleRenderer],
+  algorithmRenderer: ['type', EjsAlgorithmRenderer],
 
   // TEMPLATES
   App: ['factory', App],
@@ -49,4 +54,5 @@ export const module = {
   HomeScreen: ['factory', HomeScreen],
   DisclaimerModal: ['factory', DisclaimerModal],
   ArticleViewerScreen: ['factory', ArticleViewerScreen],
+  AlgorithmViewerScreen: ['factory', AlgorithmViewerScreen],
 };

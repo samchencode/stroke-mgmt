@@ -1,6 +1,7 @@
-import { RenderArticleAction } from '@/application/RenderArticleAction';
+import { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import type { ArticleRenderer } from '@/domain/models/Article';
+import type { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
 
 const stubRenderer: ArticleRenderer = {
   renderArticle: jest.fn().mockResolvedValue('rendered article'),
@@ -9,24 +10,33 @@ const stubRenderer: ArticleRenderer = {
   renderStrokeSigns: jest.fn().mockResolvedValue('rendered stroke signs'),
 };
 
+const article = new Article({
+  id: new ArticleId('0'),
+  title: 'example article',
+  html: 'foo bar',
+  designation: Designation.ARTICLE,
+});
+
+const getArticleByIdAction = {
+  execute: jest.fn().mockResolvedValue(article),
+} as unknown as GetArticleByIdAction;
+
 describe('RenderArticleAction', () => {
   describe('Instantiation', () => {
     it('should create an action', () => {
-      const create = () => new RenderArticleAction(stubRenderer);
+      const create = () =>
+        new RenderArticleByIdAction(getArticleByIdAction, stubRenderer);
       expect(create).not.toThrowError();
     });
   });
 
   describe('Behavior', () => {
     it('should render an article', async () => {
-      const article = new Article({
-        id: new ArticleId('0'),
-        title: 'example article',
-        html: 'foo bar',
-        designation: Designation.ARTICLE,
-      });
-      const action = new RenderArticleAction(stubRenderer);
-      const renderedHtml = await action.execute(article);
+      const action = new RenderArticleByIdAction(
+        getArticleByIdAction,
+        stubRenderer
+      );
+      const renderedHtml = await action.execute(new ArticleId('0'));
       expect(renderedHtml).toBe('rendered article');
     });
   });

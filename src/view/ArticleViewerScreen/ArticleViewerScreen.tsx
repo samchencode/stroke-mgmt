@@ -2,14 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { StatusBar } from '@/view/StatusBar';
-import type { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
 import type { AppNavigationProps } from '@/view/Router';
-import type { RenderArticleAction } from '@/application/RenderArticleAction';
+import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 
-function factory(
-  getArticleByIdAction: GetArticleByIdAction,
-  renderArticleAction: RenderArticleAction
-) {
+function factory(renderArticleByIdAction: RenderArticleByIdAction) {
   return function ArticleViewerScreen({
     route,
   }: AppNavigationProps<'ArticleViewerScreen'>) {
@@ -17,10 +13,7 @@ function factory(
 
     const [html, setHtml] = useState('');
     useEffect(() => {
-      getArticleByIdAction
-        .execute(id)
-        .then((a) => renderArticleAction.execute(a))
-        .then((h) => setHtml(h));
+      renderArticleByIdAction.execute(id).then((h) => setHtml(h));
     }, [id]);
 
     const { width } = useWindowDimensions();

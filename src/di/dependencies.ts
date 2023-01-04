@@ -3,7 +3,7 @@ import { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
 import { GetDisclaimerAction } from '@/application/GetDisclaimerAction';
 import { GetStrokeFactsAction } from '@/application/GetStrokeFactsAction';
 import { GetStrokeSignsAction } from '@/application/GetStrokeSignsAction';
-import { RenderArticleAction } from '@/application/RenderArticleAction';
+import { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import { RenderDisclaimerAction } from '@/application/RenderDisclaimerAction';
 import { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
@@ -33,7 +33,7 @@ export const module = {
   getStrokeSignsAction: ['type', GetStrokeSignsAction],
   getAllAlgorithmsAction: ['type', GetAllAlgorithmsAction],
   getAlgorithmByIdAction: ['type', GetAlgorithmByIdAction],
-  renderArticleAction: ['type', RenderArticleAction],
+  renderArticleByIdAction: ['type', RenderArticleByIdAction],
   renderAlgorithmAction: ['type', RenderAlgorithmAction],
   renderDisclaimerAction: ['type', RenderDisclaimerAction],
   renderStrokeFactsAction: ['type', RenderStrokeFactsAction],

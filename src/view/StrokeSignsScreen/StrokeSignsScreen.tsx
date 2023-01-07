@@ -31,6 +31,7 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
             source={{ html }}
             originWhitelist={['*']}
             style={{ width }}
+            scrollEnabled={false}
           />
         </View>
         <Button

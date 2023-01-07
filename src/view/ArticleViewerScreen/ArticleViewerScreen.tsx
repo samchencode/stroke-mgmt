@@ -21,7 +21,12 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
     return (
       <View style={styles.container}>
         <StatusBar textColor="auto" translucent />
-        <WebView source={{ html }} originWhitelist={['*']} style={{ width }} />
+        <WebView
+          source={{ html }}
+          originWhitelist={['*']}
+          style={{ width }}
+          scrollEnabled={false}
+        />
       </View>
     );
   };

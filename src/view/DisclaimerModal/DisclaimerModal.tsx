@@ -40,6 +40,7 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
               originWhitelist={['*']}
               style={{ width: webViewWidth }}
               onMessage={handleWebViewSize}
+              scrollEnabled={false}
             />
           </View>
           <TextButton

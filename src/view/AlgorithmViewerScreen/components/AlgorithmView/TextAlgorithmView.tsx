@@ -46,6 +46,7 @@ function TextAlgorithmView({
         originWhitelist={['*']}
         style={{ width }}
         onMessage={handleMessage}
+        scrollEnabled={false}
       />
     </View>
   );

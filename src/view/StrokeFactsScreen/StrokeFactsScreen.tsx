@@ -31,6 +31,7 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
             source={{ html }}
             originWhitelist={['*']}
             style={{ width }}
+            scrollEnabled={false}
           />
         </View>
         <Button

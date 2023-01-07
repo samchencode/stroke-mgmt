@@ -144,9 +144,9 @@
       <li class="template switches__list-item">
         <span class="template switches__group-label"><%- sw.getLabel() %></span>
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-yes" type="radio">
+          <input class="template switches__input switches__input--yes" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-yes" type="radio" <% if(sw.isActive()) { %> checked <% } %>>
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-<%= sw.getId() %>-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-no" type="radio">
+          <input class="template switches__input switches__input--no" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-no" type="radio" <% if(!sw.isActive()) { %> checked <% } %>>
           <label class="template switches__radio-label switches__radio-label--no" for="switch-<%= sw.getId() %>-no">No</label>
           <div class="template switches__radiogroup-bg"></div>
         </div>
@@ -164,6 +164,55 @@
     </ul>
     <% } %>
   </main>
+
+  <script>
+    function notifyReactNative(messageType, content) {
+      const message = {
+        type: messageType,
+        content
+      }
+      window.ReactNativeWebView.postMessage(JSON.stringify(message))
+    }
+    const notifyLayout = notifyReactNative.bind(null, 'layout');
+    const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
+    const notifyError = notifyReactNative.bind(null, 'error');
+
+
+    ; // Report window height
+    (function() {
+      const dims = {
+        width: document.body.offsetWidth,
+        height: document.body.offsetHeight,
+      }
+      notifyLayout(dims)
+    })()
+
+    ; // Listen to changes in switch values
+    (function() {
+      const inputs = Array.from(document.querySelectorAll('.switches__input'))
+      for (const input of inputs) {
+        input.addEventListener('change', ({
+          target
+        }) => {
+          const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '')
+          const active = !!target.id.match('yes')
+          notifySwitchChanged({
+            id,
+            active
+          })
+        })
+      }
+    })();
+
+    ; // Report errors
+    (function() {
+      window.addEventListener('error', (e) =>
+        notifyError({
+          message: e.message
+        })
+      )
+    })()
+  </script>
 </body>
 
 </html>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
-import WebView from 'react-native-webview';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
+import type { Algorithm } from '@/domain/models/Algorithm';
+import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
 
 function factory(
   getAlgorithmByIdAction: GetAlgorithmByIdAction,
@@ -17,16 +18,29 @@ function factory(
     const { width } = useWindowDimensions();
 
     const [html, setHtml] = useState('');
+    const [algo, setAlgo] = useState<Algorithm | null>(null);
+
     useEffect(() => {
-      getAlgorithmByIdAction
-        .execute(id)
-        .then((a) => renderAlgorithmAction.execute(a))
-        .then(setHtml);
+      getAlgorithmByIdAction.execute(id).then(setAlgo);
     }, [id]);
+
+    useEffect(() => {
+      if (!algo) return;
+      renderAlgorithmAction.execute(algo).then(setHtml);
+    }, [algo]);
+
+    const handleChangeAlgorithm = useCallback((a: Algorithm) => setAlgo(a), []);
+
+    if (!algo || !html) return <View style={styles.container} />;
 
     return (
       <View style={styles.container}>
-        <WebView source={{ html }} originWhitelist={['*']} style={{ width }} />
+        <AlgorithmView
+          width={width}
+          html={html}
+          algorithm={algo}
+          onChangeAlgorithm={handleChangeAlgorithm}
+        />
       </View>
     );
   };
@@ -35,6 +49,7 @@ function factory(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'green',
   },
 });
 

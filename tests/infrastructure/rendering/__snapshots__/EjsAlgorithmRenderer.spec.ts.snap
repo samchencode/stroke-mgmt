@@ -192,6 +192,55 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     <hr>
     
   </main>
+
+  <script>
+    function notifyReactNative(messageType, content) {
+      const message = {
+        type: messageType,
+        content
+      }
+      window.ReactNativeWebView.postMessage(JSON.stringify(message))
+    }
+    const notifyLayout = notifyReactNative.bind(null, 'layout');
+    const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
+    const notifyError = notifyReactNative.bind(null, 'error');
+
+
+    ; // Report window height
+    (function() {
+      const dims = {
+        width: document.body.offsetWidth,
+        height: document.body.offsetHeight,
+      }
+      notifyLayout(dims)
+    })()
+
+    ; // Listen to changes in switch values
+    (function() {
+      const inputs = Array.from(document.querySelectorAll('.switches__input'))
+      for (const input of inputs) {
+        input.addEventListener('change', ({
+          target
+        }) => {
+          const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '')
+          const active = !!target.id.match('yes')
+          notifySwitchChanged({
+            id,
+            active
+          })
+        })
+      }
+    })();
+
+    ; // Report errors
+    (function() {
+      window.addEventListener('error', (e) =>
+        notifyError({
+          message: e.message
+        })
+      )
+    })()
+  </script>
 </body>
 
 </html>"

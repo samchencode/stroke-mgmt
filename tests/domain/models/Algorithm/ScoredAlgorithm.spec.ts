@@ -79,7 +79,7 @@ describe('ScoredAlgorithm', () => {
 
     it('should set switch', () => {
       expect(algo.hasOutcomes()).toBe(false);
-      const newAlgo = algo.toggleSwitch(aSwitch);
+      const newAlgo = algo.setSwitchById(aSwitch.getId(), true);
       expect(newAlgo.hasOutcomes()).toBe(true);
       expect(newAlgo.getOutcomes()).toHaveLength(1);
     });
@@ -97,7 +97,7 @@ describe('ScoredAlgorithm', () => {
         switches: [aSwitch],
       });
       expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
-      noOutcomesAlgo = noOutcomesAlgo.toggleSwitch(aSwitch);
+      noOutcomesAlgo = noOutcomesAlgo.setSwitchById(aSwitch.getId(), false);
       expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
     });
 
@@ -112,7 +112,7 @@ describe('ScoredAlgorithm', () => {
       const noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
         switches: [aSwitch],
-      }).toggleSwitch(aSwitch);
+      }).setSwitchById(aSwitch.getId(), true);
       expect(noOutcomesAlgo.getOutcomes()).toEqual([]);
     });
 
@@ -146,7 +146,7 @@ describe('ScoredAlgorithm', () => {
       const unfulfillingAlgo = new ScoredAlgorithm({
         info,
         switches,
-      }).toggleSwitch(val0Switch);
+      }).setSwitchById(val0Switch.getId(), true);
 
       expect(unfulfillingAlgo.getOutcomes()).toEqual([]);
     });
@@ -183,13 +183,15 @@ describe('ScoredAlgorithm', () => {
       const doubleFulfillingAlgo = new ScoredAlgorithm({
         info,
         switches,
-      }).toggleSwitch(val6Switch);
+      }).setSwitchById(val6Switch.getId(), true);
 
       expect(doubleFulfillingAlgo.getOutcomes()).toHaveLength(2);
     });
 
     it('should return null if no next algorithm', () => {
-      const [outcomeWithoutNext] = algo.toggleSwitch(aSwitch).getOutcomes();
+      const [outcomeWithoutNext] = algo
+        .setSwitchById(aSwitch.getId(), true)
+        .getOutcomes();
       expect(outcomeWithoutNext.getNext()).toBeNull();
     });
 
@@ -203,6 +205,58 @@ describe('ScoredAlgorithm', () => {
       });
       const create = () => new ScoredAlgorithm({ info, switches: [] });
       expect(create).toThrowError('No switches');
+    });
+
+    it('should throw error if switchid not found', () => {
+      const info = new AlgorithmInfo({
+        id: new AlgorithmId('0'),
+        title: 'test algo',
+        body: 'this is the body text',
+        summary: 'summary text',
+        outcomes: [outcome],
+      });
+
+      const val6Switch = new Switch({
+        id: new SwitchId('0'),
+        label: 'switch label text',
+        value: 6,
+      });
+
+      const switches = [val6Switch];
+
+      const oneSwitchAlgo = new ScoredAlgorithm({ info, switches });
+      const boom = () => oneSwitchAlgo.setSwitchById(new SwitchId('1'), false);
+      expect(boom).toThrowError('id 1');
+    });
+
+    it('should preserve order of switches after setting switch', () => {
+      const info = new AlgorithmInfo({
+        id: new AlgorithmId('0'),
+        title: 'test algo',
+        body: 'this is the body text',
+        summary: 'summary text',
+        outcomes: [outcome],
+      });
+
+      const val6Switch = new Switch({
+        id: new SwitchId('0'),
+        label: 'switch label text',
+        value: 6,
+      });
+
+      const val4Switch = new Switch({
+        id: new SwitchId('1'),
+        label: 'switch label text',
+        value: 4,
+      });
+
+      const switches = [val6Switch, val4Switch];
+      const multiSwitchAlgo = new ScoredAlgorithm({ info, switches });
+      const resultAlgo = multiSwitchAlgo.setSwitchById(new SwitchId('1'), true);
+      const switchIds = resultAlgo
+        .getSwitches()
+        .map((s) => s.getId().toString());
+      expect(switchIds).toEqual(['0', '1']);
     });
   });
 });

@@ -5,6 +5,7 @@ import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisito
 import { NoSwitchesError } from '@/domain/models/Algorithm/NoSwitchesError';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type { Switch } from '@/domain/models/Algorithm/Switch';
+import type { SwitchId } from '@/domain/models/Algorithm/SwitchId';
 
 type ScoredAlgorithmParams = {
   info: AlgorithmInfo;
@@ -41,12 +42,13 @@ class ScoredAlgorithm implements Algorithm {
     return activeSwitches.reduce((ag, v) => ag + v.getValue(), 0);
   }
 
-  toggleSwitch(s: Switch) {
-    const targetSwitch = this.switches.find((ss) => s.is(ss));
-    if (!targetSwitch) return this;
-    const otherSwitches = this.switches.filter((ss) => !s.is(ss));
-    const newSwitch = targetSwitch.setSwitchTo(!targetSwitch.isActive());
-    const switches = [newSwitch, ...otherSwitches];
+  setSwitchById(id: SwitchId, newActiveValue: boolean) {
+    const targetSwitchIdx = this.switches.findIndex((ss) => id.is(ss.getId()));
+    if (targetSwitchIdx === -1) throw new Error(`switch id ${id} not found`);
+    const targetSwitch = this.switches[targetSwitchIdx];
+    const newSwitch = targetSwitch.setSwitchTo(newActiveValue);
+    const switches = this.switches.slice();
+    switches.splice(targetSwitchIdx, 1, newSwitch);
     return this.clone({ switches });
   }
 

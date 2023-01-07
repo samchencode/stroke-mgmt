@@ -3,8 +3,12 @@ import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
-import type { Algorithm } from '@/domain/models/Algorithm';
-import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
+import type { Algorithm, Outcome } from '@/domain/models/Algorithm';
+import { TextAlgorithm, ScoredAlgorithm } from '@/domain/models/Algorithm';
+import {
+  ScoredAlgorithmView,
+  TextAlgorithmView,
+} from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
 
 function factory(
   getAlgorithmByIdAction: GetAlgorithmByIdAction,
@@ -30,17 +34,32 @@ function factory(
     }, [algo]);
 
     const handleChangeAlgorithm = useCallback((a: Algorithm) => setAlgo(a), []);
+    const handleSelectOutcome = useCallback((o: Outcome) => {
+      alert(o.getBody());
+    }, []);
 
     if (!algo || !html) return <View style={styles.container} />;
 
     return (
       <View style={styles.container}>
-        <AlgorithmView
-          width={width}
-          html={html}
-          algorithm={algo}
-          onChangeAlgorithm={handleChangeAlgorithm}
-        />
+        {algo instanceof ScoredAlgorithm ? (
+          <ScoredAlgorithmView
+            width={width}
+            html={html}
+            algorithm={algo}
+            onChangeAlgorithm={handleChangeAlgorithm}
+            onSelectOutcome={handleSelectOutcome}
+          />
+        ) : (
+          algo instanceof TextAlgorithm && (
+            <TextAlgorithmView
+              width={width}
+              html={html}
+              algorithm={algo}
+              onSelectOutcome={handleSelectOutcome}
+            />
+          )
+        )}
       </View>
     );
   };

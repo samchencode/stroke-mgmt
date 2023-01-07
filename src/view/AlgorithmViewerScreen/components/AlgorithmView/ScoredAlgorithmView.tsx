@@ -3,22 +3,24 @@ import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
 import type { Message } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/AlgorithmWebViewMessages';
-import type { Algorithm, ScoredAlgorithm } from '@/domain/models/Algorithm';
+import type { Outcome, ScoredAlgorithm } from '@/domain/models/Algorithm';
 import { SwitchId } from '@/domain/models/Algorithm';
 
-type AlgorithmViewProps = {
+type ScoredAlgorithmViewProps = {
   html: string;
   width: number;
-  algorithm: Algorithm;
-  onChangeAlgorithm: (algo: Algorithm) => void;
+  algorithm: ScoredAlgorithm;
+  onChangeAlgorithm: (algo: ScoredAlgorithm) => void;
+  onSelectOutcome: (outcome: Outcome) => void;
 };
 
-function AlgorithmView({
+function ScoredAlgorithmView({
   html,
   width,
   algorithm,
   onChangeAlgorithm,
-}: AlgorithmViewProps) {
+  onSelectOutcome,
+}: ScoredAlgorithmViewProps) {
   const [height, setHeight] = useState(0);
 
   const handleMessage = useCallback(
@@ -28,16 +30,20 @@ function AlgorithmView({
         setHeight(content.height);
       } else if (type === 'switchchanged') {
         const { id: swId, active } = content;
-        const newAlgo = (algorithm as ScoredAlgorithm).setSwitchById(
-          new SwitchId(swId),
-          active
-        );
+        const newAlgo = algorithm.setSwitchById(new SwitchId(swId), active);
         onChangeAlgorithm(newAlgo);
+      } else if (type === 'outcomeselected') {
+        const outcomeTitle = content.title;
+        const outcome = algorithm
+          .getOutcomes()
+          .find((o) => o.getTitle() === outcomeTitle);
+        if (!outcome) throw Error();
+        onSelectOutcome(outcome);
       } else if (type === 'error') {
-        console.error(content);
+        throw new Error(`${content.type}: ${content.message}`);
       }
     },
-    [algorithm, onChangeAlgorithm]
+    [algorithm, onChangeAlgorithm, onSelectOutcome]
   );
 
   return (
@@ -52,4 +58,4 @@ function AlgorithmView({
   );
 }
 
-export { AlgorithmView };
+export { ScoredAlgorithmView };

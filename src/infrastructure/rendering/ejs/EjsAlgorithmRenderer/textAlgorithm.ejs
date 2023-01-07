@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= algorithm.getTitle() %></title>
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
     .template {
       box-sizing: border-box;
       margin: 0;
@@ -113,26 +118,28 @@
       margin-top: 8px;
     }
 
-    .template.outcomes__button {
-      background-color: white;
-      border: 1px solid black;
-      border-radius: 999px;
-      /* label-large */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.1px;
+    .template.outcomes__list {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .template.outcomes__title {
+      margin-right: 16px;
+      /* title-medium */
+      line-height: 24px;
+      font-size: 16px;
+      letter-spacing: 0.15px;
       font-weight: 500;
     }
 
     .template.outcomes__list-item {
-      margin-top: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      margin-right: 8px;
     }
 
     .template.outcomes__list-item:first-child {
-      margin-top: 8px;
+      margin-right: 0px;
     }
 
     .template.outcomes__button {
@@ -161,14 +168,81 @@
     <hr>
     <% if(algorithm.hasOutcomes()) { %>
     <ul class="template outcomes__list">
+      <h1 class="template outcomes__title">Select Result</h1>
       <% for(const outcome of algorithm.getOutcomes()) { %>
       <li class="template outcomes__list-item">
-        <button class="template outcomes__button"><%- outcome.getTitle() %></button>
+        <!-- TODO: outcomes must have ids -->
+        <button class="template outcomes__button" data-outcome-title="<%- outcome.getTitle() %>"><%- outcome.getTitle() %></button>
       </li>
       <% } %>
     </ul>
     <% } %>
   </main>
+
+  <script>
+    function notifyReactNative(messageType, content) {
+      const message = {
+        type: messageType,
+        content
+      }
+      window.ReactNativeWebView.postMessage(JSON.stringify(message))
+    }
+    const notifyLayout = notifyReactNative.bind(null, 'layout');
+    const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
+    const notifyError = notifyReactNative.bind(null, 'error');
+    const notifyOutcomeSelected = notifyReactNative.bind(null, 'outcomeselected');
+
+
+    ; // Report window height
+    (function() {
+      const dims = {
+        width: document.body.offsetWidth,
+        height: document.body.offsetHeight,
+      }
+      notifyLayout(dims)
+    })();
+
+    ; // Listen to changes in switch values
+    (function() {
+      const inputs = Array.from(document.querySelectorAll('.switches__input'))
+      for (const input of inputs) {
+        input.addEventListener('change', ({
+          target
+        }) => {
+          const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '')
+          const active = !!target.id.match('yes')
+          notifySwitchChanged({
+            id,
+            active
+          })
+        })
+      }
+    })();
+
+    ; // Listen to click of outcome button
+    (function() {
+      const buttons = Array.from(document.querySelectorAll('.outcomes__button'))
+      for (const button of buttons) {
+        button.addEventListener('click', ({
+          target
+        }) => {
+          const title = target.getAttribute('data-outcome-title')
+          notifyOutcomeSelected({
+            title
+          })
+        })
+      }
+    })();
+
+    ; // Report errors
+    (function() {
+      window.addEventListener('error', (e) =>
+        notifyError({
+          message: e.message
+        })
+      )
+    })();
+  </script>
 </body>
 
 </html>

@@ -13,4 +13,13 @@ type ErrorMessage = {
   content: { type: string; message: string };
 };
 
-export type Message = LayoutMessage | SwitchChangedMessage | ErrorMessage;
+type OutcomeSelected = {
+  type: 'outcomeselected';
+  content: { title: string };
+};
+
+export type Message =
+  | LayoutMessage
+  | SwitchChangedMessage
+  | ErrorMessage
+  | OutcomeSelected;

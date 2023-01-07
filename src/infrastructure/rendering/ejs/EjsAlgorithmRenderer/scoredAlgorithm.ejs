@@ -71,7 +71,7 @@
       position: relative;
       padding: 4px 8px 4px 8px;
       border-radius: 999px;
-      outline: 1px solid black;
+      border: 1px solid black;
       overflow: hidden;
     }
 
@@ -105,15 +105,28 @@
       right: 0;
     }
 
-    .template.outcomes__list-item {
-      margin-top: 8px;
+    .template.outcomes__list {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .template.outcomes__title {
+      margin-right: 16px;
+      /* title-medium */
+      line-height: 24px;
+      font-size: 16px;
+      letter-spacing: 0.15px;
+      font-weight: 500;
+    }
+
+    .template.outcomes__list-item {
+      margin-right: 8px;
     }
 
     .template.outcomes__list-item:first-child {
-      margin-top: 8px;
+      margin-right: 0px;
     }
 
     .template.outcomes__button {
@@ -144,9 +157,9 @@
       <li class="template switches__list-item">
         <span class="template switches__group-label"><%- sw.getLabel() %></span>
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-yes" type="radio" <% if(sw.isActive()) { %> checked <% } %>>
+          <input class="template switches__input switches__input--yes" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-yes" type="radio" <% if(sw.isActive() && sw.isSet()) { %> checked <% } %>>
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-<%= sw.getId() %>-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-no" type="radio" <% if(!sw.isActive()) { %> checked <% } %>>
+          <input class="template switches__input switches__input--no" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-no" type="radio" <% if(!sw.isActive() && sw.isSet()) { %> checked <% } %>>
           <label class="template switches__radio-label switches__radio-label--no" for="switch-<%= sw.getId() %>-no">No</label>
           <div class="template switches__radiogroup-bg"></div>
         </div>
@@ -156,6 +169,7 @@
     <hr>
     <% if(algorithm.hasOutcomes()) { %>
     <ul class="template outcomes__list">
+      <h1 class="template outcomes__title">Select Result</h1>
       <% for(const outcome of algorithm.getOutcomes()) { %>
       <li class="template outcomes__list-item">
         <button class="template outcomes__button"><%- outcome.getTitle() %></button>

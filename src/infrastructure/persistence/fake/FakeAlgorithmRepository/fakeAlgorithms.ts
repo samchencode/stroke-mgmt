@@ -60,7 +60,7 @@ const abctAlgorithm = (() => {
   const info = new AlgorithmInfo({
     id: new AlgorithmId('0'),
     title: 'ABCTs',
-    body: 'ABCT = (airway, breathing, circulation, time of stroke onset)',
+    body: '<ul><li>airway</li><li>breathing</li><li>circulation</li><li>time of stroke onset</li></ul>',
     summary: 'If patient meets AHA stroke criteria, check ABCTs!',
     outcomes: [
       new Outcome({

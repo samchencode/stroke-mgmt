@@ -20,7 +20,7 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
 
     const { width } = useWindowDimensions();
     const webViewWidth = width - theme.spaces.md * 2 - theme.spaces.lg * 2;
-    const [webViewHeight, setWebViewHeight] = useState(0);
+    const [webViewHeight, setWebViewHeight] = useState(1);
     const handleWebViewSize = useCallback(
       ({ nativeEvent }: WebViewMessageEvent) => {
         type Dims = { height: number; width: number };

@@ -21,7 +21,7 @@ function ScoredAlgorithmView({
   onChangeAlgorithm,
   onSelectOutcome,
 }: ScoredAlgorithmViewProps) {
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState(1);
 
   const handleMessage = useCallback(
     ({ nativeEvent }: WebViewMessageEvent) => {

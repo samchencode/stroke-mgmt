@@ -18,7 +18,7 @@ function TextAlgorithmView({
   algorithm,
   onSelectOutcome,
 }: TextAlgorithmViewProps) {
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState(1);
 
   const handleMessage = useCallback(
     ({ nativeEvent }: WebViewMessageEvent) => {

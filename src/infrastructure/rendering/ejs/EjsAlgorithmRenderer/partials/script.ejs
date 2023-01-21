@@ -1,0 +1,64 @@
+<script>
+  function notifyReactNative(messageType, content) {
+    const message = {
+      type: messageType,
+      content,
+    };
+    window.ReactNativeWebView.postMessage(JSON.stringify(message));
+  }
+  const notifyLayout = notifyReactNative.bind(null, 'layout');
+  const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
+  const notifyError = notifyReactNative.bind(null, 'error');
+  const notifyOutcomeSelected = notifyReactNative.bind(null, 'outcomeselected');
+
+  // Report window height
+  (function() {
+    const dims = {
+      width: document.body.offsetWidth,
+      height: document.body.offsetHeight,
+    };
+    notifyLayout(dims);
+  })();
+
+  // Listen to changes in switch values
+  (function() {
+    const inputs = Array.from(document.querySelectorAll('.switches__input'));
+    for (const input of inputs) {
+      input.addEventListener('change', ({
+        target
+      }) => {
+        const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '');
+        const active = !!target.id.match('yes');
+        notifySwitchChanged({
+          id,
+          active,
+        });
+      });
+    }
+  })();
+
+  // Listen to click of outcome button
+  (function() {
+    const buttons = Array.from(document.querySelectorAll('.outcomes__button'));
+    for (const button of buttons) {
+      button.addEventListener('click', ({
+        target
+      }) => {
+        const title = target.getAttribute('data-outcome-title');
+        notifyOutcomeSelected({
+          title,
+        });
+      });
+    }
+  })();
+
+  // Report errors
+  (function() {
+    window.addEventListener('error', (e) =>
+      notifyError({
+        name: e.name,
+        message: e.message,
+      })
+    );
+  })();
+</script>

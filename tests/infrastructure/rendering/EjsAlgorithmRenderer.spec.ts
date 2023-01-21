@@ -8,20 +8,15 @@ describe('EjsAlgorithmRenderer', () => {
   let fs: NodeFileSystem;
   beforeAll(() => {
     jest.resetModules();
-    jest.doMock(
+    const assets = [
+      '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/partials/style.ejs',
+      '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/partials/script.ejs',
+      '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/partials/head.ejs',
       '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/textAlgorithm.ejs',
-      () =>
-        '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/textAlgorithm.ejs'
-    );
-    jest.doMock(
       '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/scoredAlgorithm.ejs',
-      () =>
-        '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/scoredAlgorithm.ejs'
-    );
-    jest.doMock(
       '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/outcome.ejs',
-      () => '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/outcome.ejs'
-    );
+    ];
+    assets.forEach((a) => jest.doMock(a, () => a));
     fs = new NodeFileSystem();
     repo = new FakeAlgorithmRepository();
   });

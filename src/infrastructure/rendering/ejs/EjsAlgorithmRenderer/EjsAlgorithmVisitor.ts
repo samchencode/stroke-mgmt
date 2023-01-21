@@ -1,35 +1,33 @@
 import type ejs from 'ejs';
-import type {
-  Algorithm,
-  AlgorithmVisitor,
-  ScoredAlgorithm,
-  TextAlgorithm,
-} from '@/domain/models/Algorithm';
+import type { Algorithm, AlgorithmVisitor } from '@/domain/models/Algorithm';
 
 class EjsAlgorithmVisitor implements AlgorithmVisitor {
-  private renderedHtml: string | null = null;
+  private template: ejs.ClientFunction | null = null;
+
+  private algorithm: Algorithm | null = null;
 
   constructor(
-    private textAlgorithmTemplate: ejs.TemplateFunction,
-    private scoredAlgorithmTemplate: ejs.TemplateFunction
+    private textAlgorithmTemplate: ejs.ClientFunction,
+    private scoredAlgorithmTemplate: ejs.ClientFunction
   ) {}
 
   visit(algo: Algorithm) {
+    this.algorithm = algo;
     algo.acceptVisitor(this);
   }
 
-  visitTextAlgorithm(algorithm: TextAlgorithm): void {
-    this.renderedHtml = this.textAlgorithmTemplate({ algorithm });
+  visitTextAlgorithm(): void {
+    this.template = this.textAlgorithmTemplate;
   }
 
-  visitScoredAlgorithm(algorithm: ScoredAlgorithm): void {
-    this.renderedHtml = this.scoredAlgorithmTemplate({ algorithm });
+  visitScoredAlgorithm(): void {
+    this.template = this.scoredAlgorithmTemplate;
   }
 
-  getRenderedHtml() {
-    if (this.renderedHtml === null)
-      throw Error('Rendered html requested before visitor was accepted.');
-    return this.renderedHtml;
+  render(...args: Parameters<ejs.ClientFunction>) {
+    if (this.algorithm === null || this.template === null)
+      throw Error('Render was called before visitor was accepted.');
+    return this.template(...args);
   }
 }
 

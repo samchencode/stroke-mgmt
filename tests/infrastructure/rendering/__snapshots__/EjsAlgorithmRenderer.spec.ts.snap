@@ -6,132 +6,149 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GWNS</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .template {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+  }
 
-    .template.switches__list,
-    .template.outcomes__list {
-      list-style: none;
-      padding: 0;
-    }
+  .template {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    .template.header__title {
-      margin: 0;
-      /* headline-medium */
-      line-height: 36px;
-      font-size: 28px;
-      font-weight: 400;
-    }
+  .template.switches__list,
+  .template.outcomes__list {
+    list-style: none;
+    padding: 0;
+  }
 
-    .template.body__paragraph {
-      margin-top: 16px;
-      /* body-medium */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.25px;
-      font-weight: 400;
-    }
+  .template.header__title {
+    margin: 0;
+    /* headline-medium */
+    line-height: 36px;
+    font-size: 28px;
+    font-weight: 400;
+  }
 
-    .template.switches__list {
-      margin-top: 16px;
-    }
+  .template.body__paragraph {
+    margin-top: 16px;
+    /* body-medium */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    font-weight: 400;
+  }
 
-    .template.switches__list-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 8px;
-      user-select: none;
-    }
+  .template.switches__list {
+    margin-top: 16px;
+  }
 
-    .template.switches__list-item:first-child {
-      padding-top: 0;
-    }
+  .template.switches__list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    user-select: none;
+  }
 
-    .template.switches__input {
-      height: 0px;
-      width: 0px;
-      visibility: hidden;
-    }
+  .template.switches__list-item:first-child {
+    padding-top: 0;
+  }
 
-    .template.switches__group-label,
-    .template.switches__radio-label {
-      /* label-large */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.1px;
-      font-weight: 500;
-    }
+  .template.switches__input {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+  }
 
-    .template.switches__radiogroup {
-      position: relative;
-      padding: 4px 8px 4px 8px;
-      border-radius: 999px;
-      outline: 1px solid black;
-      overflow: hidden;
-    }
+  .template.switches__group-label,
+  .template.switches__radio-label {
+    /* label-large */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+  }
 
-    .template.switches__radio-label {
-      display: inline-block;
-      width: 2em;
-      text-align: center;
-    }
+  .template.switches__radiogroup {
+    position: relative;
+    padding: 4px 8px 4px 8px;
+    border-radius: 999px;
+    border: 1px solid black;
+    overflow: hidden;
+  }
 
-    .template.switches__radiogroup-bg {
-      background-color: black;
-      position: absolute;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      z-index: -1;
-      display: none;
-    }
+  .template.switches__radio-label {
+    display: inline-block;
+    width: 2em;
+    text-align: center;
+  }
 
-    .template.switches__input:checked+.template.switches__radio-label {
-      color: white;
-    }
+  .template.switches__radiogroup-bg {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    display: none;
+  }
 
-    .template.switches__input--yes:checked~.template.switches__radiogroup-bg {
-      display: block;
-      left: 0;
-    }
+  .template.switches__input:checked+.template.switches__radio-label {
+    color: white;
+  }
 
-    .template.switches__input--no:checked~.template.switches__radiogroup-bg {
-      display: block;
-      right: 0;
-    }
+  .template.switches__input--yes:checked~.template.switches__radiogroup-bg {
+    display: block;
+    left: 0;
+  }
 
-    .template.outcomes__list-item {
-      margin-top: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
+  .template.switches__input--no:checked~.template.switches__radiogroup-bg {
+    display: block;
+    right: 0;
+  }
 
-    .template.outcomes__list-item:first-child {
-      margin-top: 8px;
-    }
+  .template.outcomes__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+  }
 
-    .template.outcomes__button {
-      background-color: black;
-      color: white;
-      border-radius: 999px;
-      height: 40px;
-      padding: 0 24px;
-      /* label-large */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.1px;
-      font-weight: 500;
-    }
-  </style>
+  .template.outcomes__title {
+    margin-right: 16px;
+    /* title-medium */
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    font-weight: 500;
+  }
+
+  .template.outcomes__list-item {
+    margin-right: 8px;
+  }
+
+  .template.outcomes__list-item:first-child {
+    margin-right: 0px;
+  }
+
+  .template.outcomes__button {
+    background-color: black;
+    color: white;
+    border-radius: 999px;
+    height: 40px;
+    padding: 0 24px;
+    /* label-large */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+  }
+</style>
 </head>
 
 <body>
@@ -147,9 +164,9 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       <li class="template switches__list-item">
         <span class="template switches__group-label">Gaze Deviation</span>
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-0" id="switch-0-yes" type="radio">
+          <input class="template switches__input switches__input--yes" name="switch-0" id="switch-0-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-0-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-0" id="switch-0-no" type="radio">
+          <input class="template switches__input switches__input--no" name="switch-0" id="switch-0-no" type="radio" >
           <label class="template switches__radio-label switches__radio-label--no" for="switch-0-no">No</label>
           <div class="template switches__radiogroup-bg"></div>
         </div>
@@ -158,9 +175,9 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       <li class="template switches__list-item">
         <span class="template switches__group-label">Weakness</span>
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-1" id="switch-1-yes" type="radio">
+          <input class="template switches__input switches__input--yes" name="switch-1" id="switch-1-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-1-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-1" id="switch-1-no" type="radio">
+          <input class="template switches__input switches__input--no" name="switch-1" id="switch-1-no" type="radio" >
           <label class="template switches__radio-label switches__radio-label--no" for="switch-1-no">No</label>
           <div class="template switches__radiogroup-bg"></div>
         </div>
@@ -169,9 +186,9 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       <li class="template switches__list-item">
         <span class="template switches__group-label">Neglect/Disregard/Extinction</span>
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-2" id="switch-2-yes" type="radio">
+          <input class="template switches__input switches__input--yes" name="switch-2" id="switch-2-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-2-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-2" id="switch-2-no" type="radio">
+          <input class="template switches__input switches__input--no" name="switch-2" id="switch-2-no" type="radio" >
           <label class="template switches__radio-label switches__radio-label--no" for="switch-2-no">No</label>
           <div class="template switches__radiogroup-bg"></div>
         </div>
@@ -180,9 +197,9 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       <li class="template switches__list-item">
         <span class="template switches__group-label">Speech impairment</span>
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-3" id="switch-3-yes" type="radio">
+          <input class="template switches__input switches__input--yes" name="switch-3" id="switch-3-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-3-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-3" id="switch-3-no" type="radio">
+          <input class="template switches__input switches__input--no" name="switch-3" id="switch-3-no" type="radio" >
           <label class="template switches__radio-label switches__radio-label--no" for="switch-3-no">No</label>
           <div class="template switches__radiogroup-bg"></div>
         </div>
@@ -194,53 +211,69 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   </main>
 
   <script>
-    function notifyReactNative(messageType, content) {
-      const message = {
-        type: messageType,
-        content
-      }
-      window.ReactNativeWebView.postMessage(JSON.stringify(message))
+  function notifyReactNative(messageType, content) {
+    const message = {
+      type: messageType,
+      content,
+    };
+    window.ReactNativeWebView.postMessage(JSON.stringify(message));
+  }
+  const notifyLayout = notifyReactNative.bind(null, 'layout');
+  const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
+  const notifyError = notifyReactNative.bind(null, 'error');
+  const notifyOutcomeSelected = notifyReactNative.bind(null, 'outcomeselected');
+
+  // Report window height
+  (function() {
+    const dims = {
+      width: document.body.offsetWidth,
+      height: document.body.offsetHeight,
+    };
+    notifyLayout(dims);
+  })();
+
+  // Listen to changes in switch values
+  (function() {
+    const inputs = Array.from(document.querySelectorAll('.switches__input'));
+    for (const input of inputs) {
+      input.addEventListener('change', ({
+        target
+      }) => {
+        const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '');
+        const active = !!target.id.match('yes');
+        notifySwitchChanged({
+          id,
+          active,
+        });
+      });
     }
-    const notifyLayout = notifyReactNative.bind(null, 'layout');
-    const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
-    const notifyError = notifyReactNative.bind(null, 'error');
+  })();
 
+  // Listen to click of outcome button
+  (function() {
+    const buttons = Array.from(document.querySelectorAll('.outcomes__button'));
+    for (const button of buttons) {
+      button.addEventListener('click', ({
+        target
+      }) => {
+        const title = target.getAttribute('data-outcome-title');
+        notifyOutcomeSelected({
+          title,
+        });
+      });
+    }
+  })();
 
-    ; // Report window height
-    (function() {
-      const dims = {
-        width: document.body.offsetWidth,
-        height: document.body.offsetHeight,
-      }
-      notifyLayout(dims)
-    })()
-
-    ; // Listen to changes in switch values
-    (function() {
-      const inputs = Array.from(document.querySelectorAll('.switches__input'))
-      for (const input of inputs) {
-        input.addEventListener('change', ({
-          target
-        }) => {
-          const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '')
-          const active = !!target.id.match('yes')
-          notifySwitchChanged({
-            id,
-            active
-          })
-        })
-      }
-    })();
-
-    ; // Report errors
-    (function() {
-      window.addEventListener('error', (e) =>
-        notifyError({
-          message: e.message
-        })
-      )
-    })()
-  </script>
+  // Report errors
+  (function() {
+    window.addEventListener('error', (e) =>
+      notifyError({
+        name: e.name,
+        message: e.message,
+      })
+    );
+  })();
+</script>
 </body>
 
 </html>"
@@ -252,151 +285,149 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABCTs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .template {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+  }
 
-    .template.switches__list,
-    .template.outcomes__list {
-      list-style: none;
-      padding: 0;
-    }
+  .template {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    .template.header__title {
-      margin: 0;
-      /* headline-medium */
-      line-height: 36px;
-      font-size: 28px;
-      font-weight: 400;
-    }
+  .template.switches__list,
+  .template.outcomes__list {
+    list-style: none;
+    padding: 0;
+  }
 
-    .template.body__paragraph {
-      margin-top: 16px;
-      /* body-medium */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.25px;
-      font-weight: 400;
-    }
+  .template.header__title {
+    margin: 0;
+    /* headline-medium */
+    line-height: 36px;
+    font-size: 28px;
+    font-weight: 400;
+  }
 
-    .template.switches__list {
-      margin-top: 16px;
-    }
+  .template.body__paragraph {
+    margin-top: 16px;
+    /* body-medium */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    font-weight: 400;
+  }
 
-    .template.switches__list-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 8px;
-      user-select: none;
-    }
+  .template.switches__list {
+    margin-top: 16px;
+  }
 
-    .template.switches__list-item:first-child {
-      padding-top: 0;
-    }
+  .template.switches__list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    user-select: none;
+  }
 
-    .template.switches__input {
-      height: 0px;
-      width: 0px;
-      visibility: hidden;
-    }
+  .template.switches__list-item:first-child {
+    padding-top: 0;
+  }
 
-    .template.switches__group-label,
-    .template.switches__radio-label {
-      /* label-large */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.1px;
-      font-weight: 500;
-    }
+  .template.switches__input {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+  }
 
-    .template.switches__radiogroup {
-      position: relative;
-      padding: 4px 8px 4px 8px;
-      border-radius: 999px;
-      outline: 1px solid black;
-      overflow: hidden;
-    }
+  .template.switches__group-label,
+  .template.switches__radio-label {
+    /* label-large */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+  }
 
-    .template.switches__radio-label {
-      display: inline-block;
-      width: 2em;
-      text-align: center;
-    }
+  .template.switches__radiogroup {
+    position: relative;
+    padding: 4px 8px 4px 8px;
+    border-radius: 999px;
+    border: 1px solid black;
+    overflow: hidden;
+  }
 
-    .template.switches__radiogroup-bg {
-      background-color: black;
-      position: absolute;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      z-index: -1;
-      display: none;
-    }
+  .template.switches__radio-label {
+    display: inline-block;
+    width: 2em;
+    text-align: center;
+  }
 
-    .template.switches__input:checked+.template.switches__radio-label {
-      color: white;
-    }
+  .template.switches__radiogroup-bg {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    display: none;
+  }
 
-    .template.switches__input--yes:checked~.template.switches__radiogroup-bg {
-      display: block;
-      left: 0;
-    }
+  .template.switches__input:checked+.template.switches__radio-label {
+    color: white;
+  }
 
-    .template.switches__input--no:checked~.template.switches__radiogroup-bg {
-      display: block;
-      right: 0;
-    }
+  .template.switches__input--yes:checked~.template.switches__radiogroup-bg {
+    display: block;
+    left: 0;
+  }
 
-    .template.outcomes__list-item {
-      margin-top: 8px;
-    }
+  .template.switches__input--no:checked~.template.switches__radiogroup-bg {
+    display: block;
+    right: 0;
+  }
 
-    .template.outcomes__list-item:first-child {
-      margin-top: 8px;
-    }
+  .template.outcomes__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+  }
 
-    .template.outcomes__button {
-      background-color: white;
-      border: 1px solid black;
-      border-radius: 999px;
-      /* label-large */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.1px;
-      font-weight: 500;
-    }
+  .template.outcomes__title {
+    margin-right: 16px;
+    /* title-medium */
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    font-weight: 500;
+  }
 
-    .template.outcomes__list-item {
-      margin-top: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
+  .template.outcomes__list-item {
+    margin-right: 8px;
+  }
 
-    .template.outcomes__list-item:first-child {
-      margin-top: 8px;
-    }
+  .template.outcomes__list-item:first-child {
+    margin-right: 0px;
+  }
 
-    .template.outcomes__button {
-      background-color: black;
-      color: white;
-      border-radius: 999px;
-      height: 40px;
-      padding: 0 24px;
-      /* label-large */
-      line-height: 20px;
-      font-size: 14px;
-      letter-spacing: 0.1px;
-      font-weight: 500;
-    }
-  </style>
+  .template.outcomes__button {
+    background-color: black;
+    color: white;
+    border-radius: 999px;
+    height: 40px;
+    padding: 0 24px;
+    /* label-large */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+  }
+</style>
 </head>
 
 <body>
@@ -405,23 +436,91 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   </header>
   <main>
     <p class="template body__paragraph">
-      ABCT = (airway, breathing, circulation, time of stroke onset)
+      <ul><li>airway</li><li>breathing</li><li>circulation</li><li>time of stroke onset</li></ul>
     </p>
     <hr>
     
     <ul class="template outcomes__list">
+      <h1 class="template outcomes__title">Select Result</h1>
       
       <li class="template outcomes__list-item">
-        <button class="template outcomes__button">Stable</button>
+        <!-- TODO: outcomes must have ids -->
+        <button class="template outcomes__button" data-outcome-title="Stable">Stable</button>
       </li>
       
       <li class="template outcomes__list-item">
-        <button class="template outcomes__button">Not Stable</button>
+        <!-- TODO: outcomes must have ids -->
+        <button class="template outcomes__button" data-outcome-title="Not Stable">Not Stable</button>
       </li>
       
     </ul>
     
   </main>
+
+  <script>
+  function notifyReactNative(messageType, content) {
+    const message = {
+      type: messageType,
+      content,
+    };
+    window.ReactNativeWebView.postMessage(JSON.stringify(message));
+  }
+  const notifyLayout = notifyReactNative.bind(null, 'layout');
+  const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
+  const notifyError = notifyReactNative.bind(null, 'error');
+  const notifyOutcomeSelected = notifyReactNative.bind(null, 'outcomeselected');
+
+  // Report window height
+  (function() {
+    const dims = {
+      width: document.body.offsetWidth,
+      height: document.body.offsetHeight,
+    };
+    notifyLayout(dims);
+  })();
+
+  // Listen to changes in switch values
+  (function() {
+    const inputs = Array.from(document.querySelectorAll('.switches__input'));
+    for (const input of inputs) {
+      input.addEventListener('change', ({
+        target
+      }) => {
+        const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '');
+        const active = !!target.id.match('yes');
+        notifySwitchChanged({
+          id,
+          active,
+        });
+      });
+    }
+  })();
+
+  // Listen to click of outcome button
+  (function() {
+    const buttons = Array.from(document.querySelectorAll('.outcomes__button'));
+    for (const button of buttons) {
+      button.addEventListener('click', ({
+        target
+      }) => {
+        const title = target.getAttribute('data-outcome-title');
+        notifyOutcomeSelected({
+          title,
+        });
+      });
+    }
+  })();
+
+  // Report errors
+  (function() {
+    window.addEventListener('error', (e) =>
+      notifyError({
+        name: e.name,
+        message: e.message,
+      })
+    );
+  })();
+</script>
 </body>
 
 </html>"

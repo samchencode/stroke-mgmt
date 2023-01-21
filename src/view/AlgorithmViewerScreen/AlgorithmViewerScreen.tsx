@@ -4,11 +4,7 @@ import type { AppNavigationProps } from '@/view/Router';
 import type { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import type { Algorithm, Outcome } from '@/domain/models/Algorithm';
-import { TextAlgorithm, ScoredAlgorithm } from '@/domain/models/Algorithm';
-import {
-  ScoredAlgorithmView,
-  TextAlgorithmView,
-} from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
+import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
 
 function factory(
   getAlgorithmByIdAction: GetAlgorithmByIdAction,
@@ -42,24 +38,13 @@ function factory(
 
     return (
       <View style={styles.container}>
-        {algo instanceof ScoredAlgorithm ? (
-          <ScoredAlgorithmView
-            width={width}
-            html={html}
-            algorithm={algo}
-            onChangeAlgorithm={handleChangeAlgorithm}
-            onSelectOutcome={handleSelectOutcome}
-          />
-        ) : (
-          algo instanceof TextAlgorithm && (
-            <TextAlgorithmView
-              width={width}
-              html={html}
-              algorithm={algo}
-              onSelectOutcome={handleSelectOutcome}
-            />
-          )
-        )}
+        <AlgorithmView
+          width={width}
+          html={html}
+          algorithm={algo}
+          onChangeAlgorithm={handleChangeAlgorithm}
+          onSelectOutcome={handleSelectOutcome}
+        />
       </View>
     );
   };

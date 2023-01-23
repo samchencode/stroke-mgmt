@@ -252,6 +252,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
   const notifyError = notifyReactNative.bind(null, 'error');
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
+  const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
 
   // Report window height
   (function() {
@@ -276,7 +277,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     })
 
     // Wait for any images to finish loading
-    window.load = notify
+    window.onload = notify
     notify()
   })();
 
@@ -309,6 +310,20 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
           id
         });
       });
+    }
+  })();
+
+  // Listen to click of any link
+  (function() {
+    const links = Array.from(document.querySelectorAll('a[href]'))
+    for (const a of links) {
+      a.addEventListener('click', (e) => {
+        e.preventDefault()
+        const href = e.target.getAttribute('href')
+        notifyLinkPressed({
+          href
+        })
+      })
     }
   })();
 
@@ -514,7 +529,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   </header>
   <main>
     <p class="template body__paragraph">
-      <ul><li>airway</li><li>breathing</li><li>circulation</li><li>time of stroke onset</li></ul>
+      <img src="https://placeimg.com/640/480/any" height="100"><ul><li>airway</li><li>breathing</li><li>circulation</li><li>time of stroke onset</li><a href="google.com">google</a></ul>
     </p>
     <hr>
     
@@ -557,6 +572,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
   const notifyError = notifyReactNative.bind(null, 'error');
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
+  const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
 
   // Report window height
   (function() {
@@ -581,7 +597,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     })
 
     // Wait for any images to finish loading
-    window.load = notify
+    window.onload = notify
     notify()
   })();
 
@@ -614,6 +630,20 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
           id
         });
       });
+    }
+  })();
+
+  // Listen to click of any link
+  (function() {
+    const links = Array.from(document.querySelectorAll('a[href]'))
+    for (const a of links) {
+      a.addEventListener('click', (e) => {
+        e.preventDefault()
+        const href = e.target.getAttribute('href')
+        notifyLinkPressed({
+          href
+        })
+      })
     }
   })();
 

@@ -75,10 +75,9 @@
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
-      a.addEventListener('click', ({
-        target
-      }) => {
-        const href = target.getAttribute('href')
+      a.addEventListener('click', (e) => {
+        e.preventDefault()
+        const href = e.target.getAttribute('href')
         notifyLinkPressed({
           href
         })

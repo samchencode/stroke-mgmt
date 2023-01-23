@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import type {
   Algorithm,
+  AlgorithmId,
   AlgorithmVisitor,
-  Outcome,
   ScoredAlgorithm,
-  TextAlgorithm,
 } from '@/domain/models/Algorithm';
 import { TextAlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/TextAlgorithmView';
 import { ScoredAlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/ScoredAlgorithmView';
@@ -14,7 +13,7 @@ type AlgorithmViewProps = {
   html: string;
   width: number;
   onChangeAlgorithm: (a: Algorithm) => void;
-  onSelectOutcome: (o: Outcome) => void;
+  onNextAlgorithm: (id: AlgorithmId) => void;
 };
 
 type AlgorithmType = 'text' | 'scored' | null;
@@ -41,26 +40,25 @@ class AlgorithmView
   }
 
   private renderTextAlgorithm() {
-    const { html, width, onSelectOutcome, algorithm } = this.props;
+    const { html, width, onNextAlgorithm } = this.props;
     return (
       <TextAlgorithmView
         html={html}
         width={width}
-        algorithm={algorithm as TextAlgorithm}
-        onSelectOutcome={onSelectOutcome}
+        onNextAlgorithm={onNextAlgorithm}
       />
     );
   }
 
   private renderScoredAlgorithm() {
-    const { html, width, onSelectOutcome, onChangeAlgorithm, algorithm } =
+    const { html, width, onNextAlgorithm, onChangeAlgorithm, algorithm } =
       this.props;
     return (
       <ScoredAlgorithmView
         html={html}
         width={width}
         algorithm={algorithm as ScoredAlgorithm}
-        onSelectOutcome={onSelectOutcome}
+        onNextAlgorithm={onNextAlgorithm}
         onChangeAlgorithm={onChangeAlgorithm}
       />
     );

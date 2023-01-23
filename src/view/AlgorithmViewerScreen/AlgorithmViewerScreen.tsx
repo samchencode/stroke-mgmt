@@ -3,7 +3,7 @@ import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
-import type { Algorithm, Outcome } from '@/domain/models/Algorithm';
+import type { Algorithm, AlgorithmId } from '@/domain/models/Algorithm';
 import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
 
 function factory(
@@ -30,8 +30,8 @@ function factory(
     }, [algo]);
 
     const handleChangeAlgorithm = useCallback((a: Algorithm) => setAlgo(a), []);
-    const handleSelectOutcome = useCallback((o: Outcome) => {
-      alert(o.getBody());
+    const handleNextAlgorithm = useCallback((aId: AlgorithmId) => {
+      alert(aId.toString());
     }, []);
 
     if (!algo || !html) return <View style={styles.container} />;
@@ -43,7 +43,7 @@ function factory(
           html={html}
           algorithm={algo}
           onChangeAlgorithm={handleChangeAlgorithm}
-          onSelectOutcome={handleSelectOutcome}
+          onNextAlgorithm={handleNextAlgorithm}
         />
       </View>
     );

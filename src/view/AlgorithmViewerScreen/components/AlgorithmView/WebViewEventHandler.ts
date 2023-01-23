@@ -3,14 +3,14 @@ import type {
   ErrorEvent,
   SwitchChangedEvent,
   LayoutEvent,
-  OutcomeSelectedEvent,
+  NextPressedEvent,
 } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
 
 type HandlerCollection = {
   error?: (e: ErrorEvent['content']) => void;
   switchchanged?: (e: SwitchChangedEvent['content']) => void;
   layout?: (e: LayoutEvent['content']) => void;
-  outcomeselected?: (e: OutcomeSelectedEvent['content']) => void;
+  nextpressed?: (e: NextPressedEvent['content']) => void;
 };
 
 class WebViewEventHandler {
@@ -19,7 +19,7 @@ class WebViewEventHandler {
   handle(e: Event) {
     if (e.type === 'error') this.handleError(e);
     if (e.type === 'layout') this.handleLayout(e);
-    if (e.type === 'outcomeselected') this.handleOutcomeSelected(e);
+    if (e.type === 'nextpressed') this.handleNextPressed(e);
     if (e.type === 'switchchanged') this.handleSwitchChanged(e);
   }
 
@@ -38,9 +38,9 @@ class WebViewEventHandler {
     this.handlers.layout(e.content);
   }
 
-  handleOutcomeSelected(e: OutcomeSelectedEvent) {
-    if (!this.handlers.outcomeselected) return;
-    this.handlers.outcomeselected(e.content);
+  handleNextPressed(e: NextPressedEvent) {
+    if (!this.handlers.nextpressed) return;
+    this.handlers.nextpressed(e.content);
   }
 }
 

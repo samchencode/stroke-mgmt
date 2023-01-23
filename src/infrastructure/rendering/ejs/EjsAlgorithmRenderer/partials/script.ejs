@@ -9,7 +9,7 @@
   const notifyLayout = notifyReactNative.bind(null, 'layout');
   const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
   const notifyError = notifyReactNative.bind(null, 'error');
-  const notifyOutcomeSelected = notifyReactNative.bind(null, 'outcomeselected');
+  const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
 
   // Report window height
   (function() {
@@ -55,7 +55,7 @@
     }
   })();
 
-  // Listen to click of outcome button
+  // Listen to click of next algorithm button
   (function() {
     const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
@@ -63,8 +63,8 @@
         target
       }) => {
         const id = target.getAttribute('data-next-id');
-        notifyOutcomeSelected({
-          id,
+        notifyNextPressed({
+          id
         });
       });
     }

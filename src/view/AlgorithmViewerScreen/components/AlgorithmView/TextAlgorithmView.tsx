@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
-import type { Outcome, TextAlgorithm } from '@/domain/models/Algorithm';
+import { AlgorithmId } from '@/domain/models/Algorithm';
 import { WebViewEventHandler } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewEventHandler';
 import { WebViewError } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewError';
 import type { Event } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
@@ -10,15 +10,13 @@ import type { Event } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer'
 type TextAlgorithmViewProps = {
   html: string;
   width: number;
-  algorithm: TextAlgorithm;
-  onSelectOutcome: (outcome: Outcome) => void;
+  onNextAlgorithm: (id: AlgorithmId) => void;
 };
 
 function TextAlgorithmView({
   html,
   width,
-  algorithm,
-  onSelectOutcome,
+  onNextAlgorithm,
 }: TextAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
 
@@ -29,8 +27,9 @@ function TextAlgorithmView({
         error: ({ name, message }) => {
           throw new WebViewError(name, message);
         },
+        nextpressed: ({ id }) => onNextAlgorithm(new AlgorithmId(id)),
       }),
-    []
+    [onNextAlgorithm]
   );
 
   const handleMessage = useCallback(

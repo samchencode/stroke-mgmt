@@ -22,8 +22,8 @@ export type ErrorEvent = {
   };
 };
 
-export type OutcomeSelectedEvent = {
-  readonly type: 'outcomeselected';
+export type NextPressedEvent = {
+  readonly type: 'nextpressed';
   content: {
     id: string;
   };
@@ -33,4 +33,4 @@ export type Event =
   | SwitchChangedEvent
   | LayoutEvent
   | ErrorEvent
-  | OutcomeSelectedEvent;
+  | NextPressedEvent;

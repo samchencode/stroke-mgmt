@@ -1,7 +1,7 @@
 export { EjsAlgorithmRenderer } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/EjsAlgorithmRenderer';
 export type {
   Event,
-  OutcomeSelectedEvent,
+  NextPressedEvent,
   ErrorEvent,
   LayoutEvent,
   SwitchChangedEvent,

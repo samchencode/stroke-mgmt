@@ -13,16 +13,34 @@
 
   // Report window height
   (function() {
-    const dims = {
+    const notify = () => notifyLayout({
       width: document.body.offsetWidth,
       height: document.body.offsetHeight,
-    };
-    notifyLayout(dims);
+    });
+
+    // Watch for opening of outcome dropdowns
+    const bodyEl = document.querySelector('body')
+    const observerCb = (mutationList) => {
+      mutationList.forEach(mut => {
+        if (mut.type !== 'attributes') return;
+        if (mut.attributeName === 'open') notify();
+      })
+    }
+    const observer = new MutationObserver(observerCb)
+    observer.observe(bodyEl, {
+      attributes: true,
+      childList: true,
+      subtree: true
+    })
+
+    // Wait for any images to finish loading
+    window.load = notify
+    notify()
   })();
 
   // Listen to changes in switch values
   (function() {
-    const inputs = Array.from(document.querySelectorAll('.switches__input'));
+    const inputs = Array.from(document.querySelectorAll('.template.switches__input'));
     for (const input of inputs) {
       input.addEventListener('change', ({
         target
@@ -39,14 +57,14 @@
 
   // Listen to click of outcome button
   (function() {
-    const buttons = Array.from(document.querySelectorAll('.outcomes__button'));
+    const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
       button.addEventListener('click', ({
         target
       }) => {
-        const title = target.getAttribute('data-outcome-title');
+        const id = target.getAttribute('data-next-id');
         notifyOutcomeSelected({
-          title,
+          id,
         });
       });
     }

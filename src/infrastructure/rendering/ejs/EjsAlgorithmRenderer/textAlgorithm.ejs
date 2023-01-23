@@ -17,11 +17,18 @@
     <hr>
     <% if(algorithm.hasOutcomes()) { %>
     <ul class="template outcomes__list">
-      <h1 class="template outcomes__title">Select Result</h1>
+      <h1 class="template outcomes__headline">Results</h1>
       <% for(const outcome of algorithm.getOutcomes()) { %>
       <li class="template outcomes__list-item">
-        <!-- TODO: outcomes must have ids -->
-        <button class="template outcomes__button" data-outcome-title="<%- outcome.getTitle() %>"><%- outcome.getTitle() %></button>
+        <details class="template outcomes__item" <%= algorithm.getOutcomes().length === 1 ? 'open' : '' %>>
+          <summary><span class="template outcomes__title"><%- outcome.getTitle() %><span></summary>
+          <div class="template outcomes__body"><%- outcome.getBody() %></div>
+          <% if(outcome.getNext()) { %>
+          <button class="template outcomes__button" data-next-id="<%= outcome.getNext().getId() %>">
+            Continue
+          </button>
+          <% } %>
+        </details>
       </li>
       <% } %>
     </ul>

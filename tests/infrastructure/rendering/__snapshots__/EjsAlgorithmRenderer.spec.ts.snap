@@ -113,14 +113,24 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   }
 
   .template.outcomes__list {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .template.outcomes__headline {
+    margin: 0;
+    /* headline-medium */
+    line-height: 36px;
+    font-size: 28px;
+    font-weight: 400;
+  }
+
+  .template.outcomes__list-item {
+    margin-top: 8px;
   }
 
   .template.outcomes__title {
-    margin-right: 16px;
     /* title-medium */
     line-height: 24px;
     font-size: 16px;
@@ -128,12 +138,31 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     font-weight: 500;
   }
 
-  .template.outcomes__list-item {
-    margin-right: 8px;
+  .template.outcomes__item {
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: black;
   }
 
-  .template.outcomes__list-item:first-child {
-    margin-right: 0px;
+  .template.outcomes__item>summary {
+    list-style: none;
+  }
+
+  .template.outcomes__item[open] {
+    background-color: white;
+  }
+
+  .template.outcomes__item .template.outcomes__title {
+    color: white;
+  }
+
+  .template.outcomes__item[open] .template.outcomes__title {
+    color: black;
+  }
+
+  .template.outcomes__body {
+    margin-top: 16px;
   }
 
   .template.outcomes__button {
@@ -142,6 +171,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     border-radius: 999px;
     height: 40px;
     padding: 0 24px;
+    margin-top: 16px;
     /* label-large */
     line-height: 20px;
     font-size: 14px;
@@ -225,16 +255,34 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
   // Report window height
   (function() {
-    const dims = {
+    const notify = () => notifyLayout({
       width: document.body.offsetWidth,
       height: document.body.offsetHeight,
-    };
-    notifyLayout(dims);
+    });
+
+    // Watch for opening of outcome dropdowns
+    const bodyEl = document.querySelector('body')
+    const observerCb = (mutationList) => {
+      mutationList.forEach(mut => {
+        if (mut.type !== 'attributes') return;
+        if (mut.attributeName === 'open') notify();
+      })
+    }
+    const observer = new MutationObserver(observerCb)
+    observer.observe(bodyEl, {
+      attributes: true,
+      childList: true,
+      subtree: true
+    })
+
+    // Wait for any images to finish loading
+    window.load = notify
+    notify()
   })();
 
   // Listen to changes in switch values
   (function() {
-    const inputs = Array.from(document.querySelectorAll('.switches__input'));
+    const inputs = Array.from(document.querySelectorAll('.template.switches__input'));
     for (const input of inputs) {
       input.addEventListener('change', ({
         target
@@ -251,14 +299,14 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
   // Listen to click of outcome button
   (function() {
-    const buttons = Array.from(document.querySelectorAll('.outcomes__button'));
+    const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
       button.addEventListener('click', ({
         target
       }) => {
-        const title = target.getAttribute('data-outcome-title');
+        const id = target.getAttribute('data-next-id');
         notifyOutcomeSelected({
-          title,
+          id,
         });
       });
     }
@@ -392,14 +440,24 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   }
 
   .template.outcomes__list {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .template.outcomes__headline {
+    margin: 0;
+    /* headline-medium */
+    line-height: 36px;
+    font-size: 28px;
+    font-weight: 400;
+  }
+
+  .template.outcomes__list-item {
+    margin-top: 8px;
   }
 
   .template.outcomes__title {
-    margin-right: 16px;
     /* title-medium */
     line-height: 24px;
     font-size: 16px;
@@ -407,12 +465,31 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     font-weight: 500;
   }
 
-  .template.outcomes__list-item {
-    margin-right: 8px;
+  .template.outcomes__item {
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: black;
   }
 
-  .template.outcomes__list-item:first-child {
-    margin-right: 0px;
+  .template.outcomes__item>summary {
+    list-style: none;
+  }
+
+  .template.outcomes__item[open] {
+    background-color: white;
+  }
+
+  .template.outcomes__item .template.outcomes__title {
+    color: white;
+  }
+
+  .template.outcomes__item[open] .template.outcomes__title {
+    color: black;
+  }
+
+  .template.outcomes__body {
+    margin-top: 16px;
   }
 
   .template.outcomes__button {
@@ -421,6 +498,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     border-radius: 999px;
     height: 40px;
     padding: 0 24px;
+    margin-top: 16px;
     /* label-large */
     line-height: 20px;
     font-size: 14px;
@@ -441,16 +519,26 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     <hr>
     
     <ul class="template outcomes__list">
-      <h1 class="template outcomes__title">Select Result</h1>
+      <h1 class="template outcomes__headline">Results</h1>
       
       <li class="template outcomes__list-item">
-        <!-- TODO: outcomes must have ids -->
-        <button class="template outcomes__button" data-outcome-title="Stable">Stable</button>
+        <details class="template outcomes__item" >
+          <summary><span class="template outcomes__title">Stable<span></summary>
+          <div class="template outcomes__body">Proceed to GWNS algorithm</div>
+          
+          <button class="template outcomes__button" data-next-id="1">
+            Continue
+          </button>
+          
+        </details>
       </li>
       
       <li class="template outcomes__list-item">
-        <!-- TODO: outcomes must have ids -->
-        <button class="template outcomes__button" data-outcome-title="Not Stable">Not Stable</button>
+        <details class="template outcomes__item" >
+          <summary><span class="template outcomes__title">Not Stable<span></summary>
+          <div class="template outcomes__body">Stabilize ABCTs before continuing!</div>
+          
+        </details>
       </li>
       
     </ul>
@@ -472,16 +560,34 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 
   // Report window height
   (function() {
-    const dims = {
+    const notify = () => notifyLayout({
       width: document.body.offsetWidth,
       height: document.body.offsetHeight,
-    };
-    notifyLayout(dims);
+    });
+
+    // Watch for opening of outcome dropdowns
+    const bodyEl = document.querySelector('body')
+    const observerCb = (mutationList) => {
+      mutationList.forEach(mut => {
+        if (mut.type !== 'attributes') return;
+        if (mut.attributeName === 'open') notify();
+      })
+    }
+    const observer = new MutationObserver(observerCb)
+    observer.observe(bodyEl, {
+      attributes: true,
+      childList: true,
+      subtree: true
+    })
+
+    // Wait for any images to finish loading
+    window.load = notify
+    notify()
   })();
 
   // Listen to changes in switch values
   (function() {
-    const inputs = Array.from(document.querySelectorAll('.switches__input'));
+    const inputs = Array.from(document.querySelectorAll('.template.switches__input'));
     for (const input of inputs) {
       input.addEventListener('change', ({
         target
@@ -498,14 +604,14 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 
   // Listen to click of outcome button
   (function() {
-    const buttons = Array.from(document.querySelectorAll('.outcomes__button'));
+    const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
       button.addEventListener('click', ({
         target
       }) => {
-        const title = target.getAttribute('data-outcome-title');
+        const id = target.getAttribute('data-next-id');
         notifyOutcomeSelected({
-          title,
+          id,
         });
       });
     }

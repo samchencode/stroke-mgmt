@@ -5,4 +5,5 @@ export type {
   ErrorEvent,
   LayoutEvent,
   SwitchChangedEvent,
+  LinkPressedEvent,
 } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer/Event';

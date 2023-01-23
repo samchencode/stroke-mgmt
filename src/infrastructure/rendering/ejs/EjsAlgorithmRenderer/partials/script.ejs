@@ -10,6 +10,7 @@
   const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
   const notifyError = notifyReactNative.bind(null, 'error');
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
+  const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
 
   // Report window height
   (function() {
@@ -34,7 +35,7 @@
     })
 
     // Wait for any images to finish loading
-    window.load = notify
+    window.onload = notify
     notify()
   })();
 
@@ -67,6 +68,21 @@
           id
         });
       });
+    }
+  })();
+
+  // Listen to click of any link
+  (function() {
+    const links = Array.from(document.querySelectorAll('a[href]'))
+    for (const a of links) {
+      a.addEventListener('click', ({
+        target
+      }) => {
+        const href = target.getAttribute('href')
+        notifyLinkPressed({
+          href
+        })
+      })
     }
   })();
 

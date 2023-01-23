@@ -4,13 +4,16 @@ import type {
   SwitchChangedEvent,
   LayoutEvent,
   NextPressedEvent,
+  LinkPressedEvent,
 } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
+import { openUrl } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/ExpoLinking';
 
 type HandlerCollection = {
   error?: (e: ErrorEvent['content']) => void;
   switchchanged?: (e: SwitchChangedEvent['content']) => void;
   layout?: (e: LayoutEvent['content']) => void;
   nextpressed?: (e: NextPressedEvent['content']) => void;
+  linkpressed?: (e: LinkPressedEvent['content']) => void;
 };
 
 class WebViewEventHandler {
@@ -21,6 +24,7 @@ class WebViewEventHandler {
     if (e.type === 'layout') this.handleLayout(e);
     if (e.type === 'nextpressed') this.handleNextPressed(e);
     if (e.type === 'switchchanged') this.handleSwitchChanged(e);
+    if (e.type === 'linkpressed') this.handleLinkPressed(e);
   }
 
   handleError(e: ErrorEvent) {
@@ -41,6 +45,16 @@ class WebViewEventHandler {
   handleNextPressed(e: NextPressedEvent) {
     if (!this.handlers.nextpressed) return;
     this.handlers.nextpressed(e.content);
+  }
+
+  handleLinkPressed(e: LinkPressedEvent) {
+    if (!this.handlers.linkpressed) {
+      let url = e.content.href;
+      if (!url.match(/^https?:/)) url = `https://${url}`;
+      openUrl(url);
+    } else {
+      this.handlers.linkpressed(e.content);
+    }
   }
 }
 

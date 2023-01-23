@@ -29,8 +29,16 @@ export type NextPressedEvent = {
   };
 };
 
+export type LinkPressedEvent = {
+  readonly type: 'linkpressed';
+  content: {
+    href: string;
+  };
+};
+
 export type Event =
   | SwitchChangedEvent
   | LayoutEvent
   | ErrorEvent
-  | NextPressedEvent;
+  | NextPressedEvent
+  | LinkPressedEvent;

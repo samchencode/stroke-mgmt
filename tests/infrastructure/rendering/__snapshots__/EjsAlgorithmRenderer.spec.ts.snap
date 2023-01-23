@@ -251,7 +251,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   const notifyLayout = notifyReactNative.bind(null, 'layout');
   const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
   const notifyError = notifyReactNative.bind(null, 'error');
-  const notifyOutcomeSelected = notifyReactNative.bind(null, 'outcomeselected');
+  const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
 
   // Report window height
   (function() {
@@ -297,7 +297,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     }
   })();
 
-  // Listen to click of outcome button
+  // Listen to click of next algorithm button
   (function() {
     const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
@@ -305,8 +305,8 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
         target
       }) => {
         const id = target.getAttribute('data-next-id');
-        notifyOutcomeSelected({
-          id,
+        notifyNextPressed({
+          id
         });
       });
     }
@@ -556,7 +556,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   const notifyLayout = notifyReactNative.bind(null, 'layout');
   const notifySwitchChanged = notifyReactNative.bind(null, 'switchchanged');
   const notifyError = notifyReactNative.bind(null, 'error');
-  const notifyOutcomeSelected = notifyReactNative.bind(null, 'outcomeselected');
+  const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
 
   // Report window height
   (function() {
@@ -602,7 +602,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     }
   })();
 
-  // Listen to click of outcome button
+  // Listen to click of next algorithm button
   (function() {
     const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
@@ -610,8 +610,8 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
         target
       }) => {
         const id = target.getAttribute('data-next-id');
-        notifyOutcomeSelected({
-          id,
+        notifyNextPressed({
+          id
         });
       });
     }

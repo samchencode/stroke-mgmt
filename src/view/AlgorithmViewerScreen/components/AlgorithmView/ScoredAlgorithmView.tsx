@@ -1,10 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
-import type { Message } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/AlgorithmWebViewMessages';
 import type { Outcome, ScoredAlgorithm } from '@/domain/models/Algorithm';
 import { SwitchId } from '@/domain/models/Algorithm';
+import { WebViewEventHandler } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewEventHandler';
+import type { Event } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
+import { WebViewError } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewError';
 
 type ScoredAlgorithmViewProps = {
   html: string;
@@ -23,27 +25,27 @@ function ScoredAlgorithmView({
 }: ScoredAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
 
+  const eventHandler = useMemo(
+    () =>
+      new WebViewEventHandler({
+        layout: ({ height: h }) => setHeight(h),
+        error: ({ name, message }) => {
+          throw new WebViewError(name, message);
+        },
+        switchchanged: ({ id, active }) => {
+          const newAlgo = algorithm.setSwitchById(new SwitchId(id), active);
+          onChangeAlgorithm(newAlgo);
+        },
+      }),
+    [algorithm, onChangeAlgorithm]
+  );
+
   const handleMessage = useCallback(
     ({ nativeEvent }: WebViewMessageEvent) => {
-      const { type, content } = JSON.parse(nativeEvent.data) as Message;
-      if (type === 'layout') {
-        setHeight(content.height);
-      } else if (type === 'switchchanged') {
-        const { id: swId, active } = content;
-        const newAlgo = algorithm.setSwitchById(new SwitchId(swId), active);
-        onChangeAlgorithm(newAlgo);
-      } else if (type === 'outcomeselected') {
-        const outcomeTitle = content.title;
-        const outcome = algorithm
-          .getOutcomes()
-          .find((o) => o.getTitle() === outcomeTitle);
-        if (!outcome) throw Error();
-        onSelectOutcome(outcome);
-      } else if (type === 'error') {
-        throw new Error(`${content.type}: ${content.message}`);
-      }
+      const event = JSON.parse(nativeEvent.data) as Event;
+      eventHandler.handle(event);
     },
-    [algorithm, onChangeAlgorithm, onSelectOutcome]
+    [eventHandler]
   );
 
   return (

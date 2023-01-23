@@ -1,4 +1,4 @@
-type SwitchChangedEvent = {
+export type SwitchChangedEvent = {
   readonly type: 'switchchanged';
   content: {
     id: string;
@@ -6,7 +6,7 @@ type SwitchChangedEvent = {
   };
 };
 
-type LayoutEvent = {
+export type LayoutEvent = {
   readonly type: 'layout';
   content: {
     width: number;
@@ -14,7 +14,7 @@ type LayoutEvent = {
   };
 };
 
-type ErrorEvent = {
+export type ErrorEvent = {
   readonly type: 'error';
   content: {
     name: string;
@@ -22,7 +22,7 @@ type ErrorEvent = {
   };
 };
 
-type OutcomeSelectedEvent = {
+export type OutcomeSelectedEvent = {
   readonly type: 'outcomeselected';
   content: {
     id: string;

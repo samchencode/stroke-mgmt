@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
-import type { Message } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/AlgorithmWebViewMessages';
 import type { Outcome, TextAlgorithm } from '@/domain/models/Algorithm';
+import { WebViewEventHandler } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewEventHandler';
+import { WebViewError } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewError';
+import type { Event } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
 
 type TextAlgorithmViewProps = {
   html: string;
@@ -20,23 +22,23 @@ function TextAlgorithmView({
 }: TextAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
 
+  const eventHandler = useMemo(
+    () =>
+      new WebViewEventHandler({
+        layout: ({ height: h }) => setHeight(h),
+        error: ({ name, message }) => {
+          throw new WebViewError(name, message);
+        },
+      }),
+    []
+  );
+
   const handleMessage = useCallback(
     ({ nativeEvent }: WebViewMessageEvent) => {
-      const { type, content } = JSON.parse(nativeEvent.data) as Message;
-      if (type === 'layout') {
-        setHeight(content.height);
-      } else if (type === 'outcomeselected') {
-        const outcomeTitle = content.title;
-        const outcome = algorithm
-          .getOutcomes()
-          .find((o) => o.getTitle() === outcomeTitle);
-        if (!outcome) throw Error();
-        onSelectOutcome(outcome);
-      } else if (type === 'error') {
-        throw new Error(`${content.type}: ${content.message}`);
-      }
+      const event = JSON.parse(nativeEvent.data) as Event;
+      eventHandler.handle(event);
     },
-    [algorithm, onSelectOutcome]
+    [eventHandler]
   );
 
   return (

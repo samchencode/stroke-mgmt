@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
-import type { ScoredAlgorithm } from '@/domain/models/Algorithm';
+import type { Algorithm, ScoredAlgorithm } from '@/domain/models/Algorithm';
 import { AlgorithmId, SwitchId } from '@/domain/models/Algorithm';
 import { WebViewEventHandler } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewEventHandler';
 import type { Event } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
@@ -13,7 +13,7 @@ type ScoredAlgorithmViewProps = {
   width: number;
   algorithm: ScoredAlgorithm;
   onChangeAlgorithm: (algo: ScoredAlgorithm) => void;
-  onNextAlgorithm: (id: AlgorithmId) => void;
+  onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
 };
 
 function ScoredAlgorithmView({
@@ -36,7 +36,8 @@ function ScoredAlgorithmView({
           const newAlgo = algorithm.setSwitchById(new SwitchId(id), active);
           onChangeAlgorithm(newAlgo);
         },
-        nextpressed: ({ id }) => onNextAlgorithm(new AlgorithmId(id)),
+        nextpressed: ({ id }) =>
+          onNextAlgorithm(new AlgorithmId(id), algorithm),
       }),
     [algorithm, onChangeAlgorithm, onNextAlgorithm]
   );

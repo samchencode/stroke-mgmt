@@ -1,51 +1,35 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import React, { useCallback } from 'react';
+import { StyleSheet, useWindowDimensions, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
-import type { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
+import type { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
-import type { Algorithm, AlgorithmId } from '@/domain/models/Algorithm';
-import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
+import { AlgorithmCollectionView } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/AlgorithmCollectionView';
 
 function factory(
-  getAlgorithmByIdAction: GetAlgorithmByIdAction,
+  renderAlgorithmByIdAction: RenderAlgorithmByIdAction,
   renderAlgorithmAction: RenderAlgorithmAction
 ) {
   return function AlgorithmViewerScreen({
     route,
   }: AppNavigationProps<'AlgorithmViewerScreen'>) {
     const { id } = route.params;
-
     const { width } = useWindowDimensions();
 
-    const [html, setHtml] = useState('');
-    const [algo, setAlgo] = useState<Algorithm | null>(null);
-
-    useEffect(() => {
-      getAlgorithmByIdAction.execute(id).then(setAlgo);
-    }, [id]);
-
-    useEffect(() => {
-      if (!algo) return;
-      renderAlgorithmAction.execute(algo).then(setHtml);
-    }, [algo]);
-
-    const handleChangeAlgorithm = useCallback((a: Algorithm) => setAlgo(a), []);
-    const handleNextAlgorithm = useCallback((aId: AlgorithmId) => {
-      alert(aId.toString());
-    }, []);
-
-    if (!algo || !html) return <View style={styles.container} />;
-
     return (
-      <View style={styles.container}>
-        <AlgorithmView
+      <ScrollView style={styles.container}>
+        <AlgorithmCollectionView
           width={width}
-          html={html}
-          algorithm={algo}
-          onChangeAlgorithm={handleChangeAlgorithm}
-          onNextAlgorithm={handleNextAlgorithm}
+          initialId={id}
+          renderAlgorithm={useCallback(
+            (a) => renderAlgorithmAction.execute(a),
+            []
+          )}
+          renderAlgorithmById={useCallback(
+            (aId) => renderAlgorithmByIdAction.execute(aId),
+            []
+          )}
         />
-      </View>
+      </ScrollView>
     );
   };
 }

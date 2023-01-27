@@ -23,6 +23,7 @@ import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import { EjsAlgorithmRenderer } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
+import { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 
 export const module = {
   // APPLICATION
@@ -34,6 +35,7 @@ export const module = {
   getAllAlgorithmsAction: ['type', GetAllAlgorithmsAction],
   getAlgorithmByIdAction: ['type', GetAlgorithmByIdAction],
   renderArticleByIdAction: ['type', RenderArticleByIdAction],
+  renderAlgorithmByIdAction: ['type', RenderAlgorithmByIdAction],
   renderAlgorithmAction: ['type', RenderAlgorithmAction],
   renderDisclaimerAction: ['type', RenderDisclaimerAction],
   renderStrokeFactsAction: ['type', RenderStrokeFactsAction],

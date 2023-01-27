@@ -13,7 +13,7 @@ type AlgorithmViewProps = {
   html: string;
   width: number;
   onChangeAlgorithm: (a: Algorithm) => void;
-  onNextAlgorithm: (id: AlgorithmId) => void;
+  onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
 };
 
 type AlgorithmType = 'text' | 'scored' | null;
@@ -40,11 +40,12 @@ class AlgorithmView
   }
 
   private renderTextAlgorithm() {
-    const { html, width, onNextAlgorithm } = this.props;
+    const { html, width, onNextAlgorithm, algorithm } = this.props;
     return (
       <TextAlgorithmView
         html={html}
         width={width}
+        algorithm={algorithm}
         onNextAlgorithm={onNextAlgorithm}
       />
     );

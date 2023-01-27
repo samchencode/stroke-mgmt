@@ -13,3 +13,5 @@ export {
 } from '@/domain/models/Algorithm/Criterion';
 export { Switch } from '@/domain/models/Algorithm/Switch';
 export { SwitchId } from '@/domain/models/Algorithm/SwitchId';
+export { RenderedAlgorithm } from '@/domain/models/Algorithm/RenderedAlgorithm';
+export { RenderedAlgorithmCollection } from '@/domain/models/Algorithm/RenderedAlgorithmCollection';

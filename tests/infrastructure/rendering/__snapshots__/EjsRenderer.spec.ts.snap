@@ -31,7 +31,7 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed')
   const notifyError = notifyReactNative.bind(null, 'error');
 
-  // Listen to click of any link
+  ; // Listen to click of any link
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
@@ -45,7 +45,7 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
     }
   })();
 
-  // Report errors
+  ; // Report errors
   (function() {
     window.addEventListener('error', (e) =>
       notifyError({
@@ -99,17 +99,17 @@ exports[`EjsAlgorithmRenderer Behavior should render disclaimer html 1`] = `
     }
     const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed')
     const notifyError = notifyReactNative.bind(null, 'error');
-    const notifyLayout = notifyReactNative.bind(null, 'layout')
+    const notifyLayout = notifyReactNative.bind(null, 'layout');
 
-    // Send window size upon load of the window
+    ; // Send window size upon load of the window
     (function() {
-      window.addEventListener('load', () => notifyLayout({
+      window.onload = () => notifyLayout({
         width: document.body.offsetWidth,
         height: document.body.offsetHeight,
-      }))
-    })()
+      });
+    })();
 
-    // Listen to click of any link
+    ; // Listen to click of any link
     (function() {
       const links = Array.from(document.querySelectorAll('a[href]'))
       for (const a of links) {
@@ -123,7 +123,7 @@ exports[`EjsAlgorithmRenderer Behavior should render disclaimer html 1`] = `
       }
     })();
 
-    // Report errors
+    ; // Report errors
     (function() {
       window.addEventListener('error', (e) =>
         notifyError({
@@ -392,7 +392,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
 
-  // Report window height
+  ; // Report window height
   (function() {
     const notify = () => notifyLayout({
       width: document.body.offsetWidth,
@@ -419,7 +419,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     notify()
   })();
 
-  // Listen to changes in switch values
+  ; // Listen to changes in switch values
   (function() {
     const inputs = Array.from(document.querySelectorAll('.template.switches__input'));
     for (const input of inputs) {
@@ -436,7 +436,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     }
   })();
 
-  // Listen to click of next algorithm button
+  ; // Listen to click of next algorithm button
   (function() {
     const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
@@ -451,7 +451,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     }
   })();
 
-  // Listen to click of any link
+  ; // Listen to click of any link
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
@@ -465,7 +465,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     }
   })();
 
-  // Report errors
+  ; // Report errors
   (function() {
     window.addEventListener('error', (e) =>
       notifyError({
@@ -712,7 +712,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
 
-  // Report window height
+  ; // Report window height
   (function() {
     const notify = () => notifyLayout({
       width: document.body.offsetWidth,
@@ -739,7 +739,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     notify()
   })();
 
-  // Listen to changes in switch values
+  ; // Listen to changes in switch values
   (function() {
     const inputs = Array.from(document.querySelectorAll('.template.switches__input'));
     for (const input of inputs) {
@@ -756,7 +756,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     }
   })();
 
-  // Listen to click of next algorithm button
+  ; // Listen to click of next algorithm button
   (function() {
     const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
@@ -771,7 +771,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     }
   })();
 
-  // Listen to click of any link
+  ; // Listen to click of any link
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
@@ -785,7 +785,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     }
   })();
 
-  // Report errors
+  ; // Report errors
   (function() {
     window.addEventListener('error', (e) =>
       notifyError({

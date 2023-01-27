@@ -4,9 +4,11 @@ import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
 import type { Algorithm } from '@/domain/models/Algorithm';
 import { AlgorithmId } from '@/domain/models/Algorithm';
-import { WebViewEventHandler } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewEventHandler';
-import { WebViewError } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewError';
-import type { Event } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
+import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
+import {
+  WebViewEventHandler,
+  WebViewError,
+} from '@/infrastructure/rendering/WebViewEvent';
 
 type TextAlgorithmViewProps = {
   html: string;
@@ -38,7 +40,7 @@ function TextAlgorithmView({
 
   const handleMessage = useCallback(
     ({ nativeEvent }: WebViewMessageEvent) => {
-      const event = JSON.parse(nativeEvent.data) as Event;
+      const event = JSON.parse(nativeEvent.data) as WebViewEvent;
       eventHandler.handle(event);
     },
     [eventHandler]

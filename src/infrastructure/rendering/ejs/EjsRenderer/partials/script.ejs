@@ -12,7 +12,7 @@
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
 
-  // Report window height
+  ; // Report window height
   (function() {
     const notify = () => notifyLayout({
       width: document.body.offsetWidth,
@@ -39,7 +39,7 @@
     notify()
   })();
 
-  // Listen to changes in switch values
+  ; // Listen to changes in switch values
   (function() {
     const inputs = Array.from(document.querySelectorAll('.template.switches__input'));
     for (const input of inputs) {
@@ -56,7 +56,7 @@
     }
   })();
 
-  // Listen to click of next algorithm button
+  ; // Listen to click of next algorithm button
   (function() {
     const buttons = Array.from(document.querySelectorAll('.template.outcomes__button'));
     for (const button of buttons) {
@@ -71,7 +71,7 @@
     }
   })();
 
-  // Listen to click of any link
+  ; // Listen to click of any link
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
@@ -85,7 +85,7 @@
     }
   })();
 
-  // Report errors
+  ; // Report errors
   (function() {
     window.addEventListener('error', (e) =>
       notifyError({

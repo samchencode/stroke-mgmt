@@ -1,12 +1,12 @@
 import type {
-  Event,
-  ErrorEvent,
-  SwitchChangedEvent,
-  LayoutEvent,
-  NextPressedEvent,
-  LinkPressedEvent,
-} from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
-import { openUrl } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/ExpoLinking';
+  WebViewEvent,
+  WebViewErrorEvent as ErrorEvent,
+  WebViewSwitchChangedEvent as SwitchChangedEvent,
+  WebViewLayoutEvent as LayoutEvent,
+  WebViewNextPressedEvent as NextPressedEvent,
+  WebViewLinkPressedEvent as LinkPressedEvent,
+} from '@/infrastructure/rendering/WebViewEvent/WebViewEvent';
+import { openURL as openUrl } from 'expo-linking';
 
 type HandlerCollection = {
   error?: (e: ErrorEvent['content']) => void;
@@ -19,7 +19,7 @@ type HandlerCollection = {
 class WebViewEventHandler {
   constructor(private handlers: HandlerCollection) {}
 
-  handle(e: Event) {
+  handle(e: WebViewEvent) {
     if (e.type === 'error') this.handleError(e);
     if (e.type === 'layout') this.handleLayout(e);
     if (e.type === 'nextpressed') this.handleNextPressed(e);

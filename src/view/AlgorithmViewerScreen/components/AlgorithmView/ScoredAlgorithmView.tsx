@@ -4,9 +4,11 @@ import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
 import type { Algorithm, ScoredAlgorithm } from '@/domain/models/Algorithm';
 import { AlgorithmId, SwitchId } from '@/domain/models/Algorithm';
-import { WebViewEventHandler } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewEventHandler';
-import type { Event } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
-import { WebViewError } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/WebViewError';
+import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
+import {
+  WebViewEventHandler,
+  WebViewError,
+} from '@/infrastructure/rendering/WebViewEvent';
 
 type ScoredAlgorithmViewProps = {
   html: string;
@@ -44,7 +46,7 @@ function ScoredAlgorithmView({
 
   const handleMessage = useCallback(
     ({ nativeEvent }: WebViewMessageEvent) => {
-      const event = JSON.parse(nativeEvent.data) as Event;
+      const event = JSON.parse(nativeEvent.data) as WebViewEvent;
       eventHandler.handle(event);
     },
     [eventHandler]

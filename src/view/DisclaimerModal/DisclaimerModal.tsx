@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import type { WebViewMessageEvent } from 'react-native-webview';
 import { WebView } from 'react-native-webview';
@@ -6,6 +6,8 @@ import type { RenderDisclaimerAction } from '@/application/RenderDisclaimerActio
 import { TextButton } from '@/view/components';
 import type { RootNavigationProps } from '@/view/Router';
 import { theme } from '@/view/theme';
+import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
+import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 
 function factory(renderDisclaimerAction: RenderDisclaimerAction) {
   return function DisclaimerModal({
@@ -21,13 +23,21 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
     const { width } = useWindowDimensions();
     const webViewWidth = width - theme.spaces.md * 2 - theme.spaces.lg * 2;
     const [webViewHeight, setWebViewHeight] = useState(1);
-    const handleWebViewSize = useCallback(
-      ({ nativeEvent }: WebViewMessageEvent) => {
-        type Dims = { height: number; width: number };
-        const dims = JSON.parse(nativeEvent.data) as Dims;
-        setWebViewHeight(dims.height);
-      },
+
+    const eventHandler = useMemo(
+      () =>
+        new WebViewEventHandler({
+          layout: ({ height }) => setWebViewHeight(height),
+        }),
       []
+    );
+
+    const handleMessage = useCallback(
+      ({ nativeEvent }: WebViewMessageEvent) => {
+        const event = JSON.parse(nativeEvent.data) as WebViewEvent;
+        eventHandler.handle(event);
+      },
+      [eventHandler]
     );
 
     return (
@@ -39,7 +49,7 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
               source={{ html }}
               originWhitelist={['*']}
               style={{ width: webViewWidth }}
-              onMessage={handleWebViewSize}
+              onMessage={handleMessage}
               scrollEnabled={false}
             />
           </View>

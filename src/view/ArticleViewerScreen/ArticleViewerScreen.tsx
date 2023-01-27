@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import type { WebViewMessageEvent } from 'react-native-webview';
 import { WebView } from 'react-native-webview';
 import { StatusBar } from '@/view/StatusBar';
 import type { AppNavigationProps } from '@/view/Router';
 import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
+import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
+import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 
 function factory(renderArticleByIdAction: RenderArticleByIdAction) {
   return function ArticleViewerScreen({
@@ -18,6 +21,16 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
 
     const { width } = useWindowDimensions();
 
+    const eventHandler = useMemo(() => new WebViewEventHandler({}), []);
+
+    const handleMessage = useCallback(
+      ({ nativeEvent }: WebViewMessageEvent) => {
+        const event = JSON.parse(nativeEvent.data) as WebViewEvent;
+        eventHandler.handle(event);
+      },
+      [eventHandler]
+    );
+
     return (
       <View style={styles.container}>
         <StatusBar textColor="auto" translucent />
@@ -26,6 +39,7 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
           originWhitelist={['*']}
           style={{ width }}
           scrollEnabled={false}
+          onMessage={handleMessage}
         />
       </View>
     );

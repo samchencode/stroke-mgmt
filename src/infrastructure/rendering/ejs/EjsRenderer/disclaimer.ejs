@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 16px;
+    }
+
+    p {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <%- body %>
+
+  <script>
+    function notifyReactNative(messageType, content) {
+      const message = {
+        type: messageType,
+        content,
+      };
+      window.ReactNativeWebView.postMessage(JSON.stringify(message));
+    }
+    const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed')
+    const notifyError = notifyReactNative.bind(null, 'error');
+    const notifyLayout = notifyReactNative.bind(null, 'layout');
+
+    ; // Send window size upon load of the window
+    (function() {
+      window.onload = () => notifyLayout({
+        width: document.body.offsetWidth,
+        height: document.body.offsetHeight,
+      });
+    })();
+
+    ; // Listen to click of any link
+    (function() {
+      const links = Array.from(document.querySelectorAll('a[href]'))
+      for (const a of links) {
+        a.addEventListener('click', (e) => {
+          e.preventDefault()
+          const href = e.target.getAttribute('href')
+          notifyLinkPressed({
+            href
+          })
+        })
+      }
+    })();
+
+    ; // Report errors
+    (function() {
+      window.addEventListener('error', (e) =>
+        notifyError({
+          name: e.name,
+          message: e.message,
+        })
+      );
+    })();
+  </script>
+</body>
+
+</html>

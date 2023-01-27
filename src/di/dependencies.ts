@@ -10,7 +10,6 @@ import { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import { ExpoAssetFileSystem } from '@/infrastructure/file-system/expo-asset/ExpoAssetFileSystem';
 import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
 import { FakeAlgorithmRepository } from '@/infrastructure/persistence/fake/FakeAlgorithmRepository';
-import { EjsArticleRenderer } from '@/infrastructure/rendering/ejs/EjsArticleRenderer';
 import { factory as App } from '@/view/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import { factory as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
@@ -22,7 +21,7 @@ import { factory as Router } from '@/view/Router';
 import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
-import { EjsAlgorithmRenderer } from '@/infrastructure/rendering/ejs/EjsAlgorithmRenderer';
+import { EjsRenderer } from '@/infrastructure/rendering/ejs/EjsRenderer';
 import { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 
 export const module = {
@@ -45,8 +44,12 @@ export const module = {
   articleRepository: ['type', FakeArticleRepository],
   algorithmRepository: ['type', FakeAlgorithmRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
-  articleRenderer: ['type', EjsArticleRenderer],
-  algorithmRenderer: ['type', EjsAlgorithmRenderer],
+  articleRenderer: [
+    'factory',
+    // use same EjsRenderer instance as algorithmRenderer does
+    (algorithmRenderer: unknown) => algorithmRenderer,
+  ],
+  algorithmRenderer: ['type', EjsRenderer],
 
   // TEMPLATES
   App: ['factory', App],

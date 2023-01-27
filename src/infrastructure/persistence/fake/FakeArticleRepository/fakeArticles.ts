@@ -9,7 +9,7 @@ export const fakeArticles: FakeArticle[] = [
   {
     id: '-2',
     title: 'Disclaimer',
-    html: `<h1>Dear colleague,</h1><p>Optimal management of your patient is based on your examination and evaluation of the patient at the bedside. This guide cannot good clinical judgement from a board certified physician. The materials presented in this app are for educational purposes only.</p>`,
+    html: `<h1>Dear colleague,</h1><p>Optimal management of your patient is based on your examination and evaluation of the patient at the bedside. This guide cannot good clinical judgement from a board certified physician. The materials presented in this app are for educational purposes only. <a href="https://termly.io/resources/articles/medical-disclaimer-examples/#medical-disclaimer-vs-health-disclaimer">Some Examples of Medical Disclaimers for our edification</a></p>`,
     designation: 'DISCLAIMER',
   },
   {
@@ -23,7 +23,9 @@ export const fakeArticles: FakeArticle[] = [
     <li>Sudden trouble seeing.</li>
     <li>Sudden trouble walking, dizziness, or loss of balance.</li>
     <li>Sudden severe headache with no known cause.</li>
-    </ul>`,
+    </ul>
+    <a href="https://www.ahajournals.org/doi/10.1161/CIR.0000000000001123">AHA Stroke Guidelines</a>
+    `,
     designation: 'STROKE_SIGNS',
   },
   {

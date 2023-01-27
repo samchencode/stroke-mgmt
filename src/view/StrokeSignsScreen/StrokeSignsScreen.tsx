@@ -1,11 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import type { WebViewMessageEvent } from 'react-native-webview';
 import { WebView } from 'react-native-webview';
 import type { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import type { AppNavigationProps } from '@/view/Router';
 import { StatusBar } from '@/view/StatusBar';
 import { Button } from '@/view/components';
 import { theme } from '@/view/theme';
+import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
+import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 
 function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
   return function StrokeSignsScreen({
@@ -18,6 +21,16 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
 
     const { width, height } = useWindowDimensions();
     const webViewHeight = height * 0.6;
+
+    const eventHandler = useMemo(() => new WebViewEventHandler({}), []);
+
+    const handleMessage = useCallback(
+      ({ nativeEvent }: WebViewMessageEvent) => {
+        const event = JSON.parse(nativeEvent.data) as WebViewEvent;
+        eventHandler.handle(event);
+      },
+      [eventHandler]
+    );
 
     const handlePressButton = useCallback(() => {
       navigation.reset({ index: 0, routes: [{ name: 'HomeScreen' }] });
@@ -32,6 +45,7 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
             originWhitelist={['*']}
             style={{ width }}
             scrollEnabled={false}
+            onMessage={handleMessage}
           />
         </View>
         <Button

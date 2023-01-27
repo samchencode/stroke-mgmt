@@ -1,4 +1,4 @@
-export type SwitchChangedEvent = {
+export type WebViewSwitchChangedEvent = {
   readonly type: 'switchchanged';
   content: {
     id: string;
@@ -6,7 +6,7 @@ export type SwitchChangedEvent = {
   };
 };
 
-export type LayoutEvent = {
+export type WebViewLayoutEvent = {
   readonly type: 'layout';
   content: {
     width: number;
@@ -14,7 +14,7 @@ export type LayoutEvent = {
   };
 };
 
-export type ErrorEvent = {
+export type WebViewErrorEvent = {
   readonly type: 'error';
   content: {
     name: string;
@@ -22,23 +22,23 @@ export type ErrorEvent = {
   };
 };
 
-export type NextPressedEvent = {
+export type WebViewNextPressedEvent = {
   readonly type: 'nextpressed';
   content: {
     id: string;
   };
 };
 
-export type LinkPressedEvent = {
+export type WebViewLinkPressedEvent = {
   readonly type: 'linkpressed';
   content: {
     href: string;
   };
 };
 
-export type Event =
-  | SwitchChangedEvent
-  | LayoutEvent
-  | ErrorEvent
-  | NextPressedEvent
-  | LinkPressedEvent;
+export type WebViewEvent =
+  | WebViewSwitchChangedEvent
+  | WebViewLayoutEvent
+  | WebViewErrorEvent
+  | WebViewNextPressedEvent
+  | WebViewLinkPressedEvent;

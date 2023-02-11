@@ -7,6 +7,8 @@ import type {
 } from '@/domain/models/Algorithm';
 import { TextAlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/TextAlgorithmView';
 import { ScoredAlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/ScoredAlgorithmView';
+import type { StyleProp, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 
 type AlgorithmViewProps = {
   algorithm: Algorithm;
@@ -14,6 +16,7 @@ type AlgorithmViewProps = {
   width: number;
   onChangeAlgorithm: (a: Algorithm) => void;
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
+  style?: StyleProp<ViewStyle>;
 };
 
 type AlgorithmType = 'text' | 'scored' | null;
@@ -22,6 +25,10 @@ class AlgorithmView
   extends Component<AlgorithmViewProps, Record<string, never>>
   implements AlgorithmVisitor
 {
+  static defaultProps = {
+    style: {},
+  };
+
   private type: AlgorithmType = null;
 
   constructor(props: AlgorithmViewProps) {
@@ -65,10 +72,16 @@ class AlgorithmView
     );
   }
 
-  render() {
+  renderAlgorithm() {
     if (this.type === 'text') return this.renderTextAlgorithm();
     if (this.type === 'scored') return this.renderScoredAlgorithm();
     throw Error('AlgorithmViewVisitor not visited');
+  }
+
+  render() {
+    const { style } = this.props;
+
+    return <View style={style}>{this.renderAlgorithm()}</View>;
   }
 }
 

@@ -6,6 +6,8 @@ import type {
   RenderedAlgorithmCollection,
 } from '@/domain/models/Algorithm';
 import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
+import { StyleSheet } from 'react-native';
+import { theme } from '@/view/theme';
 
 type FilledAlgorithmCollectionProps = {
   collection: RenderedAlgorithmCollection;
@@ -15,7 +17,7 @@ type FilledAlgorithmCollectionProps = {
   onChangeCollection: (collection: RenderedAlgorithmCollection) => void;
 };
 
-export class FilledAlgorithmCollectionView extends PureComponent<FilledAlgorithmCollectionProps> {
+class FilledAlgorithmCollectionView extends PureComponent<FilledAlgorithmCollectionProps> {
   constructor(props: FilledAlgorithmCollectionProps) {
     super(props);
     this.handleChangeAlgorithm = this.handleChangeAlgorithm.bind(this);
@@ -55,9 +57,18 @@ export class FilledAlgorithmCollectionView extends PureComponent<FilledAlgorithm
             algorithm={rAlgo.getAlgorithm()}
             onChangeAlgorithm={this.handleChangeAlgorithm}
             onNextAlgorithm={this.handleNextAlgorithm}
+            style={styles.algorithm}
           />
         ))}
       </>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  algorithm: {
+    marginBottom: theme.spaces.lg,
+  },
+});
+
+export { FilledAlgorithmCollectionView };

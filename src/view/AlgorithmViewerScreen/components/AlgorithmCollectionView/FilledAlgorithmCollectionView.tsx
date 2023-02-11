@@ -12,9 +12,11 @@ import { theme } from '@/view/theme';
 type FilledAlgorithmCollectionProps = {
   collection: RenderedAlgorithmCollection;
   width: number;
+  minHeight: number;
   renderAlgorithm: (a: Algorithm) => Promise<RenderedAlgorithm>;
   renderAlgorithmById: (id: AlgorithmId) => Promise<RenderedAlgorithm>;
   onChangeCollection: (collection: RenderedAlgorithmCollection) => void;
+  onNextAlgorithm: () => void;
 };
 
 class FilledAlgorithmCollectionView extends PureComponent<FilledAlgorithmCollectionProps> {
@@ -35,21 +37,27 @@ class FilledAlgorithmCollectionView extends PureComponent<FilledAlgorithmCollect
     id: AlgorithmId,
     sourceAlgorithm: Algorithm
   ) {
-    const { collection, renderAlgorithmById, onChangeCollection } = this.props;
+    const {
+      collection,
+      renderAlgorithmById,
+      onChangeCollection,
+      onNextAlgorithm,
+    } = this.props;
     const rAlgo = await renderAlgorithmById(id);
     const updatedCollection = collection.selectAlgorithm(
       rAlgo,
       sourceAlgorithm
     );
     onChangeCollection(updatedCollection);
+    setTimeout(onNextAlgorithm, 300);
   }
 
   render() {
-    const { collection, width } = this.props;
+    const { collection, width, minHeight } = this.props;
 
     return (
       <>
-        {collection.get().map((rAlgo) => (
+        {collection.get().map((rAlgo, i, arr) => (
           <AlgorithmView
             key={rAlgo.getAlgorithmId().toString()}
             width={width}
@@ -57,7 +65,7 @@ class FilledAlgorithmCollectionView extends PureComponent<FilledAlgorithmCollect
             algorithm={rAlgo.getAlgorithm()}
             onChangeAlgorithm={this.handleChangeAlgorithm}
             onNextAlgorithm={this.handleNextAlgorithm}
-            style={styles.algorithm}
+            style={[styles.algorithm, arr.length - 1 === i && { minHeight }]}
           />
         ))}
       </>
@@ -68,6 +76,10 @@ class FilledAlgorithmCollectionView extends PureComponent<FilledAlgorithmCollect
 const styles = StyleSheet.create({
   algorithm: {
     marginBottom: theme.spaces.lg,
+  },
+  lastAlgorithm: {
+    backgroundColor: 'red',
+    minHeight: 534, // CHANGE THIS
   },
 });
 

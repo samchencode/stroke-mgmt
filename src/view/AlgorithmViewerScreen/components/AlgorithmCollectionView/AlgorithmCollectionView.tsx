@@ -13,8 +13,10 @@ import { EmptyAlgorithmCollectionView } from '@/view/AlgorithmViewerScreen/compo
 type AlgorithmCollectionViewProps = {
   renderAlgorithm: (a: Algorithm) => Promise<RenderedAlgorithm>;
   renderAlgorithmById: (id: AlgorithmId) => Promise<RenderedAlgorithm>;
+  onNextAlgorithm: () => void;
   initialId: AlgorithmId;
   width: number;
+  minHeight: number;
 };
 
 type AlgorithmCollectionViewState = {
@@ -47,7 +49,13 @@ class AlgorithmCollectionView extends PureComponent<
 
   render() {
     const { collection } = this.state;
-    const { renderAlgorithm, renderAlgorithmById, width } = this.props;
+    const {
+      renderAlgorithm,
+      renderAlgorithmById,
+      onNextAlgorithm,
+      width,
+      minHeight,
+    } = this.props;
 
     if (collection === null) return <EmptyAlgorithmCollectionView />;
 
@@ -55,9 +63,11 @@ class AlgorithmCollectionView extends PureComponent<
       <FilledAlgorithmCollectionView
         collection={collection}
         width={width}
+        minHeight={minHeight}
         renderAlgorithm={renderAlgorithm}
         renderAlgorithmById={renderAlgorithmById}
         onChangeCollection={this.handleChangeCollection}
+        onNextAlgorithm={onNextAlgorithm}
       />
     );
   }

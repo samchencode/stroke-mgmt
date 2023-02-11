@@ -10,7 +10,7 @@ type TemplateGroup = {
   article: ejs.TemplateFunction;
   disclaimer: ejs.TemplateFunction;
   partials: {
-    [key: string]: string;
+    [key: string]: ejs.ClientFunction;
   };
 };
 
@@ -29,6 +29,8 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
       require('@/infrastructure/rendering/ejs/EjsRenderer/partials/style.ejs'),
       require('@/infrastructure/rendering/ejs/EjsRenderer/partials/script.ejs'),
       require('@/infrastructure/rendering/ejs/EjsRenderer/partials/head.ejs'),
+      require('@/infrastructure/rendering/ejs/EjsRenderer/partials/noOutcomesYet.ejs'),
+      require('@/infrastructure/rendering/ejs/EjsRenderer/partials/outcomeList.ejs'),
       require('@/infrastructure/rendering/ejs/EjsRenderer/textAlgorithm.ejs'),
       require('@/infrastructure/rendering/ejs/EjsRenderer/scoredAlgorithm.ejs'),
       require('@/infrastructure/rendering/ejs/EjsRenderer/article.ejs'),
@@ -39,6 +41,8 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
       styleEjs,
       scriptEjs,
       headEjs,
+      noOutcomesYetEjs,
+      outcomeListEjs,
       textAlgorithmEjs,
       scoredAlgorithmEjs,
       articleEjs,
@@ -50,9 +54,11 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
       article: ejs.compile(articleEjs),
       disclaimer: ejs.compile(disclaimerEjs),
       partials: {
-        head: headEjs,
-        script: scriptEjs,
-        style: styleEjs,
+        head: ejs.compile(headEjs, { client: true }),
+        script: ejs.compile(scriptEjs, { client: true }),
+        style: ejs.compile(styleEjs, { client: true }),
+        noOutcomesYet: ejs.compile(noOutcomesYetEjs, { client: true }),
+        outcomeList: ejs.compile(outcomeListEjs, { client: true }),
       },
     };
   }
@@ -66,10 +72,10 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
     const visitor = new EjsAlgorithmVisitor(textTemplate, scoredTemplate);
     visitor.visit(algorithm);
 
-    const includePartial = (name: string) => {
+    const includePartial = (name: string, d?: Record<string, unknown>) => {
       if (!(name in partials))
         throw new Error(`Unknown partial included: ${name}`);
-      return partials[name];
+      return partials[name](d, undefined, includePartial);
     };
 
     return visitor.render({ algorithm }, undefined, includePartial);

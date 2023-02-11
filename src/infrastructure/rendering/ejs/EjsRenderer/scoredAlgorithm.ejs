@@ -28,25 +28,7 @@
       </li>
       <% } %>
     </ul>
-    <hr>
-    <% if(algorithm.hasOutcomes()) { %>
-    <ul class="template outcomes__list">
-      <h1 class="template outcomes__headline">Results</h1>
-      <% for(const outcome of algorithm.getOutcomes()) { %>
-      <li class="template outcomes__list-item">
-        <details class="template outcomes__item" <%= algorithm.getOutcomes().length === 1 ? 'open' : '' %>>
-          <summary><span class="template outcomes__title"><%- outcome.getTitle() %><span></summary>
-          <div class="template outcomes__body"><%- outcome.getBody() %></div>
-          <% if(outcome.getNext()) { %>
-          <button class="template outcomes__button" data-next-id="<%= outcome.getNext().getId() %>">
-            Continue
-          </button>
-          <% } %>
-        </details>
-      </li>
-      <% } %>
-    </ul>
-    <% } %>
+    <%- include('outcomeList', { algorithm }) %>
   </main>
 
   <%- include('script') %>

@@ -13,6 +13,8 @@ describe('EjsAlgorithmRenderer', () => {
       '@/infrastructure/rendering/ejs/EjsRenderer/partials/style.ejs',
       '@/infrastructure/rendering/ejs/EjsRenderer/partials/script.ejs',
       '@/infrastructure/rendering/ejs/EjsRenderer/partials/head.ejs',
+      '@/infrastructure/rendering/ejs/EjsRenderer/partials/noOutcomesYet.ejs',
+      '@/infrastructure/rendering/ejs/EjsRenderer/partials/outcomeList.ejs',
       '@/infrastructure/rendering/ejs/EjsRenderer/textAlgorithm.ejs',
       '@/infrastructure/rendering/ejs/EjsRenderer/scoredAlgorithm.ejs',
       '@/infrastructure/rendering/ejs/EjsRenderer/article.ejs',

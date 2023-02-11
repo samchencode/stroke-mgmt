@@ -148,7 +148,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
   body {
-    margin: 0;
+    margin: 0 16px;
     padding: 0;
   }
 
@@ -258,9 +258,10 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
   .template.outcomes__headline {
     margin: 0;
-    /* headline-medium */
-    line-height: 36px;
-    font-size: 28px;
+    margin-top: 16px;
+    /* headline-small */
+    line-height: 32px;
+    font-size: 24px;
     font-weight: 400;
   }
 
@@ -297,6 +298,11 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
   .template.outcomes__item[open] .template.outcomes__title {
     color: black;
+  }
+
+  .template.outcomes__item--empty {
+    background-color: inherit;
+    border-style: dashed;
   }
 
   .template.outcomes__body {
@@ -374,8 +380,16 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       </li>
       
     </ul>
-    <hr>
-    
+    <ul class="template outcomes__list">
+  <h1 class="template outcomes__headline">Results</h1>
+  
+  <li class="template outcomes__list-item">
+  <div class="template outcomes__item--empty outcomes__item">
+    Results will appear here when all fields of the algorithm have been filled.
+  </div>
+</li>
+  
+</ul>
   </main>
 
   <script>
@@ -490,7 +504,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
   body {
-    margin: 0;
+    margin: 0 16px;
     padding: 0;
   }
 
@@ -600,9 +614,10 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 
   .template.outcomes__headline {
     margin: 0;
-    /* headline-medium */
-    line-height: 36px;
-    font-size: 28px;
+    margin-top: 16px;
+    /* headline-small */
+    line-height: 32px;
+    font-size: 24px;
     font-weight: 400;
   }
 
@@ -641,6 +656,11 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     color: black;
   }
 
+  .template.outcomes__item--empty {
+    background-color: inherit;
+    border-style: dashed;
+  }
+
   .template.outcomes__body {
     margin-top: 16px;
   }
@@ -669,33 +689,32 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     <p class="template body__paragraph">
       <img src="https://placeimg.com/640/480/any" height="100"><ul><li>airway</li><li>breathing</li><li>circulation</li><li>time of stroke onset</li><a href="google.com">google</a></ul>
     </p>
-    <hr>
-    
     <ul class="template outcomes__list">
-      <h1 class="template outcomes__headline">Results</h1>
+  <h1 class="template outcomes__headline">Results</h1>
+  
+  
+  <li class="template outcomes__list-item">
+    <details class="template outcomes__item" >
+      <summary><span class="template outcomes__title">Stable<span></summary>
+      <div class="template outcomes__body">Proceed to GWNS algorithm</div>
       
-      <li class="template outcomes__list-item">
-        <details class="template outcomes__item" >
-          <summary><span class="template outcomes__title">Stable<span></summary>
-          <div class="template outcomes__body">Proceed to GWNS algorithm</div>
-          
-          <button class="template outcomes__button" data-next-id="1">
-            Continue
-          </button>
-          
-        </details>
-      </li>
+      <button class="template outcomes__button" data-next-id="1">
+        Continue
+      </button>
       
-      <li class="template outcomes__list-item">
-        <details class="template outcomes__item" >
-          <summary><span class="template outcomes__title">Not Stable<span></summary>
-          <div class="template outcomes__body">Stabilize ABCTs before continuing!</div>
-          
-        </details>
-      </li>
+    </details>
+  </li>
+  
+  <li class="template outcomes__list-item">
+    <details class="template outcomes__item" >
+      <summary><span class="template outcomes__title">Not Stable<span></summary>
+      <div class="template outcomes__body">Stabilize ABCTs before continuing!</div>
       
-    </ul>
-    
+    </details>
+  </li>
+  
+  
+</ul>
   </main>
 
   <script>

@@ -5,9 +5,9 @@ import type {
 } from '@/domain/models/Article';
 
 interface ArticleRepository {
-  getArticlesByDesignation(d: BaseDesignation): Promise<Article[]>;
-  getArticleById(id: ArticleId): Promise<Article>;
-  getAllArticles(): Promise<Article[]>;
+  getByDesignation(d: BaseDesignation): Promise<Article[]>;
+  getById(id: ArticleId): Promise<Article>;
+  getAll(): Promise<Article[]>;
 }
 
 export type { ArticleRepository };

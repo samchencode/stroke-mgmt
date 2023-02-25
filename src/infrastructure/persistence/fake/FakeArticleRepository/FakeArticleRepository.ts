@@ -6,7 +6,7 @@ import { fakeArticles } from '@/infrastructure/persistence/fake/FakeArticleRepos
 class FakeArticleRepository implements ArticleRepository {
   fakeArticles = fakeArticles.slice();
 
-  async getAllArticles(): Promise<Article[]> {
+  async getAll(): Promise<Article[]> {
     return this.fakeArticles.map(
       (p) =>
         new Article({
@@ -18,7 +18,7 @@ class FakeArticleRepository implements ArticleRepository {
     );
   }
 
-  async getArticlesByDesignation(d: BaseDesignation): Promise<Article[]> {
+  async getByDesignation(d: BaseDesignation): Promise<Article[]> {
     let articles = this.fakeArticles;
     if (d.type === 'StrokeFacts') {
       articles = fakeArticles.filter((a) => a.designation === 'STROKE_FACTS');
@@ -41,7 +41,7 @@ class FakeArticleRepository implements ArticleRepository {
     );
   }
 
-  async getArticleById(id: ArticleId): Promise<Article> {
+  async getById(id: ArticleId): Promise<Article> {
     const articles = this.fakeArticles.find((a) => a.id === id.getId());
     if (!articles) throw Error('Article not found');
 

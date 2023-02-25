@@ -9,7 +9,7 @@ class GetDisclaimerAction {
   }
 
   async execute() {
-    const [disclaimer] = await this.repo.getArticlesByDesignation(
+    const [disclaimer] = await this.repo.getByDesignation(
       Designation.DISCLAIMER
     );
     return disclaimer;

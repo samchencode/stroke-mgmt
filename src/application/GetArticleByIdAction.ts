@@ -5,7 +5,7 @@ class GetArticleByIdAction {
   constructor(private articleRepository: ArticleRepository) {}
 
   async execute(id: ArticleId) {
-    return this.articleRepository.getArticleById(id);
+    return this.articleRepository.getById(id);
   }
 }
 

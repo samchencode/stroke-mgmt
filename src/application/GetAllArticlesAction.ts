@@ -8,7 +8,7 @@ class GetAllArticlesAction {
   }
 
   async execute() {
-    return this.repo.getAllArticles();
+    return this.repo.getAll();
   }
 }
 

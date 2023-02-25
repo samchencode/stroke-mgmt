@@ -9,7 +9,7 @@ class GetStrokeSignsAction {
   }
 
   async execute() {
-    const [strokeSigns] = await this.repo.getArticlesByDesignation(
+    const [strokeSigns] = await this.repo.getByDesignation(
       Designation.STROKE_SIGNS
     );
     return strokeSigns;

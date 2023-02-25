@@ -47,7 +47,7 @@ function factory(
           onSelectAlgorithm={handleSelectAlgorithm}
         />
         <ArticleList
-          data={articles.slice(10, 20)}
+          data={articles}
           onSelectArticle={handleSelectArticle}
           style={styles.articleList}
         />

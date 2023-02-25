@@ -8,8 +8,6 @@ import { RenderDisclaimerAction } from '@/application/RenderDisclaimerAction';
 import { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import { ExpoAssetFileSystem } from '@/infrastructure/file-system/expo-asset/ExpoAssetFileSystem';
-import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
-import { FakeAlgorithmRepository } from '@/infrastructure/persistence/fake/FakeAlgorithmRepository';
 import { factory as App } from '@/view/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import { factory as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
@@ -23,8 +21,22 @@ import { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import { EjsRenderer } from '@/infrastructure/rendering/ejs/EjsRenderer';
 import { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
+import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository';
+import { StrapiAlgorihtmRepository } from '@/infrastructure/persistence/strapi/StrapiAlgorithmRepository';
+
+import Constants from 'expo-constants';
+
+const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
 export const module = {
+  // CONFIG
+  strapiHostUrl: [
+    'value',
+    production
+      ? 'https://stroke-mgmt-cms.onrender.com'
+      : 'http://localhost:1337',
+  ],
+
   // APPLICATION
   getAllArticlesAction: ['type', GetAllArticlesAction],
   getArticleByIdAction: ['type', GetArticleByIdAction],
@@ -41,8 +53,8 @@ export const module = {
   renderStrokeSignsAction: ['type', RenderStrokeSignsAction],
 
   // INFRASTRUCTURE
-  articleRepository: ['type', FakeArticleRepository],
-  algorithmRepository: ['type', FakeAlgorithmRepository],
+  articleRepository: ['type', StrapiArticleRepository],
+  algorithmRepository: ['type', StrapiAlgorihtmRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   articleRenderer: [
     'factory',
@@ -60,4 +72,7 @@ export const module = {
   DisclaimerModal: ['factory', DisclaimerModal],
   ArticleViewerScreen: ['factory', ArticleViewerScreen],
   AlgorithmViewerScreen: ['factory', AlgorithmViewerScreen],
+
+  // BUILT-INS
+  fetch: ['value', fetch],
 };

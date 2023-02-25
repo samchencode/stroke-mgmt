@@ -38,7 +38,6 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
           source={{ html }}
           originWhitelist={['*']}
           style={{ width }}
-          scrollEnabled={false}
           onMessage={handleMessage}
         />
       </View>

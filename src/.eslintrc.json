@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": [".*"],
+            "message": "Please use absolute path imports instead."
+          }
+        ]
+      }
+    ]
+  }
+}

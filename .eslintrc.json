@@ -23,17 +23,6 @@
   },
   "plugins": ["react-native", "react", "@typescript-eslint"],
   "rules": {
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": [
-          {
-            "group": [".*"],
-            "message": "Please use absolute path imports instead."
-          }
-        ]
-      }
-    ],
     "no-duplicate-imports": "off",
     "@typescript-eslint/no-duplicate-imports": ["error"],
     "@typescript-eslint/consistent-type-imports": [

@@ -40,7 +40,7 @@ export type StrapiAlgorithmData = {
       id: number;
       Label: string;
       Value: number;
-      SwitchId: string;
+      Description: string | null;
     }[];
   };
 };

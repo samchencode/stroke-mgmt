@@ -57,11 +57,12 @@ export const strapiResponseToAlgorithm = ({
     return new TextAlgorithm({ info });
   }
   const switches = switchData.map(
-    ({ id: switchId, Label, Value }) =>
+    ({ id: switchId, Label, Value, Description }) =>
       new Switch({
         id: new SwitchId(switchId.toString()),
         label: Label,
         value: Value,
+        description: Description ?? undefined,
       })
   );
 

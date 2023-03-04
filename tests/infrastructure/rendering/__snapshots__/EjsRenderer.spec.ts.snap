@@ -35,6 +35,8 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
+      const href = a.getAttribute('href')
+      if (href.slice(0, 1) === '#') continue
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const href = e.target.getAttribute('href')
@@ -513,6 +515,8 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
+      const href = a.getAttribute('href')
+      if (href.slice(0, 1) === '#') continue
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const href = e.target.getAttribute('href')
@@ -885,6 +889,8 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   (function() {
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
+      const href = a.getAttribute('href')
+      if (href.slice(0, 1) === '#') continue
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const href = e.target.getAttribute('href')

@@ -66,7 +66,7 @@ const abctAlgorithm = (() => {
       new Outcome({
         title: 'Stable',
         body: 'Proceed to GWNS algorithm',
-        next: gwnsAlgorithm,
+        next: gwnsAlgorithm.getId(),
       }),
       new Outcome({
         title: 'Not Stable',

@@ -87,7 +87,7 @@ describe('RenderedAlgorithm', () => {
             new Outcome({
               title: 'example outcome',
               body: 'example outcome',
-              next: algo2,
+              next: new AlgorithmId('20'),
               criterion: new GreaterThanCriterion(2),
             }),
           ],
@@ -144,13 +144,13 @@ describe('RenderedAlgorithm', () => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const nextAlgo = algo1.getOutcomes()[0].getNext()!;
       const updatedCollection = collection.selectAlgorithm(
-        new RenderedAlgorithm(nextAlgo, 'dummy next algo html'),
+        new RenderedAlgorithm(algo2, 'dummy next algo html'),
         algo1
       );
       expect(updatedCollection.length).toBe(2);
-      expect(
-        updatedCollection.get()[1].getAlgorithmId().is(nextAlgo.getId())
-      ).toBe(true);
+      expect(updatedCollection.get()[1].getAlgorithmId().is(nextAlgo)).toBe(
+        true
+      );
     });
 
     it('should delete all elements beyond a newly added algorithm', () => {

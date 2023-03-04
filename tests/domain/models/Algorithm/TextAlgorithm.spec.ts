@@ -39,7 +39,7 @@ describe('TextAlgorithm', () => {
       outcome = new Outcome({
         title: 'outcome title',
         body: 'outcome body',
-        next: nextAlgo,
+        next: new AlgorithmId('1'),
       });
       const info = new AlgorithmInfo({
         title: 'test algo',
@@ -84,7 +84,7 @@ describe('TextAlgorithm', () => {
 
     it('should get next algorithm', () => {
       const [thisOutcome] = algo.getOutcomes();
-      expect(thisOutcome.getNext()).toBe(nextAlgo);
+      expect(thisOutcome.getNext()?.is(new AlgorithmId('1'))).toBe(true);
       expect(nextAlgo.getOutcomes()[0].getNext()).toBeNull();
     });
   });

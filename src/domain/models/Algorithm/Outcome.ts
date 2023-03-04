@@ -1,12 +1,12 @@
 import type { Criterion } from '@/domain/models/Algorithm/Criterion';
 import { NoCriterion } from '@/domain/models/Algorithm/Criterion';
-import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
+import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
 
 type OutcomeParams = {
   title: string;
   body: string;
   criterion?: Criterion;
-  next?: Algorithm;
+  next?: AlgorithmId;
 };
 
 class Outcome {
@@ -16,7 +16,7 @@ class Outcome {
 
   private criterion: Criterion;
 
-  private next: Algorithm | null;
+  private next: AlgorithmId | null;
 
   constructor({ title, body, criterion, next }: OutcomeParams) {
     this.title = title;

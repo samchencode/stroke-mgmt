@@ -28,7 +28,7 @@ export const strapiResponseToAlgorithm = ({
   } = attributes;
 
   const outcomes = outcomeData.map(
-    ({ Title: tData, Body: bData, criterion: critData }) => {
+    ({ Title: tData, Body: bData, criterion: critData, next: nextData }) => {
       let criterion: Criterion = new NoCriterion();
 
       if (critData?.Type === 'GreaterThan') {
@@ -37,7 +37,11 @@ export const strapiResponseToAlgorithm = ({
         criterion = new LessThanCriterion(critData?.Value);
       }
 
-      return new Outcome({ title: tData, body: bData, criterion });
+      const next = nextData.data
+        ? new AlgorithmId(nextData.data.id.toString(10))
+        : undefined;
+
+      return new Outcome({ title: tData, body: bData, criterion, next });
     }
   );
 

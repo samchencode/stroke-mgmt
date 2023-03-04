@@ -25,11 +25,16 @@ export type StrapiAlgorithmData = {
       id: number;
       Title: string;
       Body: string;
-      criterion?: {
-        id: number;
-        Type: 'LessThan' | 'GreaterThan' | 'None';
-        Value: number;
+      next: {
+        data: { id: number } | null;
       };
+      criterion?:
+        | {
+            id: number;
+            Type: 'LessThan' | 'GreaterThan';
+            Value: number;
+          }
+        | { id: number; Type: 'None'; Value: null };
     }[];
     switches: {
       id: number;

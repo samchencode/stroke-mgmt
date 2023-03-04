@@ -58,6 +58,7 @@ describe('ScoredAlgorithm', () => {
         id: new SwitchId('0'),
         label: 'switch label text',
         value: 3,
+        description: 'demo switch',
       });
 
       const switches = [aSwitch];

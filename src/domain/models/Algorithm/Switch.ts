@@ -6,6 +6,7 @@ type SwitchParams = {
   value: number;
   active?: boolean;
   set?: boolean;
+  description?: string;
 };
 
 class Switch {
@@ -19,12 +20,22 @@ class Switch {
 
   private set: boolean;
 
-  constructor({ id, label, value, active = false, set = false }: SwitchParams) {
+  private description?: string;
+
+  constructor({
+    id,
+    label,
+    value,
+    description,
+    active = false,
+    set = false,
+  }: SwitchParams) {
     this.id = id;
     this.label = label;
     this.value = value;
     this.active = active;
     this.set = set;
+    this.description = description;
   }
 
   setSwitchTo(active: boolean) {
@@ -41,6 +52,10 @@ class Switch {
 
   getValue() {
     return this.value;
+  }
+
+  getDescription() {
+    return this.description;
   }
 
   isActive() {

@@ -78,6 +78,7 @@ class Switch {
       value: this.value,
       active: this.active,
       set: this.set,
+      description: this.description,
       ...params,
     };
     return new Switch(newParams);

@@ -60,6 +60,7 @@ function ScoredAlgorithmView({
         style={{ width }}
         onMessage={handleMessage}
         scrollEnabled={false}
+        textInteractionEnabled
       />
     </View>
   );

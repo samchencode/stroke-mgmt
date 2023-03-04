@@ -17,7 +17,13 @@
     <ul class="template switches__list">
       <% for(const sw of algorithm.getSwitches()) { %>
       <li class="template switches__list-item">
-        <span class="template switches__group-label"><%- sw.getLabel() %></span>
+        <label for="switches__tooltip-select--<%= sw.getId() %>" class="template switches__group-label <% if(sw.getDescription()) { %>switches__group-label--has-description<% } %>">
+          <%- sw.getLabel() %>
+        </label>
+        <% if (sw.getDescription()) { %>
+        <input type="radio" class="template switches__tooltip-select" name="switches__tooltip-select" id="switches__tooltip-select--<%= sw.getId() %>">
+        <div class="template switches__tooltip"><%- sw.getDescription() %></div>
+        <% } %>
         <div class="template switches__radiogroup">
           <input class="template switches__input switches__input--yes" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-yes" type="radio" <% if(sw.isActive() && sw.isSet()) { %> checked <% } %>>
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-<%= sw.getId() %>-yes">Yes</label>

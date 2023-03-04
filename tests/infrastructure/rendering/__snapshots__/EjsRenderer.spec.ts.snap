@@ -191,10 +191,42 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     align-items: center;
     padding-top: 8px;
     user-select: none;
+    position: relative;
   }
 
   .template.switches__list-item:first-child {
     padding-top: 0;
+  }
+
+  .template.switches__tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #efefef;
+    padding: 4px;
+    border-radius: 4px;
+    z-index: 999;
+    /* body-small */
+    line-height: 16px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+  }
+
+  .template.switches__group-label--has-description::after {
+    content: 'ⓘ';
+    display: inline-block;
+    margin-left: 4px;
+  }
+
+  .template.switches__tooltip-select {
+    height: 0px;
+    width: 0px;
+    visibility: transparent;
+  }
+
+  .template.switches__tooltip-select:checked+.template.switches__tooltip {
+    display: block;
   }
 
   .template.switches__input {
@@ -336,7 +368,10 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     <ul class="template switches__list">
       
       <li class="template switches__list-item">
-        <span class="template switches__group-label">Gaze Deviation</span>
+        <label for="switches__tooltip-select--0" class="template switches__group-label ">
+          Gaze Deviation
+        </label>
+        
         <div class="template switches__radiogroup">
           <input class="template switches__input switches__input--yes" name="switch-0" id="switch-0-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-0-yes">Yes</label>
@@ -347,7 +382,10 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       </li>
       
       <li class="template switches__list-item">
-        <span class="template switches__group-label">Weakness</span>
+        <label for="switches__tooltip-select--1" class="template switches__group-label ">
+          Weakness
+        </label>
+        
         <div class="template switches__radiogroup">
           <input class="template switches__input switches__input--yes" name="switch-1" id="switch-1-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-1-yes">Yes</label>
@@ -358,7 +396,10 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       </li>
       
       <li class="template switches__list-item">
-        <span class="template switches__group-label">Neglect/Disregard/Extinction</span>
+        <label for="switches__tooltip-select--2" class="template switches__group-label ">
+          Neglect/Disregard/Extinction
+        </label>
+        
         <div class="template switches__radiogroup">
           <input class="template switches__input switches__input--yes" name="switch-2" id="switch-2-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-2-yes">Yes</label>
@@ -369,7 +410,10 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       </li>
       
       <li class="template switches__list-item">
-        <span class="template switches__group-label">Speech impairment</span>
+        <label for="switches__tooltip-select--3" class="template switches__group-label ">
+          Speech impairment
+        </label>
+        
         <div class="template switches__radiogroup">
           <input class="template switches__input switches__input--yes" name="switch-3" id="switch-3-yes" type="radio" >
           <label class="template switches__radio-label switches__radio-label--yes" for="switch-3-yes">Yes</label>
@@ -488,6 +532,21 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       })
     );
   })();
+
+  ; // Clear tooltip on click out
+  (function() {
+    const ignoreList = document.querySelectorAll('.template.switches__tooltip, .template.switches__group-label, .template.switches__tooltip-select')
+    const selects = document.querySelectorAll('.template.switches__tooltip-select')
+
+    document.body.addEventListener('click', (e) => {
+      for (const el of selects) {
+        el.checked = false
+      }
+    })
+    Array.from(ignoreList).forEach(el => {
+      el.addEventListener('click', (e) => e.stopPropagation())
+    })
+  })()
 </script>
 </body>
 
@@ -547,10 +606,42 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     align-items: center;
     padding-top: 8px;
     user-select: none;
+    position: relative;
   }
 
   .template.switches__list-item:first-child {
     padding-top: 0;
+  }
+
+  .template.switches__tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #efefef;
+    padding: 4px;
+    border-radius: 4px;
+    z-index: 999;
+    /* body-small */
+    line-height: 16px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+  }
+
+  .template.switches__group-label--has-description::after {
+    content: 'ⓘ';
+    display: inline-block;
+    margin-left: 4px;
+  }
+
+  .template.switches__tooltip-select {
+    height: 0px;
+    width: 0px;
+    visibility: transparent;
+  }
+
+  .template.switches__tooltip-select:checked+.template.switches__tooltip {
+    display: block;
   }
 
   .template.switches__input {
@@ -813,6 +904,21 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
       })
     );
   })();
+
+  ; // Clear tooltip on click out
+  (function() {
+    const ignoreList = document.querySelectorAll('.template.switches__tooltip, .template.switches__group-label, .template.switches__tooltip-select')
+    const selects = document.querySelectorAll('.template.switches__tooltip-select')
+
+    document.body.addEventListener('click', (e) => {
+      for (const el of selects) {
+        el.checked = false
+      }
+    })
+    Array.from(ignoreList).forEach(el => {
+      el.addEventListener('click', (e) => e.stopPropagation())
+    })
+  })()
 </script>
 </body>
 

@@ -43,10 +43,42 @@
     align-items: center;
     padding-top: 8px;
     user-select: none;
+    position: relative;
   }
 
   .template.switches__list-item:first-child {
     padding-top: 0;
+  }
+
+  .template.switches__tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #efefef;
+    padding: 4px;
+    border-radius: 4px;
+    z-index: 999;
+    /* body-small */
+    line-height: 16px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+  }
+
+  .template.switches__group-label--has-description::after {
+    content: 'ⓘ';
+    display: inline-block;
+    margin-left: 4px;
+  }
+
+  .template.switches__tooltip-select {
+    height: 0px;
+    width: 0px;
+    visibility: transparent;
+  }
+
+  .template.switches__tooltip-select:checked+.template.switches__tooltip {
+    display: block;
   }
 
   .template.switches__input {

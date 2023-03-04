@@ -94,4 +94,19 @@
       })
     );
   })();
+
+  ; // Clear tooltip on click out
+  (function() {
+    const ignoreList = document.querySelectorAll('.template.switches__tooltip, .template.switches__group-label, .template.switches__tooltip-select')
+    const selects = document.querySelectorAll('.template.switches__tooltip-select')
+
+    document.body.addEventListener('click', (e) => {
+      for (const el of selects) {
+        el.checked = false
+      }
+    })
+    Array.from(ignoreList).forEach(el => {
+      el.addEventListener('click', (e) => e.stopPropagation())
+    })
+  })()
 </script>

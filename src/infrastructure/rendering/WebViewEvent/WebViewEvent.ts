@@ -2,7 +2,7 @@ export type WebViewSwitchChangedEvent = {
   readonly type: 'switchchanged';
   content: {
     id: string;
-    active: boolean;
+    levelId: string;
   };
 };
 

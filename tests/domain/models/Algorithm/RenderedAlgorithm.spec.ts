@@ -6,7 +6,7 @@ import {
   RenderedAlgorithm,
   RenderedAlgorithmCollection,
   ScoredAlgorithm,
-  Switch,
+  YesNoSwitch,
   SwitchId,
   TextAlgorithm,
 } from '@/domain/models/Algorithm';
@@ -94,10 +94,10 @@ describe('RenderedAlgorithm', () => {
           summary: 'test algo',
         }),
         switches: [
-          new Switch({
+          new YesNoSwitch({
             id: new SwitchId('0'),
             label: 'example switch',
-            value: 3,
+            valueIfActive: 3,
           }),
         ],
       });
@@ -110,7 +110,7 @@ describe('RenderedAlgorithm', () => {
       expect(collection.length).toBe(1);
       expect(storedAlgo.calculateScore()).toBe(0);
 
-      algo1 = algo1.setSwitchById(new SwitchId('0'), true);
+      algo1 = algo1.setSwitchById(new SwitchId('0'), YesNoSwitch.YES);
       const updatedCollection = collection.setAlgorithm(
         new RenderedAlgorithm(algo1, 'dummmy html updated')
       );
@@ -127,7 +127,7 @@ describe('RenderedAlgorithm', () => {
       const rAlgo3 = new RenderedAlgorithm(algo3, 'dummy html for algo 3');
       const collection = new RenderedAlgorithmCollection([rAlgo1, rAlgo3]);
       expect(collection.length).toBe(2);
-      algo1 = algo1.setSwitchById(new SwitchId('0'), true);
+      algo1 = algo1.setSwitchById(new SwitchId('0'), YesNoSwitch.YES);
       const updatedCollection = collection.setAlgorithm(
         new RenderedAlgorithm(algo1, 'updated dummy html for algo 1')
       );
@@ -140,7 +140,7 @@ describe('RenderedAlgorithm', () => {
     it('should add new algo to collection after algo that triggered it', () => {
       const rAlgo1 = new RenderedAlgorithm(algo1, 'dummy html');
       const collection = new RenderedAlgorithmCollection(rAlgo1);
-      algo1 = algo1.setSwitchById(new SwitchId('0'), true);
+      algo1 = algo1.setSwitchById(new SwitchId('0'), YesNoSwitch.YES);
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const nextAlgo = algo1.getOutcomes()[0].getNext()!;
       const updatedCollection = collection.selectAlgorithm(

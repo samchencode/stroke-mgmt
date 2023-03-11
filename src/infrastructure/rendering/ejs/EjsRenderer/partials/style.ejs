@@ -97,41 +97,35 @@
   }
 
   .template.switches__radiogroup {
-    position: relative;
-    padding: 4px 8px 4px 8px;
+    display: flex;
+    flex-direction: row;
     border-radius: 999px;
     border: 1px solid black;
     overflow: hidden;
+  }
+
+  .template.switches__level {
+    flex: 1;
+    padding: 8px;
+  }
+
+  .template.switches__level:first-child {
+    padding-left: 16px;
+  }
+
+  .template.switches__level:last-child {
+    padding-right: 16px;
+  }
+
+  .template.switches__level--checked {
+    background-color: black;
+    color: white;
   }
 
   .template.switches__radio-label {
     display: inline-block;
     width: 2em;
     text-align: center;
-  }
-
-  .template.switches__radiogroup-bg {
-    background-color: black;
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    z-index: -1;
-    display: none;
-  }
-
-  .template.switches__input:checked+.template.switches__radio-label {
-    color: white;
-  }
-
-  .template.switches__input--yes:checked~.template.switches__radiogroup-bg {
-    display: block;
-    left: 0;
-  }
-
-  .template.switches__input--no:checked~.template.switches__radiogroup-bg {
-    display: block;
-    right: 0;
   }
 
   .template.outcomes__list {

@@ -4,17 +4,21 @@ import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import { NoSwitchesError } from '@/domain/models/Algorithm/NoSwitchesError';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
-import type { Switch, SwitchId } from '@/domain/models/Algorithm/Switch';
+import type {
+  YesNoSwitch,
+  SwitchId,
+  LevelId,
+} from '@/domain/models/Algorithm/Switch';
 
 type ScoredAlgorithmParams = {
   info: AlgorithmInfo;
-  switches: Switch[];
+  switches: YesNoSwitch[];
 };
 
 class ScoredAlgorithm implements Algorithm {
   private info: AlgorithmInfo;
 
-  private switches: Switch[];
+  private switches: YesNoSwitch[];
 
   constructor({ info, switches }: ScoredAlgorithmParams) {
     this.info = info;
@@ -37,15 +41,14 @@ class ScoredAlgorithm implements Algorithm {
   }
 
   calculateScore() {
-    const activeSwitches = this.switches.filter((s) => s.isActive());
-    return activeSwitches.reduce((ag, v) => ag + v.getValue(), 0);
+    return this.switches.reduce((ag, v) => ag + v.getValue(), 0);
   }
 
-  setSwitchById(id: SwitchId, newActiveValue: boolean) {
+  setSwitchById(id: SwitchId, levelId: LevelId) {
     const targetSwitchIdx = this.switches.findIndex((ss) => id.is(ss.getId()));
     if (targetSwitchIdx === -1) throw new Error(`switch id ${id} not found`);
     const targetSwitch = this.switches[targetSwitchIdx];
-    const newSwitch = targetSwitch.setSwitchTo(newActiveValue);
+    const newSwitch = targetSwitch.setSwitchTo(levelId);
     const switches = this.switches.slice();
     switches.splice(targetSwitchIdx, 1, newSwitch);
     return this.clone({ switches });
@@ -67,7 +70,7 @@ class ScoredAlgorithm implements Algorithm {
     return this.info.getSummary();
   }
 
-  getSwitches(): Switch[] {
+  getSwitches(): YesNoSwitch[] {
     return this.switches;
   }
 

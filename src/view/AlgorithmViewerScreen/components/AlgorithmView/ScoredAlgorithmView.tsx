@@ -9,6 +9,7 @@ import {
   WebViewEventHandler,
   WebViewError,
 } from '@/infrastructure/rendering/WebViewEvent';
+import { LevelId } from '@/domain/models/Algorithm/Switch';
 
 type ScoredAlgorithmViewProps = {
   html: string;
@@ -34,8 +35,11 @@ function ScoredAlgorithmView({
         error: ({ name, message }) => {
           throw new WebViewError(name, message);
         },
-        switchchanged: ({ id, active }) => {
-          const newAlgo = algorithm.setSwitchById(new SwitchId(id), active);
+        switchchanged: ({ id, levelId }) => {
+          const newAlgo = algorithm.setSwitchById(
+            new SwitchId(id),
+            new LevelId(levelId)
+          );
           onChangeAlgorithm(newAlgo);
         },
         nextpressed: ({ id }) =>

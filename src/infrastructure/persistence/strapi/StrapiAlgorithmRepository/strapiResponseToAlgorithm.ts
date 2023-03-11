@@ -3,7 +3,7 @@ import {
   AlgorithmInfo,
   Outcome,
   ScoredAlgorithm,
-  Switch,
+  YesNoSwitch,
   SwitchId,
   TextAlgorithm,
 } from '@/domain/models/Algorithm';
@@ -58,10 +58,10 @@ export const strapiResponseToAlgorithm = ({
   }
   const switches = switchData.map(
     ({ id: switchId, Label, Value, Description }) =>
-      new Switch({
+      new YesNoSwitch({
         id: new SwitchId(switchId.toString()),
         label: Label,
-        value: Value,
+        valueIfActive: Value,
         description: Description ?? undefined,
       })
   );

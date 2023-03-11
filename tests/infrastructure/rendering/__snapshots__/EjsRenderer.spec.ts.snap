@@ -247,41 +247,35 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   }
 
   .template.switches__radiogroup {
-    position: relative;
-    padding: 4px 8px 4px 8px;
+    display: flex;
+    flex-direction: row;
     border-radius: 999px;
     border: 1px solid black;
     overflow: hidden;
+  }
+
+  .template.switches__level {
+    flex: 1;
+    padding: 8px;
+  }
+
+  .template.switches__level:first-child {
+    padding-left: 16px;
+  }
+
+  .template.switches__level:last-child {
+    padding-right: 16px;
+  }
+
+  .template.switches__level--checked {
+    background-color: black;
+    color: white;
   }
 
   .template.switches__radio-label {
     display: inline-block;
     width: 2em;
     text-align: center;
-  }
-
-  .template.switches__radiogroup-bg {
-    background-color: black;
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    z-index: -1;
-    display: none;
-  }
-
-  .template.switches__input:checked+.template.switches__radio-label {
-    color: white;
-  }
-
-  .template.switches__input--yes:checked~.template.switches__radiogroup-bg {
-    display: block;
-    left: 0;
-  }
-
-  .template.switches__input--no:checked~.template.switches__radiogroup-bg {
-    display: block;
-    right: 0;
   }
 
   .template.outcomes__list {
@@ -375,11 +369,21 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
         </label>
         
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-0" id="switch-0-yes" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--yes" for="switch-0-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-0" id="switch-0-no" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--no" for="switch-0-no">No</label>
-          <div class="template switches__radiogroup-bg"></div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--yes" name="switch-0" id="switch-0-yes" type="radio"  data-switch-id="0" data-level-id="yes">
+            <label class="template switches__radio-label switches__radio-label--yes" for="switch-0-yes">
+              Yes
+            </label>
+          </div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--no" name="switch-0" id="switch-0-no" type="radio"  data-switch-id="0" data-level-id="no">
+            <label class="template switches__radio-label switches__radio-label--no" for="switch-0-no">
+              No
+            </label>
+          </div>
+          
         </div>
       </li>
       
@@ -389,11 +393,21 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
         </label>
         
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-1" id="switch-1-yes" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--yes" for="switch-1-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-1" id="switch-1-no" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--no" for="switch-1-no">No</label>
-          <div class="template switches__radiogroup-bg"></div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--yes" name="switch-1" id="switch-1-yes" type="radio"  data-switch-id="1" data-level-id="yes">
+            <label class="template switches__radio-label switches__radio-label--yes" for="switch-1-yes">
+              Yes
+            </label>
+          </div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--no" name="switch-1" id="switch-1-no" type="radio"  data-switch-id="1" data-level-id="no">
+            <label class="template switches__radio-label switches__radio-label--no" for="switch-1-no">
+              No
+            </label>
+          </div>
+          
         </div>
       </li>
       
@@ -403,11 +417,21 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
         </label>
         
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-2" id="switch-2-yes" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--yes" for="switch-2-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-2" id="switch-2-no" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--no" for="switch-2-no">No</label>
-          <div class="template switches__radiogroup-bg"></div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--yes" name="switch-2" id="switch-2-yes" type="radio"  data-switch-id="2" data-level-id="yes">
+            <label class="template switches__radio-label switches__radio-label--yes" for="switch-2-yes">
+              Yes
+            </label>
+          </div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--no" name="switch-2" id="switch-2-no" type="radio"  data-switch-id="2" data-level-id="no">
+            <label class="template switches__radio-label switches__radio-label--no" for="switch-2-no">
+              No
+            </label>
+          </div>
+          
         </div>
       </li>
       
@@ -417,11 +441,21 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
         </label>
         
         <div class="template switches__radiogroup">
-          <input class="template switches__input switches__input--yes" name="switch-3" id="switch-3-yes" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--yes" for="switch-3-yes">Yes</label>
-          <input class="template switches__input switches__input--no" name="switch-3" id="switch-3-no" type="radio" >
-          <label class="template switches__radio-label switches__radio-label--no" for="switch-3-no">No</label>
-          <div class="template switches__radiogroup-bg"></div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--yes" name="switch-3" id="switch-3-yes" type="radio"  data-switch-id="3" data-level-id="yes">
+            <label class="template switches__radio-label switches__radio-label--yes" for="switch-3-yes">
+              Yes
+            </label>
+          </div>
+          
+          <div class="template switches__level ">
+            <input class="template switches__input switches__input--no" name="switch-3" id="switch-3-no" type="radio"  data-switch-id="3" data-level-id="no">
+            <label class="template switches__radio-label switches__radio-label--no" for="switch-3-no">
+              No
+            </label>
+          </div>
+          
         </div>
       </li>
       
@@ -486,11 +520,11 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       input.addEventListener('change', ({
         target
       }) => {
-        const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '');
-        const active = !!target.id.match('yes');
+        const id = target.dataset['switch-id'];
+        const levelId = target.dataset['level-id'];
         notifySwitchChanged({
           id,
-          active,
+          levelId,
         });
       });
     }
@@ -664,41 +698,35 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   }
 
   .template.switches__radiogroup {
-    position: relative;
-    padding: 4px 8px 4px 8px;
+    display: flex;
+    flex-direction: row;
     border-radius: 999px;
     border: 1px solid black;
     overflow: hidden;
+  }
+
+  .template.switches__level {
+    flex: 1;
+    padding: 8px;
+  }
+
+  .template.switches__level:first-child {
+    padding-left: 16px;
+  }
+
+  .template.switches__level:last-child {
+    padding-right: 16px;
+  }
+
+  .template.switches__level--checked {
+    background-color: black;
+    color: white;
   }
 
   .template.switches__radio-label {
     display: inline-block;
     width: 2em;
     text-align: center;
-  }
-
-  .template.switches__radiogroup-bg {
-    background-color: black;
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    z-index: -1;
-    display: none;
-  }
-
-  .template.switches__input:checked+.template.switches__radio-label {
-    color: white;
-  }
-
-  .template.switches__input--yes:checked~.template.switches__radiogroup-bg {
-    display: block;
-    left: 0;
-  }
-
-  .template.switches__input--no:checked~.template.switches__radiogroup-bg {
-    display: block;
-    right: 0;
   }
 
   .template.outcomes__list {
@@ -860,11 +888,11 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
       input.addEventListener('change', ({
         target
       }) => {
-        const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '');
-        const active = !!target.id.match('yes');
+        const id = target.dataset['switch-id'];
+        const levelId = target.dataset['level-id'];
         notifySwitchChanged({
           id,
-          active,
+          levelId,
         });
       });
     }

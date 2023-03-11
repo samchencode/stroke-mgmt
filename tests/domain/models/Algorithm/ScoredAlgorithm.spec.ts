@@ -8,7 +8,7 @@ import {
   GreaterThanCriterion,
   LessThanCriterion,
 } from '@/domain/models/Algorithm/Criterion';
-import { Switch, SwitchId } from '@/domain/models/Algorithm/Switch';
+import { YesNoSwitch, SwitchId } from '@/domain/models/Algorithm/Switch';
 
 describe('ScoredAlgorithm', () => {
   describe('Instantiation', () => {
@@ -22,10 +22,10 @@ describe('ScoredAlgorithm', () => {
       });
 
       const switches = [
-        new Switch({
+        new YesNoSwitch({
           id: new SwitchId('0'),
           label: 'switch label text',
-          value: 3,
+          valueIfActive: 3,
         }),
       ];
 
@@ -37,7 +37,7 @@ describe('ScoredAlgorithm', () => {
   describe('Behavior', () => {
     let algo: ScoredAlgorithm;
     let outcome: Outcome;
-    let aSwitch: Switch;
+    let aSwitch: YesNoSwitch;
 
     beforeEach(() => {
       outcome = new Outcome({
@@ -53,10 +53,10 @@ describe('ScoredAlgorithm', () => {
         outcomes: [outcome],
       });
 
-      aSwitch = new Switch({
+      aSwitch = new YesNoSwitch({
         id: new SwitchId('0'),
         label: 'switch label text',
-        value: 3,
+        valueIfActive: 3,
         description: 'demo switch',
       });
 
@@ -79,7 +79,7 @@ describe('ScoredAlgorithm', () => {
 
     it('should set switch', () => {
       expect(algo.hasOutcomes()).toBe(false);
-      const newAlgo = algo.setSwitchById(aSwitch.getId(), true);
+      const newAlgo = algo.setSwitchById(aSwitch.getId(), YesNoSwitch.YES);
       expect(newAlgo.hasOutcomes()).toBe(true);
       expect(newAlgo.getOutcomes()).toHaveLength(1);
     });
@@ -97,7 +97,10 @@ describe('ScoredAlgorithm', () => {
         switches: [aSwitch],
       });
       expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
-      noOutcomesAlgo = noOutcomesAlgo.setSwitchById(aSwitch.getId(), false);
+      noOutcomesAlgo = noOutcomesAlgo.setSwitchById(
+        aSwitch.getId(),
+        YesNoSwitch.NO
+      );
       expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
     });
 
@@ -112,7 +115,7 @@ describe('ScoredAlgorithm', () => {
       const noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
         switches: [aSwitch],
-      }).setSwitchById(aSwitch.getId(), true);
+      }).setSwitchById(aSwitch.getId(), YesNoSwitch.YES);
       expect(noOutcomesAlgo.getOutcomes()).toEqual([]);
     });
 
@@ -135,10 +138,10 @@ describe('ScoredAlgorithm', () => {
         outcomes: [gt5Outcome],
       });
 
-      const val0Switch = new Switch({
+      const val0Switch = new YesNoSwitch({
         id: new SwitchId('0'),
         label: 'switch label text',
-        value: 0,
+        valueIfActive: 0,
       });
 
       const switches = [val0Switch];
@@ -146,7 +149,7 @@ describe('ScoredAlgorithm', () => {
       const unfulfillingAlgo = new ScoredAlgorithm({
         info,
         switches,
-      }).setSwitchById(val0Switch.getId(), true);
+      }).setSwitchById(val0Switch.getId(), YesNoSwitch.YES);
 
       expect(unfulfillingAlgo.getOutcomes()).toEqual([]);
     });
@@ -172,10 +175,10 @@ describe('ScoredAlgorithm', () => {
         outcomes: [gt5Outcome, lt7Outcome],
       });
 
-      const val6Switch = new Switch({
+      const val6Switch = new YesNoSwitch({
         id: new SwitchId('0'),
         label: 'switch label text',
-        value: 6,
+        valueIfActive: 6,
       });
 
       const switches = [val6Switch];
@@ -183,14 +186,14 @@ describe('ScoredAlgorithm', () => {
       const doubleFulfillingAlgo = new ScoredAlgorithm({
         info,
         switches,
-      }).setSwitchById(val6Switch.getId(), true);
+      }).setSwitchById(val6Switch.getId(), YesNoSwitch.YES);
 
       expect(doubleFulfillingAlgo.getOutcomes()).toHaveLength(2);
     });
 
     it('should return null if no next algorithm', () => {
       const [outcomeWithoutNext] = algo
-        .setSwitchById(aSwitch.getId(), true)
+        .setSwitchById(aSwitch.getId(), YesNoSwitch.YES)
         .getOutcomes();
       expect(outcomeWithoutNext.getNext()).toBeNull();
     });
@@ -216,16 +219,17 @@ describe('ScoredAlgorithm', () => {
         outcomes: [outcome],
       });
 
-      const val6Switch = new Switch({
+      const val6Switch = new YesNoSwitch({
         id: new SwitchId('0'),
         label: 'switch label text',
-        value: 6,
+        valueIfActive: 6,
       });
 
       const switches = [val6Switch];
 
       const oneSwitchAlgo = new ScoredAlgorithm({ info, switches });
-      const boom = () => oneSwitchAlgo.setSwitchById(new SwitchId('1'), false);
+      const boom = () =>
+        oneSwitchAlgo.setSwitchById(new SwitchId('1'), YesNoSwitch.NO);
       expect(boom).toThrowError('id 1');
     });
 
@@ -238,21 +242,24 @@ describe('ScoredAlgorithm', () => {
         outcomes: [outcome],
       });
 
-      const val6Switch = new Switch({
+      const val6Switch = new YesNoSwitch({
         id: new SwitchId('0'),
         label: 'switch label text',
-        value: 6,
+        valueIfActive: 6,
       });
 
-      const val4Switch = new Switch({
+      const val4Switch = new YesNoSwitch({
         id: new SwitchId('1'),
         label: 'switch label text',
-        value: 4,
+        valueIfActive: 4,
       });
 
       const switches = [val6Switch, val4Switch];
       const multiSwitchAlgo = new ScoredAlgorithm({ info, switches });
-      const resultAlgo = multiSwitchAlgo.setSwitchById(new SwitchId('1'), true);
+      const resultAlgo = multiSwitchAlgo.setSwitchById(
+        new SwitchId('1'),
+        YesNoSwitch.YES
+      );
       const switchIds = resultAlgo
         .getSwitches()
         .map((s) => s.getId().toString());

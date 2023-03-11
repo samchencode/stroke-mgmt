@@ -11,6 +11,10 @@ export {
   GreaterThanCriterion,
   LessThanCriterion,
 } from '@/domain/models/Algorithm/Criterion';
-export { Switch, SwitchId } from '@/domain/models/Algorithm/Switch';
+export {
+  Switch,
+  YesNoSwitch,
+  SwitchId,
+} from '@/domain/models/Algorithm/Switch';
 export { RenderedAlgorithm } from '@/domain/models/Algorithm/RenderedAlgorithm';
 export { RenderedAlgorithmCollection } from '@/domain/models/Algorithm/RenderedAlgorithmCollection';

@@ -46,11 +46,11 @@
       input.addEventListener('change', ({
         target
       }) => {
-        const id = target.id.replace('switch-', '').replace(/(-yes|-no)/, '');
-        const active = !!target.id.match('yes');
+        const id = target.dataset['switch-id'];
+        const levelId = target.dataset['level-id'];
         notifySwitchChanged({
           id,
-          active,
+          levelId,
         });
       });
     }

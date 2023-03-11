@@ -1,10 +1,13 @@
+import type { Level } from '@/domain/models/Algorithm/Switch/Level';
+import type { LevelId } from '@/domain/models/Algorithm/Switch/LevelId';
+import { NullLevelId } from '@/domain/models/Algorithm/Switch/NullLevelId';
 import type { SwitchId } from '@/domain/models/Algorithm/Switch/SwitchId';
 
 type SwitchParams = {
   id: SwitchId;
   label: string;
-  value: number;
-  active?: boolean;
+  levels: Level[];
+  activeLevel?: LevelId;
   set?: boolean;
   description?: string;
 };
@@ -14,9 +17,9 @@ class Switch {
 
   private label: string;
 
-  private value: number;
+  private levels: Level[];
 
-  private active: boolean;
+  private activeLevelId: LevelId;
 
   private set: boolean;
 
@@ -25,58 +28,68 @@ class Switch {
   constructor({
     id,
     label,
-    value,
-    description,
-    active = false,
+    levels,
     set = false,
+    activeLevel = new NullLevelId(),
+    description,
   }: SwitchParams) {
     this.id = id;
     this.label = label;
-    this.value = value;
-    this.active = active;
+    this.levels = levels;
+    this.activeLevelId = activeLevel;
     this.set = set;
     this.description = description;
   }
 
-  setSwitchTo(active: boolean) {
-    return this.clone({ set: true, active });
+  setSwitchTo(levelId: LevelId) {
+    return this.clone({
+      set: true,
+      activeLevel: levelId,
+    });
   }
 
-  getId() {
+  getId(): SwitchId {
     return this.id;
   }
 
-  getLabel() {
+  getLabel(): string {
     return this.label;
   }
 
-  getValue() {
-    return this.value;
+  getValue(): number {
+    const activeLevel = this.levels.find((l) =>
+      l.getId().is(this.activeLevelId)
+    );
+    if (!activeLevel) return 0;
+    return activeLevel.getValue();
+  }
+
+  getActiveLevelId(): LevelId {
+    return this.activeLevelId;
   }
 
   getDescription() {
     return this.description;
   }
 
-  isActive() {
-    return this.active;
+  getLevels(): Level[] {
+    return this.levels;
   }
 
-  isSet() {
+  isSet(): boolean {
     return this.set;
   }
 
-  is(other: Switch) {
-    if (other.getId().is(this.id)) return true;
-    return false;
+  is(other: Switch): boolean {
+    return other.getId().is(this.id);
   }
 
   clone(params: Partial<SwitchParams>) {
     const newParams = {
       id: this.id,
       label: this.label,
-      value: this.value,
-      active: this.active,
+      levels: this.levels,
+      activeLevel: this.activeLevelId,
       set: this.set,
       description: this.description,
       ...params,

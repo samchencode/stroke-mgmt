@@ -5,7 +5,7 @@ import {
   AlgorithmInfo,
   GreaterThanCriterion,
   Outcome,
-  Switch,
+  YesNoSwitch,
   SwitchId,
   TextAlgorithm,
 } from '@/domain/models/Algorithm';
@@ -31,25 +31,25 @@ const gwnsAlgorithm = (() => {
   });
 
   const switches = [
-    new Switch({
+    new YesNoSwitch({
       id: new SwitchId('0'),
       label: 'Gaze Deviation',
-      value: 1,
+      valueIfActive: 1,
     }),
-    new Switch({
+    new YesNoSwitch({
       id: new SwitchId('1'),
       label: 'Weakness',
-      value: 1,
+      valueIfActive: 1,
     }),
-    new Switch({
+    new YesNoSwitch({
       id: new SwitchId('2'),
       label: 'Neglect/Disregard/Extinction',
-      value: 1,
+      valueIfActive: 1,
     }),
-    new Switch({
+    new YesNoSwitch({
       id: new SwitchId('3'),
       label: 'Speech impairment',
-      value: 1,
+      valueIfActive: 1,
     }),
   ];
 

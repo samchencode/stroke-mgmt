@@ -8,6 +8,7 @@ import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
 import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
@@ -42,6 +43,10 @@ function factory(
     return (
       <ScrollView style={styles.container}>
         <StatusBar translucent textColor="auto" />
+        <Spinner
+          visible={articles.length === 0 || algorithms.length === 0}
+          textContent="Loading..."
+        />
         <AlgorithmList
           data={algorithms}
           onSelectAlgorithm={handleSelectAlgorithm}

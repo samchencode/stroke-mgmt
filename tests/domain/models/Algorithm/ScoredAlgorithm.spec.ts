@@ -8,8 +8,7 @@ import {
   GreaterThanCriterion,
   LessThanCriterion,
 } from '@/domain/models/Algorithm/Criterion';
-import { Switch } from '@/domain/models/Algorithm/Switch';
-import { SwitchId } from '@/domain/models/Algorithm/SwitchId';
+import { Switch, SwitchId } from '@/domain/models/Algorithm/Switch';
 
 describe('ScoredAlgorithm', () => {
   describe('Instantiation', () => {

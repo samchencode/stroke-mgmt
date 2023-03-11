@@ -4,8 +4,7 @@ import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import { NoSwitchesError } from '@/domain/models/Algorithm/NoSwitchesError';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
-import type { Switch } from '@/domain/models/Algorithm/Switch';
-import type { SwitchId } from '@/domain/models/Algorithm/SwitchId';
+import type { Switch, SwitchId } from '@/domain/models/Algorithm/Switch';
 
 type ScoredAlgorithmParams = {
   info: AlgorithmInfo;

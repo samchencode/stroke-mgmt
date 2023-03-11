@@ -1,4 +1,4 @@
-import type { SwitchId } from '@/domain/models/Algorithm/SwitchId';
+import type { SwitchId } from '@/domain/models/Algorithm/Switch/SwitchId';
 
 type SwitchParams = {
   id: SwitchId;

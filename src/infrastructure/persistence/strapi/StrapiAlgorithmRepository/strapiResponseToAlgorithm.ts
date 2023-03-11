@@ -3,7 +3,7 @@ import {
   AlgorithmInfo,
   Outcome,
   ScoredAlgorithm,
-  YesNoSwitch,
+  Switch,
   SwitchId,
   TextAlgorithm,
 } from '@/domain/models/Algorithm';
@@ -13,6 +13,7 @@ import {
   LessThanCriterion,
   NoCriterion,
 } from '@/domain/models/Algorithm/Criterion';
+import { Level, LevelId } from '@/domain/models/Algorithm/Switch';
 import type { StrapiAlgorithmData } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 
 export const strapiResponseToAlgorithm = ({
@@ -57,12 +58,14 @@ export const strapiResponseToAlgorithm = ({
     return new TextAlgorithm({ info });
   }
   const switches = switchData.map(
-    ({ id: switchId, Label, Value, Description }) =>
-      new YesNoSwitch({
+    ({ id: switchId, Label, Description, levels }) =>
+      new Switch({
         id: new SwitchId(switchId.toString()),
         label: Label,
-        valueIfActive: Value,
         description: Description ?? undefined,
+        levels: levels.map(
+          (l) => new Level(new LevelId(l.id.toString()), l.Label, l.Value)
+        ),
       })
   );
 

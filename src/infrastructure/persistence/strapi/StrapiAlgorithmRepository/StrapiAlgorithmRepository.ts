@@ -28,7 +28,7 @@ class StrapiAlgorihtmRepository implements AlgorithmRepository {
 
   async getAll(): Promise<Algorithm[]> {
     const { data } = await this.get(
-      '/api/algorithms?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=outcomes.next'
+      '/api/algorithms?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=outcomes.next&populate[4]=switches.levels'
     );
     return (data as StrapiAlgorithmData[]).map(strapiResponseToAlgorithm);
   }
@@ -36,7 +36,7 @@ class StrapiAlgorihtmRepository implements AlgorithmRepository {
   async getById(id: AlgorithmId): Promise<Algorithm> {
     const idString = id.toString();
     const { data } = await this.get(
-      `/api/algorithms/${idString}?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=outcomes.next`
+      `/api/algorithms/${idString}?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=outcomes.next&populate[4]=switches.levels`
     );
     return strapiResponseToAlgorithm(data as StrapiAlgorithmData);
   }

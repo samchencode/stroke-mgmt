@@ -39,8 +39,12 @@ export type StrapiAlgorithmData = {
     switches: {
       id: number;
       Label: string;
-      Value: number;
       Description: string | null;
+      levels: {
+        id: number;
+        Label: string;
+        Value: number;
+      }[];
     }[];
   };
 };

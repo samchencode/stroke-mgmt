@@ -5,6 +5,7 @@ import type { AppNavigationProps } from '@/view/Router';
 import { StatusBar } from '@/view/StatusBar';
 import { theme } from '@/view/theme';
 import { StrokeFactsView } from '@/view/StrokeFactsScreen/StrokeFactsView';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
   return function StrokeFactsScreen({
@@ -24,6 +25,7 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
     return (
       <View style={styles.container}>
         <StatusBar textColor="auto" backgroundColor={theme.colors.background} />
+        <Spinner visible={!html} textContent="Loading..." />
         <StrokeFactsView
           height={height}
           width={width}

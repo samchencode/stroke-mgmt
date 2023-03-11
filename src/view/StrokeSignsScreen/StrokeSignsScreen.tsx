@@ -5,6 +5,7 @@ import type { AppNavigationProps } from '@/view/Router';
 import { StatusBar } from '@/view/StatusBar';
 import { theme } from '@/view/theme';
 import { StrokeSignsView } from '@/view/StrokeSignsScreen/StrokeSignsView';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
   return function StrokeSignsScreen({
@@ -24,6 +25,7 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
     return (
       <View style={styles.container}>
         <StatusBar textColor="auto" backgroundColor={theme.colors.background} />
+        <Spinner visible={!html} textContent="Loading..." />
         <StrokeSignsView
           width={width}
           height={height}

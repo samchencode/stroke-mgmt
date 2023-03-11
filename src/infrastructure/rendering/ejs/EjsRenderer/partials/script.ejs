@@ -91,7 +91,7 @@
   (function() {
     window.addEventListener('error', (e) =>
       notifyError({
-        name: e.name,
+        name: e.error.name,
         message: e.message,
       })
     );

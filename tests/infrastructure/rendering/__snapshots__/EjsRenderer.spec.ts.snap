@@ -531,7 +531,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   (function() {
     window.addEventListener('error', (e) =>
       notifyError({
-        name: e.name,
+        name: e.error.name,
         message: e.message,
       })
     );
@@ -905,7 +905,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   (function() {
     window.addEventListener('error', (e) =>
       notifyError({
-        name: e.name,
+        name: e.error.name,
         message: e.message,
       })
     );

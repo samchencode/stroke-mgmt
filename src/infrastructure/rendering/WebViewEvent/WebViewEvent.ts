@@ -36,9 +36,17 @@ export type WebViewLinkPressedEvent = {
   };
 };
 
+export type WebViewArticleLinkPressedEvent = {
+  readonly type: 'articlelinkpressed';
+  content: {
+    articleId: string;
+  };
+};
+
 export type WebViewEvent =
   | WebViewSwitchChangedEvent
   | WebViewLayoutEvent
   | WebViewErrorEvent
   | WebViewNextPressedEvent
-  | WebViewLinkPressedEvent;
+  | WebViewLinkPressedEvent
+  | WebViewArticleLinkPressedEvent;

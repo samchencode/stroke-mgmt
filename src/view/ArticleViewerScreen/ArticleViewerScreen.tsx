@@ -7,10 +7,12 @@ import type { AppNavigationProps } from '@/view/Router';
 import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
 import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
+import { ArticleId } from '@/domain/models/Article';
 
 function factory(renderArticleByIdAction: RenderArticleByIdAction) {
   return function ArticleViewerScreen({
     route,
+    navigation,
   }: AppNavigationProps<'ArticleViewerScreen'>) {
     const { id } = route.params;
 
@@ -21,7 +23,17 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
 
     const { width } = useWindowDimensions();
 
-    const eventHandler = useMemo(() => new WebViewEventHandler({}), []);
+    const eventHandler = useMemo(
+      () =>
+        new WebViewEventHandler({
+          articlelinkpressed: ({ articleId }) => {
+            navigation.navigate('ArticleViewerScreen', {
+              id: new ArticleId(articleId),
+            });
+          },
+        }),
+      [navigation]
+    );
 
     const handleMessage = useCallback(
       ({ nativeEvent }: WebViewMessageEvent) => {

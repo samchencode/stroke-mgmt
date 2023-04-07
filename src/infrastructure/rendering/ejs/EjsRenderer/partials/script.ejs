@@ -11,6 +11,7 @@
   const notifyError = notifyReactNative.bind(null, 'error');
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
+  const notifyArticleLinkPressed = notifyReactNative.bind(null, 'articlelinkpressed');
 
   ; // Report window height
   (function() {
@@ -73,6 +74,21 @@
 
   ; // Listen to click of any link
   (function() {
+    const isArticleLink = (href) => href.slice(0, 8) === 'article:'
+
+    function handleLinkPressed(href) {
+      notifyLinkPressed({
+        href
+      });
+    }
+
+    function handleArticleLinkPressed(href) {
+      const articleId = href.slice(8)
+      notifyArticleLinkPressed({
+        articleId
+      });
+    }
+
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
       const href = a.getAttribute('href')
@@ -80,9 +96,8 @@
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const href = e.target.getAttribute('href')
-        notifyLinkPressed({
-          href
-        })
+        if (isArticleLink(href)) handleArticleLinkPressed(href)
+        else handleLinkPressed(href)
       })
     }
   })();

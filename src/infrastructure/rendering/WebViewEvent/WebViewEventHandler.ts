@@ -5,6 +5,7 @@ import type {
   WebViewLayoutEvent as LayoutEvent,
   WebViewNextPressedEvent as NextPressedEvent,
   WebViewLinkPressedEvent as LinkPressedEvent,
+  WebViewArticleLinkPressedEvent as ArticleLinkPressedEvent,
 } from '@/infrastructure/rendering/WebViewEvent/WebViewEvent';
 import { openURL as openUrl } from 'expo-linking';
 
@@ -14,6 +15,7 @@ type HandlerCollection = {
   layout?: (e: LayoutEvent['content']) => void;
   nextpressed?: (e: NextPressedEvent['content']) => void;
   linkpressed?: (e: LinkPressedEvent['content']) => void;
+  articlelinkpressed?: (e: ArticleLinkPressedEvent['content']) => void;
 };
 
 class WebViewEventHandler {
@@ -25,6 +27,7 @@ class WebViewEventHandler {
     if (e.type === 'nextpressed') this.handleNextPressed(e);
     if (e.type === 'switchchanged') this.handleSwitchChanged(e);
     if (e.type === 'linkpressed') this.handleLinkPressed(e);
+    if (e.type === 'articlelinkpressed') this.handleArticleLinkPressed(e);
   }
 
   handleError(e: ErrorEvent) {
@@ -55,6 +58,11 @@ class WebViewEventHandler {
     } else {
       this.handlers.linkpressed(e.content);
     }
+  }
+
+  handleArticleLinkPressed(e: ArticleLinkPressedEvent) {
+    if (!this.handlers.articlelinkpressed) return;
+    this.handlers.articlelinkpressed(e.content);
   }
 }
 

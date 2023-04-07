@@ -1,44 +1,57 @@
 import React, { useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { theme } from '@/view/theme';
-import type { Algorithm } from '@/domain/models/Algorithm';
-import { AlgorithmId } from '@/domain/models/Algorithm';
-import { AlgorithmItem } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmItem';
+import type { AlgorithmId, Algorithm } from '@/domain/models/Algorithm';
+import { AlgorithmListFilled } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListFilled';
+import { AlgorithmListError } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListError';
+import { AlgorithmListLoading } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListLoading';
+import { useQuery } from '@tanstack/react-query';
+import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 
 type AlgorithmListProps = {
-  data: Algorithm[];
+  getAllAlgorithms: () => Promise<Algorithm[]>;
   onSelectAlgorithm: (id: AlgorithmId) => void;
   style?: StyleProp<ViewStyle>;
 };
 
 function AlgorithmList({
-  data,
+  getAllAlgorithms,
   onSelectAlgorithm,
   style = {},
 }: AlgorithmListProps) {
-  const handleSelectAlgorithm = useCallback(
-    (id: string) => {
-      const algorithmId = new AlgorithmId(id);
-      onSelectAlgorithm(algorithmId);
-    },
-    [onSelectAlgorithm]
-  );
+  const query = useQuery({
+    queryKey: ['algorithms'],
+    queryFn: getAllAlgorithms,
+  });
+
   return (
     <View style={style}>
       <Text style={styles.title}>Algorithms</Text>
-      <ScrollView horizontal style={styles.scrollview}>
-        {data.map((algorithm) => (
-          <AlgorithmItem
-            id={algorithm.getId().toString()}
-            name={algorithm.getTitle()}
-            key={algorithm.getId().toString()}
-            body={algorithm.getSummary()}
-            onPress={handleSelectAlgorithm}
-            style={styles.item}
-          />
-        ))}
-      </ScrollView>
+      <UseQueryResultView
+        query={query}
+        renderData={useCallback(
+          (data: Algorithm[]) => (
+            <AlgorithmListFilled
+              data={data}
+              onSelectAlgorithm={onSelectAlgorithm}
+            />
+          ),
+          [onSelectAlgorithm]
+        )}
+        renderError={useCallback(
+          () => (
+            <AlgorithmListError />
+          ),
+          []
+        )}
+        renderLoading={useCallback(
+          () => (
+            <AlgorithmListLoading />
+          ),
+          []
+        )}
+      />
     </View>
   );
 }
@@ -48,12 +61,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: theme.fonts.displayMedium,
-  scrollview: {
-    marginTop: theme.spaces.md,
-  },
-  item: {
-    marginRight: theme.spaces.sm,
-  },
 });
 
 export { AlgorithmList };

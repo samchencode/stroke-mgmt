@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
-import type { Article, ArticleId } from '@/domain/models/Article';
-import type { Algorithm, AlgorithmId } from '@/domain/models/Algorithm';
+import type { ArticleId } from '@/domain/models/Article';
+import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
 import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
-import Spinner from 'react-native-loading-spinner-overlay';
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
@@ -18,13 +17,6 @@ function factory(
     useEffect(() => {
       navigation.navigate('DisclaimerModal');
     }, [navigation]);
-
-    const [articles, setArticles] = useState<Article[]>([]);
-    const [algorithms, setAlgorithms] = useState<Algorithm[]>([]);
-    useEffect(() => {
-      getAllArticlesAction.execute().then((a) => setArticles(a));
-      getAllAlgorithmsAction.execute().then((a) => setAlgorithms(a));
-    }, []);
 
     const handleSelectArticle = useCallback(
       (id: ArticleId) => {
@@ -43,16 +35,15 @@ function factory(
     return (
       <ScrollView style={styles.container}>
         <StatusBar translucent textColor="auto" />
-        <Spinner
-          visible={articles.length === 0 || algorithms.length === 0}
-          textContent="Loading..."
-        />
         <AlgorithmList
-          data={algorithms}
+          getAllAlgorithms={useCallback(
+            () => getAllAlgorithmsAction.execute(),
+            []
+          )}
           onSelectAlgorithm={handleSelectAlgorithm}
         />
         <ArticleList
-          data={articles}
+          getAllArticles={useCallback(() => getAllArticlesAction.execute(), [])}
           onSelectArticle={handleSelectArticle}
           style={styles.articleList}
         />

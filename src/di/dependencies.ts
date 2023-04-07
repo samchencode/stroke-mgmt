@@ -8,7 +8,7 @@ import { RenderDisclaimerAction } from '@/application/RenderDisclaimerAction';
 import { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import { ExpoAssetFileSystem } from '@/infrastructure/file-system/expo-asset/ExpoAssetFileSystem';
-import { factory as App } from '@/view/App';
+import { factory as App } from '@/view/App/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import { factory as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
 import { factory as HomeScreen } from '@/view/HomeScreen';

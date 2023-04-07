@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
-import type { WebViewMessageEvent } from 'react-native-webview';
-import { WebView } from 'react-native-webview';
+import React, { useCallback, useMemo } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 import { StatusBar } from '@/view/StatusBar';
 import type { AppNavigationProps } from '@/view/Router';
 import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
-import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
 import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 import { ArticleId } from '@/domain/models/Article';
+import { ArticleView } from '@/view/ArticleViewerScreen/components';
+import { useQuery } from '@tanstack/react-query';
+import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
+import { LoadingSpinnerView } from '@/view/components';
 
 function factory(renderArticleByIdAction: RenderArticleByIdAction) {
   return function ArticleViewerScreen({
@@ -16,12 +17,10 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
   }: AppNavigationProps<'ArticleViewerScreen'>) {
     const { id } = route.params;
 
-    const [html, setHtml] = useState('');
-    useEffect(() => {
-      renderArticleByIdAction.execute(id).then((h) => setHtml(h));
-    }, [id]);
-
-    const { width } = useWindowDimensions();
+    const query = useQuery({
+      queryKey: ['article', id],
+      queryFn: () => renderArticleByIdAction.execute(id),
+    });
 
     const eventHandler = useMemo(
       () =>
@@ -35,22 +34,29 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
       [navigation]
     );
 
-    const handleMessage = useCallback(
-      ({ nativeEvent }: WebViewMessageEvent) => {
-        const event = JSON.parse(nativeEvent.data) as WebViewEvent;
-        eventHandler.handle(event);
-      },
-      [eventHandler]
-    );
-
     return (
       <View style={styles.container}>
         <StatusBar textColor="auto" translucent />
-        <WebView
-          source={{ html }}
-          originWhitelist={['*']}
-          style={{ width }}
-          onMessage={handleMessage}
+        <UseQueryResultView
+          query={query}
+          renderData={useCallback(
+            (html: string) => (
+              <ArticleView html={html} eventHandler={eventHandler} />
+            ),
+            [eventHandler]
+          )}
+          renderError={useCallback(
+            () => (
+              <Text>Uh oh! Something went wrong!</Text>
+            ),
+            []
+          )}
+          renderLoading={useCallback(
+            () => (
+              <LoadingSpinnerView />
+            ),
+            []
+          )}
         />
       </View>
     );

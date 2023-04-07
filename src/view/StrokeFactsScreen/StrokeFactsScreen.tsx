@@ -1,20 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import type { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import type { AppNavigationProps } from '@/view/Router';
 import { StatusBar } from '@/view/StatusBar';
 import { theme } from '@/view/theme';
 import { StrokeFactsView } from '@/view/StrokeFactsScreen/StrokeFactsView';
-import Spinner from 'react-native-loading-spinner-overlay';
+import { useQuery } from '@tanstack/react-query';
+import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
+import { LoadingSpinnerView } from '@/view/components';
+import { StrokeFactsError } from '@/view/StrokeFactsScreen/StrokeFactsError';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
+  const getHtml = renderStrokeFactsAction.execute();
+
   return function StrokeFactsScreen({
     navigation,
   }: AppNavigationProps<'StrokeFactsScreen'>) {
-    const [html, setHtml] = useState('');
-    useEffect(() => {
-      renderStrokeFactsAction.execute().then((h) => setHtml(h));
-    }, []);
+    const query = useQuery({
+      queryKey: ['stroke-facts'],
+      queryFn: () => getHtml,
+    });
 
     const { width, height } = useWindowDimensions();
 
@@ -25,12 +30,31 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
     return (
       <View style={styles.container}>
         <StatusBar textColor="auto" backgroundColor={theme.colors.background} />
-        <Spinner visible={!html} textContent="Loading..." />
-        <StrokeFactsView
-          height={height}
-          width={width}
-          onPressButton={handlePressButton}
-          html={html}
+        <UseQueryResultView
+          query={query}
+          renderData={useCallback(
+            (html: string) => (
+              <StrokeFactsView
+                height={height}
+                width={width}
+                onPressButton={handlePressButton}
+                html={html}
+              />
+            ),
+            [handlePressButton, height, width]
+          )}
+          renderError={useCallback(
+            () => (
+              <StrokeFactsError />
+            ),
+            []
+          )}
+          renderLoading={useCallback(
+            () => (
+              <LoadingSpinnerView />
+            ),
+            []
+          )}
         />
       </View>
     );

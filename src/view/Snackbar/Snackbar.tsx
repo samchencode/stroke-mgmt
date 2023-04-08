@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonLabel: {
+    ...theme.fonts.labelLarge,
     color: theme.colors.inversePrimary,
   },
 });

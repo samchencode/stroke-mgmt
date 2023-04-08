@@ -7,4 +7,7 @@ export const colors = {
   onSurface: '#000000',
   surfaceVariant: '#eeeeee',
   onSurfaceVariant: '#000000',
+  inverseSurface: '#111111',
+  inverseOnSurface: '#eeeeee',
+  inversePrimary: '#eeeeee',
 } as const;

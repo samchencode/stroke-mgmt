@@ -8,6 +8,7 @@ import {
   queryClient,
   useReactQueryAppStateListener,
 } from '@/view/App/prepareReactQuery';
+import { SnackbarProvider } from '@/view/Snackbar';
 
 function factory(Router: Router) {
   return function App() {
@@ -19,7 +20,9 @@ function factory(Router: Router) {
           theme={{ colors: { background: theme.colors.background } } as any}
         >
           <QueryClientProvider client={queryClient}>
-            <Router />
+            <SnackbarProvider>
+              <Router />
+            </SnackbarProvider>
           </QueryClientProvider>
         </NavigationContainer>
       </GestureHandlerRootView>

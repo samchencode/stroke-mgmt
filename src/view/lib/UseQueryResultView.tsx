@@ -9,21 +9,6 @@ type Props<T> = {
   children?: ReactNode;
 };
 
-class UseQueryResultRenderer<TData> {
-  constructor(private useQueryResult: UseQueryResult<TData, unknown>) {}
-
-  render(strategies: Props<TData>) {
-    const { status, data, error } = this.useQueryResult;
-    if (status === 'loading') {
-      return strategies.renderLoading();
-    }
-    if (status === 'error') {
-      return strategies.renderError(error);
-    }
-    return strategies.renderData(data);
-  }
-}
-
 function UseQueryResultView<T>({
   query,
   renderError,
@@ -40,4 +25,4 @@ function UseQueryResultView<T>({
   return renderData(data);
 }
 
-export { UseQueryResultRenderer, UseQueryResultView };
+export { UseQueryResultView };

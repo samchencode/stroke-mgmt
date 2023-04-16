@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import type { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import type { AppNavigationProps } from '@/view/Router';
 import { StatusBar } from '@/view/StatusBar';
@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView } from '@/view/components';
 import { StrokeFactsError } from '@/view/StrokeFactsScreen/StrokeFactsError';
+import { StrokeFactsBottomBar } from '@/view/StrokeFactsScreen/StrokeFactsBottomBar';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
   const getHtml = renderStrokeFactsAction.execute();
@@ -21,8 +22,6 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
       queryFn: () => getHtml,
     });
 
-    const { width, height } = useWindowDimensions();
-
     const handlePressButton = useCallback(() => {
       navigation.navigate('StrokeSignsScreen');
     }, [navigation]);
@@ -34,14 +33,9 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
           query={query}
           renderData={useCallback(
             (html: string) => (
-              <StrokeFactsView
-                height={height}
-                width={width}
-                onPressButton={handlePressButton}
-                html={html}
-              />
+              <StrokeFactsView html={html} />
             ),
-            [handlePressButton, height, width]
+            []
           )}
           renderError={useCallback(
             () => (
@@ -56,6 +50,7 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
             []
           )}
         />
+        <StrokeFactsBottomBar onPressButton={handlePressButton} />
       </View>
     );
   };

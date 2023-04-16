@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
@@ -8,15 +8,18 @@ import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
 import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
+import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
   getAllAlgorithmsAction: GetAllAlgorithmsAction
 ) {
   return function HomeScreen({ navigation }: AppNavigationProps<'HomeScreen'>) {
-    useEffect(() => {
+    const openDisclaimer = useCallback(() => {
       navigation.navigate('DisclaimerModal');
     }, [navigation]);
+
+    useHasSeenDisclaimer(openDisclaimer);
 
     const handleSelectArticle = useCallback(
       (id: ArticleId) => {

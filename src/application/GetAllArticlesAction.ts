@@ -1,3 +1,4 @@
+import { Designation } from '@/domain/models/Article';
 import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
 
 class GetAllArticlesAction {
@@ -8,7 +9,7 @@ class GetAllArticlesAction {
   }
 
   async execute() {
-    return this.repo.getAll();
+    return this.repo.getByDesignation(Designation.ARTICLE);
   }
 }
 

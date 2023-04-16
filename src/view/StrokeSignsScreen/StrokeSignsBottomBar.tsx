@@ -1,17 +1,32 @@
 import { Button } from '@/view/components';
+import { Checkbox } from '@/view/components/Checkbox';
 import { theme } from '@/view/theme';
 import React from 'react';
-import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
 
 type Props = {
   onPressButton: () => void;
+  onChangeCheckbox: (v: boolean) => void;
+  checkboxValue: boolean;
 };
 
-function StrokeSignsBottomBar({ onPressButton }: Props) {
+function StrokeSignsBottomBar({
+  onPressButton,
+  onChangeCheckbox,
+  checkboxValue,
+}: Props) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Button title="Got it!" onPress={onPressButton} style={styles.button} />
+        <View style={styles.dontShowField}>
+          <Checkbox
+            value={checkboxValue}
+            onChange={onChangeCheckbox}
+            style={styles.checkbox}
+          />
+          <Text>Don&apos;t show again</Text>
+        </View>
+        <Button title="Proceed" onPress={onPressButton} style={styles.button} />
       </View>
     </SafeAreaView>
   );
@@ -34,13 +49,20 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingRight: theme.spaces.md,
     backgroundColor: theme.colors.secondaryContainer,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
   button: {
-    alignSelf: 'flex-start',
     marginLeft: theme.spaces.md,
+  },
+  dontShowField: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkbox: {
+    marginLeft: theme.spaces.md,
+    marginRight: theme.spaces.sm,
   },
 });
 

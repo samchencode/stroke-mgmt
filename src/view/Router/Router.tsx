@@ -14,6 +14,8 @@ import type { Type as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen
 import type { ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { theme } from '@/view/theme';
+import { useShouldShowStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
+import { LoadingSpinnerView } from '@/view/components';
 
 type AppNavigationParams = {
   StrokeFactsScreen: undefined;
@@ -40,6 +42,11 @@ function factory(
   AlgorithmViewerScreen: AlgorithmViewerScreen
 ) {
   function AppNavigation() {
+    const shouldShowFactsAndSignsOrLoading = useShouldShowStrokeFactsAndSigns();
+
+    if (shouldShowFactsAndSignsOrLoading === 'loading')
+      return <LoadingSpinnerView />;
+
     return (
       <AppStack.Navigator
         screenOptions={{
@@ -47,6 +54,11 @@ function factory(
             backgroundColor: theme.colors.surface,
           },
         }}
+        initialRouteName={
+          shouldShowFactsAndSignsOrLoading === 'yes'
+            ? 'StrokeFactsScreen'
+            : 'HomeScreen'
+        }
       >
         <AppStack.Screen
           name="StrokeFactsScreen"

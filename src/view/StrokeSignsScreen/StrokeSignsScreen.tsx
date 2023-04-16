@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import type { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import type { AppNavigationProps } from '@/view/Router';
@@ -10,6 +10,7 @@ import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { StrokeSignsError } from '@/view/StrokeSignsScreen/StrokeSignsError';
 import { LoadingSpinnerView } from '@/view/components';
 import { StrokeSignsBottomBar } from '@/view/StrokeSignsScreen/StrokeSignsBottomBar';
+import { hideStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
 
 function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
   const getHtml = renderStrokeSignsAction.execute();
@@ -22,9 +23,12 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
       queryFn: () => getHtml,
     });
 
+    const [dontShow, setDontShow] = useState(false);
+
     const handlePressButton = useCallback(() => {
+      if (dontShow) hideStrokeFactsAndSigns();
       navigation.reset({ index: 0, routes: [{ name: 'HomeScreen' }] });
-    }, [navigation]);
+    }, [dontShow, navigation]);
 
     return (
       <View style={styles.container}>
@@ -50,7 +54,11 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
             []
           )}
         />
-        <StrokeSignsBottomBar onPressButton={handlePressButton} />
+        <StrokeSignsBottomBar
+          onPressButton={handlePressButton}
+          checkboxValue={dontShow}
+          onChangeCheckbox={setDontShow}
+        />
       </View>
     );
   };

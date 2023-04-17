@@ -1,6 +1,11 @@
 import React, { useCallback } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  Image,
+} from 'react-native';
 import { theme } from '@/view/theme';
 import type { ArticleId } from '@/domain/models/Article';
 
@@ -22,13 +27,23 @@ function ArticleRow({ id, title, onSelectArticle }: ArticleRowProps) {
       onPress={handleSelectArticle}
     >
       <View style={styles.container}>
-        <Ionicons
-          name="document-outline"
-          size={24}
-          color={theme.colors.onBackground}
-          style={styles.icon}
+        <Image
+          source={{
+            uri: 'https://plchldr.co/i/300x200?&bg=54e73f&fc=fff&text=image',
+          }}
+          style={styles.image}
         />
-        <Text style={styles.title}>{title}</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.title} numberOfLines={1}>
+            {title}
+          </Text>
+          <Text style={styles.subtitle} numberOfLines={2}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </Text>
+        </View>
       </View>
     </TouchableHighlight>
   );
@@ -36,18 +51,28 @@ function ArticleRow({ id, title, onSelectArticle }: ArticleRowProps) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: theme.spaces.sm,
-    paddingBottom: theme.spaces.sm,
-    height: 40,
+    paddingTop: 12,
+    paddingBottom: 12,
+    height: 64 + 12 * 2,
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
   },
-  icon: {
-    marginLeft: theme.spaces.md,
+  image: {
     marginRight: theme.spaces.md,
+    height: 64,
+    width: 96,
   },
-  title: { ...theme.fonts.bodyLarge },
+  textContainer: {
+    flexDirection: 'column',
+    flex: 1,
+  },
+  title: {
+    ...theme.fonts.bodyLarge,
+  },
+  subtitle: {
+    color: theme.colors.onSurfaceVariant,
+    ...theme.fonts.bodyMedium,
+  },
 });
 
 export { ArticleRow };

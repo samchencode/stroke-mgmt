@@ -9,6 +9,12 @@ export const fonts = {
     fontSize: 32,
     fontWeight: '400',
   },
+  titleLarge: {
+    lineHeight: 28,
+    fontSize: 22,
+    letterSpacing: 0,
+    fontWeight: '400',
+  },
   titleMedium: {
     lineHeight: 24,
     fontSize: 16,

@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     paddingRight: theme.spaces.md,
   },
   articleList: {
-    marginTop: theme.spaces.lg,
+    marginTop: theme.spaces.md,
   },
 });
 

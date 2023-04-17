@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  title: theme.fonts.displayMedium,
+  title: theme.fonts.titleLarge,
 });
 
 export { AlgorithmList };

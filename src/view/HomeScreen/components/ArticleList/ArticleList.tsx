@@ -55,7 +55,7 @@ function ArticleList({
 
 const styles = StyleSheet.create({
   title: {
-    ...theme.fonts.displayMedium,
+    ...theme.fonts.titleLarge,
   },
 });
 

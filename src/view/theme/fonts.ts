@@ -1,9 +1,4 @@
 export const fonts = {
-  displayMedium: {
-    lineHeight: 52,
-    fontSize: 45,
-    fontWeight: '400',
-  },
   headlineLarge: {
     lineHeight: 40,
     fontSize: 32,

@@ -33,7 +33,7 @@ export const module = {
   strapiHostUrl: [
     'value',
     production
-      ? 'https://stroke-mgmt-cms.onrender.com'
+      ? 'https://stroke-mgmt-cms.a2hosted.com'
       : 'http://localhost:1337',
   ],
 

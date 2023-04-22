@@ -2,6 +2,7 @@ import { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import type { ArticleRenderer } from '@/domain/models/Article';
 import type { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
+import { Image } from '@/domain/models/Image';
 
 const stubRenderer: ArticleRenderer = {
   renderArticle: jest.fn().mockResolvedValue('rendered article'),
@@ -11,6 +12,8 @@ const stubRenderer: ArticleRenderer = {
 };
 
 const article = new Article({
+  summary: 'My Summary',
+  thumbnail: new Image('/img.png'),
   id: new ArticleId('0'),
   title: 'example article',
   html: 'foo bar',

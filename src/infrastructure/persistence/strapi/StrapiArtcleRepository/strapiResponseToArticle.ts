@@ -1,11 +1,12 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
+import { Image } from '@/domain/models/Image';
 import type { StrapiArticleData } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 
-export const strapiResponseToArticle = ({
-  id,
-  attributes,
-}: StrapiArticleData): Article => {
+export const strapiResponseToArticle = (
+  defaultThumbnail: Image,
+  { id, attributes }: StrapiArticleData
+): Article => {
   let designation: BaseDesignation = Designation.ARTICLE;
   switch (attributes.Designation) {
     case 'Stroke Signs':
@@ -21,10 +22,19 @@ export const strapiResponseToArticle = ({
       break;
   }
 
+  let thumbnail = defaultThumbnail;
+  if (attributes.Thumbnail.data !== null) {
+    thumbnail = new Image(
+      attributes.Thumbnail.data.attributes.formats.thumbnail.url
+    );
+  }
+
   return new Article({
     id: new ArticleId(id.toString()),
     title: attributes.Title,
     html: attributes.Body,
     designation,
+    summary: attributes.Summary,
+    thumbnail,
   });
 };

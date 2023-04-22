@@ -11,11 +11,16 @@ import type {
   BaseDesignation,
 } from '@/domain/models/Article';
 import { strapiResponseToArticle } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository/strapiResponseToArticle';
+import type { ImageRepository } from '@/domain/models/Image';
 
 type Fetch = typeof fetch;
 
 class StrapiArticleRepository implements ArticleRepository {
-  constructor(private strapiHostUrl: string, private fetch: Fetch) {}
+  constructor(
+    private strapiHostUrl: string,
+    private fetch: Fetch,
+    private placeholderImageRepository: ImageRepository
+  ) {}
 
   private async get(uri: string) {
     const url = this.strapiHostUrl + uri;
@@ -29,28 +34,43 @@ class StrapiArticleRepository implements ArticleRepository {
 
   async getAll(): Promise<Article[]> {
     const { data } = await this.get(
-      '/api/articles?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion'
+      '/api/articles?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=Thumbnail'
     );
-    return (data as StrapiArticleData[]).map(strapiResponseToArticle);
+    const promises = (data as StrapiArticleData[]).map((d) =>
+      this.getDefaultThumbnailAndMakeArticle(d)
+    );
+    return Promise.all(promises);
   }
 
   async getById(id: ArticleId): Promise<Article> {
     const idString = id.toString();
     const { data } = await this.get(
-      `/api/articles/${idString}?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion`
+      `/api/articles/${idString}?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=Thumbnail`
     );
-    return strapiResponseToArticle(data as StrapiArticleData);
+    return this.getDefaultThumbnailAndMakeArticle(data as StrapiArticleData);
   }
 
-  async getByDesignation(d: BaseDesignation): Promise<Article[]> {
-    let designationName = d.toString();
+  async getByDesignation(designation: BaseDesignation): Promise<Article[]> {
+    let designationName = designation.toString();
     if (designationName === 'StrokeFacts') designationName = 'Stroke Facts';
     if (designationName === 'StrokeSigns') designationName = 'Stroke Signs';
 
     const { data } = await this.get(
       `/api/articles/?filters[Designation]=${encodeURI(designationName)}`
     );
-    return (data as StrapiArticleData[]).map(strapiResponseToArticle);
+    const promises = (data as StrapiArticleData[]).map((d) =>
+      this.getDefaultThumbnailAndMakeArticle(d)
+    );
+    return Promise.all(promises);
+  }
+
+  private async getDefaultThumbnailAndMakeArticle(data: StrapiArticleData) {
+    const { id } = data;
+    const placeholderImage =
+      await this.placeholderImageRepository.getDeterministicImageForString(
+        id.toString()
+      );
+    return strapiResponseToArticle(placeholderImage, data);
   }
 }
 

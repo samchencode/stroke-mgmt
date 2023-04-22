@@ -5,9 +5,13 @@ export type StrapiArticleData = {
     Body: string;
     Designation: 'Article' | 'Stroke Facts' | 'Stroke Signs' | 'Disclaimer';
     ArticleId: string;
+    Summary: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    Thumbnail: {
+      data: StrapiImage | null;
+    };
   };
 };
 
@@ -21,6 +25,9 @@ export type StrapiAlgorithmData = {
     updatedAt: string;
     publishedAt: string;
     AlgorithmId: string;
+    Thumbnail: {
+      data: StrapiImage | null;
+    };
     outcomes: {
       id: number;
       Title: string;

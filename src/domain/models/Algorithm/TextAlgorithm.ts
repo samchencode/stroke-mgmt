@@ -3,6 +3,7 @@ import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
 import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
+import type { Image } from '@/domain/models/Image';
 
 type TextAlgorithmParams = {
   info: AlgorithmInfo;
@@ -34,6 +35,10 @@ class TextAlgorithm implements Algorithm {
 
   getBody(): string {
     return this.info.getBody();
+  }
+
+  getThumbnail(): Image {
+    return this.info.getThumbnail();
   }
 
   getSummary(): string {

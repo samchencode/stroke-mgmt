@@ -9,6 +9,7 @@ import type {
   SwitchId,
   LevelId,
 } from '@/domain/models/Algorithm/Switch';
+import type { Image } from '@/domain/models/Image';
 
 type ScoredAlgorithmParams = {
   info: AlgorithmInfo;
@@ -64,6 +65,10 @@ class ScoredAlgorithm implements Algorithm {
 
   getBody(): string {
     return this.info.getBody();
+  }
+
+  getThumbnail(): Image {
+    return this.info.getThumbnail();
   }
 
   getSummary(): string {

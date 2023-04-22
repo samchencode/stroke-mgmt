@@ -25,6 +25,7 @@ import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/Str
 import { StrapiAlgorihtmRepository } from '@/infrastructure/persistence/strapi/StrapiAlgorithmRepository';
 
 import Constants from 'expo-constants';
+import { StrapiPlaceholderImageRepository } from '@/infrastructure/persistence/strapi/StrapiPlaceholderImageRepository/StrapiPlaceholderImageRepository';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -55,6 +56,7 @@ export const module = {
   // INFRASTRUCTURE
   articleRepository: ['type', StrapiArticleRepository],
   algorithmRepository: ['type', StrapiAlgorihtmRepository],
+  placeholderImageRepository: ['type', StrapiPlaceholderImageRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   articleRenderer: [
     'factory',

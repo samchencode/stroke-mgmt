@@ -10,6 +10,7 @@ import {
   SwitchId,
   TextAlgorithm,
 } from '@/domain/models/Algorithm';
+import { Image } from '@/domain/models/Image';
 
 describe('RenderedAlgorithm', () => {
   describe('Instantiation', () => {
@@ -17,6 +18,7 @@ describe('RenderedAlgorithm', () => {
       const html = '<h1>hai</h1>';
       const algo = new TextAlgorithm({
         info: new AlgorithmInfo({
+          thumbnail: new Image('/foo.png'),
           id: new AlgorithmId('10000'),
           title: 'hai',
           body: 'hai',
@@ -32,6 +34,7 @@ describe('RenderedAlgorithm', () => {
       const html = '<h1>hai</h1>';
       const algo = new TextAlgorithm({
         info: new AlgorithmInfo({
+          thumbnail: new Image('/foo.png'),
           id: new AlgorithmId('10000'),
           title: 'hai',
           body: 'hai',
@@ -60,6 +63,7 @@ describe('RenderedAlgorithm', () => {
     beforeEach(() => {
       algo3 = new TextAlgorithm({
         info: new AlgorithmInfo({
+          thumbnail: new Image('/foo.png'),
           id: new AlgorithmId('30'),
           title: 'this is an example text algo',
           body: 'this is an example text algo',
@@ -70,6 +74,7 @@ describe('RenderedAlgorithm', () => {
 
       algo2 = new TextAlgorithm({
         info: new AlgorithmInfo({
+          thumbnail: new Image('/foo.png'),
           id: new AlgorithmId('20'),
           title: 'this is an example text algo',
           body: 'this is an example text algo',
@@ -80,6 +85,7 @@ describe('RenderedAlgorithm', () => {
 
       algo1 = new ScoredAlgorithm({
         info: new AlgorithmInfo({
+          thumbnail: new Image('/foo.png'),
           id: new AlgorithmId('10'),
           title: 'this is an example scored algo',
           body: 'this is an example scored algo',

@@ -9,11 +9,13 @@ import {
   LessThanCriterion,
 } from '@/domain/models/Algorithm/Criterion';
 import { YesNoSwitch, SwitchId } from '@/domain/models/Algorithm/Switch';
+import { Image } from '@/domain/models/Image';
 
 describe('ScoredAlgorithm', () => {
   describe('Instantiation', () => {
     it('should create a new scored algorithm', () => {
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('0'),
         title: 'my algo',
         body: 'body text',
@@ -46,6 +48,7 @@ describe('ScoredAlgorithm', () => {
       });
 
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
@@ -86,6 +89,7 @@ describe('ScoredAlgorithm', () => {
 
     it('should not have outcomes if outcomes array is empty', () => {
       const noOutcomesAlgoInfo = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('2'),
         title: 'test algo',
         body: 'this is the body text',
@@ -106,6 +110,7 @@ describe('ScoredAlgorithm', () => {
 
     it('should return empty array calling getOutcomes with no outcomes defined', () => {
       const noOutcomesAlgoInfo = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('2'),
         title: 'test algo',
         body: 'this is the body text',
@@ -131,6 +136,7 @@ describe('ScoredAlgorithm', () => {
       });
 
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
@@ -168,6 +174,7 @@ describe('ScoredAlgorithm', () => {
       });
 
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
@@ -200,6 +207,7 @@ describe('ScoredAlgorithm', () => {
 
     it('should throw error if given no switches', () => {
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
@@ -212,6 +220,7 @@ describe('ScoredAlgorithm', () => {
 
     it('should throw error if switchid not found', () => {
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',
@@ -235,6 +244,7 @@ describe('ScoredAlgorithm', () => {
 
     it('should preserve order of switches after setting switch', () => {
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('0'),
         title: 'test algo',
         body: 'this is the body text',

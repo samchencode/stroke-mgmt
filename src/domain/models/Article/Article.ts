@@ -1,11 +1,14 @@
 import type { ArticleId } from '@/domain/models/Article/ArticleId';
 import type { BaseDesignation } from '@/domain/models/Article/Designation/BaseDesignation';
+import type { Image } from '@/domain/models/Image';
 
 type ArticleParams = {
   id: ArticleId;
   title: string;
   html: string;
+  summary: string;
   designation: BaseDesignation;
+  thumbnail: Image;
 };
 
 class Article {
@@ -15,13 +18,26 @@ class Article {
 
   private html: string;
 
+  private summary: string;
+
   private desigation: BaseDesignation;
 
-  constructor({ id, title, html, designation }: ArticleParams) {
+  private thumbnail: Image;
+
+  constructor({
+    id,
+    title,
+    html,
+    designation,
+    thumbnail,
+    summary,
+  }: ArticleParams) {
     this.id = id;
     this.title = title;
     this.html = html;
     this.desigation = designation;
+    this.thumbnail = thumbnail;
+    this.summary = summary;
   }
 
   getId() {
@@ -34,6 +50,14 @@ class Article {
 
   getHtml() {
     return this.html;
+  }
+
+  getImage() {
+    return this.thumbnail;
+  }
+
+  getSummary() {
+    return this.summary;
   }
 
   getDesignation() {

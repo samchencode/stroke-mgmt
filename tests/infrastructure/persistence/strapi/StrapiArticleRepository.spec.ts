@@ -2,6 +2,7 @@
 
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository';
+import { FakeImageRepository } from '@/infrastructure/persistence/fake/FakeAlgorithmRepository/FakeImageRepository';
 import {
   allArticles,
   articleOne,
@@ -17,8 +18,10 @@ const makeFetch = (parsedResponse?: any) =>
 describe('StrapiArticleRepository', () => {
   describe('Instantiation', () => {
     it('should create a repo', () => {
+      const imageRepo = new FakeImageRepository();
+
       const create = () =>
-        new StrapiArticleRepository('myhost.com', makeFetch());
+        new StrapiArticleRepository('myhost.com', makeFetch(), imageRepo);
 
       expect(create).not.toThrowError();
     });
@@ -26,9 +29,12 @@ describe('StrapiArticleRepository', () => {
 
   describe('Behavior', () => {
     it('should get all articles', async () => {
+      const imageRepo = new FakeImageRepository();
+
       const repo = new StrapiArticleRepository(
         'myhost.com',
-        makeFetch(allArticles)
+        makeFetch(allArticles),
+        imageRepo
       );
       const articles = await repo.getAll();
       expect(articles).toHaveLength(5);
@@ -36,9 +42,11 @@ describe('StrapiArticleRepository', () => {
     });
 
     it('should get article by id', async () => {
+      const imageRepo = new FakeImageRepository();
       const repo = new StrapiArticleRepository(
         'myhost.com',
-        makeFetch(articleOne)
+        makeFetch(articleOne),
+        imageRepo
       );
       const article = await repo.getById(new ArticleId('1'));
       expect(article.getTitle()).toBe(
@@ -47,9 +55,11 @@ describe('StrapiArticleRepository', () => {
     });
 
     it('should get article by designation', async () => {
+      const imageRepo = new FakeImageRepository();
       const repo = new StrapiArticleRepository(
         'myhost.com',
-        makeFetch(designationStrokeFacts)
+        makeFetch(designationStrokeFacts),
+        imageRepo
       );
       const [strokeFacts] = await repo.getByDesignation(
         Designation.STROKE_FACTS

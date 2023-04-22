@@ -4,11 +4,13 @@ import {
   Outcome,
   TextAlgorithm,
 } from '@/domain/models/Algorithm';
+import { Image } from '@/domain/models/Image';
 
 describe('TextAlgorithm', () => {
   describe('Instantiation', () => {
     it('should make a new TextAlgorithm', () => {
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         title: 'test algo',
         body: 'this is the body text',
         summary: 'summary text',
@@ -28,6 +30,7 @@ describe('TextAlgorithm', () => {
 
     beforeEach(() => {
       const nextInfo = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         title: 'next algo',
         body: 'this is the next body text',
         summary: 'summary text',
@@ -42,6 +45,7 @@ describe('TextAlgorithm', () => {
         next: new AlgorithmId('1'),
       });
       const info = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         title: 'test algo',
         body: 'this is the body text',
         summary: 'summary text',
@@ -70,6 +74,7 @@ describe('TextAlgorithm', () => {
 
     it('should not have outcomes if outcomes array is empty', () => {
       const noOutcomesAlgoInfo = new AlgorithmInfo({
+        thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('2'),
         title: 'test algo',
         body: 'this is the body text',

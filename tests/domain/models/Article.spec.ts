@@ -1,5 +1,6 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { ArticleId, Designation, Article } from '@/domain/models/Article';
+import { Image } from '@/domain/models/Image';
 
 describe('Article', () => {
   describe('Instantiation', () => {
@@ -8,8 +9,11 @@ describe('Article', () => {
       const html = '<h1>Hello World</h1>';
       const id = new ArticleId('1');
       const designation = Designation.ARTICLE;
+      const summary = 'Example summary';
+      const thumbnail = new Image('/img.png');
 
-      const create = () => new Article({ id, title, html, designation });
+      const create = () =>
+        new Article({ id, title, html, designation, summary, thumbnail });
       expect(create).not.toThrowError();
     });
   });
@@ -28,7 +32,14 @@ describe('Article', () => {
     });
 
     it('should get title, body, id, designation', () => {
-      const article = new Article({ id, title, html, designation });
+      const article = new Article({
+        summary: 'My Summary',
+        thumbnail: new Image('/img.png'),
+        id,
+        title,
+        html,
+        designation,
+      });
       expect(article.getTitle()).toBe(title);
       expect(article.getHtml()).toBe(html);
       expect(article.getId().is(id)).toBe(true);

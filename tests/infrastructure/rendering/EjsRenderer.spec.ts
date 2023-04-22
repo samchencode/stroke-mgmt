@@ -3,6 +3,7 @@ import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import { NodeFileSystem } from '@/infrastructure/file-system/node/NodeFileSystem';
 import { FakeAlgorithmRepository } from '@/infrastructure/persistence/fake/FakeAlgorithmRepository';
 import { EjsRenderer } from '@/infrastructure/rendering/ejs/EjsRenderer';
+import { Image } from '@/domain/models/Image';
 
 describe('EjsAlgorithmRenderer', () => {
   let repo: FakeAlgorithmRepository;
@@ -49,6 +50,8 @@ describe('EjsAlgorithmRenderer', () => {
 
     it('should render article title and html', async () => {
       const article = new Article({
+        summary: 'My Summary',
+        thumbnail: new Image('/img.png'),
         id: new ArticleId('0'),
         title: 'hello world',
         html: '<h1>foo bar</h1>',
@@ -62,6 +65,8 @@ describe('EjsAlgorithmRenderer', () => {
 
     it('should render disclaimer html', async () => {
       const article = new Article({
+        summary: 'My Summary',
+        thumbnail: new Image('/img.png'),
         id: new ArticleId('1'),
         title: 'hello world',
         html: '<h1>foo bar</h1>',

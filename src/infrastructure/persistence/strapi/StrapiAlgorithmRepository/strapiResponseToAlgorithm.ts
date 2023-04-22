@@ -14,12 +14,13 @@ import {
   NoCriterion,
 } from '@/domain/models/Algorithm/Criterion';
 import { Level, LevelId } from '@/domain/models/Algorithm/Switch';
+import { Image } from '@/domain/models/Image';
 import type { StrapiAlgorithmData } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 
-export const strapiResponseToAlgorithm = ({
-  id: algoId,
-  attributes,
-}: StrapiAlgorithmData): TextAlgorithm | ScoredAlgorithm => {
+export const strapiResponseToAlgorithm = (
+  defaultThumbnail: Image,
+  { id: algoId, attributes }: StrapiAlgorithmData
+): TextAlgorithm | ScoredAlgorithm => {
   const {
     Title,
     Summary,
@@ -46,12 +47,20 @@ export const strapiResponseToAlgorithm = ({
     }
   );
 
+  let thumbnail = defaultThumbnail;
+  if (attributes.Thumbnail.data !== null) {
+    thumbnail = new Image(
+      attributes.Thumbnail.data.attributes.formats.thumbnail.url
+    );
+  }
+
   const info = new AlgorithmInfo({
     id: new AlgorithmId(algoId.toString()),
     title: Title,
     summary: Summary,
     body: Body,
     outcomes,
+    thumbnail,
   });
 
   if (switchData.length === 0) {

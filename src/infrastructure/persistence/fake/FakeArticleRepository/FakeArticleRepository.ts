@@ -1,6 +1,7 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
+import { Image } from '@/domain/models/Image';
 import { fakeArticles } from '@/infrastructure/persistence/fake/FakeArticleRepository/fakeArticles';
 
 class FakeArticleRepository implements ArticleRepository {
@@ -14,6 +15,8 @@ class FakeArticleRepository implements ArticleRepository {
           title: p.title,
           html: p.html,
           designation: Designation[p.designation],
+          summary: p.summary,
+          thumbnail: new Image(p.thumbnail),
         })
     );
   }
@@ -37,6 +40,8 @@ class FakeArticleRepository implements ArticleRepository {
           title: p.title,
           html: p.html,
           designation: Designation[p.designation],
+          summary: p.summary,
+          thumbnail: new Image(p.thumbnail),
         })
     );
   }
@@ -50,6 +55,8 @@ class FakeArticleRepository implements ArticleRepository {
       title: articles.title,
       html: articles.html,
       designation: Designation[articles.designation],
+      summary: articles.summary,
+      thumbnail: new Image(articles.thumbnail),
     });
   }
 }

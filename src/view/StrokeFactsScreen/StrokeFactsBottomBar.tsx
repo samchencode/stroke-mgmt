@@ -20,14 +20,7 @@ function StrokeFactsBottomBar({ onPressButton }: Props) {
 const styles = StyleSheet.create({
   safeArea: {
     backgroundColor: theme.colors.secondaryContainer,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
+    ...theme.elevations[2],
   },
   container: {
     height: 80,

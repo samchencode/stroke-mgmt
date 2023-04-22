@@ -49,14 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.colors.inverseSurface,
     borderRadius: 4,
-    elevation: 3,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.17,
-    shadowRadius: 2.54,
+    ...theme.elevations[3],
   },
   message: {
     ...theme.fonts.bodyMedium,

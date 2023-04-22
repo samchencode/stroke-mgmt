@@ -52,7 +52,7 @@ class Article {
     return this.html;
   }
 
-  getImage() {
+  getThumbnail() {
     return this.thumbnail;
   }
 

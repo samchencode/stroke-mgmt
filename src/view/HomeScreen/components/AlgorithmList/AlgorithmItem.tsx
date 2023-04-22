@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 150,
-    backgroundColor: 'navy',
     borderRadius: 12,
   },
   title: theme.fonts.titleMedium,

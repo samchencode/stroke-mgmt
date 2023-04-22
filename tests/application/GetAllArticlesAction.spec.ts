@@ -22,7 +22,7 @@ describe('GetAllArticlesAction', () => {
     it('should get all articles', async () => {
       const action = new GetAllArticlesAction(repo);
       const articles = await action.execute();
-      expect(articles.length).toBe(1003);
+      expect(articles.length).toBe(1000);
       articles.forEach((a) => {
         expect(a).toBeInstanceOf(Article);
         expect(a.getId()).toBeInstanceOf(ArticleId);

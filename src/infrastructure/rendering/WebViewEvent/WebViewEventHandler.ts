@@ -6,6 +6,7 @@ import type {
   WebViewNextPressedEvent as NextPressedEvent,
   WebViewLinkPressedEvent as LinkPressedEvent,
   WebViewArticleLinkPressedEvent as ArticleLinkPressedEvent,
+  WebViewLogEvent as LogEvent,
 } from '@/infrastructure/rendering/WebViewEvent/WebViewEvent';
 import { openURL as openUrl } from 'expo-linking';
 
@@ -28,6 +29,7 @@ class WebViewEventHandler {
     if (e.type === 'switchchanged') this.handleSwitchChanged(e);
     if (e.type === 'linkpressed') this.handleLinkPressed(e);
     if (e.type === 'articlelinkpressed') this.handleArticleLinkPressed(e);
+    if (e.type === 'log') this.handleLog(e);
   }
 
   handleError(e: ErrorEvent) {
@@ -63,6 +65,11 @@ class WebViewEventHandler {
   handleArticleLinkPressed(e: ArticleLinkPressedEvent) {
     if (!this.handlers.articlelinkpressed) return;
     this.handlers.articlelinkpressed(e.content);
+  }
+
+  handleLog(e: LogEvent) {
+    // eslint-disable-next-line no-console
+    console.log(e.content.message);
   }
 }
 

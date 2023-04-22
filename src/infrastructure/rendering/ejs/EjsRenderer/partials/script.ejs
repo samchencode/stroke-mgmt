@@ -12,6 +12,11 @@
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
   const notifyArticleLinkPressed = notifyReactNative.bind(null, 'articlelinkpressed');
+  const notifyLog = function(msg) {
+    notifyReactNative('log', {
+      message: msg
+    })
+  }
 
   ; // Report window height
   (function() {
@@ -47,8 +52,9 @@
       input.addEventListener('change', ({
         target
       }) => {
-        const id = target.dataset['switch-id'];
-        const levelId = target.dataset['level-id'];
+        const id = target.dataset.switchId;
+        const levelId = target.dataset.levelId;
+
         notifySwitchChanged({
           id,
           levelId,

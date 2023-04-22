@@ -43,10 +43,18 @@ export type WebViewArticleLinkPressedEvent = {
   };
 };
 
+export type WebViewLogEvent = {
+  readonly type: 'log';
+  content: {
+    message: unknown;
+  };
+};
+
 export type WebViewEvent =
   | WebViewSwitchChangedEvent
   | WebViewLayoutEvent
   | WebViewErrorEvent
   | WebViewNextPressedEvent
   | WebViewLinkPressedEvent
-  | WebViewArticleLinkPressedEvent;
+  | WebViewArticleLinkPressedEvent
+  | WebViewLogEvent;

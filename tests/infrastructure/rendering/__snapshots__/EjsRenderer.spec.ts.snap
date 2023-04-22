@@ -28,11 +28,27 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
     };
     window.ReactNativeWebView.postMessage(JSON.stringify(message));
   }
-  const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed')
+  const notifyArticleLinkPressed = notifyReactNative.bind(null, 'articlelinkpressed');
+  const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
   const notifyError = notifyReactNative.bind(null, 'error');
 
   ; // Listen to click of any link
   (function() {
+    const isArticleLink = (href) => href.slice(0, 8) === 'article:'
+
+    function handleLinkPressed(href) {
+      notifyLinkPressed({
+        href
+      });
+    }
+
+    function handleArticleLinkPressed(href) {
+      const articleId = href.slice(8)
+      notifyArticleLinkPressed({
+        articleId
+      });
+    }
+
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
       const href = a.getAttribute('href')
@@ -40,9 +56,8 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const href = e.target.getAttribute('href')
-        notifyLinkPressed({
-          href
-        })
+        if (isArticleLink(href)) handleArticleLinkPressed(href)
+        else handleLinkPressed(href)
       })
     }
   })();
@@ -485,6 +500,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   const notifyError = notifyReactNative.bind(null, 'error');
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
+  const notifyArticleLinkPressed = notifyReactNative.bind(null, 'articlelinkpressed');
 
   ; // Report window height
   (function() {
@@ -547,6 +563,21 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
   ; // Listen to click of any link
   (function() {
+    const isArticleLink = (href) => href.slice(0, 8) === 'article:'
+
+    function handleLinkPressed(href) {
+      notifyLinkPressed({
+        href
+      });
+    }
+
+    function handleArticleLinkPressed(href) {
+      const articleId = href.slice(8)
+      notifyArticleLinkPressed({
+        articleId
+      });
+    }
+
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
       const href = a.getAttribute('href')
@@ -554,9 +585,8 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const href = e.target.getAttribute('href')
-        notifyLinkPressed({
-          href
-        })
+        if (isArticleLink(href)) handleArticleLinkPressed(href)
+        else handleLinkPressed(href)
       })
     }
   })();
@@ -853,6 +883,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   const notifyError = notifyReactNative.bind(null, 'error');
   const notifyNextPressed = notifyReactNative.bind(null, 'nextpressed');
   const notifyLinkPressed = notifyReactNative.bind(null, 'linkpressed');
+  const notifyArticleLinkPressed = notifyReactNative.bind(null, 'articlelinkpressed');
 
   ; // Report window height
   (function() {
@@ -915,6 +946,21 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 
   ; // Listen to click of any link
   (function() {
+    const isArticleLink = (href) => href.slice(0, 8) === 'article:'
+
+    function handleLinkPressed(href) {
+      notifyLinkPressed({
+        href
+      });
+    }
+
+    function handleArticleLinkPressed(href) {
+      const articleId = href.slice(8)
+      notifyArticleLinkPressed({
+        articleId
+      });
+    }
+
     const links = Array.from(document.querySelectorAll('a[href]'))
     for (const a of links) {
       const href = a.getAttribute('href')
@@ -922,9 +968,8 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const href = e.target.getAttribute('href')
-        notifyLinkPressed({
-          href
-        })
+        if (isArticleLink(href)) handleArticleLinkPressed(href)
+        else handleLinkPressed(href)
       })
     }
   })();

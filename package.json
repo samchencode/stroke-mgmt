@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "license": "GPL-3",
   "scripts": {
-    "start": "NODE_ENV=development expo start --tunnel",
+    "start": "expo start --tunnel",
+    "dev": "NODE_ENV=development expo start --tunnel",
     "android": "NODE_ENV=development expo start --android",
     "ios": "NODE_ENV=development expo start --ios",
     "web": "expo start --web",

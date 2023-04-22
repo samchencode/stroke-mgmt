@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     width: 150,
     backgroundColor: theme.colors.surface,
     borderRadius: 12,
+    ...theme.elevations[2],
   },
   contentContainer: {
     padding: theme.spaces.sm,

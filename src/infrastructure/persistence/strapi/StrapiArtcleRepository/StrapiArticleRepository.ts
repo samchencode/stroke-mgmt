@@ -68,7 +68,7 @@ class StrapiArticleRepository implements ArticleRepository {
     const { id } = data;
     const placeholderImage =
       await this.placeholderImageRepository.getDeterministicImageForString(
-        id.toString()
+        `article-${id.toString()}`
       );
     return strapiResponseToArticle(placeholderImage, data);
   }

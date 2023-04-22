@@ -70,7 +70,7 @@ class StrapiArticleRepository implements ArticleRepository {
       await this.placeholderImageRepository.getDeterministicImageForString(
         `article-${id.toString()}`
       );
-    return strapiResponseToArticle(placeholderImage, data);
+    return strapiResponseToArticle(placeholderImage, this.strapiHostUrl, data);
   }
 }
 

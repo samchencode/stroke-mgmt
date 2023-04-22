@@ -55,7 +55,11 @@ class StrapiAlgorihtmRepository implements AlgorithmRepository {
       await this.placeholderImageRepository.getDeterministicImageForString(
         `algorithm-${id.toString()}`
       );
-    return strapiResponseToAlgorithm(placeholderImage, data);
+    return strapiResponseToAlgorithm(
+      placeholderImage,
+      this.strapiHostUrl,
+      data
+    );
   }
 }
 

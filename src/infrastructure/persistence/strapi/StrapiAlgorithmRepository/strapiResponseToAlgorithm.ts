@@ -19,6 +19,7 @@ import type { StrapiAlgorithmData } from '@/infrastructure/persistence/strapi/St
 
 export const strapiResponseToAlgorithm = (
   defaultThumbnail: Image,
+  strapiHostUrl: string,
   { id: algoId, attributes }: StrapiAlgorithmData
 ): TextAlgorithm | ScoredAlgorithm => {
   const {
@@ -50,7 +51,7 @@ export const strapiResponseToAlgorithm = (
   let thumbnail = defaultThumbnail;
   if (attributes.Thumbnail.data !== null) {
     thumbnail = new Image(
-      attributes.Thumbnail.data.attributes.formats.thumbnail.url
+      strapiHostUrl + attributes.Thumbnail.data.attributes.formats.thumbnail.url
     );
   }
 

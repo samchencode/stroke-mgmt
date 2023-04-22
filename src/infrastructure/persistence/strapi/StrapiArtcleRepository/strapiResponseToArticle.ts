@@ -5,6 +5,7 @@ import type { StrapiArticleData } from '@/infrastructure/persistence/strapi/Stra
 
 export const strapiResponseToArticle = (
   defaultThumbnail: Image,
+  strapiHostUrl: string,
   { id, attributes }: StrapiArticleData
 ): Article => {
   let designation: BaseDesignation = Designation.ARTICLE;
@@ -25,7 +26,7 @@ export const strapiResponseToArticle = (
   let thumbnail = defaultThumbnail;
   if (attributes.Thumbnail && attributes.Thumbnail?.data !== null) {
     thumbnail = new Image(
-      attributes.Thumbnail.data.attributes.formats.thumbnail.url
+      strapiHostUrl + attributes.Thumbnail.data.attributes.formats.thumbnail.url
     );
   }
 

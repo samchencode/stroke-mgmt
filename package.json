@@ -38,6 +38,7 @@
     "react-native-screens": "~3.18.0",
     "react-native-web": "~0.18.9",
     "react-native-webview": "11.23.1",
+    "sanitize-html": "^2.10.0",
     "sha.js": "^2.4.11"
   },
   "devDependencies": {
@@ -47,6 +48,7 @@
     "@types/react": "^18.0.15",
     "@types/react-native": "^0.69.3",
     "@types/react-test-renderer": "^18.0.0",
+    "@types/sanitize-html": "^2.9.0",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "babel-jest": "^29.3.1",

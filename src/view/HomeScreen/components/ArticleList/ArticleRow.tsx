@@ -12,11 +12,18 @@ import type { ArticleId } from '@/domain/models/Article';
 type ArticleRowProps = {
   id: ArticleId;
   title: string;
+  subtitle: string;
   imageUri: string;
   onSelectArticle: (id: ArticleId) => void;
 };
 
-function ArticleRow({ id, title, imageUri, onSelectArticle }: ArticleRowProps) {
+function ArticleRow({
+  id,
+  title,
+  imageUri,
+  subtitle,
+  onSelectArticle,
+}: ArticleRowProps) {
   const handleSelectArticle = useCallback(
     () => onSelectArticle(id),
     [id, onSelectArticle]
@@ -34,10 +41,7 @@ function ArticleRow({ id, title, imageUri, onSelectArticle }: ArticleRowProps) {
             {title}
           </Text>
           <Text style={styles.subtitle} numberOfLines={2}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            {subtitle}
           </Text>
         </View>
       </View>

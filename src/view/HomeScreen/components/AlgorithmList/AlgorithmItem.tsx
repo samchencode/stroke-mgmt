@@ -8,6 +8,7 @@ type AlgorithmItemProps = {
   id: string;
   name: string;
   body: string;
+  imageUri: string;
   onPress: (id: string) => void;
   style?: StyleProp<ViewStyle>;
 };
@@ -16,6 +17,7 @@ function AlgorithmItem({
   id,
   name,
   body,
+  imageUri,
   onPress,
   style = {},
 }: AlgorithmItemProps) {
@@ -25,10 +27,7 @@ function AlgorithmItem({
       underlayColor={theme.colors.background}
     >
       <View style={[styles.container, style]}>
-        <Image
-          source={{ uri: `https://robohash.org/${name}.png` }}
-          style={styles.image}
-        />
+        <Image source={{ uri: imageUri }} style={styles.image} />
         <View style={styles.contentContainer}>
           <Text style={styles.title}>{name}</Text>
           <Text style={styles.body}>{body}</Text>

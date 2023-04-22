@@ -15,6 +15,7 @@ function ArticleListFilled({ data, onSelectArticle }: Props) {
           key={a.getId().toString()}
           title={a.getTitle()}
           id={a.getId()}
+          imageUri={a.getThumbnail().getUri()}
           onSelectArticle={onSelectArticle}
         />
       ))}

@@ -27,6 +27,7 @@ function AlgorithmListFilled({ data, onSelectAlgorithm }: Props) {
           name={algorithm.getTitle()}
           key={algorithm.getId().toString()}
           body={algorithm.getSummary()}
+          imageUri={algorithm.getThumbnail().getUri()}
           onPress={handleSelectAlgorithm}
           style={styles.item}
         />

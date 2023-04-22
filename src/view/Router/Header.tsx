@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import type { ViewStyle, StyleProp, TextStyle } from 'react-native';
 import Constants from 'expo-constants';
@@ -8,6 +8,7 @@ import { getHeaderTitle } from '@react-navigation/elements';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { theme } from '@/view/theme';
 import { Menu } from '@/view/Router/Menu';
+import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
 
 type IconButtonProps = {
   iconName: string;
@@ -51,8 +52,12 @@ function Header({ navigation, route, options, back }: Props) {
     [navigation]
   );
 
+  const { scrolledToTop } = useContext(HeaderScrollContext);
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, !scrolledToTop && styles.containerScrolled]}
+    >
       <StatusBar translucent />
       <View style={styles.statusBar} />
       <View style={styles.header}>
@@ -87,6 +92,9 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     backgroundColor: theme.colors.surface,
+  },
+  containerScrolled: {
+    backgroundColor: theme.colors.surfaceContainer,
     ...theme.elevations[2],
   },
   statusBar: {

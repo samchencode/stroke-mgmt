@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
+import type { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
@@ -9,6 +10,7 @@ import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsActio
 import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
 import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
+import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
@@ -35,8 +37,22 @@ function factory(
       [navigation]
     );
 
+    const headerScrollState = useContext(HeaderScrollContext);
+
+    const handleScroll = useCallback(
+      ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+        const { contentOffset } = nativeEvent;
+        headerScrollState.setScrolledToTop(contentOffset.y === 0);
+      },
+      [headerScrollState]
+    );
+
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        onScroll={handleScroll}
+        scrollEventThrottle={300}
+      >
         <StatusBar translucent textColor="auto" />
         <AlgorithmList
           getAllAlgorithms={useCallback(

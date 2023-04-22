@@ -9,10 +9,16 @@ import {
   useReactQueryAppStateListener,
 } from '@/view/App/prepareReactQuery';
 import { SnackbarProvider } from '@/view/Snackbar';
+import {
+  HeaderScrollContext,
+  useHeaderScrollData,
+} from '@/view/Router/HeaderScrollContext';
 
 function factory(Router: Router) {
   return function App() {
     useReactQueryAppStateListener();
+
+    const headerScrollState = useHeaderScrollData();
 
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -20,9 +26,11 @@ function factory(Router: Router) {
           theme={{ colors: { background: theme.colors.background } } as any}
         >
           <QueryClientProvider client={queryClient}>
-            <SnackbarProvider>
-              <Router />
-            </SnackbarProvider>
+            <HeaderScrollContext.Provider value={headerScrollState}>
+              <SnackbarProvider>
+                <Router />
+              </SnackbarProvider>
+            </HeaderScrollContext.Provider>
           </QueryClientProvider>
         </NavigationContainer>
       </GestureHandlerRootView>

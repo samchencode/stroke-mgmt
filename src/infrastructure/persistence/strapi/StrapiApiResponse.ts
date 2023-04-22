@@ -49,6 +49,57 @@ export type StrapiAlgorithmData = {
   };
 };
 
+export type StrapiImageFormat = {
+  name: string;
+  hash: string;
+  ext: string;
+  mime: 'image/jpeg' | 'image/png';
+  path: null;
+  width: number;
+  height: number;
+  size: number;
+  url: string;
+};
+
+export type StrapiImage = {
+  id: number;
+  attributes: {
+    name: string;
+    alternativeText: null;
+    caption: null;
+    width: number;
+    height: number;
+    formats: {
+      thumbnail: StrapiImageFormat;
+      large: StrapiImageFormat;
+      small: StrapiImageFormat;
+      medium: StrapiImageFormat;
+    };
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: null;
+    provider: string;
+    provider_metadata: null;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
+
+export type StrapiPlaceholderImageData = {
+  id: 1;
+  attributes: {
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    Images: {
+      data: StrapiImage[];
+    };
+  };
+};
+
 export type StrapiApiResponse<Data> = {
   data: Data | Data[];
   meta: {

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import type { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
-import { StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import type { ArticleId } from '@/domain/models/Article';
@@ -48,25 +48,30 @@ function factory(
     );
 
     return (
-      <ScrollView
-        style={styles.container}
-        onScroll={handleScroll}
-        scrollEventThrottle={300}
-      >
-        <StatusBar translucent textColor="auto" />
-        <AlgorithmList
-          getAllAlgorithms={useCallback(
-            () => getAllAlgorithmsAction.execute(),
-            []
-          )}
-          onSelectAlgorithm={handleSelectAlgorithm}
-        />
-        <ArticleList
-          getAllArticles={useCallback(() => getAllArticlesAction.execute(), [])}
-          onSelectArticle={handleSelectArticle}
-          style={styles.articleList}
-        />
-      </ScrollView>
+      <SafeAreaView style={styles.container}>
+        <ScrollView
+          style={styles.scrollView}
+          onScroll={handleScroll}
+          scrollEventThrottle={300}
+        >
+          <StatusBar translucent textColor="auto" />
+          <AlgorithmList
+            getAllAlgorithms={useCallback(
+              () => getAllAlgorithmsAction.execute(),
+              []
+            )}
+            onSelectAlgorithm={handleSelectAlgorithm}
+          />
+          <ArticleList
+            getAllArticles={useCallback(
+              () => getAllArticlesAction.execute(),
+              []
+            )}
+            onSelectArticle={handleSelectArticle}
+            style={styles.articleList}
+          />
+        </ScrollView>
+      </SafeAreaView>
     );
   };
 }
@@ -74,6 +79,8 @@ function factory(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollView: {
     paddingTop: theme.spaces.md,
     paddingLeft: theme.spaces.md,
     paddingRight: theme.spaces.md,

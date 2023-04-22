@@ -17,7 +17,7 @@ export const colors = {
   surfaceContainerHigh: '#ebebeb',
   surfaceContainerHighest: '#e6e6e6',
   surfaceVariant: '#eeeeee',
-  onSurfaceVariant: '#459049',
+  onSurfaceVariant: '#495049',
   inverseSurface: '#111111',
   inverseOnSurface: '#eeeeee',
   inversePrimary: '#eeeeee',

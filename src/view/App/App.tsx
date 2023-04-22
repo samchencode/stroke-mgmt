@@ -13,6 +13,10 @@ import {
   HeaderScrollContext,
   useHeaderScrollData,
 } from '@/view/Router/HeaderScrollContext';
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
 
 function factory(Router: Router) {
   return function App() {
@@ -22,17 +26,19 @@ function factory(Router: Router) {
 
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <NavigationContainer
-          theme={{ colors: { background: theme.colors.background } } as any}
-        >
-          <QueryClientProvider client={queryClient}>
-            <HeaderScrollContext.Provider value={headerScrollState}>
-              <SnackbarProvider>
-                <Router />
-              </SnackbarProvider>
-            </HeaderScrollContext.Provider>
-          </QueryClientProvider>
-        </NavigationContainer>
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <NavigationContainer
+            theme={{ colors: { background: theme.colors.background } } as any}
+          >
+            <QueryClientProvider client={queryClient}>
+              <HeaderScrollContext.Provider value={headerScrollState}>
+                <SnackbarProvider>
+                  <Router />
+                </SnackbarProvider>
+              </HeaderScrollContext.Provider>
+            </QueryClientProvider>
+          </NavigationContainer>
+        </SafeAreaProvider>
       </GestureHandlerRootView>
     );
   };

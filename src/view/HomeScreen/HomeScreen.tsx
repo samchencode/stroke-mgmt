@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import type { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
-import { SafeAreaView, StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import type { ArticleId } from '@/domain/models/Article';
@@ -11,6 +11,7 @@ import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
 import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
@@ -47,31 +48,29 @@ function factory(
       [headerScrollState]
     );
 
+    const insets = useSafeAreaInsets();
+
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView
-          style={styles.scrollView}
-          onScroll={handleScroll}
-          scrollEventThrottle={300}
-        >
-          <StatusBar translucent textColor="auto" />
-          <AlgorithmList
-            getAllAlgorithms={useCallback(
-              () => getAllAlgorithmsAction.execute(),
-              []
-            )}
-            onSelectAlgorithm={handleSelectAlgorithm}
-          />
-          <ArticleList
-            getAllArticles={useCallback(
-              () => getAllArticlesAction.execute(),
-              []
-            )}
-            onSelectArticle={handleSelectArticle}
-            style={styles.articleList}
-          />
-        </ScrollView>
-      </SafeAreaView>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: insets.bottom }}
+        onScroll={handleScroll}
+        scrollEventThrottle={300}
+      >
+        <StatusBar translucent textColor="auto" />
+        <AlgorithmList
+          getAllAlgorithms={useCallback(
+            () => getAllAlgorithmsAction.execute(),
+            []
+          )}
+          onSelectAlgorithm={handleSelectAlgorithm}
+        />
+        <ArticleList
+          getAllArticles={useCallback(() => getAllArticlesAction.execute(), [])}
+          onSelectArticle={handleSelectArticle}
+          style={styles.articleList}
+        />
+      </ScrollView>
     );
   };
 }
@@ -79,8 +78,6 @@ function factory(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollView: {
     paddingTop: theme.spaces.md,
     paddingLeft: theme.spaces.md,
     paddingRight: theme.spaces.md,

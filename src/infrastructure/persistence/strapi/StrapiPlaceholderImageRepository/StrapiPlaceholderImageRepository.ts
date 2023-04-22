@@ -17,7 +17,7 @@ function stringToNumber(str: string): number {
 class StrapiPlaceholderImageRepository implements ImageRepository {
   private images: Promise<Image[]>;
 
-  constructor(private strapiApiHost: string) {
+  constructor(private strapiHostUrl: string) {
     this.images = this.getAll();
   }
 
@@ -25,7 +25,7 @@ class StrapiPlaceholderImageRepository implements ImageRepository {
     StrapiApiResponse<StrapiPlaceholderImageData>
   > {
     const PATH = '/api/placeholder-image?populate=Images';
-    const response = await fetch(this.strapiApiHost + PATH);
+    const response = await fetch(this.strapiHostUrl + PATH);
     const responseJson = (await response.json()) as
       | StrapiApiResponse<StrapiPlaceholderImageData>
       | StrapiErrorResponse;
@@ -38,7 +38,7 @@ class StrapiPlaceholderImageRepository implements ImageRepository {
     const response = await this.fetchData();
     const data = response.data as StrapiPlaceholderImageData;
     return data.attributes.Images.data.map(
-      (i) => new Image(this.strapiApiHost + i.attributes.formats.thumbnail.url)
+      (i) => new Image(this.strapiHostUrl + i.attributes.formats.thumbnail.url)
     );
   }
 

@@ -30,7 +30,9 @@ function AlgorithmItem({
         <Image source={{ uri: imageUri }} style={styles.image} />
         <View style={styles.contentContainer}>
           <Text style={styles.title}>{name}</Text>
-          <Text style={styles.body}>{body}</Text>
+          <Text style={styles.body} numberOfLines={3}>
+            {body}
+          </Text>
         </View>
       </View>
     </TouchableHighlight>
@@ -40,9 +42,8 @@ function AlgorithmItem({
 const styles = StyleSheet.create({
   container: {
     width: 150,
-    backgroundColor: theme.colors.surface,
+    backgroundColor: theme.colors.secondaryContainer,
     borderRadius: 12,
-    ...theme.elevations[2],
   },
   contentContainer: {
     padding: theme.spaces.sm,
@@ -51,7 +52,10 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 12,
   },
-  title: theme.fonts.titleMedium,
+  title: {
+    color: theme.colors.onSecondaryContainer,
+    ...theme.fonts.titleMedium,
+  },
   body: {
     marginTop: theme.spaces.sm,
     ...theme.fonts.bodyMedium,

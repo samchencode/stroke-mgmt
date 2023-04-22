@@ -39,7 +39,6 @@ function AlgorithmListFilled({ data, onSelectAlgorithm }: Props) {
 const styles = StyleSheet.create({
   scrollview: {
     marginTop: theme.spaces.md,
-    paddingBottom: theme.spaces.xs,
   },
   item: {
     marginRight: theme.spaces.sm,

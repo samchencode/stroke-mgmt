@@ -2,6 +2,8 @@
   body {
     margin: 0 16px;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fafafa;
   }
 
   .template {
@@ -18,6 +20,7 @@
 
   .template.header__title {
     margin: 0;
+    padding-top: 16px;
     /* headline-medium */
     line-height: 36px;
     font-size: 28px;
@@ -54,7 +57,8 @@
     display: none;
     position: absolute;
     top: 100%;
-    background-color: #efefef;
+    background-color: #111111;
+    color: #eeeeee;
     padding: 4px;
     border-radius: 4px;
     z-index: 999;
@@ -100,7 +104,7 @@
     display: flex;
     flex-direction: row;
     border-radius: 999px;
-    border: 1px solid black;
+    border: 1px solid #478e3e;
     overflow: hidden;
   }
 
@@ -118,7 +122,7 @@
   }
 
   .template.switches__level--checked {
-    background-color: black;
+    background-color: #478e3e;
     color: white;
   }
 
@@ -157,9 +161,9 @@
 
   .template.outcomes__item {
     padding: 16px;
-    border: 1px solid black;
+    border: 1px solid #3c7590;
     border-radius: 20px;
-    background-color: black;
+    background-color: #3c7590;
   }
 
   .template.outcomes__item>summary {
@@ -167,7 +171,7 @@
   }
 
   .template.outcomes__item[open] {
-    background-color: white;
+    background-color: #dbe9f0;
   }
 
   .template.outcomes__item .template.outcomes__title {
@@ -175,7 +179,7 @@
   }
 
   .template.outcomes__item[open] .template.outcomes__title {
-    color: black;
+    color: #3c7590;
   }
 
   .template.outcomes__item--empty {
@@ -188,7 +192,7 @@
   }
 
   .template.outcomes__button {
-    background-color: black;
+    background-color: #478e3e;
     color: white;
     border-radius: 999px;
     height: 40px;

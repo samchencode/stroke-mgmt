@@ -10,8 +10,9 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hello world</title>
   <style>
-    * {
+    body {
       font-family: Arial, Helvetica, sans-serif;
+      background-color: #fafafa;
     }
   </style>
 </head>
@@ -86,6 +87,11 @@ exports[`EjsAlgorithmRenderer Behavior should render disclaimer html 1`] = `
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hello world</title>
   <style>
+    body {
+      background-color: #fafafa;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -167,6 +173,8 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   body {
     margin: 0 16px;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fafafa;
   }
 
   .template {
@@ -183,6 +191,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
   .template.header__title {
     margin: 0;
+    padding-top: 16px;
     /* headline-medium */
     line-height: 36px;
     font-size: 28px;
@@ -219,7 +228,8 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     display: none;
     position: absolute;
     top: 100%;
-    background-color: #efefef;
+    background-color: #111111;
+    color: #eeeeee;
     padding: 4px;
     border-radius: 4px;
     z-index: 999;
@@ -265,7 +275,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     display: flex;
     flex-direction: row;
     border-radius: 999px;
-    border: 1px solid black;
+    border: 1px solid #478e3e;
     overflow: hidden;
   }
 
@@ -283,7 +293,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   }
 
   .template.switches__level--checked {
-    background-color: black;
+    background-color: #478e3e;
     color: white;
   }
 
@@ -322,9 +332,9 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 
   .template.outcomes__item {
     padding: 16px;
-    border: 1px solid black;
+    border: 1px solid #3c7590;
     border-radius: 20px;
-    background-color: black;
+    background-color: #3c7590;
   }
 
   .template.outcomes__item>summary {
@@ -332,7 +342,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   }
 
   .template.outcomes__item[open] {
-    background-color: white;
+    background-color: #dbe9f0;
   }
 
   .template.outcomes__item .template.outcomes__title {
@@ -340,7 +350,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   }
 
   .template.outcomes__item[open] .template.outcomes__title {
-    color: black;
+    color: #3c7590;
   }
 
   .template.outcomes__item--empty {
@@ -353,7 +363,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   }
 
   .template.outcomes__button {
-    background-color: black;
+    background-color: #478e3e;
     color: white;
     border-radius: 999px;
     height: 40px;
@@ -633,6 +643,8 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   body {
     margin: 0 16px;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fafafa;
   }
 
   .template {
@@ -649,6 +661,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 
   .template.header__title {
     margin: 0;
+    padding-top: 16px;
     /* headline-medium */
     line-height: 36px;
     font-size: 28px;
@@ -685,7 +698,8 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     display: none;
     position: absolute;
     top: 100%;
-    background-color: #efefef;
+    background-color: #111111;
+    color: #eeeeee;
     padding: 4px;
     border-radius: 4px;
     z-index: 999;
@@ -731,7 +745,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     display: flex;
     flex-direction: row;
     border-radius: 999px;
-    border: 1px solid black;
+    border: 1px solid #478e3e;
     overflow: hidden;
   }
 
@@ -749,7 +763,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   }
 
   .template.switches__level--checked {
-    background-color: black;
+    background-color: #478e3e;
     color: white;
   }
 
@@ -788,9 +802,9 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 
   .template.outcomes__item {
     padding: 16px;
-    border: 1px solid black;
+    border: 1px solid #3c7590;
     border-radius: 20px;
-    background-color: black;
+    background-color: #3c7590;
   }
 
   .template.outcomes__item>summary {
@@ -798,7 +812,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   }
 
   .template.outcomes__item[open] {
-    background-color: white;
+    background-color: #dbe9f0;
   }
 
   .template.outcomes__item .template.outcomes__title {
@@ -806,7 +820,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   }
 
   .template.outcomes__item[open] .template.outcomes__title {
-    color: black;
+    color: #3c7590;
   }
 
   .template.outcomes__item--empty {
@@ -819,7 +833,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   }
 
   .template.outcomes__button {
-    background-color: black;
+    background-color: #478e3e;
     color: white;
     border-radius: 999px;
     height: 40px;

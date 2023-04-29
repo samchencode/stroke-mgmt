@@ -53,13 +53,14 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 12,
     paddingBottom: 12,
-    height: 64 + 12 * 2,
+    mineight: 64 + 12 * 2,
     display: 'flex',
     flexDirection: 'row',
   },
   image: {
     marginRight: theme.spaces.md,
-    height: 64,
+    height: '100%',
+    minHeight: 64,
     width: 96,
   },
   textContainer: {

@@ -210,15 +210,18 @@
     font-weight: 500;
   }
 
-  .iframe__wrapper--offline {
+  .iframe__wrapper {
     min-width: 100%;
     min-height: 300px;
+  }
+
+  .iframe__wrapper--offline,
+  .iframe__wrapper--loading {
     border: 1px dashed black;
     position: relative;
   }
 
-  .iframe__wrapper--offline::before {
-    content: 'Oops! We could not load this embedded element since there is no internet connection.';
+  .iframe__wrapper::before {
     text-align: center;
     position: absolute;
     top: 50%;
@@ -231,7 +234,16 @@
     font-weight: 400;
   }
 
-  .iframe__wrapper--offline iframe {
+  .iframe__wrapper--offline::before {
+    content: 'Oops! We could not load this embedded element since there is no internet connection.';
+  }
+
+  .iframe__wrapper--loading::before {
+    content: 'Loading embedded element...';
+  }
+
+  .iframe__wrapper--offline iframe,
+  .iframe__wrapper--loading iframe {
     visibility: hidden;
   }
 </style>

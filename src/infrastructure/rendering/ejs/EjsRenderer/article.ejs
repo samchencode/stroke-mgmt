@@ -16,6 +16,28 @@
     img {
       width: 100%;
     }
+
+    .iframe__wrapper--offline {
+      min-width: 100%;
+      min-height: 300px;
+      border: 1px dashed black;
+      position: relative;
+    }
+
+    .iframe__wrapper--offline::before {
+      content: 'Oops! We could not load this embedded element since there is no internet connection.';
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* Body Large */
+    }
+
+    .iframe__wrapper--offline iframe {
+      visibility: hidden;
+    }
   </style>
 </head>
 
@@ -64,6 +86,67 @@
       })
     }
   })();
+
+  ; // hide iframes in case of no internet connectivity
+  (function() {
+    function wrapElement(el, className) {
+      var wrapper = document.createElement('div')
+      wrapper.className = className
+      var newEl = el.cloneNode()
+      wrapper.appendChild(newEl)
+      el.replaceWith(wrapper)
+      return wrapper
+    }
+    var frames = document.getElementsByTagName('iframe')
+    var wrappedFrames = []
+    for (var i = 0; i < frames.length; i++) {
+      var wrappedFrame = wrapElement(frames[i], 'iframe__wrapper')
+      wrappedFrames.push(wrappedFrame)
+    }
+
+    function OnlineState(context) {
+      return {
+        toOnline: function() {},
+        toOffline: function() {
+          for (var i = 0; i < wrappedFrames.length; i++) {
+            var wrappedFrame = wrappedFrames[i]
+            wrappedFrame.classList.add('iframe__wrapper--offline')
+          }
+          context.state = OfflineState(context)
+        }
+      }
+    }
+
+    function OfflineState(context) {
+      return {
+        toOnline: function() {
+          for (var i = 0; i < wrappedFrames.length; i++) {
+            var wrappedFrame = wrappedFrames[i]
+            wrappedFrame.classList.remove('iframe__wrapper--offline')
+          }
+          context.state = OnlineState(context)
+        },
+        toOffline: function() {}
+      }
+    }
+
+    function ConnectivityStateManager() {
+      var context = {}
+      context.state = window.navigator.onLine ? OnlineState(context) : OfflineState(context)
+
+      window.addEventListener('online', function() {
+        console.log('to online')
+        context.state.toOnline()
+      })
+      window.addEventListener('offline', function() {
+        console.log('to offline')
+        context.state.toOffline()
+      })
+      return context
+    }
+
+    var stateManager = ConnectivityStateManager()
+  })()
 
   ; // Report errors
   (function() {

@@ -209,4 +209,25 @@
     letter-spacing: 0.1px;
     font-weight: 500;
   }
+
+  .iframe__wrapper--offline {
+    min-width: 100%;
+    min-height: 300px;
+    border: 1px dashed black;
+    position: relative;
+  }
+
+  .iframe__wrapper--offline::before {
+    content: 'Oops! We could not load this embedded element since there is no internet connection.';
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Body Large */
+  }
+
+  .iframe__wrapper--offline iframe {
+    visibility: hidden;
+  }
 </style>

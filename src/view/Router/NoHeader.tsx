@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import Constants from 'expo-constants';
-import { StatusBar } from 'expo-status-bar';
 import { NoInternetBanner, useNoInternetBanner } from '@/view/NoInternetBanner';
 import { theme } from '@/view/theme';
+import { StatusBar } from '@/view/StatusBar';
 
 function NoHeader() {
   const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
@@ -15,8 +14,7 @@ function NoHeader() {
     <View
       style={[styles.container, headerHasElevation && styles.containerElevated]}
     >
-      <StatusBar translucent />
-      <View style={styles.statusBar} />
+      <StatusBar textColor="auto" backgroundColor={theme.colors.surface} />
       <NoInternetBanner
         onPressDismiss={handleDismissNoInternetBanner}
         visible={shouldShowNoInternetBanner}
@@ -29,9 +27,6 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     backgroundColor: theme.colors.surface,
-  },
-  statusBar: {
-    height: Constants.statusBarHeight,
   },
   containerElevated: {
     backgroundColor: theme.colors.surfaceContainer,

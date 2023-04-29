@@ -2,8 +2,6 @@ import React, { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import type { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import type { AppNavigationProps } from '@/view/Router';
-import { StatusBar } from '@/view/StatusBar';
-import { theme } from '@/view/theme';
 import { StrokeFactsView } from '@/view/StrokeFactsScreen/StrokeFactsView';
 import { useQuery } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
@@ -28,7 +26,6 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
 
     return (
       <View style={styles.container}>
-        <StatusBar textColor="auto" backgroundColor={theme.colors.background} />
         <UseQueryResultView
           query={query}
           renderData={useCallback(

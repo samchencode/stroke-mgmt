@@ -8,7 +8,6 @@ import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
 import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { theme } from '@/view/theme';
-import { StatusBar } from '@/view/StatusBar';
 import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
 import { useBottomNavigationBarHeight } from '@/view/lib/getBottomNavigationBarHeight';
@@ -57,7 +56,6 @@ function factory(
         onScroll={handleScroll}
         scrollEventThrottle={300}
       >
-        <StatusBar translucent textColor="auto" />
         <AlgorithmList
           getAllAlgorithms={useCallback(
             () => getAllAlgorithmsAction.execute(),

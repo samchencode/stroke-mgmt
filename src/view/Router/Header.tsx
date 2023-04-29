@@ -1,8 +1,7 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import type { ViewStyle, StyleProp, TextStyle } from 'react-native';
-import Constants from 'expo-constants';
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from '@/view/StatusBar';
 import type { StackHeaderProps } from '@react-navigation/stack';
 import { getHeaderTitle } from '@react-navigation/elements';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
@@ -63,8 +62,7 @@ function Header({ navigation, route, options, back }: Props) {
     <View
       style={[styles.container, headerHasElevation && styles.containerElevated]}
     >
-      <StatusBar translucent />
-      <View style={styles.statusBar} />
+      <StatusBar textColor="auto" backgroundColor={theme.colors.surface} />
       <View style={styles.header}>
         {back && (
           <IconButton
@@ -105,9 +103,6 @@ const styles = StyleSheet.create({
   containerElevated: {
     backgroundColor: theme.colors.surfaceContainer,
     ...theme.elevations[2],
-  },
-  statusBar: {
-    height: Constants.statusBarHeight,
   },
   header: {
     height: 64,

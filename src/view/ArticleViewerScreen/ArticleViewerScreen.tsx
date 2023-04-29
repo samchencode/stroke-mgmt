@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { StatusBar } from '@/view/StatusBar';
 import type { AppNavigationProps } from '@/view/Router';
 import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
@@ -36,7 +35,6 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
 
     return (
       <View style={styles.container}>
-        <StatusBar textColor="auto" translucent />
         <UseQueryResultView
           query={query}
           renderData={useCallback(

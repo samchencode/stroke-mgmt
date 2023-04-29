@@ -3,8 +3,8 @@ import type {
   NavigatorScreenParams,
   CompositeScreenProps,
 } from '@react-navigation/native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { StackScreenProps } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import type { Type as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import type { Type as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
 import type { Type as HomeScreen } from '@/view/HomeScreen';
@@ -30,8 +30,8 @@ type RootNavigationParams = {
   DisclaimerModal: undefined;
 };
 
-const AppStack = createNativeStackNavigator<AppNavigationParams>();
-const RootStack = createNativeStackNavigator<RootNavigationParams>();
+const AppStack = createStackNavigator<AppNavigationParams>();
+const RootStack = createStackNavigator<RootNavigationParams>();
 
 function factory(
   StrokeFactsScreen: StrokeFactsScreen,
@@ -109,11 +109,11 @@ export { factory };
 export type Type = ReturnType<typeof factory>;
 export type AppNavigationProps<T extends keyof AppNavigationParams> =
   CompositeScreenProps<
-    NativeStackScreenProps<AppNavigationParams, T>,
-    NativeStackScreenProps<RootNavigationParams>
+    StackScreenProps<AppNavigationParams, T>,
+    StackScreenProps<RootNavigationParams>
   >;
 export type RootNavigationProps<T extends keyof RootNavigationParams> =
   CompositeScreenProps<
-    NativeStackScreenProps<RootNavigationParams, T>,
-    NativeStackScreenProps<AppNavigationParams>
+    StackScreenProps<RootNavigationParams, T>,
+    StackScreenProps<AppNavigationParams>
   >;

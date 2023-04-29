@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import type { ViewStyle, StyleProp, TextStyle } from 'react-native';
 import Constants from 'expo-constants';
 import { StatusBar } from 'expo-status-bar';
-import type { NativeStackHeaderProps } from '@react-navigation/native-stack';
+import type { StackHeaderProps } from '@react-navigation/stack';
 import { getHeaderTitle } from '@react-navigation/elements';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { theme } from '@/view/theme';
@@ -34,7 +34,7 @@ function IconButton({
   );
 }
 
-type Props = NativeStackHeaderProps;
+type Props = StackHeaderProps;
 
 function Header({ navigation, route, options, back }: Props) {
   const title = getHeaderTitle(options, route.name);

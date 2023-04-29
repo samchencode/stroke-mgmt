@@ -11,7 +11,7 @@ import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
 import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useBottomNavigationBarHeight } from '@/view/lib/getBottomNavigationBarHeight';
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
@@ -48,12 +48,12 @@ function factory(
       [headerScrollState]
     );
 
-    const insets = useSafeAreaInsets();
+    const bottomNavigationBarHeight = useBottomNavigationBarHeight();
 
     return (
       <ScrollView
         style={styles.container}
-        contentContainerStyle={{ paddingBottom: insets.bottom }}
+        contentContainerStyle={{ paddingBottom: bottomNavigationBarHeight }}
         onScroll={handleScroll}
         scrollEventThrottle={300}
       >

@@ -16,6 +16,7 @@ import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { useShouldShowStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
 import { LoadingSpinnerView } from '@/view/components';
 import { Header } from '@/view/Router/Header';
+import { NoHeader } from '@/view/Router/NoHeader';
 
 type AppNavigationParams = {
   StrokeFactsScreen: undefined;
@@ -61,12 +62,12 @@ function factory(
         <AppStack.Screen
           name="StrokeFactsScreen"
           component={StrokeFactsScreen}
-          options={{ headerShown: false }}
+          options={{ header: NoHeader }}
         />
         <AppStack.Screen
           name="StrokeSignsScreen"
           component={StrokeSignsScreen}
-          options={{ headerShown: false }}
+          options={{ header: NoHeader }}
         />
         <AppStack.Screen
           name="HomeScreen"

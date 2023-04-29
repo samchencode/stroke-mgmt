@@ -1,4 +1,14 @@
 export const elevations = {
+  1: {
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 1.0,
+    elevation: 1,
+  },
   2: {
     elevation: 2,
     shadowColor: '#000',

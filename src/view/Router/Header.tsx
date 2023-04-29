@@ -8,6 +8,7 @@ import { getHeaderTitle } from '@react-navigation/elements';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { theme } from '@/view/theme';
 import { Menu } from '@/view/Router/Menu';
+import { NoInternetBanner, useNoInternetBanner } from '@/view/NoInternetBanner';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
 
 type IconButtonProps = {
@@ -52,11 +53,15 @@ function Header({ navigation, route, options, back }: Props) {
     [navigation]
   );
 
+  const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
+    useNoInternetBanner();
+
   const { scrolledToTop } = useContext(HeaderScrollContext);
+  const headerHasElevation = !scrolledToTop || shouldShowNoInternetBanner;
 
   return (
     <View
-      style={[styles.container, !scrolledToTop && styles.containerScrolled]}
+      style={[styles.container, headerHasElevation && styles.containerElevated]}
     >
       <StatusBar translucent />
       <View style={styles.statusBar} />
@@ -84,6 +89,10 @@ function Header({ navigation, route, options, back }: Props) {
           onPressLicense={useCallback(() => alert('license'), [])}
         />
       </View>
+      <NoInternetBanner
+        visible={shouldShowNoInternetBanner}
+        onPressDismiss={handleDismissNoInternetBanner}
+      />
     </View>
   );
 }
@@ -93,7 +102,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: theme.colors.surface,
   },
-  containerScrolled: {
+  containerElevated: {
     backgroundColor: theme.colors.surfaceContainer,
     ...theme.elevations[2],
   },

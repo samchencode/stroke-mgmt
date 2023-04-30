@@ -35,7 +35,7 @@ export const strapiResponseToArticle = (
     title: attributes.Title,
     html: attributes.Body,
     designation,
-    summary: attributes.Summary,
+    summary: attributes.Summary ?? '',
     thumbnail,
   });
 };

@@ -5,7 +5,7 @@ export type StrapiArticleData = {
     Body: string;
     Designation: 'Article' | 'Stroke Facts' | 'Stroke Signs' | 'Disclaimer';
     ArticleId: string;
-    Summary: string;
+    Summary: string | null;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;

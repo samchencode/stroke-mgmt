@@ -62,7 +62,7 @@ function Header({ navigation, route, options, back }: Props) {
     <View
       style={[styles.container, headerHasElevation && styles.containerElevated]}
     >
-      <StatusBar textColor="auto" backgroundColor={theme.colors.surface} />
+      <StatusBar textColor="auto" />
       <View style={styles.header}>
         {back && (
           <IconButton

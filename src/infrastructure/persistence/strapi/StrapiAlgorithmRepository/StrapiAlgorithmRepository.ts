@@ -23,7 +23,7 @@ const populateSearchParams = new URLSearchParams({
   'populate[5]': 'Thumbnail',
 });
 
-class StrapiAlgorihtmRepository implements AlgorithmRepository {
+class StrapiAlgorithmRepository implements AlgorithmRepository {
   constructor(
     private strapiHostUrl: string,
     private fetch: Fetch,
@@ -70,4 +70,4 @@ class StrapiAlgorihtmRepository implements AlgorithmRepository {
   }
 }
 
-export { StrapiAlgorihtmRepository };
+export { StrapiAlgorithmRepository };

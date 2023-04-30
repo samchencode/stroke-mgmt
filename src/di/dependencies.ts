@@ -23,7 +23,7 @@ import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import { EjsRenderer } from '@/infrastructure/rendering/ejs/EjsRenderer';
 import { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository';
-import { StrapiAlgorihtmRepository } from '@/infrastructure/persistence/strapi/StrapiAlgorithmRepository';
+import { StrapiAlgorithmRepository } from '@/infrastructure/persistence/strapi/StrapiAlgorithmRepository';
 import { StrapiPlaceholderImageRepository } from '@/infrastructure/persistence/strapi/StrapiPlaceholderImageRepository/StrapiPlaceholderImageRepository';
 import { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { StrapiTagRepository } from '@/infrastructure/persistence/strapi/StrapiTagRepository';
@@ -57,7 +57,7 @@ export const module = {
 
   // INFRASTRUCTURE
   articleRepository: ['type', StrapiArticleRepository],
-  algorithmRepository: ['type', StrapiAlgorihtmRepository],
+  algorithmRepository: ['type', StrapiAlgorithmRepository],
   placeholderImageRepository: ['type', StrapiPlaceholderImageRepository],
   tagRepository: ['type', StrapiTagRepository],
   fileSystem: ['type', ExpoAssetFileSystem],

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import type {
   LayoutChangeEvent,
   NativeScrollEvent,
@@ -9,7 +9,7 @@ import type { AppNavigationProps } from '@/view/Router';
 import type { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { AlgorithmCollectionView } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/AlgorithmCollectionView';
-import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
+import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
 
 function factory(
   renderAlgorithmByIdAction: RenderAlgorithmByIdAction,
@@ -27,14 +27,10 @@ function factory(
       scrollView.current?.scrollToEnd({ animated: true });
     }, []);
 
-    const headerScrollState = useContext(HeaderScrollContext);
+    type ScrollEvent = NativeSyntheticEvent<NativeScrollEvent>;
 
-    const handleScroll = useCallback(
-      ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const { contentOffset } = nativeEvent;
-        headerScrollState.setScrolledToTop(contentOffset.y === 0);
-      },
-      [headerScrollState]
+    const handleScroll = useHeaderScrollResponder<ScrollEvent>(
+      useCallback((e: ScrollEvent) => e.nativeEvent.contentOffset.y, [])
     );
 
     return (

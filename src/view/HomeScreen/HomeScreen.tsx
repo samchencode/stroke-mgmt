@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import type { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
@@ -9,7 +9,7 @@ import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
 import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
 import { theme } from '@/view/theme';
 import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
-import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
+import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
 import { useBottomNavigationBarHeight } from '@/view/lib/getBottomNavigationBarHeight';
 import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';
 
@@ -38,14 +38,10 @@ function factory(
       [navigation]
     );
 
-    const headerScrollState = useContext(HeaderScrollContext);
+    type ScrollEvent = NativeSyntheticEvent<NativeScrollEvent>;
 
-    const handleScroll = useCallback(
-      ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const { contentOffset } = nativeEvent;
-        headerScrollState.setScrolledToTop(contentOffset.y === 0);
-      },
-      [headerScrollState]
+    const handleScroll = useHeaderScrollResponder<ScrollEvent>(
+      useCallback((e: ScrollEvent) => e.nativeEvent.contentOffset.y, [])
     );
 
     const bottomNavigationBarHeight = useBottomNavigationBarHeight();

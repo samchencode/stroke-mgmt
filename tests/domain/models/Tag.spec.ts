@@ -20,6 +20,13 @@ describe('Tag', () => {
       const tag = new Tag('Test Tag', 'This is a test tag.');
       expect(tag.getDescription()).toBe('This is a test tag.');
     });
+
+    it('should return the default description of the tag if not provided', () => {
+      const tag = new Tag('Test Tag');
+      expect(tag.getDescription()).toBe(
+        'No description was provided for this tag.'
+      );
+    });
   });
 
   describe('is', () => {

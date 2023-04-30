@@ -1,7 +1,7 @@
 class Tag {
   constructor(
     private readonly name: string,
-    private readonly description: string
+    private readonly description: string = 'No description was provided for this tag.'
   ) {}
 
   getName() {

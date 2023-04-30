@@ -13,12 +13,12 @@ type StrapiResponse = StrapiErrorResponse | StrapiPluralApiResponse<StrapiTag>;
 
 class StrapiTagRepository implements TagRepository {
   constructor(
-    private readonly strapiApiHost: string,
+    private readonly strapiHostUrl: string,
     private readonly fetch: Fetch
   ) {}
 
   private async get(): Promise<StrapiPluralApiResponse<StrapiTag>> {
-    const url = `${this.strapiApiHost}/api/tags`;
+    const url = `${this.strapiHostUrl}/api/tags`;
     const response = await this.fetch(url);
     const json = (await response.json()) as StrapiResponse;
     if (!response.ok) {

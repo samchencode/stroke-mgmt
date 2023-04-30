@@ -6,11 +6,15 @@ export type StrapiArticleData = {
     Designation: 'Article' | 'Stroke Facts' | 'Stroke Signs' | 'Disclaimer';
     ArticleId: string;
     Summary: string | null;
+    ShowOnHomeScreen: boolean;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
     Thumbnail: {
       data: StrapiImage | null;
+    };
+    tags: {
+      data: StrapiTag[];
     };
   };
 };
@@ -21,6 +25,7 @@ export type StrapiAlgorithmData = {
     Title: string;
     Summary: string;
     Body: string;
+    ShowOnHomeScreen: boolean;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -107,17 +112,36 @@ export type StrapiPlaceholderImageData = {
   };
 };
 
-export type StrapiApiResponse<Data> = {
-  data: Data | Data[];
+export type StrapiTag = {
+  id: number;
+  attributes: {
+    Name: string;
+    Description: string | null;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
+
+export type StrapiPluralApiResponse<Data> = {
+  data: Data[];
   meta: {
     pagination: {
-      page: 1;
-      pageSize: 25;
-      pageCount: 1;
-      total: 1;
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
     };
   };
 };
+
+export type StrapiSingularApiResponse<Data> = {
+  data: Data;
+  meta: Record<string, never>;
+};
+
+export type StrapiApiResponse<D> =
+  | StrapiSingularApiResponse<D>
+  | StrapiPluralApiResponse<D>;
 
 export type StrapiErrorResponse = {
   data: null;

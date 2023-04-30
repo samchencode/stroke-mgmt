@@ -7,6 +7,8 @@ class FakeTagRepository implements TagRepository {
       new Tag('My Tag 1', 'Some information about this tag.'),
       new Tag('My Tag 2', 'Some other information about this tag.'),
       new Tag('My Tag 3'),
+      new Tag('My Tag 4'),
+      new Tag('A veryyyyy longggg tagggg'),
     ];
   }
 }

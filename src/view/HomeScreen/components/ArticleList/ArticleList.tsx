@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import type { Article, ArticleId } from '@/domain/models/Article';
@@ -8,28 +8,63 @@ import { ArticleListFilled } from '@/view/HomeScreen/components/ArticleList/Arti
 import { ArticleListError } from '@/view/HomeScreen/components/ArticleList/ArticleListError';
 import { ArticleListLoading } from '@/view/HomeScreen/components/ArticleList/ArticleListLoading';
 import { useQuery } from '@tanstack/react-query';
+import type { Tag } from '@/domain/models/Tag';
+import type { TagState } from '@/view/HomeScreen/components/TagList';
+import { TagList } from '@/view/HomeScreen/components/TagList';
 
 type ArticleListProps = {
   getAllArticles: () => Promise<Article[]>;
+  getAllTags: () => Promise<Tag[]>;
   onSelectArticle: (id: ArticleId) => void;
   style?: StyleProp<ViewStyle>;
 };
 
 function ArticleList({
   getAllArticles,
+  getAllTags,
   onSelectArticle,
   style = {},
 }: ArticleListProps) {
-  const query = useQuery({
+  const articleQuery = useQuery({
     queryKey: ['articles'],
     queryFn: getAllArticles,
   });
 
+  const [tagStates, setTagStates] = useState<TagState[]>([]);
+
+  const tagQuery = useQuery({
+    queryKey: ['tags'],
+    queryFn: getAllTags,
+    onSuccess: useCallback((tags: Tag[]) => {
+      const newTagStates = tags.map((tag) => ({
+        tag,
+        active: false,
+      }));
+      setTagStates(newTagStates);
+    }, []),
+  });
+
+  const handleToggleTagStates = useCallback(
+    (v: Tag) => {
+      const newTagStates = tagStates.slice();
+      const tagIndex = newTagStates.findIndex((ts) => ts.tag.is(v));
+      if (tagIndex === -1) return;
+      const newTag: TagState = { ...newTagStates[tagIndex] };
+      newTag.active = !newTag.active;
+      newTagStates[tagIndex] = newTag;
+      setTagStates(newTagStates);
+    },
+    [tagStates]
+  );
+
   return (
     <View style={style}>
       <Text style={styles.title}>Articles</Text>
+      {tagQuery.isSuccess && (
+        <TagList tags={tagStates} onToggle={handleToggleTagStates} />
+      )}
       <UseQueryResultView
-        query={query}
+        query={articleQuery}
         renderData={useCallback(
           (data: Article[]) => (
             <ArticleListFilled data={data} onSelectArticle={onSelectArticle} />

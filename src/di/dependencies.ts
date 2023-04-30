@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
 import { GetDisclaimerAction } from '@/application/GetDisclaimerAction';
@@ -23,9 +24,9 @@ import { EjsRenderer } from '@/infrastructure/rendering/ejs/EjsRenderer';
 import { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository';
 import { StrapiAlgorihtmRepository } from '@/infrastructure/persistence/strapi/StrapiAlgorithmRepository';
-
-import Constants from 'expo-constants';
 import { StrapiPlaceholderImageRepository } from '@/infrastructure/persistence/strapi/StrapiPlaceholderImageRepository/StrapiPlaceholderImageRepository';
+import { GetAllTagsAction } from '@/application/GetAllTagsAction';
+import { FakeTagRepository } from '@/infrastructure/persistence/fake/FakeTagRepository';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -46,6 +47,7 @@ export const module = {
   getStrokeSignsAction: ['type', GetStrokeSignsAction],
   getAllAlgorithmsAction: ['type', GetAllAlgorithmsAction],
   getAlgorithmByIdAction: ['type', GetAlgorithmByIdAction],
+  getAllTagsAction: ['type', GetAllTagsAction],
   renderArticleByIdAction: ['type', RenderArticleByIdAction],
   renderAlgorithmByIdAction: ['type', RenderAlgorithmByIdAction],
   renderAlgorithmAction: ['type', RenderAlgorithmAction],
@@ -57,6 +59,7 @@ export const module = {
   articleRepository: ['type', StrapiArticleRepository],
   algorithmRepository: ['type', StrapiAlgorihtmRepository],
   placeholderImageRepository: ['type', StrapiPlaceholderImageRepository],
+  tagRepository: ['type', FakeTagRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   articleRenderer: [
     'factory',

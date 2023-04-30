@@ -5,9 +5,10 @@ import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import type { ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
-import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
 import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
+import type { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { theme } from '@/view/theme';
+import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
 import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
 import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
 import { useBottomNavigationBarHeight } from '@/view/lib/getBottomNavigationBarHeight';
@@ -15,7 +16,8 @@ import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidB
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
-  getAllAlgorithmsAction: GetAllAlgorithmsAction
+  getAllAlgorithmsAction: GetAllAlgorithmsAction,
+  getAllTagsAction: GetAllTagsAction
 ) {
   return function HomeScreen({ navigation }: AppNavigationProps<'HomeScreen'>) {
     const openDisclaimer = useCallback(() => {
@@ -64,6 +66,7 @@ function factory(
         />
         <ArticleList
           getAllArticles={useCallback(() => getAllArticlesAction.execute(), [])}
+          getAllTags={useCallback(() => getAllTagsAction.execute(), [])}
           onSelectArticle={handleSelectArticle}
           style={styles.articleList}
         />

@@ -33,9 +33,7 @@ class StrapiArticleRepository implements ArticleRepository {
   }
 
   async getAll(): Promise<Article[]> {
-    const { data } = await this.get(
-      '/api/articles?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=Thumbnail'
-    );
+    const { data } = await this.get('/api/articles?populate[0]=Thumbnail');
     const promises = (data as StrapiArticleData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)
     );
@@ -45,7 +43,7 @@ class StrapiArticleRepository implements ArticleRepository {
   async getById(id: ArticleId): Promise<Article> {
     const idString = id.toString();
     const { data } = await this.get(
-      `/api/articles/${idString}?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=Thumbnail`
+      `/api/articles/${idString}?populate[0]=Thumbnail`
     );
     return this.getDefaultThumbnailAndMakeArticle(data as StrapiArticleData);
   }
@@ -56,7 +54,9 @@ class StrapiArticleRepository implements ArticleRepository {
     if (designationName === 'StrokeSigns') designationName = 'Stroke Signs';
 
     const { data } = await this.get(
-      `/api/articles/?filters[Designation]=${encodeURI(designationName)}`
+      `/api/articles/?filters[Designation]=${encodeURI(
+        designationName
+      )}&populate[0]=Thumbnail`
     );
     const promises = (data as StrapiArticleData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)

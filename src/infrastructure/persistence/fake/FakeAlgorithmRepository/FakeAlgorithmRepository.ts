@@ -10,6 +10,10 @@ class FakeAlgorithmRepository implements AlgorithmRepository {
     return algorithms;
   }
 
+  async getAllShownOnHomeScreen(): Promise<Algorithm[]> {
+    return algorithms;
+  }
+
   async getById(id: AlgorithmId): Promise<Algorithm> {
     const result = algorithms.find((a) => a.getId().is(id));
     if (!result) throw Error('Algorithm not found!');

@@ -41,6 +41,7 @@ class StrapiAlgorithmRepository implements AlgorithmRepository {
   }
 
   async getAll(): Promise<Algorithm[]> {
+    console.log(populateSearchParams.toString());
     const { data } = await this.get(`/api/algorithms?${populateSearchParams}`);
     const promises = (data as StrapiAlgorithmData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)
@@ -54,6 +55,16 @@ class StrapiAlgorithmRepository implements AlgorithmRepository {
       `/api/algorithms/${idString}?${populateSearchParams}`
     );
     return this.getDefaultThumbnailAndMakeArticle(data as StrapiAlgorithmData);
+  }
+
+  async getAllShownOnHomeScreen(): Promise<Algorithm[]> {
+    const { data } = await this.get(
+      `/api/algorithms?filters[ShowOnHomeScreen]=true&${populateSearchParams}`
+    );
+    const promises = (data as StrapiAlgorithmData[]).map((d) =>
+      this.getDefaultThumbnailAndMakeArticle(d)
+    );
+    return Promise.all(promises);
   }
 
   private async getDefaultThumbnailAndMakeArticle(data: StrapiAlgorithmData) {

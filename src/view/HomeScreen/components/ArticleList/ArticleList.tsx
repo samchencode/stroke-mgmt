@@ -11,6 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 import type { Tag } from '@/domain/models/Tag';
 import type { TagState } from '@/view/HomeScreen/components/TagList';
 import { TagList } from '@/view/HomeScreen/components/TagList';
+import { filterArticlesOnHomeOrByTags } from '@/domain/services/filterArticlesOnHomeOrByTags';
 
 type ArticleListProps = {
   getAllArticles: () => Promise<Article[]>;
@@ -57,6 +58,8 @@ function ArticleList({
     [tagStates]
   );
 
+  const activeTagFilters = tagStates.filter((t) => t.active).map((t) => t.tag);
+
   return (
     <View style={style}>
       <Text style={styles.title}>Articles</Text>
@@ -66,10 +69,19 @@ function ArticleList({
       <UseQueryResultView
         query={articleQuery}
         renderData={useCallback(
-          (data: Article[]) => (
-            <ArticleListFilled data={data} onSelectArticle={onSelectArticle} />
-          ),
-          [onSelectArticle]
+          (data: Article[]) => {
+            const filteredArticles = filterArticlesOnHomeOrByTags(
+              data,
+              activeTagFilters
+            );
+            return (
+              <ArticleListFilled
+                data={filteredArticles}
+                onSelectArticle={onSelectArticle}
+              />
+            );
+          },
+          [activeTagFilters, onSelectArticle]
         )}
         renderError={useCallback(
           () => (

@@ -26,7 +26,7 @@ import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/Str
 import { StrapiAlgorihtmRepository } from '@/infrastructure/persistence/strapi/StrapiAlgorithmRepository';
 import { StrapiPlaceholderImageRepository } from '@/infrastructure/persistence/strapi/StrapiPlaceholderImageRepository/StrapiPlaceholderImageRepository';
 import { GetAllTagsAction } from '@/application/GetAllTagsAction';
-import { FakeTagRepository } from '@/infrastructure/persistence/fake/FakeTagRepository';
+import { StrapiTagRepository } from '@/infrastructure/persistence/strapi/StrapiTagRepository';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -59,7 +59,7 @@ export const module = {
   articleRepository: ['type', StrapiArticleRepository],
   algorithmRepository: ['type', StrapiAlgorihtmRepository],
   placeholderImageRepository: ['type', StrapiPlaceholderImageRepository],
-  tagRepository: ['type', FakeTagRepository],
+  tagRepository: ['type', StrapiTagRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   articleRenderer: [
     'factory',

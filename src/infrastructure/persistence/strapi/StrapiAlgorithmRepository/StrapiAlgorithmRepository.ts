@@ -41,7 +41,6 @@ class StrapiAlgorithmRepository implements AlgorithmRepository {
   }
 
   async getAll(): Promise<Algorithm[]> {
-    console.log(populateSearchParams.toString());
     const { data } = await this.get(`/api/algorithms?${populateSearchParams}`);
     const promises = (data as StrapiAlgorithmData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)

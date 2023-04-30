@@ -24,7 +24,12 @@ function StrokeSignsBottomBar({
           style={styles.checkbox}
           label="Don't show again"
         />
-        <Button title="Proceed" onPress={onPressButton} style={styles.button} />
+        <Button
+          title="Proceed"
+          onPress={onPressButton}
+          style={styles.button}
+          underlayColor={theme.colors.opacity(0.08).onPrimaryContainer}
+        />
       </View>
     </SafeAreaView>
   );

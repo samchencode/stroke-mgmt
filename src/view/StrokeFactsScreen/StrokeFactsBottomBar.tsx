@@ -11,7 +11,12 @@ function StrokeFactsBottomBar({ onPressButton }: Props) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Button title="Proceed" onPress={onPressButton} style={styles.button} />
+        <Button
+          title="Proceed"
+          onPress={onPressButton}
+          style={styles.button}
+          underlayColor={theme.colors.opacity(0.08).onPrimaryContainer}
+        />
       </View>
     </SafeAreaView>
   );

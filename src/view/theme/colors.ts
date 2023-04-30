@@ -25,5 +25,6 @@ export const colors = {
   outlineVariable: '#c9cfc9',
   opacity: (opacity: number) => ({
     onSurface: `rgba(26, 26, 26, ${opacity})`,
+    onPrimaryContainer: `rgba(18, 35, 16, ${opacity})`,
   }),
 } as const;

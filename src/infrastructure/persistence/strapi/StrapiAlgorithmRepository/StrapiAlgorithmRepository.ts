@@ -14,6 +14,15 @@ import type { ImageRepository } from '@/domain/models/Image';
 
 type Fetch = typeof fetch;
 
+const populateSearchParams = new URLSearchParams({
+  'populate[0]': 'outcomes',
+  'populate[1]': 'switches',
+  'populate[2]': 'outcomes.criterion',
+  'populate[3]': 'outcomes.next',
+  'populate[4]': 'switches.levels',
+  'populate[5]': 'Thumbnail',
+});
+
 class StrapiAlgorihtmRepository implements AlgorithmRepository {
   constructor(
     private strapiHostUrl: string,
@@ -32,9 +41,7 @@ class StrapiAlgorihtmRepository implements AlgorithmRepository {
   }
 
   async getAll(): Promise<Algorithm[]> {
-    const { data } = await this.get(
-      '/api/algorithms?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=outcomes.next&populate[4]=switches.levels&populate[5]=Thumbnail'
-    );
+    const { data } = await this.get(`/api/algorithms?${populateSearchParams}`);
     const promises = (data as StrapiAlgorithmData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)
     );
@@ -44,7 +51,7 @@ class StrapiAlgorihtmRepository implements AlgorithmRepository {
   async getById(id: AlgorithmId): Promise<Algorithm> {
     const idString = id.toString();
     const { data } = await this.get(
-      `/api/algorithms/${idString}?populate[0]=outcomes&populate[1]=switches&populate[2]=outcomes.criterion&populate[3]=outcomes.next&populate[4]=switches.levels&populate[5]=Thumbnail`
+      `/api/algorithms/${idString}?${populateSearchParams}`
     );
     return this.getDefaultThumbnailAndMakeArticle(data as StrapiAlgorithmData);
   }

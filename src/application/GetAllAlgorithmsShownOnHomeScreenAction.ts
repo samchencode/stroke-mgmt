@@ -1,6 +1,6 @@
 import type { AlgorithmRepository } from '@/domain/models/Algorithm';
 
-class GetAllAlgorithmsAction {
+class GetAllAlgorithmsShownOnHomeScreenAction {
   repo: AlgorithmRepository;
 
   constructor(algorithmRepository: AlgorithmRepository) {
@@ -8,8 +8,8 @@ class GetAllAlgorithmsAction {
   }
 
   async execute() {
-    return this.repo.getAll();
+    return this.repo.getAllShownOnHomeScreen();
   }
 }
 
-export { GetAllAlgorithmsAction };
+export { GetAllAlgorithmsShownOnHomeScreenAction };

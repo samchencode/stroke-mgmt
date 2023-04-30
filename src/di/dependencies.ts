@@ -18,7 +18,7 @@ import { factory as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
 import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
 import { factory as Router } from '@/view/Router';
 import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
-import { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
+import { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetAllAlgorithmsShownOnHomeScreenAction';
 import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import { EjsRenderer } from '@/infrastructure/rendering/ejs/EjsRenderer';
 import { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
@@ -45,7 +45,10 @@ export const module = {
   getDisclaimerAction: ['type', GetDisclaimerAction],
   getStrokeFactsAction: ['type', GetStrokeFactsAction],
   getStrokeSignsAction: ['type', GetStrokeSignsAction],
-  getAllAlgorithmsAction: ['type', GetAllAlgorithmsAction],
+  getAllAlgorithmsShownOnHomeScreenAction: [
+    'type',
+    GetAllAlgorithmsShownOnHomeScreenAction,
+  ],
   getAlgorithmByIdAction: ['type', GetAlgorithmByIdAction],
   getAllTagsAction: ['type', GetAllTagsAction],
   renderArticleByIdAction: ['type', RenderArticleByIdAction],

@@ -5,7 +5,7 @@ import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import type { ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
-import type { GetAllAlgorithmsAction } from '@/application/GetAllAlgorithmsAction';
+import type { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetAllAlgorithmsShownOnHomeScreenAction';
 import type { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { theme } from '@/view/theme';
 import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
@@ -16,7 +16,7 @@ import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidB
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
-  getAllAlgorithmsAction: GetAllAlgorithmsAction,
+  getAllAlgorithmsShownOnHomeScreenAction: GetAllAlgorithmsShownOnHomeScreenAction,
   getAllTagsAction: GetAllTagsAction
 ) {
   return function HomeScreen({ navigation }: AppNavigationProps<'HomeScreen'>) {
@@ -59,7 +59,7 @@ function factory(
       >
         <AlgorithmList
           getAllAlgorithms={useCallback(
-            () => getAllAlgorithmsAction.execute(),
+            () => getAllAlgorithmsShownOnHomeScreenAction.execute(),
             []
           )}
           onSelectAlgorithm={handleSelectAlgorithm}

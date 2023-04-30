@@ -2,7 +2,7 @@ import { Button } from '@/view/components';
 import { Checkbox } from '@/view/components/Checkbox';
 import { theme } from '@/view/theme';
 import React from 'react';
-import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
 
 type Props = {
   onPressButton: () => void;
@@ -18,14 +18,12 @@ function StrokeSignsBottomBar({
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <View style={styles.dontShowField}>
-          <Checkbox
-            value={checkboxValue}
-            onChange={onChangeCheckbox}
-            style={styles.checkbox}
-          />
-          <Text>Don&apos;t show again</Text>
-        </View>
+        <Checkbox
+          value={checkboxValue}
+          onChange={onChangeCheckbox}
+          style={styles.checkbox}
+          label="Don't show again"
+        />
         <Button title="Proceed" onPress={onPressButton} style={styles.button} />
       </View>
     </SafeAreaView>
@@ -51,13 +49,8 @@ const styles = StyleSheet.create({
     marginLeft: theme.spaces.md,
     height: 48,
   },
-  dontShowField: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   checkbox: {
     marginLeft: theme.spaces.md,
-    marginRight: theme.spaces.sm,
   },
 });
 

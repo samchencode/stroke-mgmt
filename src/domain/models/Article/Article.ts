@@ -7,7 +7,7 @@ type ArticleParams = {
   id: ArticleId;
   title: string;
   html: string;
-  summary: string;
+  summary?: string;
   designation: BaseDesignation;
   thumbnail: Image;
   shouldShowOnHomeScreen: boolean;
@@ -21,7 +21,7 @@ class Article {
 
   private html: string;
 
-  private summary: string;
+  private summary?: string;
 
   private desigation: BaseDesignation;
 
@@ -67,8 +67,10 @@ class Article {
     return this.thumbnail;
   }
 
-  getSummary() {
-    return this.summary;
+  getSummary(sanitizeHtml: (html: string) => string): string {
+    if (this.summary) return this.summary;
+    const sanitizedBody = sanitizeHtml(this.html);
+    return sanitizedBody.replace(/\s+/g, ' ').trim().slice(0, 100);
   }
 
   getDesignation() {

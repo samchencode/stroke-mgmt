@@ -36,7 +36,7 @@ export const strapiResponseToArticle = (
     title: attributes.Title,
     html: attributes.Body,
     designation,
-    summary: attributes.Summary ?? '',
+    summary: attributes.Summary ?? undefined,
     thumbnail,
     shouldShowOnHomeScreen: attributes.ShowOnHomeScreen ?? true,
     tags: attributes.tags.data.map(

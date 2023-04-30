@@ -8,11 +8,6 @@ type Props = {
   onSelectArticle: (id: ArticleId) => void;
 };
 
-function convertToInlineHtml(html: string) {
-  const sanitized = sanitizeHtml(html, { allowedTags: [] });
-  return sanitized.replace(/\s+/g, ' ').trim().slice(0, 100);
-}
-
 function ArticleListFilled({ data, onSelectArticle }: Props) {
   return (
     <>
@@ -20,7 +15,7 @@ function ArticleListFilled({ data, onSelectArticle }: Props) {
         <ArticleRow
           key={a.getId().toString()}
           title={a.getTitle()}
-          subtitle={a.getSummary() ?? convertToInlineHtml(a.getHtml())}
+          subtitle={a.getSummary((h) => sanitizeHtml(h, { allowedTags: [] }))}
           id={a.getId()}
           imageUri={a.getThumbnail().getUri()}
           onSelectArticle={onSelectArticle}

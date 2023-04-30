@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     ...theme.elevations[2],
   },
   container: {
-    height: 80,
+    height: 72,
     paddingVertical: 12,
     paddingRight: theme.spaces.md,
     backgroundColor: theme.colors.secondaryContainer,
@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   button: {
+    alignSelf: 'flex-start',
     marginLeft: theme.spaces.md,
+    height: 48,
   },
   dontShowField: {
     flexDirection: 'row',

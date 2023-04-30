@@ -1,6 +1,7 @@
 import type { ArticleId } from '@/domain/models/Article/ArticleId';
 import type { BaseDesignation } from '@/domain/models/Article/Designation/BaseDesignation';
 import type { Image } from '@/domain/models/Image';
+import type { Tag } from '@/domain/models/Tag';
 
 type ArticleParams = {
   id: ArticleId;
@@ -10,6 +11,7 @@ type ArticleParams = {
   designation: BaseDesignation;
   thumbnail: Image;
   shouldShowOnHomeScreen: boolean;
+  tags?: Tag[];
 };
 
 class Article {
@@ -25,6 +27,8 @@ class Article {
 
   private thumbnail: Image;
 
+  private tags: Map<string, Tag>;
+
   private shouldShowOnHomeScreen: boolean;
 
   constructor({
@@ -34,6 +38,7 @@ class Article {
     designation,
     thumbnail,
     summary,
+    tags = [],
     shouldShowOnHomeScreen,
   }: ArticleParams) {
     this.id = id;
@@ -42,6 +47,7 @@ class Article {
     this.desigation = designation;
     this.thumbnail = thumbnail;
     this.summary = summary;
+    this.tags = new Map(tags.map((t) => [t.getName(), t] as const));
     this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
   }
 
@@ -69,6 +75,13 @@ class Article {
     return this.desigation;
   }
 
+  getTags() {
+    return [...this.tags.values()];
+  }
+
+  hasTag(tag: Tag): boolean {
+    return this.tags.has(tag.getName());
+  }
 
   getshouldShowOnHomeScreen() {
     return this.shouldShowOnHomeScreen;

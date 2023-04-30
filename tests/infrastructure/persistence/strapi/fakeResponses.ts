@@ -12,6 +12,7 @@ export const designationStrokeFacts = {
         createdAt: '2023-02-11T15:59:04.645Z',
         updatedAt: '2023-02-11T15:59:51.033Z',
         publishedAt: '2023-02-11T15:59:31.928Z',
+        tags: { data: [] },
       },
     },
   ],
@@ -39,6 +40,7 @@ export const allArticles = {
         createdAt: '2023-01-28T16:03:39.318Z',
         updatedAt: '2023-01-28T16:03:44.659Z',
         publishedAt: '2023-01-28T16:03:44.569Z',
+        tags: { data: [] },
       },
     },
     {
@@ -53,6 +55,7 @@ export const allArticles = {
         createdAt: '2023-01-28T16:07:18.514Z',
         updatedAt: '2023-02-11T15:56:33.726Z',
         publishedAt: '2023-01-28T16:07:21.162Z',
+        tags: { data: [] },
       },
     },
     {
@@ -67,6 +70,7 @@ export const allArticles = {
         createdAt: '2023-01-28T16:05:16.252Z',
         updatedAt: '2023-01-28T16:11:39.317Z',
         publishedAt: '2023-01-28T16:05:22.161Z',
+        tags: { data: [] },
       },
     },
     {
@@ -81,6 +85,7 @@ export const allArticles = {
         createdAt: '2023-02-11T15:57:55.451Z',
         updatedAt: '2023-02-11T15:59:41.759Z',
         publishedAt: '2023-02-11T15:59:41.748Z',
+        tags: { data: [] },
       },
     },
     {
@@ -95,6 +100,7 @@ export const allArticles = {
         createdAt: '2023-02-11T15:59:04.645Z',
         updatedAt: '2023-02-11T15:59:51.033Z',
         publishedAt: '2023-02-11T15:59:31.928Z',
+        tags: { data: [] },
       },
     },
   ],
@@ -121,6 +127,41 @@ export const articleOne = {
       createdAt: '2023-01-28T16:03:39.318Z',
       updatedAt: '2023-01-28T16:03:44.659Z',
       publishedAt: '2023-01-28T16:03:44.569Z',
+      tags: { data: [] },
+    },
+  },
+  meta: {},
+};
+
+export const articleWithTag = {
+  data: {
+    id: 6,
+    attributes: {
+      Title: 'Demo Article',
+      Body: '<p>A Link: <a href="http://google.com">LINK</a></p>\n<p>A Link w/o HTTP: <a href="www.google.com">LINK</a></p>\n<p>A link to an article: <a href="article:1">LINK</a></p>\n',
+      Designation: 'Article',
+      createdAt: '2023-04-07T17:20:08.677Z',
+      updatedAt: '2023-04-30T04:01:37.016Z',
+      publishedAt: '2023-04-07T17:20:16.229Z',
+      Summary: null,
+      ShowOnHomeScreen: true,
+      Thumbnail: {
+        data: null,
+      },
+      tags: {
+        data: [
+          {
+            id: 1,
+            attributes: {
+              Name: 'General',
+              Description:
+                'Very basic info about stroke. For patient education.',
+              createdAt: '2023-04-30T03:56:33.850Z',
+              updatedAt: '2023-04-30T03:56:33.850Z',
+            },
+          },
+        ],
+      },
     },
   },
   meta: {},

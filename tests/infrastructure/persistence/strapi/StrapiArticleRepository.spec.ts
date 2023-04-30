@@ -3,9 +3,11 @@
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository';
 import { FakeImageRepository } from '@/infrastructure/persistence/fake/FakeAlgorithmRepository/FakeImageRepository';
+import { Tag } from '@/domain/models/Tag';
 import {
   allArticles,
   articleOne,
+  articleWithTag,
   designationStrokeFacts,
 } from './fakeResponses';
 
@@ -65,6 +67,20 @@ describe('StrapiArticleRepository', () => {
         Designation.STROKE_FACTS
       );
       expect(strokeFacts.getTitle()).toBe('Stroke Facts');
+    });
+
+    it('should get articles with tags', async () => {
+      const imageRepo = new FakeImageRepository();
+      const repo = new StrapiArticleRepository(
+        'myhost.com',
+        makeFetch(articleWithTag),
+        imageRepo
+      );
+
+      const article = await repo.getById(new ArticleId('6'));
+      const tags = article.getTags();
+
+      expect(tags[0].is(new Tag('General'))).toBe(true);
     });
   });
 });

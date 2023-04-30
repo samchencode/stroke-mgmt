@@ -1,6 +1,7 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import { Image } from '@/domain/models/Image';
+import { Tag } from '@/domain/models/Tag';
 import type { StrapiArticleData } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 
 export const strapiResponseToArticle = (
@@ -38,5 +39,9 @@ export const strapiResponseToArticle = (
     summary: attributes.Summary ?? '',
     thumbnail,
     shouldShowOnHomeScreen: attributes.ShowOnHomeScreen ?? true,
+    tags: attributes.tags.data.map(
+      (td) =>
+        new Tag(td.attributes.Name, td.attributes.Description ?? undefined)
+    ),
   });
 };

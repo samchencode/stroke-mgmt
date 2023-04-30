@@ -56,6 +56,7 @@ describe('EjsAlgorithmRenderer', () => {
         title: 'hello world',
         html: '<h1>foo bar</h1>',
         designation: Designation.ARTICLE,
+        shouldShowOnHomeScreen: true,
       });
 
       const renderer = new EjsRenderer(fs);
@@ -71,6 +72,7 @@ describe('EjsAlgorithmRenderer', () => {
         title: 'hello world',
         html: '<h1>foo bar</h1>',
         designation: Designation.DISCLAIMER,
+        shouldShowOnHomeScreen: true,
       });
 
       const renderer = new EjsRenderer(fs);

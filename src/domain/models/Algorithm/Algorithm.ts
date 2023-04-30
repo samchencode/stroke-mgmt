@@ -11,6 +11,7 @@ interface Algorithm {
   getThumbnail(): Image;
   getOutcomes(): Outcome[];
   hasOutcomes(): boolean;
+  getshouldShowOnHomeScreen(): boolean;
   is(other: Algorithm): boolean;
   acceptVisitor(v: AlgorithmVisitor): void;
 }

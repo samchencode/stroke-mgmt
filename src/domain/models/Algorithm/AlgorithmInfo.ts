@@ -9,6 +9,7 @@ type AlgorithmParams = {
   thumbnail: Image;
   summary: string;
   outcomes: Outcome[];
+  shouldShowOnHomeScreen: boolean;
 };
 
 class AlgorithmInfo {
@@ -24,6 +25,8 @@ class AlgorithmInfo {
 
   private outcomes: Outcome[];
 
+  private shouldShowOnHomeScreen: boolean;
+
   constructor({
     id,
     title,
@@ -31,6 +34,7 @@ class AlgorithmInfo {
     outcomes,
     summary,
     thumbnail,
+    shouldShowOnHomeScreen,
   }: AlgorithmParams) {
     this.id = id;
     this.title = title;
@@ -38,6 +42,7 @@ class AlgorithmInfo {
     this.thumbnail = thumbnail;
     this.outcomes = outcomes;
     this.summary = summary;
+    this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
   }
 
   getId() {
@@ -62,6 +67,10 @@ class AlgorithmInfo {
 
   getSummary() {
     return this.summary;
+  }
+
+  getshouldShowOnHomeScreen() {
+    return this.shouldShowOnHomeScreen;
   }
 }
 

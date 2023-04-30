@@ -30,6 +30,7 @@ const gwnsAlgorithm = (() => {
         criterion: new LessThanCriterion(3),
       }),
     ],
+    shouldShowOnHomeScreen: true,
   });
 
   const switches = [
@@ -76,6 +77,7 @@ const abctAlgorithm = (() => {
         body: 'Stabilize ABCTs before continuing!',
       }),
     ],
+    shouldShowOnHomeScreen: true,
   });
 
   return new TextAlgorithm({ info });

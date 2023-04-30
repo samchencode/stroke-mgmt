@@ -24,6 +24,7 @@ describe('RenderedAlgorithm', () => {
           body: 'hai',
           outcomes: [],
           summary: 'test algo',
+          shouldShowOnHomeScreen: true,
         }),
       });
       const create = () => new RenderedAlgorithm(algo, html);
@@ -40,6 +41,7 @@ describe('RenderedAlgorithm', () => {
           body: 'hai',
           outcomes: [],
           summary: 'test algo',
+          shouldShowOnHomeScreen: true,
         }),
       });
       const rAlgo = new RenderedAlgorithm(algo, html);
@@ -69,6 +71,7 @@ describe('RenderedAlgorithm', () => {
           body: 'this is an example text algo',
           outcomes: [],
           summary: 'test algo',
+          shouldShowOnHomeScreen: true,
         }),
       });
 
@@ -80,6 +83,7 @@ describe('RenderedAlgorithm', () => {
           body: 'this is an example text algo',
           outcomes: [],
           summary: 'test algo',
+          shouldShowOnHomeScreen: true,
         }),
       });
 
@@ -98,6 +102,7 @@ describe('RenderedAlgorithm', () => {
             }),
           ],
           summary: 'test algo',
+          shouldShowOnHomeScreen: true,
         }),
         switches: [
           new YesNoSwitch({

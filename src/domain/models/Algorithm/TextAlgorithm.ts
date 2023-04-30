@@ -45,6 +45,10 @@ class TextAlgorithm implements Algorithm {
     return this.info.getSummary();
   }
 
+  getshouldShowOnHomeScreen(): boolean {
+    return this.info.getshouldShowOnHomeScreen();
+  }
+
   is(other: Algorithm): boolean {
     return other.getId().is(this.getId());
   }

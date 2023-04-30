@@ -26,6 +26,7 @@ export const strapiResponseToAlgorithm = (
     Title,
     Summary,
     Body,
+    ShowOnHomeScreen,
     outcomes: outcomeData,
     switches: switchData,
   } = attributes;
@@ -62,6 +63,7 @@ export const strapiResponseToAlgorithm = (
     body: Body,
     outcomes,
     thumbnail,
+    shouldShowOnHomeScreen: ShowOnHomeScreen ?? true,
   });
 
   if (switchData.length === 0) {

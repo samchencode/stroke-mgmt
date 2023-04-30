@@ -13,7 +13,15 @@ describe('Article', () => {
       const thumbnail = new Image('/img.png');
 
       const create = () =>
-        new Article({ id, title, html, designation, summary, thumbnail });
+        new Article({
+          id,
+          title,
+          html,
+          designation,
+          summary,
+          thumbnail,
+          shouldShowOnHomeScreen: true,
+        });
       expect(create).not.toThrowError();
     });
   });
@@ -39,6 +47,7 @@ describe('Article', () => {
         title,
         html,
         designation,
+        shouldShowOnHomeScreen: true,
       });
       expect(article.getTitle()).toBe(title);
       expect(article.getHtml()).toBe(html);

@@ -17,6 +17,7 @@ class FakeArticleRepository implements ArticleRepository {
           designation: Designation[p.designation],
           summary: p.summary,
           thumbnail: new Image(p.thumbnail),
+          shouldShowOnHomeScreen: true,
         })
     );
   }
@@ -42,6 +43,7 @@ class FakeArticleRepository implements ArticleRepository {
           designation: Designation[p.designation],
           summary: p.summary,
           thumbnail: new Image(p.thumbnail),
+          shouldShowOnHomeScreen: true,
         })
     );
   }
@@ -57,6 +59,7 @@ class FakeArticleRepository implements ArticleRepository {
       designation: Designation[articles.designation],
       summary: articles.summary,
       thumbnail: new Image(articles.thumbnail),
+      shouldShowOnHomeScreen: true,
     });
   }
 }

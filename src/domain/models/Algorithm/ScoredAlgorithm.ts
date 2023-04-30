@@ -79,6 +79,10 @@ class ScoredAlgorithm implements Algorithm {
     return this.switches;
   }
 
+  getshouldShowOnHomeScreen(): boolean {
+    return this.info.getshouldShowOnHomeScreen();
+  }
+
   is(other: Algorithm): boolean {
     return other.getId().is(this.getId());
   }

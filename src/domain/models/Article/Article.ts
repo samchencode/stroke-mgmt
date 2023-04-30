@@ -9,6 +9,7 @@ type ArticleParams = {
   summary: string;
   designation: BaseDesignation;
   thumbnail: Image;
+  shouldShowOnHomeScreen: boolean;
 };
 
 class Article {
@@ -24,6 +25,8 @@ class Article {
 
   private thumbnail: Image;
 
+  private shouldShowOnHomeScreen: boolean;
+
   constructor({
     id,
     title,
@@ -31,6 +34,7 @@ class Article {
     designation,
     thumbnail,
     summary,
+    shouldShowOnHomeScreen,
   }: ArticleParams) {
     this.id = id;
     this.title = title;
@@ -38,6 +42,7 @@ class Article {
     this.desigation = designation;
     this.thumbnail = thumbnail;
     this.summary = summary;
+    this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
   }
 
   getId() {
@@ -62,6 +67,11 @@ class Article {
 
   getDesignation() {
     return this.desigation;
+  }
+
+
+  getshouldShowOnHomeScreen() {
+    return this.shouldShowOnHomeScreen;
   }
 
   is(v: Article) {

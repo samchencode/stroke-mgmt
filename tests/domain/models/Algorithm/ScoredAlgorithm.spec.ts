@@ -21,6 +21,7 @@ describe('ScoredAlgorithm', () => {
         body: 'body text',
         summary: 'summary text',
         outcomes: [],
+        shouldShowOnHomeScreen: true,
       });
 
       const switches = [
@@ -54,6 +55,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [outcome],
+        shouldShowOnHomeScreen: true,
       });
 
       aSwitch = new YesNoSwitch({
@@ -95,6 +97,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [],
+        shouldShowOnHomeScreen: true,
       });
       let noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
@@ -116,6 +119,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [],
+        shouldShowOnHomeScreen: true,
       });
       const noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
@@ -142,6 +146,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [gt5Outcome],
+        shouldShowOnHomeScreen: true,
       });
 
       const val0Switch = new YesNoSwitch({
@@ -180,6 +185,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [gt5Outcome, lt7Outcome],
+        shouldShowOnHomeScreen: true,
       });
 
       const val6Switch = new YesNoSwitch({
@@ -213,6 +219,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [outcome],
+        shouldShowOnHomeScreen: true,
       });
       const create = () => new ScoredAlgorithm({ info, switches: [] });
       expect(create).toThrowError('No switches');
@@ -226,6 +233,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [outcome],
+        shouldShowOnHomeScreen: true,
       });
 
       const val6Switch = new YesNoSwitch({
@@ -250,6 +258,7 @@ describe('ScoredAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [outcome],
+        shouldShowOnHomeScreen: true,
       });
 
       const val6Switch = new YesNoSwitch({

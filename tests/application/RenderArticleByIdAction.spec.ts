@@ -18,6 +18,7 @@ const article = new Article({
   title: 'example article',
   html: 'foo bar',
   designation: Designation.ARTICLE,
+  shouldShowOnHomeScreen: true,
 });
 
 const getArticleByIdAction = {

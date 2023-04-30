@@ -16,6 +16,7 @@ describe('TextAlgorithm', () => {
         summary: 'summary text',
         id: new AlgorithmId('0'),
         outcomes: [],
+        shouldShowOnHomeScreen: true,
       });
 
       const create = () => new TextAlgorithm({ info });
@@ -36,6 +37,7 @@ describe('TextAlgorithm', () => {
         summary: 'summary text',
         id: new AlgorithmId('1'),
         outcomes: [new Outcome({ title: 'title', body: 'body' })],
+        shouldShowOnHomeScreen: true,
       });
       nextAlgo = new TextAlgorithm({ info: nextInfo });
 
@@ -51,6 +53,7 @@ describe('TextAlgorithm', () => {
         summary: 'summary text',
         id: new AlgorithmId('0'),
         outcomes: [outcome],
+        shouldShowOnHomeScreen: true,
       });
 
       algo = new TextAlgorithm({ info });
@@ -80,6 +83,7 @@ describe('TextAlgorithm', () => {
         body: 'this is the body text',
         summary: 'summary text',
         outcomes: [],
+        shouldShowOnHomeScreen: true,
       });
       const noOutcomesAlgo = new TextAlgorithm({
         info: noOutcomesAlgoInfo,

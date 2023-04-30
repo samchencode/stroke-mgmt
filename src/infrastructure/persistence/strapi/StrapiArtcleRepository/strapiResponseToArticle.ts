@@ -37,5 +37,6 @@ export const strapiResponseToArticle = (
     designation,
     summary: attributes.Summary ?? '',
     thumbnail,
+    shouldShowOnHomeScreen: attributes.ShowOnHomeScreen ?? true,
   });
 };

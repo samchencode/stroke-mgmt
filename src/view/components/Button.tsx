@@ -1,8 +1,7 @@
 import { theme } from '@/view/theme';
 import React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
-import { View, Text, StyleSheet } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 
 type ButtonProps = {
   title: string;

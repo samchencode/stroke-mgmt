@@ -8,6 +8,8 @@ import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView } from '@/view/components';
 import { StrokeFactsError } from '@/view/StrokeFactsScreen/StrokeFactsError';
 import { StrokeFactsBottomBar } from '@/view/StrokeFactsScreen/StrokeFactsBottomBar';
+import { theme } from '@/view/theme';
+import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
   const getHtml = renderStrokeFactsAction.execute();
@@ -23,6 +25,11 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
     const handlePressButton = useCallback(() => {
       navigation.navigate('StrokeSignsScreen');
     }, [navigation]);
+
+    useSetAndroidBottomNavigationBarColor(
+      theme.colors.secondaryContainer,
+      'dark'
+    );
 
     return (
       <View style={styles.container}>

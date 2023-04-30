@@ -11,6 +11,7 @@ import { theme } from '@/view/theme';
 import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
 import { useBottomNavigationBarHeight } from '@/view/lib/getBottomNavigationBarHeight';
+import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';
 
 function factory(
   getAllArticlesAction: GetAllArticlesAction,
@@ -48,6 +49,8 @@ function factory(
     );
 
     const bottomNavigationBarHeight = useBottomNavigationBarHeight();
+
+    useSetAndroidBottomNavigationBarColor(theme.colors.surface, 'dark');
 
     return (
       <ScrollView

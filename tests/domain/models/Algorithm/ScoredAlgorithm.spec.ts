@@ -22,6 +22,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       const switches = [
@@ -56,6 +57,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       aSwitch = new YesNoSwitch({
@@ -98,6 +100,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
       let noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
@@ -120,6 +123,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
       const noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
@@ -147,6 +151,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [gt5Outcome],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       const val0Switch = new YesNoSwitch({
@@ -186,6 +191,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [gt5Outcome, lt7Outcome],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       const val6Switch = new YesNoSwitch({
@@ -220,6 +226,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
       const create = () => new ScoredAlgorithm({ info, switches: [] });
       expect(create).toThrowError('No switches');
@@ -234,6 +241,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       const val6Switch = new YesNoSwitch({
@@ -259,6 +267,7 @@ describe('ScoredAlgorithm', () => {
         summary: 'summary text',
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       const val6Switch = new YesNoSwitch({

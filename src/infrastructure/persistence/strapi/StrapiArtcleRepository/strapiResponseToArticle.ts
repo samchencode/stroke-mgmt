@@ -39,6 +39,7 @@ export const strapiResponseToArticle = (
     summary: attributes.Summary ?? undefined,
     thumbnail,
     shouldShowOnHomeScreen: attributes.ShowOnHomeScreen ?? true,
+    lastUpdated: new Date(attributes.updatedAt),
     tags: attributes.tags.data.map(
       (td) =>
         new Tag(td.attributes.Name, td.attributes.Description ?? undefined)

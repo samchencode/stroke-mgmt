@@ -83,6 +83,10 @@ class ScoredAlgorithm implements Algorithm {
     return this.info.getshouldShowOnHomeScreen();
   }
 
+  getLastUpdated(): Date {
+    return this.info.getLastUpdated();
+  }
+
   is(other: Algorithm): boolean {
     return other.getId().is(this.getId());
   }

@@ -18,6 +18,7 @@ class FakeArticleRepository implements ArticleRepository {
           summary: p.summary,
           thumbnail: new Image(p.thumbnail),
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         })
     );
   }
@@ -44,6 +45,7 @@ class FakeArticleRepository implements ArticleRepository {
           summary: p.summary,
           thumbnail: new Image(p.thumbnail),
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         })
     );
   }
@@ -60,6 +62,7 @@ class FakeArticleRepository implements ArticleRepository {
       summary: articles.summary,
       thumbnail: new Image(articles.thumbnail),
       shouldShowOnHomeScreen: true,
+      lastUpdated: new Date(0),
     });
   }
 }

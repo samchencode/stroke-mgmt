@@ -10,6 +10,7 @@ type AlgorithmParams = {
   summary: string;
   outcomes: Outcome[];
   shouldShowOnHomeScreen: boolean;
+  lastUpdated: Date;
 };
 
 class AlgorithmInfo {
@@ -27,6 +28,8 @@ class AlgorithmInfo {
 
   private shouldShowOnHomeScreen: boolean;
 
+  private lastUpdated: Date;
+
   constructor({
     id,
     title,
@@ -35,6 +38,7 @@ class AlgorithmInfo {
     summary,
     thumbnail,
     shouldShowOnHomeScreen,
+    lastUpdated,
   }: AlgorithmParams) {
     this.id = id;
     this.title = title;
@@ -43,6 +47,7 @@ class AlgorithmInfo {
     this.outcomes = outcomes;
     this.summary = summary;
     this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
+    this.lastUpdated = lastUpdated;
   }
 
   getId() {
@@ -71,6 +76,10 @@ class AlgorithmInfo {
 
   getshouldShowOnHomeScreen() {
     return this.shouldShowOnHomeScreen;
+  }
+
+  getLastUpdated() {
+    return this.lastUpdated;
   }
 }
 

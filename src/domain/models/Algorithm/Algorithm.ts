@@ -12,6 +12,7 @@ interface Algorithm {
   getOutcomes(): Outcome[];
   hasOutcomes(): boolean;
   getshouldShowOnHomeScreen(): boolean;
+  getLastUpdated(): Date;
   is(other: Algorithm): boolean;
   acceptVisitor(v: AlgorithmVisitor): void;
 }

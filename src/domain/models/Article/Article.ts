@@ -12,6 +12,7 @@ type ArticleParams = {
   thumbnail: Image;
   shouldShowOnHomeScreen: boolean;
   tags?: Tag[];
+  lastUpdated: Date;
 };
 
 class Article {
@@ -31,6 +32,8 @@ class Article {
 
   private shouldShowOnHomeScreen: boolean;
 
+  private lastUpdated: Date;
+
   constructor({
     id,
     title,
@@ -38,8 +41,9 @@ class Article {
     designation,
     thumbnail,
     summary,
-    tags = [],
     shouldShowOnHomeScreen,
+    lastUpdated,
+    tags = [],
   }: ArticleParams) {
     this.id = id;
     this.title = title;
@@ -49,6 +53,7 @@ class Article {
     this.summary = summary;
     this.tags = new Map(tags.map((t) => [t.getName(), t] as const));
     this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
+    this.lastUpdated = lastUpdated;
   }
 
   getId() {
@@ -87,6 +92,10 @@ class Article {
 
   getshouldShowOnHomeScreen() {
     return this.shouldShowOnHomeScreen;
+  }
+
+  getLastUpdated() {
+    return this.lastUpdated;
   }
 
   is(v: Article) {

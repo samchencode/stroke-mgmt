@@ -57,6 +57,7 @@ describe('EjsAlgorithmRenderer', () => {
         html: '<h1>foo bar</h1>',
         designation: Designation.ARTICLE,
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       const renderer = new EjsRenderer(fs);
@@ -73,6 +74,7 @@ describe('EjsAlgorithmRenderer', () => {
         html: '<h1>foo bar</h1>',
         designation: Designation.DISCLAIMER,
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
 
       const renderer = new EjsRenderer(fs);

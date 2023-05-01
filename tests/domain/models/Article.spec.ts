@@ -21,6 +21,7 @@ describe('Article', () => {
           summary,
           thumbnail,
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         });
       expect(create).not.toThrowError();
     });
@@ -48,6 +49,7 @@ describe('Article', () => {
         html,
         designation,
         shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
       });
       expect(article.getTitle()).toBe(title);
       expect(article.getHtml()).toBe(html);

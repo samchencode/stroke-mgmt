@@ -31,6 +31,7 @@ const gwnsAlgorithm = (() => {
       }),
     ],
     shouldShowOnHomeScreen: true,
+    lastUpdated: new Date(0),
   });
 
   const switches = [
@@ -78,6 +79,7 @@ const abctAlgorithm = (() => {
       }),
     ],
     shouldShowOnHomeScreen: true,
+    lastUpdated: new Date(0),
   });
 
   return new TextAlgorithm({ info });

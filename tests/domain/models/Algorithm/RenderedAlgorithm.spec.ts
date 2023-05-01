@@ -25,6 +25,7 @@ describe('RenderedAlgorithm', () => {
           outcomes: [],
           summary: 'test algo',
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         }),
       });
       const create = () => new RenderedAlgorithm(algo, html);
@@ -42,6 +43,7 @@ describe('RenderedAlgorithm', () => {
           outcomes: [],
           summary: 'test algo',
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         }),
       });
       const rAlgo = new RenderedAlgorithm(algo, html);
@@ -72,6 +74,7 @@ describe('RenderedAlgorithm', () => {
           outcomes: [],
           summary: 'test algo',
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         }),
       });
 
@@ -84,6 +87,7 @@ describe('RenderedAlgorithm', () => {
           outcomes: [],
           summary: 'test algo',
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         }),
       });
 
@@ -103,6 +107,7 @@ describe('RenderedAlgorithm', () => {
           ],
           summary: 'test algo',
           shouldShowOnHomeScreen: true,
+          lastUpdated: new Date(0),
         }),
         switches: [
           new YesNoSwitch({

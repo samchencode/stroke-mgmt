@@ -1,5 +1,6 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
+import { ArticleMetadata } from '@/domain/models/Article/ArticleMetadata';
 import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
 import { Image } from '@/domain/models/Image';
 import { fakeArticles } from '@/infrastructure/persistence/fake/FakeArticleRepository/fakeArticles';
@@ -64,6 +65,42 @@ class FakeArticleRepository implements ArticleRepository {
       shouldShowOnHomeScreen: true,
       lastUpdated: new Date(0),
     });
+  }
+
+  async getMetadataByDesignation(
+    d: BaseDesignation
+  ): Promise<ArticleMetadata[]> {
+    let articles = this.fakeArticles;
+    if (d.type === 'StrokeFacts') {
+      articles = fakeArticles.filter((a) => a.designation === 'STROKE_FACTS');
+    } else if (d.type === 'StrokeSigns') {
+      articles = fakeArticles.filter((a) => a.designation === 'STROKE_SIGNS');
+    } else if (d.type === 'Disclaimer') {
+      articles = fakeArticles.filter((a) => a.designation === 'DISCLAIMER');
+    } else {
+      articles = fakeArticles.filter((a) => a.designation === 'ARTICLE');
+    }
+
+    return articles.map(
+      (a) => new ArticleMetadata(new ArticleId(a.id), new Date(0))
+    );
+  }
+
+  async getMetadataById(id: ArticleId): Promise<ArticleMetadata> {
+    const article = this.fakeArticles.find((a) => a.id === id.getId());
+    if (!article) throw Error('Article not found');
+
+    return new ArticleMetadata(new ArticleId(article.id), new Date(0));
+  }
+
+  async getAllMetadata(): Promise<ArticleMetadata[]> {
+    return this.fakeArticles.map(
+      (a) => new ArticleMetadata(new ArticleId(a.id), new Date(0))
+    );
+  }
+
+  async isAvailable(): Promise<boolean> {
+    return true;
   }
 }
 

@@ -18,3 +18,4 @@ export {
 } from '@/domain/models/Algorithm/Switch';
 export { RenderedAlgorithm } from '@/domain/models/Algorithm/RenderedAlgorithm';
 export { RenderedAlgorithmCollection } from '@/domain/models/Algorithm/RenderedAlgorithmCollection';
+export { AlgorithmMetadata } from '@/domain/models/Algorithm/AlgorithmMetadata';

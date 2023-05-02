@@ -3,17 +3,26 @@ import type {
   StrapiApiResponse,
   StrapiArticleData,
   StrapiErrorResponse,
+  StrapiSingularApiResponse,
+  StrapiPluralApiResponse,
+  StrapiArticleMetadata,
 } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 import type {
   Article,
-  ArticleId,
   ArticleRepository,
   BaseDesignation,
+} from '@/domain/models/Article';
+import {
+  ArticleId,
+  ArticleMetadata,
+  Designation,
 } from '@/domain/models/Article';
 import { strapiResponseToArticle } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository/strapiResponseToArticle';
 import type { ImageRepository } from '@/domain/models/Image';
 
 type Fetch = typeof fetch;
+
+type ResponseData = StrapiArticleData | StrapiArticleMetadata;
 
 class StrapiArticleRepository implements ArticleRepository {
   constructor(
@@ -22,14 +31,26 @@ class StrapiArticleRepository implements ArticleRepository {
     private placeholderImageRepository: ImageRepository
   ) {}
 
-  private async get(uri: string) {
+  private async get<T extends ResponseData>(
+    uri: string
+  ): Promise<StrapiApiResponse<T>> {
     const url = this.strapiHostUrl + uri;
     const response = await this.fetch(url);
     const json = await response.json();
     if (!response.ok) {
       throw new StrapiApiError(json as StrapiErrorResponse);
     }
-    return json as StrapiApiResponse<StrapiArticleData>;
+    return json as StrapiApiResponse<T>;
+  }
+
+  private async getSingle<T extends ResponseData>(uri: string) {
+    const result = await this.get<T>(uri);
+    return result as StrapiSingularApiResponse<T>;
+  }
+
+  private async getMultiple<T extends ResponseData>(uri: string) {
+    const result = await this.get<T>(uri);
+    return result as StrapiPluralApiResponse<T>;
   }
 
   async getAll(): Promise<Article[]> {
@@ -73,6 +94,58 @@ class StrapiArticleRepository implements ArticleRepository {
         `article-${id.toString()}`
       );
     return strapiResponseToArticle(placeholderImage, this.strapiHostUrl, data);
+  }
+
+  async getMetadataByDesignation(
+    designation: BaseDesignation
+  ): Promise<ArticleMetadata[]> {
+    const searchParams = new URLSearchParams({
+      'fields[0]': 'updatedAt',
+    });
+    if (designation.is(Designation.ARTICLE))
+      searchParams.set('filters[Designation]', 'Article');
+    else if (designation.is(Designation.STROKE_FACTS))
+      searchParams.set('filters[Designation]', 'Stroke Facts');
+    else if (designation.is(Designation.STROKE_SIGNS))
+      searchParams.set('filters[Designation]', 'Stroke Signs');
+
+    const { data } = await this.getMultiple<StrapiArticleMetadata>(
+      `/api/articles?${searchParams}`
+    );
+    return data.map(
+      (d) =>
+        new ArticleMetadata(
+          new ArticleId(d.id.toString()),
+          new Date(d.attributes.updatedAt)
+        )
+    );
+  }
+
+  async getMetadataById(id: ArticleId): Promise<ArticleMetadata> {
+    const { data } = await this.getSingle<StrapiArticleMetadata>(
+      `/api/articles/${id}?fields[0]=updatedAt`
+    );
+    return new ArticleMetadata(
+      new ArticleId(data.id.toString()),
+      new Date(data.attributes.updatedAt)
+    );
+  }
+
+  async getAllMetadata(): Promise<ArticleMetadata[]> {
+    const { data } = await this.getMultiple<StrapiArticleMetadata>(
+      '/api/articles?fields[0]=updatedAt'
+    );
+    return data.map(
+      (d) =>
+        new ArticleMetadata(
+          new ArticleId(d.id.toString()),
+          new Date(d.attributes.updatedAt)
+        )
+    );
+  }
+
+  async isAvailable(): Promise<boolean> {
+    throw new Error('Method not implemented.');
   }
 }
 

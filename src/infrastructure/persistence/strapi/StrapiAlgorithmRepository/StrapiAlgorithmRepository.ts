@@ -1,13 +1,13 @@
-import type {
-  Algorithm,
-  AlgorithmId,
-  AlgorithmRepository,
-} from '@/domain/models/Algorithm';
+import type { Algorithm, AlgorithmRepository } from '@/domain/models/Algorithm';
+import { AlgorithmId, AlgorithmMetadata } from '@/domain/models/Algorithm';
 import { StrapiApiError } from '@/infrastructure/persistence/strapi/StrapiApiError';
 import type {
   StrapiAlgorithmData,
+  StrapiAlgorithmMetadata,
   StrapiApiResponse,
   StrapiErrorResponse,
+  StrapiPluralApiResponse,
+  StrapiSingularApiResponse,
 } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 import { strapiResponseToAlgorithm } from '@/infrastructure/persistence/strapi/StrapiAlgorithmRepository/strapiResponseToAlgorithm';
 import type { ImageRepository } from '@/domain/models/Image';
@@ -30,18 +30,32 @@ class StrapiAlgorithmRepository implements AlgorithmRepository {
     private placeholderImageRepository: ImageRepository
   ) {}
 
-  private async get(uri: string) {
+  private async get<D>(uri: string): Promise<StrapiApiResponse<D>> {
     const url = this.strapiHostUrl + uri;
     const response = await this.fetch(url);
     const json = await response.json();
     if (!response.ok) {
       throw new StrapiApiError(json as StrapiErrorResponse);
     }
-    return json as StrapiApiResponse<StrapiAlgorithmData>;
+    return json as StrapiApiResponse<D>;
+  }
+
+  private async getSingle<D>(
+    uri: string
+  ): Promise<StrapiSingularApiResponse<D>> {
+    const result = await this.get<D>(uri);
+    return result as StrapiSingularApiResponse<D>;
+  }
+
+  private async getMultiple<D>(uri: string) {
+    const result = await this.get<D>(uri);
+    return result as StrapiPluralApiResponse<D>;
   }
 
   async getAll(): Promise<Algorithm[]> {
-    const { data } = await this.get(`/api/algorithms?${populateSearchParams}`);
+    const { data } = await this.get<StrapiAlgorithmData>(
+      `/api/algorithms?${populateSearchParams}`
+    );
     const promises = (data as StrapiAlgorithmData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)
     );
@@ -50,20 +64,65 @@ class StrapiAlgorithmRepository implements AlgorithmRepository {
 
   async getById(id: AlgorithmId): Promise<Algorithm> {
     const idString = id.toString();
-    const { data } = await this.get(
+    const { data } = await this.get<StrapiAlgorithmData>(
       `/api/algorithms/${idString}?${populateSearchParams}`
     );
     return this.getDefaultThumbnailAndMakeArticle(data as StrapiAlgorithmData);
   }
 
   async getAllShownOnHomeScreen(): Promise<Algorithm[]> {
-    const { data } = await this.get(
+    const { data } = await this.get<StrapiAlgorithmData>(
       `/api/algorithms?filters[ShowOnHomeScreen]=true&${populateSearchParams}`
     );
     const promises = (data as StrapiAlgorithmData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)
     );
     return Promise.all(promises);
+  }
+
+  async getAllMetadata(): Promise<AlgorithmMetadata[]> {
+    const { data } = await this.getMultiple<StrapiAlgorithmMetadata>(
+      `/api/algorithms?fields[0]=updatedAt`
+    );
+    return data.map(
+      (d) =>
+        new AlgorithmMetadata(
+          new AlgorithmId(d.id.toString()),
+          new Date(d.attributes.updatedAt)
+        )
+    );
+  }
+
+  async getMetadataById(id: AlgorithmId): Promise<AlgorithmMetadata> {
+    const idString = id.toString();
+    const { data } = await this.getSingle<StrapiAlgorithmMetadata>(
+      `/api/algorithms/${idString}?fields[0]=updatedAt`
+    );
+    return new AlgorithmMetadata(
+      new AlgorithmId(data.id.toString()),
+      new Date(data.attributes.updatedAt)
+    );
+  }
+
+  async getMetadataForAllShownOnHomeScreen(): Promise<AlgorithmMetadata[]> {
+    const searchParams = new URLSearchParams({
+      'filters[ShowOnHomeScreen]': 'true',
+      'fields[0]': 'updatedAt',
+    });
+    const { data } = await this.getMultiple<StrapiAlgorithmMetadata>(
+      `/api/algorithms?${searchParams}`
+    );
+    return data.map(
+      (d) =>
+        new AlgorithmMetadata(
+          new AlgorithmId(d.id.toString()),
+          new Date(d.attributes.updatedAt)
+        )
+    );
+  }
+
+  async isAvailable(): Promise<boolean> {
+    throw new Error('Method not implemented.');
   }
 
   private async getDefaultThumbnailAndMakeArticle(data: StrapiAlgorithmData) {

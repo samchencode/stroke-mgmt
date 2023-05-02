@@ -4,3 +4,4 @@ export type { BaseDesignation } from '@/domain/models/Article/Designation';
 export { Article } from '@/domain/models/Article/Article';
 export type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
 export type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
+export { ArticleMetadata } from '@/domain/models/Article/ArticleMetadata';

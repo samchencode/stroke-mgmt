@@ -19,6 +19,13 @@ export type StrapiArticleData = {
   };
 };
 
+export type StrapiArticleMetadata = {
+  id: number;
+  attributes: {
+    updatedAt: string;
+  };
+};
+
 export type StrapiAlgorithmData = {
   id: number;
   attributes: {
@@ -58,6 +65,13 @@ export type StrapiAlgorithmData = {
         Value: number;
       }[];
     }[];
+  };
+};
+
+export type StrapiAlgorithmMetadata = {
+  id: number;
+  attributes: {
+    updatedAt: string;
   };
 };
 

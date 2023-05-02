@@ -27,6 +27,7 @@ import { StrapiAlgorithmRepository } from '@/infrastructure/persistence/strapi/S
 import { StrapiPlaceholderImageRepository } from '@/infrastructure/persistence/strapi/StrapiPlaceholderImageRepository/StrapiPlaceholderImageRepository';
 import { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { StrapiTagRepository } from '@/infrastructure/persistence/strapi/StrapiTagRepository';
+import { ReactNativeNetInfo } from '@/infrastructure/network-info/react-native-netinfo/ReactNativeNetInfo';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -64,6 +65,7 @@ export const module = {
   placeholderImageRepository: ['type', StrapiPlaceholderImageRepository],
   tagRepository: ['type', StrapiTagRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
+  networkInfo: ['type', ReactNativeNetInfo],
   articleRenderer: [
     'factory',
     // use same EjsRenderer instance as algorithmRenderer does

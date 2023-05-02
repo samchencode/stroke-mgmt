@@ -19,6 +19,7 @@ import {
 } from '@/domain/models/Article';
 import { strapiResponseToArticle } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository/strapiResponseToArticle';
 import type { ImageRepository } from '@/domain/models/Image';
+import type { NetworkInfo } from '@/infrastructure/network-info/NetworkInfo';
 
 type Fetch = typeof fetch;
 
@@ -28,7 +29,8 @@ class StrapiArticleRepository implements ArticleRepository {
   constructor(
     private strapiHostUrl: string,
     private fetch: Fetch,
-    private placeholderImageRepository: ImageRepository
+    private placeholderImageRepository: ImageRepository,
+    private networkInfo: NetworkInfo
   ) {}
 
   private async get<T extends ResponseData>(
@@ -145,7 +147,7 @@ class StrapiArticleRepository implements ArticleRepository {
   }
 
   async isAvailable(): Promise<boolean> {
-    throw new Error('Method not implemented.');
+    return this.networkInfo.isInternetReachable();
   }
 }
 

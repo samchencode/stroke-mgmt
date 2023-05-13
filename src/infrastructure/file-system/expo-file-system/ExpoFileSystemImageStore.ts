@@ -48,9 +48,13 @@ class ExpoFileSystemImageStore implements ImageStore {
 
   async getFileAsBase64Url(metadata: CachedImageMetadata): Promise<string> {
     await this.ready;
-    return ExpoFileSystem.readAsStringAsync(metadata.getFilePath(), {
-      encoding: 'base64',
-    });
+    const base64String = await ExpoFileSystem.readAsStringAsync(
+      metadata.getFilePath(),
+      {
+        encoding: 'base64',
+      }
+    );
+    return `data:${metadata.getMimeType()};base64,${base64String}`;
   }
 
   async saveFileFromUrl(url: string): Promise<CachedImageMetadata> {

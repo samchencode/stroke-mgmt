@@ -512,9 +512,9 @@ describe('ArticleCache', () => {
     });
 
     it('should save article thumbnail if cache stale', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       cacheRepo.getByDesignation.mockResolvedValue([]);
@@ -542,9 +542,9 @@ describe('ArticleCache', () => {
     });
 
     it('should download article thumbnail if cached version not found', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       const cachedArticle = new Article({
@@ -583,9 +583,9 @@ describe('ArticleCache', () => {
     });
 
     it('should update article thumbnail if cache stale', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       const getCachedImageAsFileUriSpy = jest.spyOn(
         imageCache,
@@ -986,9 +986,9 @@ describe('ArticleCache', () => {
     });
 
     it('should save article thumbnail if cache stale', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       cacheRepo.getById.mockResolvedValue(new NullArticle());
@@ -1016,9 +1016,9 @@ describe('ArticleCache', () => {
     });
 
     it('should download article thumbnail if cached version not found', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       const cachedArticle = new Article({
@@ -1057,9 +1057,9 @@ describe('ArticleCache', () => {
     });
 
     it('should update article thumbnail if cache stale', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       const getCachedImageAsFileUriSpy = jest.spyOn(
         imageCache,
@@ -1529,9 +1529,9 @@ describe('ArticleCache', () => {
     });
 
     it('should save article thumbnail if cache stale', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       cacheRepo.getAll.mockResolvedValue([]);
@@ -1559,9 +1559,9 @@ describe('ArticleCache', () => {
     });
 
     it('should download article thumbnail if cached version not found', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       const cachedArticle = new Article({
@@ -1600,9 +1600,9 @@ describe('ArticleCache', () => {
     });
 
     it('should update article thumbnail if cache stale', async () => {
-      const saveImageSpy = jest.spyOn(imageCache, 'saveImage');
-      const fileExistsSpy = jest.spyOn(imageCache, 'fileExists');
-      fileExistsSpy.mockResolvedValue(false);
+      const saveImageSpy = jest.spyOn(imageStore, 'saveFileFromUrl');
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+      imageStore.fileExists.mockResolvedValue(false);
 
       const getCachedImageAsFileUriSpy = jest.spyOn(
         imageCache,

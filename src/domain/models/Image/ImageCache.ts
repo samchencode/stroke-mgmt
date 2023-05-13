@@ -37,17 +37,15 @@ class ImageCache {
     ]);
   }
 
-  async fileExists(url: string): Promise<boolean> {
-    const metadata = await this.cachedImageMetadataRepository.get(url);
-    if (!metadata) return false;
-    const fileExists = await this.imageStore.fileExists(metadata.getFilePath());
-    if (!fileExists) return false;
-    return true;
-  }
-
   async saveImageIfNotExists(url: string): Promise<void> {
-    if (await this.fileExists(url)) return;
-    await this.saveImage(url);
+    let metadata = await this.cachedImageMetadataRepository.get(url);
+    if (!metadata) {
+      metadata = await this.imageStore.saveFileFromUrl(url);
+    }
+    const fileExists = await this.imageStore.fileExists(metadata.getFilePath());
+    if (!fileExists) {
+      await this.cachedImageMetadataRepository.save(metadata);
+    }
   }
 }
 

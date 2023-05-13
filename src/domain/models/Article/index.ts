@@ -1,4 +1,3 @@
-export { ArticleCache } from '@/domain/services/ArticleCache';
 export { ArticleId } from '@/domain/models/Article/ArticleId';
 export { Designation } from '@/domain/models/Article/Designation';
 export type { BaseDesignation } from '@/domain/models/Article/Designation';

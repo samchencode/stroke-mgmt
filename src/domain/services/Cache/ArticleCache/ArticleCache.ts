@@ -9,11 +9,11 @@ import type { ImageCache } from '@/domain/models/Image';
 import {
   sourceAvailableGetMultiple,
   sourceAvailableGetSingle,
-} from '@/domain/services/ArticleCache/sourceAvailableGet';
+} from '@/domain/services/Cache/ArticleCache/sourceAvailableGet';
 import {
   sourceUnavailableGetMultiple,
   sourceUnavailableGetSingle,
-} from '@/domain/services/ArticleCache/sourceUnavailableGet';
+} from '@/domain/services/Cache/ArticleCache/sourceUnavailableGet';
 
 type CacheInvalidatedCallback<T> = (newValue: T) => void;
 

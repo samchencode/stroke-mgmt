@@ -1,4 +1,4 @@
-import { SourceUnavailableCacheEmptyError } from '@/domain/services/ArticleCache/SourceUnavailableCacheEmptyError';
+import { SourceUnavailableCacheEmptyError } from '@/domain/services/Cache/SourceUnavailableCacheEmptyError';
 import type { Article, CachedArticleRepository } from '@/domain/models/Article';
 import type { ImageCache } from '@/domain/models/Image';
 

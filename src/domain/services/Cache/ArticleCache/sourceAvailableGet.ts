@@ -1,7 +1,7 @@
 import type { CachedArticleRepository, Article } from '@/domain/models/Article';
 import { ArticleNotFoundError, NullArticle } from '@/domain/models/Article';
 import type { ImageCache } from '@/domain/models/Image';
-import { updateCache } from '@/domain/services/ArticleCache/updateCache';
+import { updateCache } from '@/domain/services/Cache/ArticleCache/updateCache';
 
 type SingleGetter = () => Promise<Article>;
 type SingleCallback = (res: Article) => void;

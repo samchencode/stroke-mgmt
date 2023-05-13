@@ -1,6 +1,5 @@
 import {
   Article,
-  ArticleCache,
   ArticleId,
   ArticleNotFoundError,
   Designation,
@@ -13,7 +12,7 @@ import type {
 } from '@/domain/models/Image';
 import { Image, ImageCache } from '@/domain/models/Image';
 import { NullImage } from '@/domain/models/Image/NullImage';
-import { SourceUnavailableCacheEmptyError } from '@/domain/services/ArticleCache';
+import { SourceUnavailableCacheEmptyError, ArticleCache } from '@/domain/services/Cache';
 import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
 
 describe('ArticleCache', () => {

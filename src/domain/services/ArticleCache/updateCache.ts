@@ -1,6 +1,9 @@
-import type { Article } from '@/domain/models/Article/Article';
-import type { ArticleId } from '@/domain/models/Article/ArticleId';
-import type { CachedArticleRepository } from '@/domain/models/Article/ports/CachedArticleRepository';
+import type {
+  Article,
+  ArticleId,
+  CachedArticleRepository,
+} from '@/domain/models/Article';
+import type { ImageCache } from '@/domain/models/Image';
 
 type DiffResult = {
   articlesToCreate: Article[];
@@ -61,19 +64,60 @@ function diff(sourceArticles: Article[], cacheArticles: Article[]): DiffResult {
   return { idsToDelete, articlesToCreate, articlesToUpdate };
 }
 
+async function createArticles(
+  imageCache: ImageCache,
+  cacheRepository: CachedArticleRepository,
+  articles: Article[]
+) {
+  const savePromise = cacheRepository.saveAll(articles);
+  const saveImagePromises = articles.map((a) => {
+    const uri = a.getThumbnail().getUri();
+    if (!uri.match(/^https?:\/\//)) return Promise.resolve();
+    return imageCache.saveImageIfNotExists(uri);
+  });
+  return Promise.allSettled([savePromise, ...saveImagePromises]);
+}
+
+async function updateArticles(
+  imageCache: ImageCache,
+  cacheRepository: CachedArticleRepository,
+  articles: Article[]
+) {
+  const updatePromises = articles.map((v) => cacheRepository.update(v));
+  const saveImagePromises = articles.map((a) => {
+    const uri = a.getThumbnail().getUri();
+    if (!uri.match(/^https?:\/\//)) return Promise.resolve();
+    return imageCache.saveImageIfNotExists(uri);
+  });
+  return Promise.allSettled(updatePromises.concat(saveImagePromises));
+}
+
+async function deleteArticles(
+  cacheRepository: CachedArticleRepository,
+  ids: ArticleId[]
+) {
+  const promises = ids.map((v) => cacheRepository.delete(v));
+  return Promise.allSettled(promises);
+}
+
 export async function updateCache(
+  imageCache: ImageCache,
   cacheRepository: CachedArticleRepository,
   sourceResult: Article[],
   cacheResult: Article[]
 ) {
   const diffResult = diff(sourceResult, cacheResult);
-  const createPromise = cacheRepository.saveAll(diffResult.articlesToCreate);
-  const updatePromises = diffResult.articlesToUpdate.map((v) =>
-    cacheRepository.update(v)
+  const createPromise = createArticles(
+    imageCache,
+    cacheRepository,
+    diffResult.articlesToCreate
   );
-  const deletePromises = diffResult.idsToDelete.map((v) =>
-    cacheRepository.delete(v)
+  const updatePromise = updateArticles(
+    imageCache,
+    cacheRepository,
+    diffResult.articlesToUpdate
   );
-  const promises = [createPromise, ...updatePromises, ...deletePromises];
+  const deletePromise = deleteArticles(cacheRepository, diffResult.idsToDelete);
+  const promises = [createPromise, updatePromise, deletePromise];
   await Promise.allSettled(promises);
 }

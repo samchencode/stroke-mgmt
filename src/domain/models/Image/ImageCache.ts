@@ -36,6 +36,19 @@ class ImageCache {
       this.cachedImageMetadataRepository.clearCache(),
     ]);
   }
+
+  async fileExists(url: string): Promise<boolean> {
+    const metadata = await this.cachedImageMetadataRepository.get(url);
+    if (!metadata) return false;
+    const fileExists = await this.imageStore.fileExists(metadata.getFilePath());
+    if (!fileExists) return false;
+    return true;
+  }
+
+  async saveImageIfNotExists(url: string): Promise<void> {
+    if (await this.fileExists(url)) return;
+    await this.saveImage(url);
+  }
 }
 
 export { ImageCache };

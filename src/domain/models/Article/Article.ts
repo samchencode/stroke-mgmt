@@ -9,9 +9,9 @@ type ArticleParams = {
   html: string;
   summary?: string;
   designation: BaseDesignation;
-  thumbnail?: Image;
+  thumbnail: Image;
   shouldShowOnHomeScreen: boolean;
-  tags?: Tag[];
+  tags?: Tag[] | Map<string, Tag>;
   lastUpdated: Date;
 };
 
@@ -26,7 +26,7 @@ class Article {
 
   private desigation: BaseDesignation;
 
-  private thumbnail?: Image;
+  private thumbnail: Image;
 
   private tags: Map<string, Tag>;
 
@@ -51,7 +51,10 @@ class Article {
     this.desigation = designation;
     this.thumbnail = thumbnail;
     this.summary = summary;
-    this.tags = new Map(tags.map((t) => [t.getName(), t] as const));
+    this.tags =
+      tags instanceof Map
+        ? tags
+        : new Map(tags.map((t) => [t.getName(), t] as const));
     this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
     this.lastUpdated = lastUpdated;
   }
@@ -100,6 +103,21 @@ class Article {
 
   is(v: Article) {
     return this.id.is(v.getId());
+  }
+
+  clone(newParams: Partial<ArticleParams>) {
+    return new Article({
+      id: this.id,
+      title: this.title,
+      html: this.html,
+      designation: this.desigation,
+      thumbnail: this.thumbnail,
+      summary: this.summary,
+      shouldShowOnHomeScreen: this.shouldShowOnHomeScreen,
+      lastUpdated: this.lastUpdated,
+      tags: this.tags,
+      ...newParams,
+    });
   }
 }
 

@@ -1,8 +1,8 @@
-import type { CachedArticleRepository } from '@/domain/models/Article/ports/CachedArticleRepository';
-import { updateCache } from '@/domain/models/Article/ArticleCache/updateCache';
-import type { Article } from '@/domain/models/Article/Article';
-import { ArticleNotFoundError } from '@/domain/models/Article/ports/ArticleRepository';
-import { NullArticle } from '@/domain/models/Article/NullArticle';
+import type { CachedArticleRepository, Article } from '@/domain/models/Article';
+import { ArticleNotFoundError, NullArticle } from '@/domain/models/Article';
+import { Image } from '@/domain/models/Image';
+import type { ImageCache } from '@/domain/models/Image';
+import { updateCache } from '@/domain/services/ArticleCache/updateCache';
 
 type SingleGetter = () => Promise<Article>;
 type SingleCallback = (res: Article) => void;
@@ -72,6 +72,7 @@ function isStale(sourceResult: Article[], cacheResult: Article[]): boolean {
 }
 
 async function updateCacheAndRunCallbackIfStale(
+  imageCache: ImageCache,
   cacheRepository: CachedArticleRepository,
   sourcePromise: Promise<Article[]>,
   cachePromise: Promise<Article[]>,
@@ -85,16 +86,44 @@ async function updateCacheAndRunCallbackIfStale(
     if (!(e instanceof ArticleNotFoundError)) throw e;
   }
   if (sourceResult === null) {
-    await updateCache(cacheRepository, [], cacheResult);
+    await updateCache(imageCache, cacheRepository, [], cacheResult);
     onStaleCallback([new NullArticle()]);
     return;
   }
   if (!isStale(sourceResult, cacheResult)) return;
   onStaleCallback(sourceResult);
-  await updateCache(cacheRepository, sourceResult, cacheResult);
+  await updateCache(imageCache, cacheRepository, sourceResult, cacheResult);
+}
+
+async function getAndAddCachedThumbnailForArticle(
+  imageCache: ImageCache,
+  article: Article
+) {
+  const thumbnail = article.getThumbnail();
+  if (!thumbnail) return article;
+  const thumbnailUri = thumbnail.getUri();
+  if (!thumbnailUri.match(/^https?:\/\//)) return article;
+  const fileUri = await imageCache.getCachedImageAsFileUri(thumbnail.getUri());
+  if (!fileUri) {
+    imageCache.saveImage(thumbnail.getUri());
+    // Returns article with original uri since we presume source is available.
+    return article;
+  }
+  return article.clone({ thumbnail: new Image(fileUri) });
+}
+
+async function getAndAddCachedThumbnailForArticles(
+  imageCache: ImageCache,
+  cacheResult: Article[]
+) {
+  const promises = cacheResult.map((v) =>
+    getAndAddCachedThumbnailForArticle(imageCache, v)
+  );
+  return Promise.all(promises);
 }
 
 async function sourceAvailableGetMultiple(
+  imageCache: ImageCache,
   cacheRepository: CachedArticleRepository,
   sourceGetter: Getter,
   cacheGetter: Getter,
@@ -111,31 +140,34 @@ async function sourceAvailableGetMultiple(
   const sourcePromise = retryUntilSuccess(sourceGetter);
   if (cacheIsEmpty) {
     const sourceResult = await sourcePromise;
-    updateCache(cacheRepository, sourceResult, []);
+    updateCache(imageCache, cacheRepository, sourceResult, []);
     return sourceResult;
   }
 
   try {
     const cacheResult = await cachePromise;
     updateCacheAndRunCallbackIfStale(
+      imageCache,
       cacheRepository,
       sourcePromise,
       cachePromise,
       onStaleCallback
     );
-    return cacheResult;
+    return await getAndAddCachedThumbnailForArticles(imageCache, cacheResult);
   } catch {
     return sourcePromise;
   }
 }
 
 async function sourceAvailableGetSingle(
+  imageCache: ImageCache,
   cacheRepository: CachedArticleRepository,
   sourceGetter: SingleGetter,
   cacheGetter: SingleGetter,
   onStaleCallback: SingleCallback
 ): Promise<Article> {
   const [result] = await sourceAvailableGetMultiple(
+    imageCache,
     cacheRepository,
     () => sourceGetter().then((r) => [r]),
     () => cacheGetter().then((r) => [r]),

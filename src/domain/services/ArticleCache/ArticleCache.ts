@@ -1,18 +1,25 @@
-import type { CachedArticleRepository } from '@/domain/models/Article/ports/CachedArticleRepository';
-import type { Article } from '@/domain/models/Article/Article';
-import type { ArticleId } from '@/domain/models/Article/ArticleId';
-import type { BaseDesignation } from '@/domain/models/Article/Designation';
-import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
+import type {
+  CachedArticleRepository,
+  Article,
+  ArticleId,
+  BaseDesignation,
+  ArticleRepository,
+} from '@/domain/models/Article';
+import type { ImageCache } from '@/domain/models/Image';
 import {
   sourceAvailableGetMultiple,
   sourceAvailableGetSingle,
-} from '@/domain/models/Article/ArticleCache/sourceAvailableGet';
-import { sourceUnavailableGet } from '@/domain/models/Article/ArticleCache/sourceUnavailableGet';
+} from '@/domain/services/ArticleCache/sourceAvailableGet';
+import {
+  sourceUnavailableGetMultiple,
+  sourceUnavailableGetSingle,
+} from '@/domain/services/ArticleCache/sourceUnavailableGet';
 
 type CacheInvalidatedCallback<T> = (newValue: T) => void;
 
 class ArticleCache {
   constructor(
+    private readonly imageCache: ImageCache,
     private readonly articleRepository: ArticleRepository,
     private readonly cachedArticleRepository: CachedArticleRepository
   ) {}
@@ -24,9 +31,14 @@ class ArticleCache {
     const getFromRepo = () => this.articleRepository.getByDesignation(d);
     const getFromCache = () => this.cachedArticleRepository.getByDesignation(d);
     if (!(await this.articleRepository.isAvailable())) {
-      return sourceUnavailableGet(this.cachedArticleRepository, getFromCache);
+      return sourceUnavailableGetMultiple(
+        this.imageCache,
+        this.cachedArticleRepository,
+        getFromCache
+      );
     }
     return sourceAvailableGetMultiple(
+      this.imageCache,
       this.cachedArticleRepository,
       getFromRepo,
       getFromCache,
@@ -41,9 +53,14 @@ class ArticleCache {
     const getFromRepo = () => this.articleRepository.getById(id);
     const getFromCache = () => this.cachedArticleRepository.getById(id);
     if (!(await this.articleRepository.isAvailable())) {
-      return sourceUnavailableGet(this.cachedArticleRepository, getFromCache);
+      return sourceUnavailableGetSingle(
+        this.imageCache,
+        this.cachedArticleRepository,
+        getFromCache
+      );
     }
     return sourceAvailableGetSingle(
+      this.imageCache,
       this.cachedArticleRepository,
       getFromRepo,
       getFromCache,
@@ -55,9 +72,14 @@ class ArticleCache {
     const getFromRepo = () => this.articleRepository.getAll();
     const getFromCache = () => this.cachedArticleRepository.getAll();
     if (!(await this.articleRepository.isAvailable())) {
-      return sourceUnavailableGet(this.cachedArticleRepository, getFromCache);
+      return sourceUnavailableGetMultiple(
+        this.imageCache,
+        this.cachedArticleRepository,
+        getFromCache
+      );
     }
     return sourceAvailableGetMultiple(
+      this.imageCache,
       this.cachedArticleRepository,
       getFromRepo,
       getFromCache,

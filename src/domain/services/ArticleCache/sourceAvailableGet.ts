@@ -1,6 +1,5 @@
 import type { CachedArticleRepository, Article } from '@/domain/models/Article';
 import { ArticleNotFoundError, NullArticle } from '@/domain/models/Article';
-import { Image } from '@/domain/models/Image';
 import type { ImageCache } from '@/domain/models/Image';
 import { updateCache } from '@/domain/services/ArticleCache/updateCache';
 
@@ -103,13 +102,11 @@ async function getAndAddCachedThumbnailForArticle(
   if (!thumbnail) return article;
   const thumbnailUri = thumbnail.getUri();
   if (!thumbnailUri.match(/^https?:\/\//)) return article;
-  const fileUri = await imageCache.getCachedImageAsFileUri(thumbnail.getUri());
-  if (!fileUri) {
-    imageCache.saveImage(thumbnail.getUri());
-    // Returns article with original uri since we presume source is available.
-    return article;
-  }
-  return article.clone({ thumbnail: new Image(fileUri) });
+  const image =
+    await imageCache.getCachedImageAsFileUriOrSaveAndReturnSourceImage(
+      thumbnail.getUri()
+    );
+  return article.clone({ thumbnail: image });
 }
 
 async function getAndAddCachedThumbnailForArticles(

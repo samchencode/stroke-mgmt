@@ -438,7 +438,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://my-img.png');
+      const cachedImage = new Image('file://my-img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getByDesignation(
@@ -469,7 +470,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://my-img.png');
+      const cachedImage = new Image('file://my-img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getByDesignation(
@@ -499,7 +501,7 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue(null);
+      getCachedImageAsFileUriSpy.mockResolvedValue(new NullImage());
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getByDesignation(
@@ -591,7 +593,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://img.png');
+      const cachedImage = new Image('file://img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       const cachedArticle = new Article({
@@ -924,7 +927,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://my-img.png');
+      const cachedImage = new Image('file://my-img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getById(new ArticleId('0'), callback);
@@ -951,7 +955,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://my-img.png');
+      const cachedImage = new Image('file://my-img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getById(new ArticleId('0'), callback);
@@ -977,7 +982,7 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue(null);
+      getCachedImageAsFileUriSpy.mockResolvedValue(new NullImage());
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getById(new ArticleId('0'), callback);
@@ -1065,7 +1070,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://img.png');
+      const cachedImage = new Image('file://img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       const cachedArticle = new Article({
@@ -1464,7 +1470,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://my-img.png');
+      const cachedImage = new Image('file://my-img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getAll(callback);
@@ -1492,7 +1499,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://my-img.png');
+      const cachedImage = new Image('file://my-img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getAll(callback);
@@ -1519,7 +1527,7 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue(null);
+      getCachedImageAsFileUriSpy.mockResolvedValue(new NullImage());
       const callback = jest.fn();
       const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
       const result = await cache.getAll(callback);
@@ -1608,7 +1616,8 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      getCachedImageAsFileUriSpy.mockResolvedValue('file://img.png');
+      const cachedImage = new Image('file://img.png')
+      getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
       const cachedArticle = new Article({

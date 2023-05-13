@@ -1,8 +1,6 @@
 import { SourceUnavailableCacheEmptyError } from '@/domain/services/ArticleCache/SourceUnavailableCacheEmptyError';
 import type { Article, CachedArticleRepository } from '@/domain/models/Article';
 import type { ImageCache } from '@/domain/models/Image';
-import { Image } from '@/domain/models/Image';
-import { NullImage } from '@/domain/models/Image/NullImage';
 
 type Getter<T> = () => Promise<T>;
 
@@ -12,11 +10,8 @@ async function getAndAddCachedThumbnailForArticle(
 ) {
   const thumbnail = article.getThumbnail();
   if (!thumbnail) return article;
-  const fileUri = await imageCache.getCachedImageAsFileUri(thumbnail.getUri());
-  if (!fileUri) {
-    return article.clone({ thumbnail: new NullImage() });
-  }
-  return article.clone({ thumbnail: new Image(fileUri) });
+  const image = await imageCache.getCachedImageAsFileUri(thumbnail.getUri());
+  return article.clone({ thumbnail: image });
 }
 
 async function getAndAddCachedThumbnailForArticles(

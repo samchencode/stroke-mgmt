@@ -13,7 +13,7 @@ class WebsqlCachedImageMetadataRepository
 {
   ready: Promise<void>;
 
-  constructor(private readonly db: WebsqlDatabase) {
+  constructor(private readonly websqlDatabase: WebsqlDatabase) {
     this.ready = this.prepareDatabase();
   }
 
@@ -24,7 +24,7 @@ class WebsqlCachedImageMetadataRepository
       filePath TEXT,
       mimeType TEXT
     )`;
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async get(url: string): Promise<CachedImageMetadata | null> {
@@ -36,7 +36,7 @@ class WebsqlCachedImageMetadataRepository
       mimeType
     FROM cachedImageMetadata
     WHERE sourceUrl = ${url}`;
-    const [resultSet] = await executeSql(this.db, [query]);
+    const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     const results = resultSetToArray<CachedImageMetadataRow>(resultSet);
     if (results.length === 0) return null;
     const result = results[0];
@@ -60,20 +60,20 @@ class WebsqlCachedImageMetadataRepository
         ${metadata.getMimeType()}
       )
     `;
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
     return undefined;
   }
 
   async clearCache(): Promise<void> {
     await this.ready;
     const query = sqlStr`DELETE FROM cachedImageMetadata`;
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   private async exists(sourceUrl: string) {
     await this.ready;
     const query = sqlStr`SELECT 1 FROM cachedImageMetadata WHERE sourceUrl = ${sourceUrl}`;
-    const [resultSet] = await executeSql(this.db, [query]);
+    const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     return resultSet.rows.length !== 0;
   }
 
@@ -87,7 +87,7 @@ class WebsqlCachedImageMetadataRepository
     WHERE 
       sourceUrl = ${metadata.getSourceUrl()}
     `;
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 }
 

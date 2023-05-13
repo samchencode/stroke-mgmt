@@ -1,6 +1,7 @@
 {
   "env": {
-    "es2021": true
+    "es2021": true,
+    "jest/globals": false
   },
   "extends": [
     "eslint:recommended",
@@ -21,7 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react-native", "react", "@typescript-eslint"],
+  "plugins": ["react-native", "react", "jest", "@typescript-eslint"],
   "rules": {
     "no-duplicate-imports": "off",
     "@typescript-eslint/no-duplicate-imports": ["error"],

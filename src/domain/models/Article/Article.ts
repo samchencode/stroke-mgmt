@@ -9,7 +9,7 @@ type ArticleParams = {
   html: string;
   summary?: string;
   designation: BaseDesignation;
-  thumbnail: Image;
+  thumbnail?: Image;
   shouldShowOnHomeScreen: boolean;
   tags?: Tag[];
   lastUpdated: Date;
@@ -26,7 +26,7 @@ class Article {
 
   private desigation: BaseDesignation;
 
-  private thumbnail: Image;
+  private thumbnail?: Image;
 
   private tags: Map<string, Tag>;
 

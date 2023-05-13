@@ -12,6 +12,8 @@ class ImageCache {
     return this.cachedImageMetadataRepository.save(metadata);
   }
 
+  // added specifically because expo cached article repo needs to get base64 images.
+  // if this dependency is entrenched deeper, it'd be useful to make a separate class for it.
   async getCachedImageAsBase64Url(url: string): Promise<string | null> {
     const metadata = await this.cachedImageMetadataRepository.get(url);
     if (!metadata) return null;

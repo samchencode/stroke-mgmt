@@ -81,6 +81,10 @@ class Article {
     return sanitizedBody.replace(/\s+/g, ' ').trim().slice(0, 100);
   }
 
+  getSummaryOrNull(): string | null {
+    return this.summary ?? null;
+  }
+
   getDesignation() {
     return this.desigation;
   }

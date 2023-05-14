@@ -7,7 +7,7 @@ export type CachedArticleRow = {
   thumbnailUri: string;
   tagsJson: string;
   lastUpdatedTimestamp: number;
-  shouldshowOnHomeScreen: number;
+  shouldShowOnHomeScreen: number;
 };
 
 export type TagsJson = {

@@ -17,7 +17,7 @@ function cachedArticleRowToArticle(row: CachedArticleRow): Article {
     tags: (JSON.parse(row.tagsJson) as TagsJson).map(
       (t) => new Tag(t.name, t.description)
     ),
-    shouldShowOnHomeScreen: row.shouldshowOnHomeScreen === 1,
+    shouldShowOnHomeScreen: row.shouldShowOnHomeScreen === 1,
     lastUpdated: new Date(row.lastUpdatedTimestamp),
   });
 }

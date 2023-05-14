@@ -2,13 +2,18 @@ import type { WebsqlDatabase } from '@/infrastructure/persistence/websql/WebsqlD
 
 type Query = {
   sql: string;
-  args: (number | string)[];
+  args: (number | string | null)[];
 };
 
-const makeQuery = (sql: string, args: (number | string)[]) => ({ sql, args });
+const makeQuery = (sql: string, args: (number | string | null)[]) => ({
+  sql,
+  args,
+});
 
-const sqlStr = (sql: ReadonlyArray<string>, ...interp: (number | string)[]) =>
-  makeQuery(sql.join('?'), interp);
+const sqlStr = (
+  sql: ReadonlyArray<string>,
+  ...interp: (number | string | null)[]
+) => makeQuery(sql.join('?'), interp);
 
 const makeTransaction = (db: WebsqlDatabase) =>
   new Promise<SQLTransaction>((s, f) => {

@@ -7,4 +7,5 @@ export type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRep
 export { ArticleMetadata } from '@/domain/models/Article/ArticleMetadata';
 export type { CachedArticleRepository } from '@/domain/models/Article/ports/CachedArticleRepository';
 export { ArticleNotFoundError } from '@/domain/models/Article/ports/ArticleRepository';
+export { CachedArticleNotFoundError } from '@/domain/models/Article/ports/CachedArticleRepository';
 export { NullArticle } from '@/domain/models/Article/NullArticle';

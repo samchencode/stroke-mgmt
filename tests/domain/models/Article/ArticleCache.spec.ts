@@ -12,10 +12,16 @@ import type {
 } from '@/domain/models/Image';
 import { Image, ImageCache } from '@/domain/models/Image';
 import { NullImage } from '@/domain/models/Image/NullImage';
-import { SourceUnavailableCacheEmptyError, ArticleCache } from '@/domain/services/Cache';
+import {
+  SourceUnavailableCacheEmptyError,
+  ArticleCache,
+} from '@/domain/services/Cache';
 import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
 
 describe('ArticleCache', () => {
+  const getImageSrcsInHtml = jest.fn();
+  const replaceImageSrcsInHtml = jest.fn();
+
   const imageStore = {
     getFileAsBase64Url: jest.fn(),
     saveFileFromUrl: jest.fn(),
@@ -28,6 +34,7 @@ describe('ArticleCache', () => {
     save: jest.fn(),
     clearCache: jest.fn(),
   } satisfies CachedImageMetadataRepository;
+
   const imageCache = new ImageCache(imageStore, cachedImageMetadataRepository);
 
   const cacheRepo = {
@@ -47,11 +54,20 @@ describe('ArticleCache', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     jest.restoreAllMocks();
+    getImageSrcsInHtml.mockReturnValue([]);
+    replaceImageSrcsInHtml.mockImplementation((map, html) => html);
   });
 
   describe('Instantiation', () => {
     it('should be created with imageCache and source and cache repos', () => {
-      const create = () => new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const create = () =>
+        new ArticleCache(
+          imageCache,
+          articleRepo,
+          cacheRepo,
+          getImageSrcsInHtml,
+          replaceImageSrcsInHtml
+        );
       expect(create).not.toThrow();
     });
   });
@@ -83,7 +99,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -109,7 +131,13 @@ describe('ArticleCache', () => {
         tags: [],
       });
       spy.mockResolvedValue([sourceArticle]);
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const callback = jest.fn();
 
       const articles = await cache.getByDesignation(
@@ -137,7 +165,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getByDesignation(Designation.ARTICLE, callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.saveAll).toHaveBeenCalledTimes(1);
@@ -164,7 +198,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -191,7 +231,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
       spy.mockRejectedValue(new Error('boom'));
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -207,7 +253,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const boom = () => cache.getByDesignation(Designation.ARTICLE, callback);
       await expect(boom).rejects.toBeInstanceOf(
         SourceUnavailableCacheEmptyError
@@ -241,7 +293,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -281,7 +339,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([upToDateArticle, sourceArticle1]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -323,7 +387,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getByDesignation(Designation.ARTICLE, callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.update).toHaveBeenCalledTimes(1);
@@ -347,7 +417,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
       spy.mockResolvedValue([]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getByDesignation(Designation.ARTICLE, callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.delete).toHaveBeenCalledTimes(1);
@@ -371,7 +447,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getByDesignation(Designation.ARTICLE, callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.saveAll).toHaveBeenCalledTimes(1);
@@ -396,7 +478,13 @@ describe('ArticleCache', () => {
       spy.mockRejectedValueOnce(new Error('Boom 2'));
       spy.mockResolvedValueOnce([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -437,10 +525,16 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://my-img.png')
+      const cachedImage = new Image('file://my-img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -469,10 +563,16 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://my-img.png')
+      const cachedImage = new Image('file://my-img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -502,7 +602,13 @@ describe('ArticleCache', () => {
       );
       getCachedImageAsFileUriSpy.mockResolvedValue(new NullImage());
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getByDesignation(
         Designation.ARTICLE,
         callback
@@ -532,7 +638,13 @@ describe('ArticleCache', () => {
       });
       getByDesignationSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getByDesignation(Designation.ARTICLE, callback);
       await new Promise(process.nextTick);
 
@@ -573,7 +685,13 @@ describe('ArticleCache', () => {
       });
       getByDesignationSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getByDesignation(Designation.ARTICLE, callback);
       await new Promise(process.nextTick);
 
@@ -592,7 +710,7 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://img.png')
+      const cachedImage = new Image('file://img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
@@ -620,7 +738,13 @@ describe('ArticleCache', () => {
       });
       getByDesignationSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getByDesignation(Designation.ARTICLE, callback);
       await new Promise(process.nextTick);
 
@@ -628,6 +752,133 @@ describe('ArticleCache', () => {
       expect(saveImageSpy).toHaveBeenCalledWith(
         'https://my-website.com/img-new.png'
       );
+    });
+
+    it('should replace image src with local image in cached article', async () => {
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getByDesignation.mockResolvedValue([originalArticle]);
+      const spy = jest.spyOn(articleRepo, 'getByDesignation');
+      spy.mockResolvedValue([originalArticle]);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+      const getCachedImageAsBase64UrlSpy = jest.spyOn(
+        imageCache,
+        'getCachedImageAsBase64Url'
+      );
+      getCachedImageAsBase64UrlSpy.mockResolvedValue(new Image('bar.png'));
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const articles = await cache.getByDesignation(
+        Designation.ARTICLE,
+        callback
+      );
+      await new Promise(process.nextTick);
+      expect(articles).toHaveLength(1);
+      expect(articles[0].is(originalArticle)).toBe(true);
+      expect(articles[0].getHtml()).toBe('<img src="bar.png">');
+    });
+
+    it('should replace image src with default (aka null) image if image not found and source unavailble', async () => {
+      const isAvailableSpy = jest.spyOn(articleRepo, 'isAvailable');
+      isAvailableSpy.mockResolvedValue(false);
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getByDesignation.mockResolvedValue([originalArticle]);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const articles = await cache.getByDesignation(
+        Designation.ARTICLE,
+        callback
+      );
+      await new Promise(process.nextTick);
+      expect(articles).toHaveLength(1);
+      expect(articles[0].is(originalArticle)).toBe(true);
+      expect(articles[0].getHtml()).toBe(
+        `<img src="${new NullImage().getUri()}">`
+      );
+    });
+
+    it('should not replace image src in cached article if image not found and source available', async () => {
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getByDesignation.mockResolvedValue([originalArticle]);
+      const spy = jest.spyOn(articleRepo, 'getByDesignation');
+      spy.mockResolvedValue([originalArticle]);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const articles = await cache.getByDesignation(
+        Designation.ARTICLE,
+        callback
+      );
+      await new Promise(process.nextTick);
+      expect(articles).toHaveLength(1);
+      expect(articles[0].is(originalArticle)).toBe(true);
+      expect(articles[0].getHtml()).toBe(`<img src="${imageUrl}">`);
     });
   });
 
@@ -658,7 +909,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const article = await cache.getById(new ArticleId('1'), callback);
       await new Promise(process.nextTick);
       expect(article.is(sourceArticle)).toBe(true);
@@ -680,7 +937,13 @@ describe('ArticleCache', () => {
         tags: [],
       });
       spy.mockResolvedValue(sourceArticle);
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const callback = jest.fn();
 
       const article = await cache.getById(new ArticleId('1'), callback);
@@ -704,7 +967,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getById(new ArticleId('1'), callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.saveAll).toHaveBeenCalledTimes(1);
@@ -731,7 +1000,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const article = await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
       expect(article.is(cachedArticle)).toBe(true);
@@ -754,7 +1029,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'getById');
       spy.mockRejectedValue(new Error('boom'));
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const article = await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
       expect(article.is(cachedArticle)).toBe(true);
@@ -766,7 +1047,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const boom = () => cache.getById(new ArticleId('0'), callback);
       await expect(boom).rejects.toBeInstanceOf(
         SourceUnavailableCacheEmptyError
@@ -800,7 +1087,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const article = await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
       expect(article.is(cachedArticle)).toBe(true);
@@ -836,7 +1129,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.update).toHaveBeenCalledTimes(1);
@@ -860,7 +1159,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'getById');
       spy.mockRejectedValue(new ArticleNotFoundError(new ArticleId('0')));
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const article = await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
       expect(article.is(cachedArticle)).toBe(true);
@@ -889,7 +1194,13 @@ describe('ArticleCache', () => {
       spy.mockRejectedValueOnce(new Error('Boom 2'));
       spy.mockResolvedValueOnce(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const article = await cache.getById(new ArticleId('1'), callback);
       await new Promise(process.nextTick);
       expect(article.is(sourceArticle)).toBe(true);
@@ -926,10 +1237,16 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://my-img.png')
+      const cachedImage = new Image('file://my-img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getById(new ArticleId('0'), callback);
       expect(result.getThumbnail().getUri()).toBe('file://my-img.png');
       expect(callback).not.toHaveBeenCalled();
@@ -954,10 +1271,16 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://my-img.png')
+      const cachedImage = new Image('file://my-img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getById(new ArticleId('0'), callback);
       expect(result.getThumbnail().getUri()).toBe('file://my-img.png');
     });
@@ -983,7 +1306,13 @@ describe('ArticleCache', () => {
       );
       getCachedImageAsFileUriSpy.mockResolvedValue(new NullImage());
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
       expect(result.getThumbnail()).toBeInstanceOf(NullImage);
@@ -1009,7 +1338,13 @@ describe('ArticleCache', () => {
       });
       getByIdSpy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
 
@@ -1050,7 +1385,13 @@ describe('ArticleCache', () => {
       });
       getByIdSpy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
 
@@ -1069,7 +1410,7 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://img.png')
+      const cachedImage = new Image('file://img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
@@ -1097,7 +1438,13 @@ describe('ArticleCache', () => {
       });
       getByIdSpy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getById(new ArticleId('0'), callback);
       await new Promise(process.nextTick);
 
@@ -1105,6 +1452,119 @@ describe('ArticleCache', () => {
       expect(saveImageSpy).toHaveBeenCalledWith(
         'https://my-website.com/img-new.png'
       );
+    });
+
+    it('should replace image src with local image in cached article', async () => {
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getByDesignation.mockResolvedValue(originalArticle);
+      const spy = jest.spyOn(articleRepo, 'getById');
+      spy.mockResolvedValue(originalArticle);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+      const getCachedImageAsBase64UrlSpy = jest.spyOn(
+        imageCache,
+        'getCachedImageAsBase64Url'
+      );
+      getCachedImageAsBase64UrlSpy.mockResolvedValue(new Image('bar.png'));
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const article = await cache.getById(new ArticleId('0'), callback);
+      await new Promise(process.nextTick);
+      expect(article.is(originalArticle)).toBe(true);
+      expect(article.getHtml()).toBe('<img src="bar.png">');
+    });
+
+    it('should replace image src with default (aka null) image if image not found and source unavailble', async () => {
+      const isAvailableSpy = jest.spyOn(articleRepo, 'isAvailable');
+      isAvailableSpy.mockResolvedValue(false);
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getByDesignation.mockResolvedValue(originalArticle);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const article = await cache.getById(new ArticleId('0'), callback);
+      await new Promise(process.nextTick);
+      expect(article.is(originalArticle)).toBe(true);
+      expect(article.getHtml()).toBe(`<img src="${new NullImage().getUri()}">`);
+    });
+
+    it('should not replace image src in cached article if image not found and source available', async () => {
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getByDesignation.mockResolvedValue(originalArticle);
+      const spy = jest.spyOn(articleRepo, 'getById');
+      spy.mockResolvedValue(originalArticle);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const article = await cache.getById(new ArticleId('0'), callback);
+      await new Promise(process.nextTick);
+      expect(article.is(originalArticle)).toBe(true);
+      expect(article.getHtml()).toBe(`<img src="${imageUrl}">`);
     });
   });
 
@@ -1135,7 +1595,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(articles).toHaveLength(1);
@@ -1158,7 +1624,13 @@ describe('ArticleCache', () => {
         tags: [],
       });
       spy.mockResolvedValue([sourceArticle]);
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const callback = jest.fn();
 
       const articles = await cache.getAll(callback);
@@ -1183,7 +1655,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.saveAll).toHaveBeenCalledTimes(1);
@@ -1210,7 +1688,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(articles).toHaveLength(1);
@@ -1234,7 +1718,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'getAll');
       spy.mockRejectedValue(new Error('boom'));
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(articles).toHaveLength(1);
@@ -1247,7 +1737,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const boom = () => cache.getAll(callback);
       await expect(boom).rejects.toBeInstanceOf(
         SourceUnavailableCacheEmptyError
@@ -1281,7 +1777,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(articles).toHaveLength(1);
@@ -1318,7 +1820,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([upToDateArticle, sourceArticle1]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(articles).toHaveLength(1);
@@ -1358,7 +1866,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.update).toHaveBeenCalledTimes(1);
@@ -1382,7 +1896,13 @@ describe('ArticleCache', () => {
       const spy = jest.spyOn(articleRepo, 'getAll');
       spy.mockResolvedValue([]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.delete).toHaveBeenCalledTimes(1);
@@ -1406,7 +1926,13 @@ describe('ArticleCache', () => {
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(cacheRepo.saveAll).toHaveBeenCalledTimes(1);
@@ -1431,7 +1957,13 @@ describe('ArticleCache', () => {
       spy.mockRejectedValueOnce(new Error('Boom 2'));
       spy.mockResolvedValueOnce([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const articles = await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(articles).toHaveLength(1);
@@ -1469,10 +2001,16 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://my-img.png')
+      const cachedImage = new Image('file://my-img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getAll(callback);
       expect(result).toHaveLength(1);
       expect(result[0].getThumbnail().getUri()).toBe('file://my-img.png');
@@ -1498,10 +2036,16 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://my-img.png')
+      const cachedImage = new Image('file://my-img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getAll(callback);
       expect(result).toHaveLength(1);
       expect(result[0].getThumbnail().getUri()).toBe('file://my-img.png');
@@ -1528,7 +2072,13 @@ describe('ArticleCache', () => {
       );
       getCachedImageAsFileUriSpy.mockResolvedValue(new NullImage());
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       const result = await cache.getAll(callback);
       await new Promise(process.nextTick);
       expect(result).toHaveLength(1);
@@ -1555,7 +2105,13 @@ describe('ArticleCache', () => {
       });
       getAllSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getAll(callback);
       await new Promise(process.nextTick);
 
@@ -1596,7 +2152,13 @@ describe('ArticleCache', () => {
       });
       getAllSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getAll(callback);
       await new Promise(process.nextTick);
 
@@ -1615,7 +2177,7 @@ describe('ArticleCache', () => {
         imageCache,
         'getCachedImageAsFileUri'
       );
-      const cachedImage = new Image('file://img.png')
+      const cachedImage = new Image('file://img.png');
       getCachedImageAsFileUriSpy.mockResolvedValue(cachedImage);
 
       cacheRepo.isEmpty.mockResolvedValue(false);
@@ -1643,7 +2205,13 @@ describe('ArticleCache', () => {
       });
       getAllSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.getAll(callback);
       await new Promise(process.nextTick);
 
@@ -1652,11 +2220,135 @@ describe('ArticleCache', () => {
         'https://my-website.com/img-new.png'
       );
     });
+
+    it('should replace image src with local image in cached article', async () => {
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getAll.mockResolvedValue([originalArticle]);
+      const spy = jest.spyOn(articleRepo, 'getAll');
+      spy.mockResolvedValue([originalArticle]);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+      const getCachedImageAsBase64UrlSpy = jest.spyOn(
+        imageCache,
+        'getCachedImageAsBase64Url'
+      );
+      getCachedImageAsBase64UrlSpy.mockResolvedValue(new Image('bar.png'));
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const articles = await cache.getAll(callback);
+      await new Promise(process.nextTick);
+      expect(articles).toHaveLength(1);
+      expect(articles[0].is(originalArticle)).toBe(true);
+      expect(articles[0].getHtml()).toBe('<img src="bar.png">');
+    });
+
+    it('should replace image src with default (aka null) image if image not found and source unavailble', async () => {
+      const isAvailableSpy = jest.spyOn(articleRepo, 'isAvailable');
+      isAvailableSpy.mockResolvedValue(false);
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getAll.mockResolvedValue([originalArticle]);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const articles = await cache.getAll(callback);
+      await new Promise(process.nextTick);
+      expect(articles).toHaveLength(1);
+      expect(articles[0].is(originalArticle)).toBe(true);
+      expect(articles[0].getHtml()).toBe(
+        `<img src="${new NullImage().getUri()}">`
+      );
+    });
+
+    it('should not replace image src in cached article if image not found and source available', async () => {
+      cachedImageMetadataRepository.get.mockResolvedValue(null);
+
+      cacheRepo.isEmpty.mockResolvedValue(false);
+      const imageUrl = 'https://example.com/foo.png';
+      const originalArticle = new Article({
+        id: new ArticleId('0'),
+        title: 'Example Article',
+        html: `<img src="${imageUrl}">`,
+        designation: Designation.ARTICLE,
+        thumbnail: new Image('https://my-website.com/img.png'),
+        shouldShowOnHomeScreen: true,
+        lastUpdated: new Date(0),
+        tags: [],
+      });
+      cacheRepo.getAll.mockResolvedValue([originalArticle]);
+      const spy = jest.spyOn(articleRepo, 'getAll');
+      spy.mockResolvedValue([originalArticle]);
+      getImageSrcsInHtml.mockReturnValue([imageUrl]);
+      replaceImageSrcsInHtml.mockImplementation(
+        (map) => `<img src="${map[imageUrl]}">`
+      );
+
+      const callback = jest.fn();
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      const articles = await cache.getAll(callback);
+      await new Promise(process.nextTick);
+      expect(articles).toHaveLength(1);
+      expect(articles[0].is(originalArticle)).toBe(true);
+      expect(articles[0].getHtml()).toBe(`<img src="${imageUrl}">`);
+    });
   });
 
   describe('#clearCache', () => {
     it('should clear the cache', async () => {
-      const cache = new ArticleCache(imageCache, articleRepo, cacheRepo);
+      const cache = new ArticleCache(
+        imageCache,
+        articleRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
       await cache.clearCache();
       expect(cacheRepo.clearCache).toHaveBeenCalledTimes(1);
     });

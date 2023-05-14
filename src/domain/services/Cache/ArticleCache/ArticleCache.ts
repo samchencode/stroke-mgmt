@@ -14,6 +14,8 @@ import {
   sourceUnavailableGetMultiple,
   sourceUnavailableGetSingle,
 } from '@/domain/services/Cache/ArticleCache/sourceUnavailableGet';
+import type { GetImageSrcsInHtml } from '@/domain/services/Cache/GetImageSrcsInHtml';
+import type { ReplaceImageSrcsInHtml } from '@/domain/services/Cache/ReplaceImageSrcsInHtml';
 
 type CacheInvalidatedCallback<T> = (newValue: T) => void;
 
@@ -21,7 +23,9 @@ class ArticleCache {
   constructor(
     private readonly imageCache: ImageCache,
     private readonly articleRepository: ArticleRepository,
-    private readonly cachedArticleRepository: CachedArticleRepository
+    private readonly cachedArticleRepository: CachedArticleRepository,
+    private readonly getImageSrcsInHtml: GetImageSrcsInHtml,
+    private readonly replaceImageSrcsInHtml: ReplaceImageSrcsInHtml
   ) {}
 
   async getByDesignation(
@@ -34,12 +38,16 @@ class ArticleCache {
       return sourceUnavailableGetMultiple(
         this.imageCache,
         this.cachedArticleRepository,
+        this.getImageSrcsInHtml,
+        this.replaceImageSrcsInHtml,
         getFromCache
       );
     }
     return sourceAvailableGetMultiple(
       this.imageCache,
       this.cachedArticleRepository,
+      this.getImageSrcsInHtml,
+      this.replaceImageSrcsInHtml,
       getFromRepo,
       getFromCache,
       cb
@@ -56,12 +64,16 @@ class ArticleCache {
       return sourceUnavailableGetSingle(
         this.imageCache,
         this.cachedArticleRepository,
+        this.getImageSrcsInHtml,
+        this.replaceImageSrcsInHtml,
         getFromCache
       );
     }
     return sourceAvailableGetSingle(
       this.imageCache,
       this.cachedArticleRepository,
+      this.getImageSrcsInHtml,
+      this.replaceImageSrcsInHtml,
       getFromRepo,
       getFromCache,
       cb
@@ -75,12 +87,16 @@ class ArticleCache {
       return sourceUnavailableGetMultiple(
         this.imageCache,
         this.cachedArticleRepository,
+        this.getImageSrcsInHtml,
+        this.replaceImageSrcsInHtml,
         getFromCache
       );
     }
     return sourceAvailableGetMultiple(
       this.imageCache,
       this.cachedArticleRepository,
+      this.getImageSrcsInHtml,
+      this.replaceImageSrcsInHtml,
       getFromRepo,
       getFromCache,
       cb

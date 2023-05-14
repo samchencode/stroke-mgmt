@@ -2,6 +2,8 @@ import type { CachedArticleRepository, Article } from '@/domain/models/Article';
 import { ArticleNotFoundError, NullArticle } from '@/domain/models/Article';
 import type { ImageCache } from '@/domain/models/Image';
 import { updateCache } from '@/domain/services/Cache/ArticleCache/updateCache';
+import type { GetImageSrcsInHtml } from '@/domain/services/Cache/GetImageSrcsInHtml';
+import type { ReplaceImageSrcsInHtml } from '@/domain/services/Cache/ReplaceImageSrcsInHtml';
 
 type SingleGetter = () => Promise<Article>;
 type SingleCallback = (res: Article) => void;
@@ -119,9 +121,48 @@ async function getAndAddCachedThumbnailForArticles(
   return Promise.all(promises);
 }
 
+async function getAndAddCachedImagesForArticle(
+  imageCache: ImageCache,
+  getImageSrcsInHtml: GetImageSrcsInHtml,
+  replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
+  article: Article
+): Promise<Article> {
+  const imageUrls = getImageSrcsInHtml(article.getHtml()).filter((v) =>
+    v.match(/^https?:\/\//)
+  );
+  const promises = imageUrls.map((v) =>
+    imageCache
+      .getCachedImageAsBase64UrlOrSaveAndReturnSourceImage(v)
+      .then((image) => [v, image.getUri()] as const)
+  );
+  const imagesUrlsAndCacheResults = await Promise.all(promises);
+  const uriMap = Object.fromEntries(imagesUrlsAndCacheResults);
+  const newHtml = replaceImageSrcsInHtml(uriMap, article.getHtml());
+  return article.clone({ html: newHtml });
+}
+
+async function getAndAddCachedImagesForArticles(
+  imageCache: ImageCache,
+  getImageSrcsInHtml: GetImageSrcsInHtml,
+  replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
+  articles: Article[]
+): Promise<Article[]> {
+  const promises = articles.map((a) =>
+    getAndAddCachedImagesForArticle(
+      imageCache,
+      getImageSrcsInHtml,
+      replaceImageSrcsInHtml,
+      a
+    )
+  );
+  return Promise.all(promises);
+}
+
 async function sourceAvailableGetMultiple(
   imageCache: ImageCache,
   cacheRepository: CachedArticleRepository,
+  getImageSrcsInHtml: GetImageSrcsInHtml,
+  replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
   sourceGetter: Getter,
   cacheGetter: Getter,
   onStaleCallback: Callback
@@ -150,7 +191,14 @@ async function sourceAvailableGetMultiple(
       cachePromise,
       onStaleCallback
     );
-    return await getAndAddCachedThumbnailForArticles(imageCache, cacheResult);
+    const cachedResultWithThumbnails =
+      await getAndAddCachedThumbnailForArticles(imageCache, cacheResult);
+    return await getAndAddCachedImagesForArticles(
+      imageCache,
+      getImageSrcsInHtml,
+      replaceImageSrcsInHtml,
+      cachedResultWithThumbnails
+    );
   } catch {
     return sourcePromise;
   }
@@ -159,6 +207,8 @@ async function sourceAvailableGetMultiple(
 async function sourceAvailableGetSingle(
   imageCache: ImageCache,
   cacheRepository: CachedArticleRepository,
+  getImageSrcsInHtml: GetImageSrcsInHtml,
+  replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
   sourceGetter: SingleGetter,
   cacheGetter: SingleGetter,
   onStaleCallback: SingleCallback
@@ -166,6 +216,8 @@ async function sourceAvailableGetSingle(
   const [result] = await sourceAvailableGetMultiple(
     imageCache,
     cacheRepository,
+    getImageSrcsInHtml,
+    replaceImageSrcsInHtml,
     () => sourceGetter().then((r) => [r]),
     () => cacheGetter().then((r) => [r]),
     ([r]) => onStaleCallback(r)

@@ -31,4 +31,21 @@ function useReactQueryAppStateListener() {
   }, []);
 }
 
-export { useReactQueryAppStateListener, queryClient };
+function useReactQueryDefaultOptions() {
+  useEffect(() => {
+    queryClient.setDefaultOptions({
+      queries: {
+        retry: false,
+        networkMode: 'always',
+        refetchOnReconnect: true,
+      },
+    });
+  }, []);
+}
+
+function useInitReactQuery() {
+  useReactQueryAppStateListener();
+  useReactQueryDefaultOptions();
+}
+
+export { useInitReactQuery, queryClient };

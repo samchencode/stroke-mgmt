@@ -147,7 +147,11 @@ class StrapiArticleRepository implements ArticleRepository {
   }
 
   async isAvailable(): Promise<boolean> {
-    return this.networkInfo.isInternetReachable();
+    const isConnected = await this.networkInfo.isInternetReachable();
+    if (isConnected) return true;
+    return new Promise((s) => {
+      setTimeout(() => this.networkInfo.isInternetReachable().then(s), 500);
+    });
   }
 }
 

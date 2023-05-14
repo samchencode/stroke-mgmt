@@ -7,14 +7,14 @@ import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { ArticleListFilled } from '@/view/HomeScreen/components/ArticleList/ArticleListFilled';
 import { ArticleListError } from '@/view/HomeScreen/components/ArticleList/ArticleListError';
 import { ArticleListLoading } from '@/view/HomeScreen/components/ArticleList/ArticleListLoading';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { Tag } from '@/domain/models/Tag';
 import type { TagState } from '@/view/HomeScreen/components/TagList';
 import { TagList } from '@/view/HomeScreen/components/TagList';
 import { filterArticlesOnHomeOrByTags } from '@/domain/services/filterArticlesOnHomeOrByTags';
 
 type ArticleListProps = {
-  getAllArticles: () => Promise<Article[]>;
+  getAllArticles: (cb: (as: Article[]) => void) => Promise<Article[]>;
   getAllTags: () => Promise<Tag[]>;
   onSelectArticle: (id: ArticleId) => void;
   style?: StyleProp<ViewStyle>;
@@ -26,9 +26,14 @@ function ArticleList({
   onSelectArticle,
   style = {},
 }: ArticleListProps) {
+  const queryClient = useQueryClient();
+  const onStale = (articles: Article[]) =>
+    queryClient.setQueryData(['articles'], articles);
+
   const articleQuery = useQuery({
     queryKey: ['articles'],
-    queryFn: getAllArticles,
+    queryFn: () => getAllArticles(onStale),
+    retry: false,
   });
 
   const [tagStates, setTagStates] = useState<TagState[]>([]);

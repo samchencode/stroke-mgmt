@@ -1,18 +1,18 @@
+import type { Article } from '@/domain/models/Article';
 import { Designation } from '@/domain/models/Article';
-import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
+import type { ArticleCache } from '@/domain/services/Cache';
 
 class GetDisclaimerAction {
-  private repo: ArticleRepository;
+  constructor(private readonly articleCache: ArticleCache) {}
 
-  constructor(articleRepository: ArticleRepository) {
-    this.repo = articleRepository;
-  }
-
-  async execute() {
-    const [disclaimer] = await this.repo.getByDesignation(
-      Designation.DISCLAIMER
+  async execute(onStale: (articles: Article) => void) {
+    const results = await this.articleCache.getByDesignation(
+      Designation.DISCLAIMER,
+      ([a]) => onStale(a)
     );
-    return disclaimer;
+    if (results.length < 1)
+      throw new Error("Uh oh, the disclaimer couldn't be found");
+    return results[0];
   }
 }
 

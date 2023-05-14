@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import type { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import type { AppNavigationProps } from '@/view/Router';
 import { StrokeFactsView } from '@/view/StrokeFactsScreen/StrokeFactsView';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView } from '@/view/components';
 import { StrokeFactsError } from '@/view/StrokeFactsScreen/StrokeFactsError';
@@ -12,14 +12,17 @@ import { theme } from '@/view/theme';
 import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
-  const getHtml = renderStrokeFactsAction.execute();
-
   return function StrokeFactsScreen({
     navigation,
   }: AppNavigationProps<'StrokeFactsScreen'>) {
+    const queryClient = useQueryClient();
+    const onStale = (html: string) =>
+      queryClient.setQueryData(['stroke-facts'], html);
+
     const query = useQuery({
       queryKey: ['stroke-facts'],
-      queryFn: () => getHtml,
+      queryFn: () => renderStrokeFactsAction.execute(onStale),
+      retry: false,
     });
 
     const handlePressButton = useCallback(() => {

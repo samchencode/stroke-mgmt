@@ -3,7 +3,7 @@ import type { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
-import type { ArticleId } from '@/domain/models/Article';
+import type { Article, ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
 import type { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetAllAlgorithmsShownOnHomeScreenAction';
 import type { GetAllTagsAction } from '@/application/GetAllTagsAction';
@@ -65,7 +65,10 @@ function factory(
           onSelectAlgorithm={handleSelectAlgorithm}
         />
         <ArticleList
-          getAllArticles={useCallback(() => getAllArticlesAction.execute(), [])}
+          getAllArticles={useCallback(
+            (cb: (as: Article[]) => void) => getAllArticlesAction.execute(cb),
+            []
+          )}
           getAllTags={useCallback(() => getAllTagsAction.execute(), [])}
           onSelectArticle={handleSelectArticle}
           style={styles.articleList}

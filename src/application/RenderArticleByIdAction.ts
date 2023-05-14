@@ -1,4 +1,4 @@
-import type { ArticleId } from '@/domain/models/Article';
+import type { Article, ArticleId } from '@/domain/models/Article';
 import type { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
 import type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
 
@@ -8,8 +8,11 @@ class RenderArticleByIdAction {
     private articleRenderer: ArticleRenderer
   ) {}
 
-  async execute(id: ArticleId) {
-    const article = await this.getArticleByIdAction.execute(id);
+  async execute(id: ArticleId, onStale: (html: string) => void) {
+    const handleStale = (article: Article) => {
+      this.articleRenderer.renderArticle(article).then(onStale);
+    };
+    const article = await this.getArticleByIdAction.execute(id, handleStale);
     return this.articleRenderer.renderArticle(article);
   }
 }

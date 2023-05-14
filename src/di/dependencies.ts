@@ -28,6 +28,14 @@ import { StrapiPlaceholderImageRepository } from '@/infrastructure/persistence/s
 import { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { StrapiTagRepository } from '@/infrastructure/persistence/strapi/StrapiTagRepository';
 import { ReactNativeNetInfo } from '@/infrastructure/network-info/react-native-netinfo/ReactNativeNetInfo';
+import { ImageCache } from '@/domain/models/Image';
+import { ArticleCache } from '@/domain/services/Cache';
+import { WebsqlCachedArticleRepository } from '@/infrastructure/persistence/websql/WebsqlCachedArticleRepository';
+import { cheerioGetImageSrcsInHtml } from '@/infrastructure/html-processing/cheerio/cheerioGetImageSrcsInHtml';
+import { cheerioReplaceImageSrcsInHtml } from '@/infrastructure/html-processing/cheerio/cheerioReplaceImageSrcsInHtml';
+import { ExpoFileSystemImageStore } from '@/infrastructure/file-system/expo-file-system/ExpoFileSystemImageStore';
+import { WebsqlCachedImageMetadataRepository } from '@/infrastructure/persistence/websql/WebsqlCachedImageMetadataRepository';
+import { openExpoSqliteDatabase } from '@/infrastructure/persistence/websql/expo-sqlite';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -39,6 +47,10 @@ export const module = {
       ? 'https://stroke-mgmt-cms.a2hosted.com'
       : 'http://localhost:1337',
   ],
+
+  // DOMAIN
+  imageCache: ['type', ImageCache],
+  articleCache: ['type', ArticleCache],
 
   // APPLICATION
   getAllArticlesAction: ['type', GetAllArticlesAction],
@@ -72,6 +84,12 @@ export const module = {
     (algorithmRenderer: unknown) => algorithmRenderer,
   ],
   algorithmRenderer: ['type', EjsRenderer],
+  cachedArticleRepository: ['type', WebsqlCachedArticleRepository],
+  getImageSrcsInHtml: ['value', cheerioGetImageSrcsInHtml],
+  replaceImageSrcsInHtml: ['value', cheerioReplaceImageSrcsInHtml],
+  imageStore: ['type', ExpoFileSystemImageStore],
+  cachedImageMetadataRepository: ['type', WebsqlCachedImageMetadataRepository],
+  websqlDatabase: ['factory', openExpoSqliteDatabase],
 
   // TEMPLATES
   App: ['factory', App],

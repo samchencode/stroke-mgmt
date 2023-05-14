@@ -5,7 +5,7 @@ import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAct
 import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 import { ArticleId } from '@/domain/models/Article';
 import { ArticleView } from '@/view/ArticleViewerScreen/components';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView } from '@/view/components';
 
@@ -15,10 +15,14 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
     navigation,
   }: AppNavigationProps<'ArticleViewerScreen'>) {
     const { id } = route.params;
+    const queryClient = useQueryClient();
+    const onStale = (html: string) =>
+      queryClient.setQueryData(['article', id], html);
 
     const query = useQuery({
       queryKey: ['article', id],
-      queryFn: () => renderArticleByIdAction.execute(id),
+      queryFn: () => renderArticleByIdAction.execute(id, onStale),
+      retry: false,
     });
 
     const eventHandler = useMemo(

@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import type { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import type { AppNavigationProps } from '@/view/Router';
 import { StrokeSignsView } from '@/view/StrokeSignsScreen/StrokeSignsView';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { StrokeSignsError } from '@/view/StrokeSignsScreen/StrokeSignsError';
 import { LoadingSpinnerView } from '@/view/components';
@@ -11,14 +11,17 @@ import { StrokeSignsBottomBar } from '@/view/StrokeSignsScreen/StrokeSignsBottom
 import { hideStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
 
 function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
-  const getHtml = renderStrokeSignsAction.execute();
-
   return function StrokeSignsScreen({
     navigation,
   }: AppNavigationProps<'StrokeSignsScreen'>) {
+    const queryClient = useQueryClient();
+    const onStale = (html: string) =>
+      queryClient.setQueryData(['stroke-signs'], html);
+
     const query = useQuery({
       queryKey: ['stroke-signs'],
-      queryFn: () => getHtml,
+      queryFn: () => renderStrokeSignsAction.execute(onStale),
+      retry: false,
     });
 
     const [dontShow, setDontShow] = useState(false);

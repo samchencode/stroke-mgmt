@@ -1,18 +1,19 @@
+import type { Article } from '@/domain/models/Article';
 import { Designation } from '@/domain/models/Article';
-import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
+import type { ArticleCache } from '@/domain/services/Cache';
 
 class GetStrokeSignsAction {
-  private repo: ArticleRepository;
+  constructor(private readonly articleCache: ArticleCache) {}
 
-  constructor(articleRepository: ArticleRepository) {
-    this.repo = articleRepository;
-  }
-
-  async execute() {
-    const [strokeSigns] = await this.repo.getByDesignation(
-      Designation.STROKE_SIGNS
+  async execute(onStale: (articles: Article) => void) {
+    const results = await this.articleCache.getByDesignation(
+      Designation.STROKE_SIGNS,
+      ([a]) => onStale(a)
     );
-    return strokeSigns;
+    if (results.length < 1) {
+      throw new Error("Uh oh, the stroke signs article couldn't be found");
+    }
+    return results[0];
   }
 }
 

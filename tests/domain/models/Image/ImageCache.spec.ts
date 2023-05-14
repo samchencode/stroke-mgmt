@@ -164,6 +164,25 @@ describe('ImageCache', () => {
       expect(cachedImageMetadataRepositoryMock.save).not.toHaveBeenCalled();
       expect(imageStoreMock.saveFileFromUrl).not.toHaveBeenCalled();
     });
+
+    it('should return source image if saving image errors', async () => {
+      const url = 'http://example.com/image.jpg';
+      const filepath = '/path/to/image.jpg';
+      const metadata = new CachedImageMetadata(url, filepath, 'image/jpeg');
+      cachedImageMetadataRepositoryMock.get.mockResolvedValueOnce(metadata);
+      imageStoreMock.fileExists.mockResolvedValueOnce(false);
+      cachedImageMetadataRepositoryMock.save.mockRejectedValue(
+        new Error('Boom!')
+      );
+
+      const result =
+        await imageCache.getCachedImageAsBase64UrlOrSaveAndReturnSourceImage(
+          url
+        );
+
+      await new Promise(process.nextTick);
+      expect(result.getUri()).toBe(url);
+    });
   });
 
   describe('getCachedImageAsFileUri', () => {
@@ -257,6 +276,23 @@ describe('ImageCache', () => {
       expect(imageStoreMock.fileExists).toHaveBeenCalledWith(filepath);
       expect(cachedImageMetadataRepositoryMock.save).not.toHaveBeenCalled();
       expect(imageStoreMock.saveFileFromUrl).not.toHaveBeenCalled();
+    });
+
+    it('should return source image if saving image errors', async () => {
+      const url = 'http://example.com/image.jpg';
+      const filepath = '/path/to/image.jpg';
+      const metadata = new CachedImageMetadata(url, filepath, 'image/jpeg');
+      cachedImageMetadataRepositoryMock.get.mockResolvedValueOnce(metadata);
+      imageStoreMock.fileExists.mockResolvedValueOnce(false);
+      cachedImageMetadataRepositoryMock.save.mockRejectedValue(
+        new Error('Boom!')
+      );
+
+      const result =
+        await imageCache.getCachedImageAsFileUriOrSaveAndReturnSourceImage(url);
+
+      await new Promise(process.nextTick);
+      expect(result.getUri()).toBe(url);
     });
   });
 

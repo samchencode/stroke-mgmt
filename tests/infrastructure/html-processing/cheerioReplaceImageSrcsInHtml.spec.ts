@@ -38,4 +38,21 @@ describe('cheerioReplaceImageSrcsInHtml', () => {
       '<img src="file://dir/bar.png"><img src="file://dir/bar.png">'
     );
   });
+
+  it('should not remove style tags', () => {
+    let html: string;
+    let result: string;
+
+    html = '<p><style>img{width:100%}</style></p>';
+    result = cheerioReplaceImageSrcsInHtml({}, html);
+    expect(result).toBe(html);
+
+    html = '<style>img{width:100%}</style><p></p>';
+    result = cheerioReplaceImageSrcsInHtml({}, html);
+    expect(result).toBe(html);
+
+    html = '<style>img{width:100%}</style>';
+    result = cheerioReplaceImageSrcsInHtml({}, html);
+    expect(result).toBe(html);
+  });
 });

@@ -17,7 +17,7 @@ import {
 class WebsqlCachedArticleRepository implements CachedArticleRepository {
   ready: Promise<void>;
 
-  constructor(private readonly webSqlDatabase: WebsqlDatabase) {
+  constructor(private readonly websqlDatabase: WebsqlDatabase) {
     this.ready = this.prepareDatabase();
   }
 
@@ -34,13 +34,13 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
       lastUpdatedTimestamp INTEGER NOT NULL,
       shouldShowOnHomeScreen INTEGER NOT NULL
     )`;
-    await executeSql(this.webSqlDatabase, [createQuery]);
+    await executeSql(this.websqlDatabase, [createQuery]);
   }
 
   async isEmpty(): Promise<boolean> {
     await this.ready;
     const query = sqlStr`SELECT count(*) AS c FROM articles`;
-    const [resultSet] = await executeSql(this.webSqlDatabase, [query]);
+    const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     const [result] = resultSetToArray<{ c: number }>(resultSet);
     return result.c === 0;
   }
@@ -71,7 +71,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
         ${a.getshouldShowOnHomeScreen() ? 1 : 0}
       )`
     );
-    await executeSql(this.webSqlDatabase, queries);
+    await executeSql(this.websqlDatabase, queries);
   }
 
   async update(a: Article): Promise<void> {
@@ -88,7 +88,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
       shouldShowOnHomeScreen = ${a.getshouldShowOnHomeScreen() ? 1 : 0}
     WHERE id = ${a.getId().toString()}`;
 
-    await executeSql(this.webSqlDatabase, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async delete(a: ArticleId): Promise<void> {
@@ -96,19 +96,19 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
     const query = sqlStr`DELETE FROM articles WHERE id = ${a
       .getId()
       .toString()}`;
-    await executeSql(this.webSqlDatabase, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async clearCache(): Promise<void> {
     await this.ready;
     const query = sqlStr`DELETE FROM articles`;
-    await executeSql(this.webSqlDatabase, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async getByDesignation(d: BaseDesignation): Promise<Article[]> {
     await this.ready;
     const query = sqlStr`SELECT * FROM articles WHERE designation = ${d.toString()}`;
-    const [resultSet] = await executeSql(this.webSqlDatabase, [query]);
+    const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     const rows = resultSetToArray<CachedArticleRow>(resultSet);
     return rows.map(cachedArticleRowToArticle);
   }
@@ -116,7 +116,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
   async getById(id: ArticleId): Promise<Article> {
     await this.ready;
     const query = sqlStr`SELECT * FROM articles WHERE id = ${id.toString()}`;
-    const [resultSet] = await executeSql(this.webSqlDatabase, [query]);
+    const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     if (resultSet.rows.length === 0) throw new CachedArticleNotFoundError(id);
     const [row] = resultSetToArray<CachedArticleRow>(resultSet);
     return cachedArticleRowToArticle(row);
@@ -125,7 +125,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
   async getAll(): Promise<Article[]> {
     await this.ready;
     const query = sqlStr`SELECT * FROM articles`;
-    const [resultSet] = await executeSql(this.webSqlDatabase, [query]);
+    const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     const rows = resultSetToArray<CachedArticleRow>(resultSet);
     return rows.map(cachedArticleRowToArticle);
   }

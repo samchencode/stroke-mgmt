@@ -34,7 +34,7 @@ describe('StrapiArticleRepository', () => {
           mockNetworkInfo
         );
 
-      expect(create).not.toThrowError();
+      expect(create).not.toThrow();
     });
   });
 
@@ -93,7 +93,7 @@ describe('StrapiArticleRepository', () => {
       const article = await repo.getById(new ArticleId('6'));
       const tags = article.getTags();
 
-      expect(tags[0].is(new Tag('General'))).toBe(true);
+      expect(tags[0].is(new Tag('General', new Date(0)))).toBe(true);
     });
   });
 });

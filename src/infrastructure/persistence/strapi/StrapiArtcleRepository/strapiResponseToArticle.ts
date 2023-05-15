@@ -42,7 +42,11 @@ export const strapiResponseToArticle = (
     lastUpdated: new Date(attributes.updatedAt),
     tags: attributes.tags.data.map(
       (td) =>
-        new Tag(td.attributes.Name, td.attributes.Description ?? undefined)
+        new Tag(
+          td.attributes.Name,
+          new Date(td.attributes.updatedAt),
+          td.attributes.Description ?? undefined
+        )
     ),
   });
 };

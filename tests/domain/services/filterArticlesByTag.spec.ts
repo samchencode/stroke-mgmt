@@ -4,8 +4,8 @@ import { Tag } from '@/domain/models/Tag';
 import { filterArticlesByTags } from '@/domain/services/filterArticlesByTags';
 
 describe('filterArticlesByTags', () => {
-  const tag1 = new Tag('tag1');
-  const tag2 = new Tag('tag2');
+  const tag1 = new Tag('tag1', new Date(0));
+  const tag2 = new Tag('tag2', new Date(0));
   const article1 = new Article({
     id: new ArticleId('1'),
     title: 'Article 1',
@@ -59,7 +59,7 @@ describe('filterArticlesByTags', () => {
   it('should return empty array if no article matches the given tags', () => {
     const filteredArticles = filterArticlesByTags(
       [article1, article2, article3],
-      [new Tag('tag3')]
+      [new Tag('tag3', new Date(0))]
     );
     expect(filteredArticles).toEqual([]);
   });

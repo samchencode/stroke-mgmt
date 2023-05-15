@@ -13,4 +13,5 @@ export type CachedArticleRow = {
 export type TagsJson = {
   name: string;
   description: string;
+  lastUpdatedIsoString: string;
 }[];

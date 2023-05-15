@@ -15,7 +15,7 @@ function cachedArticleRowToArticle(row: CachedArticleRow): Article {
     designation: Designation.fromString(row.designation),
     thumbnail: new Image(row.thumbnailUri),
     tags: (JSON.parse(row.tagsJson) as TagsJson).map(
-      (t) => new Tag(t.name, t.description)
+      (t) => new Tag(t.name, new Date(t.lastUpdatedIsoString), t.description)
     ),
     shouldShowOnHomeScreen: row.shouldShowOnHomeScreen === 1,
     lastUpdated: new Date(row.lastUpdatedTimestamp),

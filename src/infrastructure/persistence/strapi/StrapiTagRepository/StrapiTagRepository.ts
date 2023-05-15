@@ -30,7 +30,12 @@ class StrapiTagRepository implements TagRepository {
   async getAll(): Promise<Tag[]> {
     const { data } = await this.get();
     return data.map(
-      (d) => new Tag(d.attributes.Name, d.attributes.Description ?? undefined)
+      (d) =>
+        new Tag(
+          d.attributes.Name,
+          new Date(d.attributes.updatedAt),
+          d.attributes.Description ?? undefined
+        )
     );
   }
 }

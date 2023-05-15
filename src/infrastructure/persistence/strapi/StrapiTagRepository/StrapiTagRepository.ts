@@ -1,5 +1,6 @@
 import { Tag } from '@/domain/models/Tag';
 import type { TagRepository } from '@/domain/models/Tag';
+import type { NetworkInfo } from '@/infrastructure/network-info/NetworkInfo';
 import { StrapiApiError } from '@/infrastructure/persistence/strapi/StrapiApiError';
 import type {
   StrapiPluralApiResponse,
@@ -14,7 +15,8 @@ type StrapiResponse = StrapiErrorResponse | StrapiPluralApiResponse<StrapiTag>;
 class StrapiTagRepository implements TagRepository {
   constructor(
     private readonly strapiHostUrl: string,
-    private readonly fetch: Fetch
+    private readonly fetch: Fetch,
+    private readonly networkInfo: NetworkInfo
   ) {}
 
   private async get(): Promise<StrapiPluralApiResponse<StrapiTag>> {
@@ -37,6 +39,10 @@ class StrapiTagRepository implements TagRepository {
           d.attributes.Description ?? undefined
         )
     );
+  }
+
+  async isAvailable(): Promise<boolean> {
+    return this.networkInfo.isInternetReachable();
   }
 }
 

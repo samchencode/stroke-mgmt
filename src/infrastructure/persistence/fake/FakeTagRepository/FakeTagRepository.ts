@@ -15,6 +15,10 @@ class FakeTagRepository implements TagRepository {
       new Tag('A veryyyyy longggg tagggg', new Date(0)),
     ];
   }
+
+  async isAvailable(): Promise<boolean> {
+    return true;
+  }
 }
 
 export { FakeTagRepository };

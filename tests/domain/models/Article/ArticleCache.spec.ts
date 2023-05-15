@@ -2,6 +2,7 @@ import {
   Article,
   ArticleId,
   ArticleNotFoundError,
+  CachedArticleNotFoundError,
   Designation,
   NullArticle,
 } from '@/domain/models/Article';
@@ -13,7 +14,7 @@ import type {
 import { Image, ImageCache } from '@/domain/models/Image';
 import { NullImage } from '@/domain/models/Image/NullImage';
 import {
-  SourceUnavailableCacheEmptyError,
+  SourceUnavailableEmptyCacheResultError,
   ArticleCache,
 } from '@/domain/services/Cache';
 import { FakeArticleRepository } from '@/infrastructure/persistence/fake/FakeArticleRepository';
@@ -75,17 +76,7 @@ describe('ArticleCache', () => {
   describe('#getByDesignation', () => {
     it('should use source result if cache is empty', async () => {
       cacheRepo.isEmpty.mockResolvedValue(true);
-      const cachedArticle = new Article({
-        id: new ArticleId('0'),
-        title: 'Example Article',
-        html: '<h1>Hello World From Cache</h1>',
-        designation: Designation.ARTICLE,
-        thumbnail: new Image('https://my-website.com/img.png'),
-        shouldShowOnHomeScreen: true,
-        lastUpdated: new Date(0),
-        tags: [],
-      });
-      cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
+      cacheRepo.getByDesignation.mockResolvedValue([]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
       const sourceArticle = new Article({
         id: new ArticleId('1'),
@@ -152,6 +143,7 @@ describe('ArticleCache', () => {
 
     it('should store source result if cache is empty', async () => {
       cacheRepo.isEmpty.mockResolvedValue(true);
+      cacheRepo.getByDesignation.mockResolvedValue([]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
       const sourceArticle = new Article({
         id: new ArticleId('1'),
@@ -248,8 +240,8 @@ describe('ArticleCache', () => {
       expect(callback).not.toHaveBeenCalled();
     });
 
-    it('should throw error if cache is empty and source is unavailable', async () => {
-      cacheRepo.isEmpty.mockResolvedValue(true);
+    it('should throw error if cache response is empty and source is unavailable', async () => {
+      cacheRepo.getByDesignation.mockResolvedValue([]);
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
@@ -262,7 +254,7 @@ describe('ArticleCache', () => {
       );
       const boom = () => cache.getByDesignation(Designation.ARTICLE, callback);
       await expect(boom).rejects.toBeInstanceOf(
-        SourceUnavailableCacheEmptyError
+        SourceUnavailableEmptyCacheResultError
       );
       expect(callback).not.toHaveBeenCalled();
     });
@@ -885,17 +877,9 @@ describe('ArticleCache', () => {
   describe('#getById', () => {
     it('should use source result if cache is empty', async () => {
       cacheRepo.isEmpty.mockResolvedValue(true);
-      const cachedArticle = new Article({
-        id: new ArticleId('0'),
-        title: 'Example Article',
-        html: '<h1>Hello World From Cache</h1>',
-        designation: Designation.ARTICLE,
-        thumbnail: new Image('https://my-website.com/img.png'),
-        shouldShowOnHomeScreen: true,
-        lastUpdated: new Date(0),
-        tags: [],
-      });
-      cacheRepo.getById.mockResolvedValue(cachedArticle);
+      cacheRepo.getById.mockRejectedValue(
+        new CachedArticleNotFoundError(new ArticleId('1'))
+      );
       const spy = jest.spyOn(articleRepo, 'getById');
       const sourceArticle = new Article({
         id: new ArticleId('1'),
@@ -954,6 +938,9 @@ describe('ArticleCache', () => {
 
     it('should store source result if cache is empty', async () => {
       cacheRepo.isEmpty.mockResolvedValue(true);
+      cacheRepo.getById.mockRejectedValue(
+        new CachedArticleNotFoundError(new ArticleId('1'))
+      );
       const spy = jest.spyOn(articleRepo, 'getById');
       const sourceArticle = new Article({
         id: new ArticleId('1'),
@@ -1042,8 +1029,10 @@ describe('ArticleCache', () => {
       expect(callback).not.toHaveBeenCalled();
     });
 
-    it('should throw error if cache is empty and source is unavailable', async () => {
-      cacheRepo.isEmpty.mockResolvedValue(true);
+    it('should throw error if cache response is empty and source is unavailable', async () => {
+      cacheRepo.getById.mockRejectedValue(
+        new CachedArticleNotFoundError(new ArticleId('0'))
+      );
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
@@ -1056,7 +1045,7 @@ describe('ArticleCache', () => {
       );
       const boom = () => cache.getById(new ArticleId('0'), callback);
       await expect(boom).rejects.toBeInstanceOf(
-        SourceUnavailableCacheEmptyError
+        SourceUnavailableEmptyCacheResultError
       );
       expect(callback).not.toHaveBeenCalled();
     });
@@ -1179,6 +1168,9 @@ describe('ArticleCache', () => {
 
     it('should try source 3 times in case of failure before throwing an error', async () => {
       cacheRepo.isEmpty.mockResolvedValue(true);
+      cacheRepo.getById.mockRejectedValue(
+        new CachedArticleNotFoundError(new ArticleId('1'))
+      );
       const spy = jest.spyOn(articleRepo, 'getById');
       const sourceArticle = new Article({
         id: new ArticleId('1'),
@@ -1571,17 +1563,7 @@ describe('ArticleCache', () => {
   describe('#getAll', () => {
     it('should use source result if cache is empty', async () => {
       cacheRepo.isEmpty.mockResolvedValue(true);
-      const cachedArticle = new Article({
-        id: new ArticleId('0'),
-        title: 'Example Article',
-        html: '<h1>Hello World From Cache</h1>',
-        designation: Designation.ARTICLE,
-        thumbnail: new Image('https://my-website.com/img.png'),
-        shouldShowOnHomeScreen: true,
-        lastUpdated: new Date(0),
-        tags: [],
-      });
-      cacheRepo.getAll.mockResolvedValue([cachedArticle]);
+      cacheRepo.getAll.mockResolvedValue([]);
       const spy = jest.spyOn(articleRepo, 'getAll');
       const sourceArticle = new Article({
         id: new ArticleId('1'),
@@ -1642,6 +1624,7 @@ describe('ArticleCache', () => {
 
     it('should store source result if cache is empty', async () => {
       cacheRepo.isEmpty.mockResolvedValue(true);
+      cacheRepo.getAll.mockResolvedValue([]);
       const spy = jest.spyOn(articleRepo, 'getAll');
       const sourceArticle = new Article({
         id: new ArticleId('1'),
@@ -1732,8 +1715,8 @@ describe('ArticleCache', () => {
       expect(callback).not.toHaveBeenCalled();
     });
 
-    it('should throw error if cache is empty and source is unavailable', async () => {
-      cacheRepo.isEmpty.mockResolvedValue(true);
+    it('should throw error if cache response is empty and source is unavailable', async () => {
+      cacheRepo.getAll.mockResolvedValue([]);
       const spy = jest.spyOn(articleRepo, 'isAvailable');
       spy.mockResolvedValue(false);
       const callback = jest.fn();
@@ -1746,7 +1729,7 @@ describe('ArticleCache', () => {
       );
       const boom = () => cache.getAll(callback);
       await expect(boom).rejects.toBeInstanceOf(
-        SourceUnavailableCacheEmptyError
+        SourceUnavailableEmptyCacheResultError
       );
       expect(callback).not.toHaveBeenCalled();
     });

@@ -1,5 +1,9 @@
 import type { CachedArticleRepository, Article } from '@/domain/models/Article';
-import { ArticleNotFoundError, NullArticle } from '@/domain/models/Article';
+import {
+  ArticleNotFoundError,
+  NullArticle,
+  CachedArticleNotFoundError,
+} from '@/domain/models/Article';
 import type { ImageCache } from '@/domain/models/Image';
 import { updateCache } from '@/domain/services/Cache/ArticleCache/updateCache';
 import type { GetImageSrcsInHtml } from '@/domain/services/Cache/GetImageSrcsInHtml';
@@ -167,16 +171,19 @@ async function sourceAvailableGetMultiple(
   cacheGetter: Getter,
   onStaleCallback: Callback
 ): Promise<Article[]> {
-  let cacheIsEmpty;
-  try {
-    cacheIsEmpty = await cacheRepository.isEmpty();
-  } catch {
-    cacheIsEmpty = true;
-  }
-
   const cachePromise = cacheGetter();
   const sourcePromise = retryUntilSuccess(sourceGetter);
-  if (cacheIsEmpty) {
+
+  let cacheResultIsEmpty;
+  try {
+    const cacheResult = await cachePromise;
+    cacheResultIsEmpty = cacheResult.length === 0;
+  } catch (e) {
+    if (e instanceof CachedArticleNotFoundError) cacheResultIsEmpty = true;
+    // if getting from cache throws a different error, it should be handled below
+  }
+
+  if (cacheResultIsEmpty) {
     const sourceResult = await sourcePromise;
     updateCache(imageCache, cacheRepository, sourceResult, []);
     return sourceResult;

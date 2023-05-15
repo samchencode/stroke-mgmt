@@ -1,6 +1,7 @@
-import { SourceUnavailableCacheEmptyError } from '@/domain/services/Cache/SourceUnavailableCacheEmptyError';
-import type { Article, CachedArticleRepository } from '@/domain/models/Article';
+import type { Article } from '@/domain/models/Article';
+import { CachedArticleNotFoundError } from '@/domain/models/Article';
 import type { ImageCache } from '@/domain/models/Image';
+import { SourceUnavailableEmptyCacheResultError } from '@/domain/services/Cache/SourceUnavailableEmptyCacheResultError';
 import type { GetImageSrcsInHtml } from '@/domain/services/Cache/GetImageSrcsInHtml';
 import type { ReplaceImageSrcsInHtml } from '@/domain/services/Cache/ReplaceImageSrcsInHtml';
 
@@ -65,36 +66,44 @@ async function getAndAddCachedImagesForArticles(
 
 async function sourceUnavailableGetMultiple(
   imageCache: ImageCache,
-  cacheRepository: CachedArticleRepository,
   getImageSrcsInHtml: GetImageSrcsInHtml,
   replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
   cacheGetter: Getter<Article[]>
 ) {
-  if (await cacheRepository.isEmpty())
-    throw new SourceUnavailableCacheEmptyError();
-  const cacheResult = await cacheGetter();
-  const cacheResultWithThumbnails = await getAndAddCachedThumbnailForArticles(
-    imageCache,
-    cacheResult
-  );
-  return getAndAddCachedImagesForArticles(
-    imageCache,
-    getImageSrcsInHtml,
-    replaceImageSrcsInHtml,
-    cacheResultWithThumbnails
-  );
+  try {
+    const cacheResult = await cacheGetter();
+    const cacheResultIsEmpty = cacheResult.length === 0;
+    if (cacheResultIsEmpty) {
+      throw new SourceUnavailableEmptyCacheResultError();
+    }
+
+    const cacheResultWithThumbnails = await getAndAddCachedThumbnailForArticles(
+      imageCache,
+      cacheResult
+    );
+    return await getAndAddCachedImagesForArticles(
+      imageCache,
+      getImageSrcsInHtml,
+      replaceImageSrcsInHtml,
+      cacheResultWithThumbnails
+    );
+  } catch (e) {
+    if (e instanceof CachedArticleNotFoundError) {
+      throw new SourceUnavailableEmptyCacheResultError();
+    } else {
+      throw e;
+    }
+  }
 }
 
 async function sourceUnavailableGetSingle(
   imageCache: ImageCache,
-  cacheRepository: CachedArticleRepository,
   getImageSrcsInHtml: GetImageSrcsInHtml,
   replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
   cacheGetter: Getter<Article>
 ) {
   const [article] = await sourceUnavailableGetMultiple(
     imageCache,
-    cacheRepository,
     getImageSrcsInHtml,
     replaceImageSrcsInHtml,
     () => cacheGetter().then((r) => [r])

@@ -37,7 +37,6 @@ class ArticleCache {
     if (!(await this.articleRepository.isAvailable())) {
       return sourceUnavailableGetMultiple(
         this.imageCache,
-        this.cachedArticleRepository,
         this.getImageSrcsInHtml,
         this.replaceImageSrcsInHtml,
         getFromCache
@@ -63,7 +62,6 @@ class ArticleCache {
     if (!(await this.articleRepository.isAvailable())) {
       return sourceUnavailableGetSingle(
         this.imageCache,
-        this.cachedArticleRepository,
         this.getImageSrcsInHtml,
         this.replaceImageSrcsInHtml,
         getFromCache
@@ -86,7 +84,6 @@ class ArticleCache {
     if (!(await this.articleRepository.isAvailable())) {
       return sourceUnavailableGetMultiple(
         this.imageCache,
-        this.cachedArticleRepository,
         this.getImageSrcsInHtml,
         this.replaceImageSrcsInHtml,
         getFromCache

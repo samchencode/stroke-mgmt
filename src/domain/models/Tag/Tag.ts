@@ -1,7 +1,7 @@
 class Tag {
   constructor(
     private readonly name: string,
-    private readonly updatedAt: Date,
+    private readonly lastUpdated: Date,
     private readonly description: string = 'No description was provided for this tag.'
   ) {}
 
@@ -9,8 +9,8 @@ class Tag {
     return this.name;
   }
 
-  getUpdatedAt() {
-    return this.updatedAt;
+  getLastUpdated() {
+    return this.lastUpdated;
   }
 
   getDescription() {

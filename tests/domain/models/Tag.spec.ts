@@ -32,7 +32,7 @@ describe('Tag', () => {
   describe('getLastUpdated', () => {
     it('should return the last updated date of the tag', () => {
       const tag = new Tag('Test Tag', new Date(0), 'This is a test tag.');
-      expect(tag.getUpdatedAt().getTime()).toBe(new Date(0).getTime());
+      expect(tag.getLastUpdated().getTime()).toBe(new Date(0).getTime());
     });
   });
 

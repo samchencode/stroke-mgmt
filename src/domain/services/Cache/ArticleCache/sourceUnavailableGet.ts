@@ -4,8 +4,7 @@ import type { ImageCache } from '@/domain/models/Image';
 import { SourceUnavailableEmptyCacheResultError } from '@/domain/services/Cache/SourceUnavailableEmptyCacheResultError';
 import type { GetImageSrcsInHtml } from '@/domain/services/Cache/GetImageSrcsInHtml';
 import type { ReplaceImageSrcsInHtml } from '@/domain/services/Cache/ReplaceImageSrcsInHtml';
-
-type Getter<T> = () => Promise<T>;
+import type { Getter } from '@/domain/services/Cache/Getter';
 
 async function getAndAddCachedThumbnailForArticle(
   imageCache: ImageCache,

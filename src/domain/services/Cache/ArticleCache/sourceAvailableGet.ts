@@ -8,25 +8,11 @@ import type { ImageCache } from '@/domain/models/Image';
 import { updateCache } from '@/domain/services/Cache/ArticleCache/updateCache';
 import type { GetImageSrcsInHtml } from '@/domain/services/Cache/GetImageSrcsInHtml';
 import type { ReplaceImageSrcsInHtml } from '@/domain/services/Cache/ReplaceImageSrcsInHtml';
+import { retryUntilSuccess } from '@/domain/services/Cache/retryUntilSuccess';
+import type { Getter } from '@/domain/services/Cache/Getter';
 
-type SingleGetter = () => Promise<Article>;
 type SingleCallback = (res: Article) => void;
-type Getter = () => Promise<Article[]>;
 type Callback = (res: Article[]) => void;
-
-async function retryUntilSuccess(
-  getter: Getter,
-  maxRetries = 3
-): Promise<Article[]> {
-  try {
-    const result = await getter();
-    return result;
-  } catch (e) {
-    if (e instanceof ArticleNotFoundError) throw e;
-    if (maxRetries !== 0) return retryUntilSuccess(getter, maxRetries - 1);
-    throw e;
-  }
-}
 
 function isStale(sourceResult: Article[], cacheResult: Article[]): boolean {
   // check to make sure the number of results are the same
@@ -167,8 +153,8 @@ async function sourceAvailableGetMultiple(
   cacheRepository: CachedArticleRepository,
   getImageSrcsInHtml: GetImageSrcsInHtml,
   replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
-  sourceGetter: Getter,
-  cacheGetter: Getter,
+  sourceGetter: Getter<Article[]>,
+  cacheGetter: Getter<Article[]>,
   onStaleCallback: Callback
 ): Promise<Article[]> {
   const cachePromise = cacheGetter();
@@ -216,8 +202,8 @@ async function sourceAvailableGetSingle(
   cacheRepository: CachedArticleRepository,
   getImageSrcsInHtml: GetImageSrcsInHtml,
   replaceImageSrcsInHtml: ReplaceImageSrcsInHtml,
-  sourceGetter: SingleGetter,
-  cacheGetter: SingleGetter,
+  sourceGetter: Getter<Article>,
+  cacheGetter: Getter<Article>,
   onStaleCallback: SingleCallback
 ): Promise<Article> {
   const [result] = await sourceAvailableGetMultiple(

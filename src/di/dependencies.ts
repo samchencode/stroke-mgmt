@@ -29,13 +29,14 @@ import { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { StrapiTagRepository } from '@/infrastructure/persistence/strapi/StrapiTagRepository';
 import { ReactNativeNetInfo } from '@/infrastructure/network-info/react-native-netinfo/ReactNativeNetInfo';
 import { ImageCache } from '@/domain/models/Image';
-import { ArticleCache } from '@/domain/services/Cache';
+import { ArticleCache, TagCache } from '@/domain/services/Cache';
 import { WebsqlCachedArticleRepository } from '@/infrastructure/persistence/websql/WebsqlCachedArticleRepository';
 import { cheerioGetImageSrcsInHtml } from '@/infrastructure/html-processing/cheerio/cheerioGetImageSrcsInHtml';
 import { cheerioReplaceImageSrcsInHtml } from '@/infrastructure/html-processing/cheerio/cheerioReplaceImageSrcsInHtml';
 import { ExpoFileSystemImageStore } from '@/infrastructure/file-system/expo-file-system/ExpoFileSystemImageStore';
 import { WebsqlCachedImageMetadataRepository } from '@/infrastructure/persistence/websql/WebsqlCachedImageMetadataRepository';
 import { openExpoSqliteDatabase } from '@/infrastructure/persistence/websql/expo-sqlite';
+import { WebsqlCachedTagRepository } from '@/infrastructure/persistence/websql/WebsqlCachedTagRepository';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -51,6 +52,7 @@ export const module = {
   // DOMAIN
   imageCache: ['type', ImageCache],
   articleCache: ['type', ArticleCache],
+  tagCache: ['type', TagCache],
 
   // APPLICATION
   getAllArticlesAction: ['type', GetAllArticlesAction],
@@ -90,6 +92,7 @@ export const module = {
   imageStore: ['type', ExpoFileSystemImageStore],
   cachedImageMetadataRepository: ['type', WebsqlCachedImageMetadataRepository],
   websqlDatabase: ['factory', openExpoSqliteDatabase],
+  cachedTagRepository: ['type', WebsqlCachedTagRepository],
 
   // TEMPLATES
   App: ['factory', App],

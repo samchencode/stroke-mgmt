@@ -69,7 +69,7 @@ function factory(
             (cb: (as: Article[]) => void) => getAllArticlesAction.execute(cb),
             []
           )}
-          getAllTags={useCallback(() => getAllTagsAction.execute(), [])}
+          getAllTags={useCallback((cb) => getAllTagsAction.execute(cb), [])}
           onSelectArticle={handleSelectArticle}
           style={styles.articleList}
         />

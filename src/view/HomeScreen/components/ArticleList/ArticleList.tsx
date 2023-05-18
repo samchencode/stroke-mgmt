@@ -12,13 +12,16 @@ import type { Tag } from '@/domain/models/Tag';
 import type { TagState } from '@/view/HomeScreen/components/TagList';
 import { TagList } from '@/view/HomeScreen/components/TagList';
 import { filterArticlesOnHomeOrByTags } from '@/domain/services/filterArticlesOnHomeOrByTags';
+import { DeferredPromise } from '@/view/HomeScreen/components/ArticleList/DeferredPromise';
 
 type ArticleListProps = {
   getAllArticles: (cb: (as: Article[]) => void) => Promise<Article[]>;
-  getAllTags: () => Promise<Tag[]>;
+  getAllTags: (cb: (ts: Tag[]) => void) => Promise<Tag[]>;
   onSelectArticle: (id: ArticleId) => void;
   style?: StyleProp<ViewStyle>;
 };
+
+let tagsQuerySucceeded = new DeferredPromise();
 
 function ArticleList({
   getAllArticles,
@@ -27,27 +30,40 @@ function ArticleList({
   style = {},
 }: ArticleListProps) {
   const queryClient = useQueryClient();
-  const onStale = (articles: Article[]) =>
+  const onArticlesStale = (articles: Article[]) =>
     queryClient.setQueryData(['articles'], articles);
 
   const articleQuery = useQuery({
     queryKey: ['articles'],
-    queryFn: () => getAllArticles(onStale),
+    queryFn: () => getAllArticles(onArticlesStale),
     retry: false,
   });
 
   const [tagStates, setTagStates] = useState<TagState[]>([]);
 
+  const makeTagStates = useCallback((tags: Tag[]) => {
+    const newTagStates = tags.map((tag) => ({
+      tag,
+      active: false,
+    }));
+    setTagStates(newTagStates);
+  }, []);
+
+  const onTagsStale = async (tags: Tag[]) => {
+    await tagsQuerySucceeded;
+    queryClient.setQueryData(['tags'], tags);
+    makeTagStates(tags);
+  };
+
   const tagQuery = useQuery({
     queryKey: ['tags'],
-    queryFn: getAllTags,
-    onSuccess: useCallback((tags: Tag[]) => {
-      const newTagStates = tags.map((tag) => ({
-        tag,
-        active: false,
-      }));
-      setTagStates(newTagStates);
-    }, []),
+    queryFn: () => getAllTags(onTagsStale),
+    onSuccess: (tags) => {
+      tagsQuerySucceeded.resolve(undefined);
+      makeTagStates(tags);
+      // reset the promise in case tagQuery is refetched and cache is stale
+      tagsQuerySucceeded = new DeferredPromise();
+    },
   });
 
   const handleToggleTagStates = useCallback(
@@ -64,7 +80,6 @@ function ArticleList({
   );
 
   const activeTagFilters = tagStates.filter((t) => t.active).map((t) => t.tag);
-
   return (
     <View style={style}>
       <Text style={styles.title}>Articles</Text>

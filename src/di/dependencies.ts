@@ -17,6 +17,7 @@ import { factory as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
 import { factory as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
 import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
 import { factory as Router } from '@/view/Router';
+import { factory as Header } from '@/view/Router/Header';
 import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetAllAlgorithmsShownOnHomeScreenAction';
 import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
@@ -37,6 +38,7 @@ import { ExpoFileSystemImageStore } from '@/infrastructure/file-system/expo-file
 import { WebsqlCachedImageMetadataRepository } from '@/infrastructure/persistence/websql/WebsqlCachedImageMetadataRepository';
 import { openExpoSqliteDatabase } from '@/infrastructure/persistence/websql/expo-sqlite';
 import { WebsqlCachedTagRepository } from '@/infrastructure/persistence/websql/WebsqlCachedTagRepository';
+import { ClearCacheAction } from '@/application/ClearCacheAction';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -72,6 +74,7 @@ export const module = {
   renderDisclaimerAction: ['type', RenderDisclaimerAction],
   renderStrokeFactsAction: ['type', RenderStrokeFactsAction],
   renderStrokeSignsAction: ['type', RenderStrokeSignsAction],
+  clearCacheAction: ['type', ClearCacheAction],
 
   // INFRASTRUCTURE
   articleRepository: ['type', StrapiArticleRepository],
@@ -103,6 +106,7 @@ export const module = {
   DisclaimerModal: ['factory', DisclaimerModal],
   ArticleViewerScreen: ['factory', ArticleViewerScreen],
   AlgorithmViewerScreen: ['factory', AlgorithmViewerScreen],
+  Header: ['factory', Header],
 
   // BUILT-INS
   fetch: ['value', fetch],

@@ -9,6 +9,9 @@ import { theme } from '@/view/theme';
 import { Menu } from '@/view/Router/Menu';
 import { NoInternetBanner, useNoInternetBanner } from '@/view/NoInternetBanner';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
+import type { ClearCacheAction } from '@/application/ClearCacheAction';
+import { useShowSnack } from '@/view/Snackbar/useShowSnack';
+import { useQueryClient } from '@tanstack/react-query';
 
 type IconButtonProps = {
   iconName: string;
@@ -36,63 +39,94 @@ function IconButton({
 
 type Props = StackHeaderProps;
 
-function Header({ navigation, route, options, back }: Props) {
-  const title = getHeaderTitle(options, route.name);
+function factory(clearCacheAction: ClearCacheAction) {
+  return function Header({ navigation, route, options, back }: Props) {
+    const title = getHeaderTitle(options, route.name);
 
-  const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleMenuPress = useCallback(() => {
-    setMenuOpen(!menuOpen);
-  }, [menuOpen]);
+    const handleMenuPress = useCallback(() => {
+      setMenuOpen(!menuOpen);
+    }, [menuOpen]);
 
-  const handleBack = useCallback(() => navigation.goBack(), [navigation]);
+    const handleBack = useCallback(() => navigation.goBack(), [navigation]);
 
-  const handlePressDisclaimer = useCallback(
-    () => navigation.navigate('DisclaimerModal'),
-    [navigation]
-  );
+    const handlePressDisclaimer = useCallback(
+      () => navigation.navigate('DisclaimerModal'),
+      [navigation]
+    );
 
-  const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
-    useNoInternetBanner();
+    const showSnack = useShowSnack();
 
-  const { scrolledToTop } = useContext(HeaderScrollContext);
-  const headerHasElevation = !scrolledToTop || shouldShowNoInternetBanner;
+    const queryClient = useQueryClient();
+    const refreshQueries = useCallback(() => {
+      queryClient.invalidateQueries({
+        refetchType: 'all',
+      });
+    }, [queryClient]);
 
-  return (
-    <View
-      style={[styles.container, headerHasElevation && styles.containerElevated]}
-    >
-      <StatusBar textColor="auto" />
-      <View style={styles.header}>
-        {back && (
-          <IconButton
-            iconName="arrow-left"
-            onPress={handleBack}
-            style={styles.backButton}
-          />
-        )}
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.trailingIconGroup}>
-          <IconButton
-            iconName="ellipsis-v"
-            onPress={handleMenuPress}
-            iconStyle={styles.trailingIcon}
+    const handlePressClearCache = useCallback(
+      () =>
+        clearCacheAction.execute().then(() =>
+          showSnack({
+            message: 'Cleared. Please refresh or restart.',
+            dwellMilliseconds: 3000,
+            action: {
+              label: 'Refresh',
+              onPress: refreshQueries,
+            },
+          })
+        ),
+      [refreshQueries, showSnack]
+    );
+
+    const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
+      useNoInternetBanner();
+
+    const { scrolledToTop } = useContext(HeaderScrollContext);
+    const headerHasElevation = !scrolledToTop || shouldShowNoInternetBanner;
+
+    return (
+      <View
+        style={[
+          styles.container,
+          headerHasElevation && styles.containerElevated,
+        ]}
+      >
+        <StatusBar textColor="auto" />
+        <View style={styles.header}>
+          {back && (
+            <IconButton
+              iconName="arrow-left"
+              onPress={handleBack}
+              style={styles.backButton}
+            />
+          )}
+          <Text style={styles.title}>{title}</Text>
+          <View style={styles.trailingIconGroup}>
+            <IconButton
+              iconName="ellipsis-v"
+              onPress={handleMenuPress}
+              iconStyle={styles.trailingIcon}
+            />
+          </View>
+          <Menu
+            visible={menuOpen}
+            style={styles.menu}
+            onPressAbout={useCallback(() => alert('about'), [])}
+            onPressDisclaimer={handlePressDisclaimer}
+            onPressLicense={useCallback(() => alert('license'), [])}
+            onPressClearCache={handlePressClearCache}
+            onPressRefresh={refreshQueries}
           />
         </View>
-        <Menu
-          visible={menuOpen}
-          style={styles.menu}
-          onPressAbout={useCallback(() => alert('about'), [])}
-          onPressDisclaimer={handlePressDisclaimer}
-          onPressLicense={useCallback(() => alert('license'), [])}
+        <NoInternetBanner
+          visible={shouldShowNoInternetBanner}
+          onPressDismiss={handleDismissNoInternetBanner}
         />
       </View>
-      <NoInternetBanner
-        visible={shouldShowNoInternetBanner}
-        onPressDismiss={handleDismissNoInternetBanner}
-      />
-    </View>
-  );
+    );
+  };
 }
 
 const styles = StyleSheet.create({
@@ -148,4 +182,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Header };
+export { factory };
+export type Type = ReturnType<typeof factory>;

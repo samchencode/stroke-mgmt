@@ -11,7 +11,7 @@ import {
 class WebsqlCachedTagRepository implements CachedTagRepository {
   ready: Promise<void>;
 
-  constructor(private readonly db: WebsqlDatabase) {
+  constructor(private readonly websqlDatabase: WebsqlDatabase) {
     this.ready = this.prepareDatabase();
   }
 
@@ -23,7 +23,7 @@ class WebsqlCachedTagRepository implements CachedTagRepository {
       description TEXT
     )`;
 
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async saveAll(tags: Tag[]): Promise<void> {
@@ -37,7 +37,7 @@ class WebsqlCachedTagRepository implements CachedTagRepository {
         ${t.getDescription()}
       )`
     );
-    await executeSql(this.db, queries);
+    await executeSql(this.websqlDatabase, queries);
   }
 
   async update(tag: Tag): Promise<void> {
@@ -49,19 +49,19 @@ class WebsqlCachedTagRepository implements CachedTagRepository {
         description = ${tag.getDescription()}
       WHERE name = ${tag.getName()}`;
 
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async delete(tagName: string): Promise<void> {
     await this.ready;
     const query = sqlStr`DELETE FROM tags WHERE name = ${tagName}`;
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async clearCache(): Promise<void> {
     await this.ready;
     const query = sqlStr`DELETE FROM tags`;
-    await executeSql(this.db, [query]);
+    await executeSql(this.websqlDatabase, [query]);
   }
 
   async getAll(): Promise<Tag[]> {
@@ -72,7 +72,7 @@ class WebsqlCachedTagRepository implements CachedTagRepository {
       lastUpdatedTimestamp,
       description
     FROM tags`;
-    const [resultSet] = await executeSql(this.db, [query]);
+    const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     const rows = resultSetToArray<CachedTagRow>(resultSet);
     return rows.map(
       (r) => new Tag(r.name, new Date(r.lastUpdatedTimestamp), r.description)

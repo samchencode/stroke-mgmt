@@ -53,6 +53,8 @@ function ArticleList({
     await tagsQuerySucceeded;
     queryClient.setQueryData(['tags'], tags);
     makeTagStates(tags);
+    // reset the promise in case tagQuery is refetched and cache is stale
+    tagsQuerySucceeded = new DeferredPromise();
   };
 
   const tagQuery = useQuery({
@@ -61,8 +63,6 @@ function ArticleList({
     onSuccess: (tags) => {
       tagsQuerySucceeded.resolve(undefined);
       makeTagStates(tags);
-      // reset the promise in case tagQuery is refetched and cache is stale
-      tagsQuerySucceeded = new DeferredPromise();
     },
   });
 

@@ -74,7 +74,7 @@ class AlgorithmInfo {
     return this.summary;
   }
 
-  getshouldShowOnHomeScreen() {
+  getShouldShowOnHomeScreen() {
     return this.shouldShowOnHomeScreen;
   }
 

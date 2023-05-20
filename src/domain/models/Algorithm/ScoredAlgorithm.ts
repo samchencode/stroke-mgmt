@@ -1,11 +1,14 @@
 import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
-import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
+import type {
+  AlgorithmInfo,
+  AlgorithmParams,
+} from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import { NoSwitchesError } from '@/domain/models/Algorithm/NoSwitchesError';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type {
-  YesNoSwitch,
+  Switch,
   SwitchId,
   LevelId,
 } from '@/domain/models/Algorithm/Switch';
@@ -13,13 +16,13 @@ import type { Image } from '@/domain/models/Image';
 
 type ScoredAlgorithmParams = {
   info: AlgorithmInfo;
-  switches: YesNoSwitch[];
+  switches: Switch[];
 };
 
 class ScoredAlgorithm implements Algorithm {
   private info: AlgorithmInfo;
 
-  private switches: YesNoSwitch[];
+  private switches: Switch[];
 
   constructor({ info, switches }: ScoredAlgorithmParams) {
     this.info = info;
@@ -75,7 +78,7 @@ class ScoredAlgorithm implements Algorithm {
     return this.info.getSummary();
   }
 
-  getSwitches(): YesNoSwitch[] {
+  getSwitches(): Switch[] {
     return this.switches;
   }
 

@@ -17,7 +17,7 @@ interface BaseAlgorithm {
   hasOutcomes(): boolean;
   getShouldShowOnHomeScreen(): boolean;
   getLastUpdated(): Date;
-  is(other: Algorithm): boolean;
+  is(other: BaseAlgorithm): boolean;
   acceptVisitor(v: AlgorithmVisitor): void;
   setMetadata(info: Partial<AlgorithmParams>): Algorithm;
 }

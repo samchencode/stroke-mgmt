@@ -13,6 +13,9 @@ export type { AlgorithmRenderer } from '@/domain/models/Algorithm/ports/Algorith
 export {
   GreaterThanCriterion,
   LessThanCriterion,
+  GreaterThanOrEqualToCriterion,
+  LessThanOrEqualToCriterion,
+  NoCriterion,
   CRITERION_TYPES,
 } from '@/domain/models/Algorithm/Criterion';
 export type {
@@ -23,6 +26,8 @@ export {
   Switch,
   YesNoSwitch,
   SwitchId,
+  Level,
+  LevelId,
 } from '@/domain/models/Algorithm/Switch';
 export { RenderedAlgorithm } from '@/domain/models/Algorithm/RenderedAlgorithm';
 export { RenderedAlgorithmCollection } from '@/domain/models/Algorithm/RenderedAlgorithmCollection';

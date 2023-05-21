@@ -1,4 +1,4 @@
-import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
+import type { BaseAlgorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
 import type {
   AlgorithmInfo,
@@ -12,8 +12,10 @@ type TextAlgorithmParams = {
   info: AlgorithmInfo;
 };
 
-class TextAlgorithm implements Algorithm {
+class TextAlgorithm implements BaseAlgorithm {
   private info: AlgorithmInfo;
+
+  readonly type = 'TextAlgorithm';
 
   constructor({ info }: TextAlgorithmParams) {
     this.info = info;
@@ -56,7 +58,7 @@ class TextAlgorithm implements Algorithm {
     return this.info.getLastUpdated();
   }
 
-  is(other: Algorithm): boolean {
+  is(other: BaseAlgorithm): boolean {
     return other.getId().is(this.getId());
   }
 

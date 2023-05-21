@@ -1,4 +1,4 @@
-import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
+import type { BaseAlgorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
 import type {
   AlgorithmInfo,
@@ -19,10 +19,12 @@ type ScoredAlgorithmParams = {
   switches: Switch[];
 };
 
-class ScoredAlgorithm implements Algorithm {
+class ScoredAlgorithm implements BaseAlgorithm {
   private info: AlgorithmInfo;
 
   private switches: Switch[];
+
+  readonly type = 'ScoredAlgorithm';
 
   constructor({ info, switches }: ScoredAlgorithmParams) {
     this.info = info;
@@ -90,7 +92,7 @@ class ScoredAlgorithm implements Algorithm {
     return this.info.getLastUpdated();
   }
 
-  is(other: Algorithm): boolean {
+  is(other: BaseAlgorithm): boolean {
     return other.getId().is(this.getId());
   }
 

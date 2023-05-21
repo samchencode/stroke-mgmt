@@ -1,9 +1,15 @@
+import type { AlgorithmType } from '@/domain/models/Algorithm/Algorithm';
+
+const ALGORITHM_TYPES = {
+  TEXT_ALGORITHM: 'TextAlgorithm',
+  SCORED_ALGORITHM: 'ScoredAlgorithm',
+} satisfies Record<string, AlgorithmType>;
+
+export type { AlgorithmType };
+export { ALGORITHM_TYPES };
 export { TextAlgorithm } from '@/domain/models/Algorithm/TextAlgorithm';
 export { ScoredAlgorithm } from '@/domain/models/Algorithm/ScoredAlgorithm';
-export type {
-  Algorithm,
-  AlgorithmType,
-} from '@/domain/models/Algorithm/Algorithm';
+export type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
 export type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 export { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
 export { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';

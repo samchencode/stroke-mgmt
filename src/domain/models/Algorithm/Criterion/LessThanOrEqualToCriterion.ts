@@ -1,7 +1,7 @@
 import type { BaseCriterion } from '@/domain/models/Algorithm/Criterion/Criterion';
 
-class GreaterThanCriterion implements BaseCriterion {
-  readonly type = 'GreaterThanCriterion';
+class LessThanOrEqualToCriterion implements BaseCriterion {
+  readonly type = 'LessThanOrEqualToCriterion';
 
   private threshold: number;
 
@@ -10,7 +10,7 @@ class GreaterThanCriterion implements BaseCriterion {
   }
 
   check(v: number): boolean {
-    return v > this.threshold;
+    return v <= this.threshold;
   }
 
   getThreshold() {
@@ -18,10 +18,10 @@ class GreaterThanCriterion implements BaseCriterion {
   }
 
   is(other: BaseCriterion): boolean {
-    if (!(other instanceof GreaterThanCriterion)) return false;
+    if (!(other instanceof LessThanOrEqualToCriterion)) return false;
     if (other.getThreshold() !== this.threshold) return false;
     return true;
   }
 }
 
-export { GreaterThanCriterion };
+export { LessThanOrEqualToCriterion };

@@ -13,6 +13,11 @@ export type { AlgorithmRenderer } from '@/domain/models/Algorithm/ports/Algorith
 export {
   GreaterThanCriterion,
   LessThanCriterion,
+  CRITERION_TYPES,
+} from '@/domain/models/Algorithm/Criterion';
+export type {
+  Criterion,
+  CriterionType,
 } from '@/domain/models/Algorithm/Criterion';
 export {
   Switch,

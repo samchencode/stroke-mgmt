@@ -1,6 +1,9 @@
 import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
-import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
+import type {
+  AlgorithmInfo,
+  AlgorithmParams,
+} from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type { Image } from '@/domain/models/Image';
@@ -55,6 +58,11 @@ class TextAlgorithm implements Algorithm {
 
   is(other: Algorithm): boolean {
     return other.getId().is(this.getId());
+  }
+
+  setMetadata(info: Partial<AlgorithmParams>): TextAlgorithm {
+    const newInfo = this.info.clone(info);
+    return new TextAlgorithm({ info: newInfo });
   }
 
   acceptVisitor(v: AlgorithmVisitor): void {

@@ -1,4 +1,5 @@
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
+import type { AlgorithmParams } from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type { Image } from '@/domain/models/Image';
@@ -15,6 +16,7 @@ interface Algorithm {
   getLastUpdated(): Date;
   is(other: Algorithm): boolean;
   acceptVisitor(v: AlgorithmVisitor): void;
+  setMetadata(info: Partial<AlgorithmParams>): Algorithm;
 }
 
 export type { Algorithm };

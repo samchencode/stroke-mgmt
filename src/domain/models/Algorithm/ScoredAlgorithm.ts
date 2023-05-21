@@ -103,6 +103,11 @@ class ScoredAlgorithm implements Algorithm {
     return new ScoredAlgorithm(newParams);
   }
 
+  setMetadata(info: Partial<AlgorithmParams>): ScoredAlgorithm {
+    const newInfo = this.info.clone(info);
+    return this.clone({ info: newInfo });
+  }
+
   acceptVisitor(v: AlgorithmVisitor): void {
     v.visitScoredAlgorithm(this);
   }

@@ -27,6 +27,22 @@ class AlgorithmCache {
     private readonly replaceImageSrcsInHtml: ReplaceImageSrcsInHtml
   ) {}
 
+  async tryToUpdateCache() {
+    if (!(await this.algorithmRepository.isAvailable())) return;
+    const getFromRepo = () => this.algorithmRepository.getAll();
+    const getFromCache = () => this.cachedAlgorithmRepository.getAll();
+    const noop = () => {};
+    await sourceAvailableGetMultiple(
+      this.imageCache,
+      this.cachedAlgorithmRepository,
+      this.getImageSrcsInHtml,
+      this.replaceImageSrcsInHtml,
+      getFromRepo,
+      getFromCache,
+      noop
+    );
+  }
+
   async getById(
     id: AlgorithmId,
     cb: CacheInvalidatedCallback<Algorithm>

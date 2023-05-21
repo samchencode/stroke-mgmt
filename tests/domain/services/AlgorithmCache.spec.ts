@@ -84,6 +84,24 @@ describe('AlgorithmCache', () => {
     });
   });
 
+  describe('#tryToUpdateCache', () => {
+    it('should get all algorithms from source if source is available', async () => {
+      algorithmRepo.isAvailable.mockResolvedValue(true);
+
+      const cache = new AlgorithmCache(
+        imageCache,
+        algorithmRepo,
+        cacheRepo,
+        getImageSrcsInHtml,
+        replaceImageSrcsInHtml
+      );
+      await cache.tryToUpdateCache();
+
+      await new Promise(process.nextTick);
+      expect(algorithmRepo.getAll).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('#getAllShownOnHomeScreen', () => {
     it('should use source result if cache response is empty', async () => {
       algorithmRepo.isAvailable.mockResolvedValue(true);

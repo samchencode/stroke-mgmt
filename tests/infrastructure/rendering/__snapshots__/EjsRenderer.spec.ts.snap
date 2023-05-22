@@ -790,7 +790,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     })
 
     // Wait for any images to finish loading
-    window.onload = notify
+    window.addEventListener('load', notify)
     notify()
   })();
 
@@ -1287,7 +1287,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     })
 
     // Wait for any images to finish loading
-    window.onload = notify
+    window.addEventListener('load', notify)
     notify()
   })();
 

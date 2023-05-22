@@ -88,7 +88,7 @@ describe('ScoredAlgorithm', () => {
       expect(algo.hasOutcomes()).toBe(false);
       const newAlgo = algo.setSwitchById(aSwitch.getId(), YesNoSwitch.YES);
       expect(newAlgo.hasOutcomes()).toBe(true);
-      expect(newAlgo.getOutcomes()).toHaveLength(1);
+      expect(newAlgo.getDisplayedOutcomes()).toHaveLength(1);
     });
 
     it('should not have outcomes if outcomes array is empty', () => {
@@ -114,7 +114,7 @@ describe('ScoredAlgorithm', () => {
       expect(noOutcomesAlgo.hasOutcomes()).toBe(false);
     });
 
-    it('should return empty array calling getOutcomes with no outcomes defined', () => {
+    it('should return empty array calling getDisplayedOutcomes with no outcomes defined', () => {
       const noOutcomesAlgoInfo = new AlgorithmInfo({
         thumbnail: new Image('/foo.png'),
         id: new AlgorithmId('2'),
@@ -129,11 +129,11 @@ describe('ScoredAlgorithm', () => {
         info: noOutcomesAlgoInfo,
         switches: [aSwitch],
       }).setSwitchById(aSwitch.getId(), YesNoSwitch.YES);
-      expect(noOutcomesAlgo.getOutcomes()).toEqual([]);
+      expect(noOutcomesAlgo.getDisplayedOutcomes()).toEqual([]);
     });
 
-    it('should return empty array calling getOutcomes before all switches are set', () => {
-      expect(algo.getOutcomes()).toEqual([]);
+    it('should return empty array calling getDisplayedOutcomes before all switches are set', () => {
+      expect(algo.getDisplayedOutcomes()).toEqual([]);
     });
 
     it('should return empty array if score meets no outcome criterion', () => {
@@ -167,7 +167,7 @@ describe('ScoredAlgorithm', () => {
         switches,
       }).setSwitchById(val0Switch.getId(), YesNoSwitch.YES);
 
-      expect(unfulfillingAlgo.getOutcomes()).toEqual([]);
+      expect(unfulfillingAlgo.getDisplayedOutcomes()).toEqual([]);
     });
 
     it('should return both if score meets two outcome criteria', () => {
@@ -207,13 +207,13 @@ describe('ScoredAlgorithm', () => {
         switches,
       }).setSwitchById(val6Switch.getId(), YesNoSwitch.YES);
 
-      expect(doubleFulfillingAlgo.getOutcomes()).toHaveLength(2);
+      expect(doubleFulfillingAlgo.getDisplayedOutcomes()).toHaveLength(2);
     });
 
     it('should return null if no next algorithm', () => {
       const [outcomeWithoutNext] = algo
         .setSwitchById(aSwitch.getId(), YesNoSwitch.YES)
-        .getOutcomes();
+        .getDisplayedOutcomes();
       expect(outcomeWithoutNext.getNext()).toBeNull();
     });
 

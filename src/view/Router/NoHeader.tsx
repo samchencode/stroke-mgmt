@@ -14,7 +14,7 @@ function NoHeader() {
     <View
       style={[styles.container, headerHasElevation && styles.containerElevated]}
     >
-      <StatusBar textColor="auto" backgroundColor={theme.colors.surface} />
+      <StatusBar textColor="auto" />
       <NoInternetBanner
         onPressDismiss={handleDismissNoInternetBanner}
         visible={shouldShowNoInternetBanner}

@@ -17,6 +17,54 @@
       width: 100%;
     }
 
+    blockquote {
+      position: relative;
+      margin: 0;
+      padding: 16px 32px;
+    }
+
+    blockquote::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #3c7590;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0px;
+      border-radius: 4px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #c9cfc9;
+    }
+
+    thead {
+      background-color: #dbe9f0;
+    }
+
+    tr {
+      height: 56px;
+    }
+
+    thead th {
+      color: #0f1d24;
+    }
+
+    td,
+    th {
+      padding-left: 16px;
+      padding-right: 16px;
+      text-align: center;
+    }
+
     .iframe__wrapper {
       min-width: 100%;
       min-height: 300px;

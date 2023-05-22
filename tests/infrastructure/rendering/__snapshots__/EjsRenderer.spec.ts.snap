@@ -20,6 +20,59 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       width: 100%;
     }
 
+    blockquote {
+      position: relative;
+      margin: 0;
+      padding: 16px 32px;
+    }
+
+    blockquote::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #3c7590;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0px;
+      border-radius: 4px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #c9cfc9;
+    }
+
+    thead {
+      background-color: #dbe9f0;
+    }
+
+    tr {
+      height: 56px;
+    }
+
+    thead th {
+      color: #0f1d24;
+    }
+
+    td,
+    th {
+      padding-left: 16px;
+      padding-right: 16px;
+      text-align: center;
+    }
+
+    .table__wrapper {
+      width: 100%;
+      overflow-x: scroll;
+    }
+
     .iframe__wrapper {
       min-width: 100%;
       min-height: 300px;
@@ -184,6 +237,18 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       })
     );
   })();
+
+  ; // Wrap tables with wrapper div
+  (function() {
+    const tables = Array.from(document.getElementsByTagName('table'))
+    tables.forEach(table => {
+      const wrapper = document.createElement('div')
+      wrapper.className = 'table__wrapper'
+      const newTable = table.cloneNode(true)
+      wrapper.appendChild(newTable)
+      table.replaceWith(wrapper)
+    })
+  })()
 </script>
 
 </html>"
@@ -280,10 +345,10 @@ exports[`EjsAlgorithmRenderer Behavior should render disclaimer html 1`] = `
 
     ; // Send window size upon load of the window
     (function() {
-      window.onload = () => notifyLayout({
+      window.addEventListener('load', () => notifyLayout({
         width: document.body.offsetWidth,
         height: document.body.offsetHeight,
-      });
+      }));
     })();
 
     ; // Listen to click of any link
@@ -396,6 +461,59 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   iframe,
   img {
     width: 100%;
+  }
+
+  blockquote {
+    position: relative;
+    margin: 0;
+    padding: 16px 32px;
+  }
+
+  blockquote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #3c7590;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-radius: 4px;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid #c9cfc9;
+  }
+
+  thead {
+    background-color: #dbe9f0;
+  }
+
+  tr {
+    height: 56px;
+  }
+
+  thead th {
+    color: #0f1d24;
+  }
+
+  td,
+  th {
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+  }
+
+  .table__wrapper {
+    width: 100%;
+    overflow-x: scroll;
   }
 
   .template {
@@ -587,6 +705,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     background-color: #478e3e;
     color: white;
     border-radius: 999px;
+    border: 1px solid #478e3e;
     height: 40px;
     padding: 0 24px;
     margin-top: 16px;
@@ -836,6 +955,18 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     }
   })();
 
+  ; // Wrap tables with wrapper div
+  (function() {
+    const tables = Array.from(document.getElementsByTagName('table'))
+    tables.forEach(table => {
+      const wrapper = document.createElement('div')
+      wrapper.className = 'table__wrapper'
+      const newTable = table.cloneNode(true)
+      wrapper.appendChild(newTable)
+      table.replaceWith(wrapper)
+    })
+  })()
+
   ; // Listen to click of any link
   (function() {
     const isArticleLink = (href) => href.slice(0, 8) === 'article:'
@@ -977,6 +1108,59 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   iframe,
   img {
     width: 100%;
+  }
+
+  blockquote {
+    position: relative;
+    margin: 0;
+    padding: 16px 32px;
+  }
+
+  blockquote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #3c7590;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-radius: 4px;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid #c9cfc9;
+  }
+
+  thead {
+    background-color: #dbe9f0;
+  }
+
+  tr {
+    height: 56px;
+  }
+
+  thead th {
+    color: #0f1d24;
+  }
+
+  td,
+  th {
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+  }
+
+  .table__wrapper {
+    width: 100%;
+    overflow-x: scroll;
   }
 
   .template {
@@ -1168,6 +1352,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     background-color: #478e3e;
     color: white;
     border-radius: 999px;
+    border: 1px solid #478e3e;
     height: 40px;
     padding: 0 24px;
     margin-top: 16px;
@@ -1333,6 +1518,18 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
       });
     }
   })();
+
+  ; // Wrap tables with wrapper div
+  (function() {
+    const tables = Array.from(document.getElementsByTagName('table'))
+    tables.forEach(table => {
+      const wrapper = document.createElement('div')
+      wrapper.className = 'table__wrapper'
+      const newTable = table.cloneNode(true)
+      wrapper.appendChild(newTable)
+      table.replaceWith(wrapper)
+    })
+  })()
 
   ; // Listen to click of any link
   (function() {

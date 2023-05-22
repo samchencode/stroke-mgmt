@@ -52,7 +52,7 @@ class ScoredAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
       switchesJson = ${serializedSwitches}
     WHERE 
       id = ${this.algo.getId().toString()} AND
-      type = '${this.algo.type}'
+      type = ${this.algo.type}
     `;
   }
 }

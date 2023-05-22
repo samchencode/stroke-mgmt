@@ -1459,7 +1459,7 @@ describe('ArticleCache', () => {
         lastUpdated: new Date(0),
         tags: [],
       });
-      cacheRepo.getByDesignation.mockResolvedValue(originalArticle);
+      cacheRepo.getById.mockResolvedValue(originalArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
       spy.mockResolvedValue(originalArticle);
       getImageSrcsInHtml.mockReturnValue([imageUrl]);
@@ -1502,7 +1502,7 @@ describe('ArticleCache', () => {
         lastUpdated: new Date(0),
         tags: [],
       });
-      cacheRepo.getByDesignation.mockResolvedValue(originalArticle);
+      cacheRepo.getById.mockResolvedValue(originalArticle);
       getImageSrcsInHtml.mockReturnValue([imageUrl]);
       replaceImageSrcsInHtml.mockImplementation(
         (map) => `<img src="${map[imageUrl]}">`
@@ -1537,7 +1537,7 @@ describe('ArticleCache', () => {
         lastUpdated: new Date(0),
         tags: [],
       });
-      cacheRepo.getByDesignation.mockResolvedValue(originalArticle);
+      cacheRepo.getById.mockResolvedValue(originalArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
       spy.mockResolvedValue(originalArticle);
       getImageSrcsInHtml.mockReturnValue([imageUrl]);

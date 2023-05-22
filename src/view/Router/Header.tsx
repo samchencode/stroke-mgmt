@@ -51,34 +51,34 @@ function factory(clearCacheAction: ClearCacheAction) {
 
     const handleBack = useCallback(() => navigation.goBack(), [navigation]);
 
-    const handlePressDisclaimer = useCallback(
-      () => navigation.navigate('DisclaimerModal'),
-      [navigation]
-    );
+    const handlePressDisclaimer = useCallback(() => {
+      setMenuOpen(false);
+      navigation.navigate('DisclaimerModal');
+    }, [navigation]);
 
     const showSnack = useShowSnack();
 
     const queryClient = useQueryClient();
     const refreshQueries = useCallback(() => {
+      setMenuOpen(false);
       queryClient.invalidateQueries({
         refetchType: 'all',
       });
     }, [queryClient]);
 
-    const handlePressClearCache = useCallback(
-      () =>
-        clearCacheAction.execute().then(() =>
-          showSnack({
-            message: 'Cleared. Please refresh or restart.',
-            dwellMilliseconds: 3000,
-            action: {
-              label: 'Refresh',
-              onPress: refreshQueries,
-            },
-          })
-        ),
-      [refreshQueries, showSnack]
-    );
+    const handlePressClearCache = useCallback(() => {
+      setMenuOpen(false);
+      clearCacheAction.execute().then(() =>
+        showSnack({
+          message: 'Cleared. Please refresh or restart.',
+          dwellMilliseconds: 3000,
+          action: {
+            label: 'Refresh',
+            onPress: refreshQueries,
+          },
+        })
+      );
+    }, [refreshQueries, showSnack]);
 
     const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
       useNoInternetBanner();

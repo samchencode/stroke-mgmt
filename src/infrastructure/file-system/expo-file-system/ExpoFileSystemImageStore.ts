@@ -1,8 +1,6 @@
 import type { ImageStore } from '@/domain/models/Image';
 import { CachedImageMetadata } from '@/domain/models/Image';
 import * as ExpoFileSystem from 'expo-file-system';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
 const DEST_DIRECTORY = `${ExpoFileSystem.cacheDirectory}/images-v1`;

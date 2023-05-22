@@ -88,10 +88,10 @@
 
     ; // Send window size upon load of the window
     (function() {
-      window.onload = () => notifyLayout({
+      window.addEventListener('load', () => notifyLayout({
         width: document.body.offsetWidth,
         height: document.body.offsetHeight,
-      });
+      }));
     })();
 
     ; // Listen to click of any link

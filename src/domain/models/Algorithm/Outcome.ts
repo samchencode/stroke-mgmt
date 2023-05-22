@@ -45,6 +45,16 @@ class Outcome {
     return this.criterion.check(v);
   }
 
+  clone(params: Partial<OutcomeParams>): Outcome {
+    return new Outcome({
+      title: this.getTitle(),
+      body: this.getBody(),
+      criterion: this.getCriterion(),
+      next: this.getNext() ?? undefined,
+      ...params,
+    });
+  }
+
   is(other: Outcome) {
     if (other.getBody() !== this.body) return false;
     if (other.getTitle() !== this.title) return false;

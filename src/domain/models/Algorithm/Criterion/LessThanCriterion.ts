@@ -1,6 +1,8 @@
-import type { Criterion } from '@/domain/models/Algorithm/Criterion/Criterion';
+import type { BaseCriterion } from '@/domain/models/Algorithm/Criterion/Criterion';
 
-class LessThanCriterion implements Criterion {
+class LessThanCriterion implements BaseCriterion {
+  readonly type = 'LessThanCriterion';
+
   private threshold: number;
 
   constructor(threshold: number) {
@@ -15,7 +17,7 @@ class LessThanCriterion implements Criterion {
     return this.threshold;
   }
 
-  is(other: Criterion): boolean {
+  is(other: BaseCriterion): boolean {
     if (!(other instanceof LessThanCriterion)) return false;
     if (other.getThreshold() !== this.threshold) return false;
     return true;

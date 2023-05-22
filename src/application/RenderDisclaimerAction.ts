@@ -1,22 +1,19 @@
 import type { GetDisclaimerAction } from '@/application/GetDisclaimerAction';
+import type { Article } from '@/domain/models/Article';
 import type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
 
 class RenderDisclaimerAction {
-  getDisclaimer: GetDisclaimerAction;
-
-  renderer: ArticleRenderer;
-
   constructor(
-    getDisclaimerAction: GetDisclaimerAction,
-    articleRenderer: ArticleRenderer
-  ) {
-    this.getDisclaimer = getDisclaimerAction;
-    this.renderer = articleRenderer;
-  }
+    private readonly getDisclaimerAction: GetDisclaimerAction,
+    private readonly articleRenderer: ArticleRenderer
+  ) {}
 
-  async execute() {
-    const article = await this.getDisclaimer.execute();
-    return this.renderer.renderDisclaimer(article);
+  async execute(onStale: (html: string) => void) {
+    const handleStale = (article: Article) => {
+      this.articleRenderer.renderDisclaimer(article).then(onStale);
+    };
+    const article = await this.getDisclaimerAction.execute(handleStale);
+    return this.articleRenderer.renderDisclaimer(article);
   }
 }
 

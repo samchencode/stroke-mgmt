@@ -1,15 +1,12 @@
+import type { Article } from '@/domain/models/Article';
 import { Designation } from '@/domain/models/Article';
-import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
+import type { ArticleCache } from '@/domain/services/Cache';
 
 class GetAllArticlesAction {
-  repo: ArticleRepository;
+  constructor(private readonly articleCache: ArticleCache) {}
 
-  constructor(articleRepository: ArticleRepository) {
-    this.repo = articleRepository;
-  }
-
-  async execute() {
-    return this.repo.getByDesignation(Designation.ARTICLE);
+  async execute(onStale: (articles: Article[]) => void) {
+    return this.articleCache.getByDesignation(Designation.ARTICLE, onStale);
   }
 }
 

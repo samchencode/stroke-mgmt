@@ -16,6 +16,20 @@ export const Designation = {
   get ARTICLE() {
     return new Article();
   },
+  fromString(str: string) {
+    switch (str) {
+      case Disclaimer.prototype.type:
+        return Designation.DISCLAIMER;
+      case StrokeFacts.prototype.type:
+        return Designation.STROKE_FACTS;
+      case StrokeSigns.prototype.type:
+        return Designation.STROKE_SIGNS;
+      case Article.prototype.type:
+        return Designation.ARTICLE;
+      default:
+        return Designation.ARTICLE;
+    }
+  },
 };
 
 export type { BaseDesignation } from '@/domain/models/Article/Designation/BaseDesignation';

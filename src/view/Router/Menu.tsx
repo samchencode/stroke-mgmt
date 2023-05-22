@@ -10,6 +10,8 @@ type Props = {
   onPressDisclaimer: () => void;
   onPressLicense: () => void;
   onPressAbout: () => void;
+  onPressRefresh: () => void;
+  onPressClearCache: () => void;
 };
 
 function Menu({
@@ -17,6 +19,8 @@ function Menu({
   onPressAbout,
   onPressDisclaimer,
   onPressLicense,
+  onPressRefresh,
+  onPressClearCache,
   style = {},
 }: Props) {
   return (
@@ -24,6 +28,8 @@ function Menu({
       <View style={styles.content}>
         <MenuItem onPress={onPressDisclaimer}>Disclaimer</MenuItem>
         <MenuItem onPress={onPressLicense}>License</MenuItem>
+        <MenuItem onPress={onPressRefresh}>Refresh</MenuItem>
+        <MenuItem onPress={onPressClearCache}>Clear Cache</MenuItem>
         <MenuItem onPress={onPressAbout}>About</MenuItem>
       </View>
     </View>

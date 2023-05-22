@@ -4,10 +4,7 @@ import type { Type as Router } from '@/view/Router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { theme } from '@/view/theme';
 import { QueryClientProvider } from '@tanstack/react-query';
-import {
-  queryClient,
-  useReactQueryAppStateListener,
-} from '@/view/App/prepareReactQuery';
+import { queryClient, useInitReactQuery } from '@/view/App/prepareReactQuery';
 import { SnackbarProvider } from '@/view/Snackbar';
 import {
   HeaderScrollContext,
@@ -20,7 +17,7 @@ import {
 
 function factory(Router: Router) {
   return function App() {
-    useReactQueryAppStateListener();
+    useInitReactQuery();
 
     const headerScrollState = useHeaderScrollData();
 

@@ -1,14 +1,11 @@
-import type { AlgorithmRepository } from '@/domain/models/Algorithm';
+import type { Algorithm } from '@/domain/models/Algorithm';
+import type { AlgorithmCache } from '@/domain/services/Cache';
 
 class GetAllAlgorithmsShownOnHomeScreenAction {
-  repo: AlgorithmRepository;
+  constructor(private readonly algorithmCache: AlgorithmCache) {}
 
-  constructor(algorithmRepository: AlgorithmRepository) {
-    this.repo = algorithmRepository;
-  }
-
-  async execute() {
-    return this.repo.getAllShownOnHomeScreen();
+  async execute(onStaleCallback: (v: Algorithm[]) => void) {
+    return this.algorithmCache.getAllShownOnHomeScreen(onStaleCallback);
   }
 }
 

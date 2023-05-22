@@ -1,3 +1,4 @@
+import type { Criterion } from '@/domain/models/Algorithm';
 import {
   AlgorithmId,
   AlgorithmInfo,
@@ -6,14 +7,12 @@ import {
   Switch,
   SwitchId,
   TextAlgorithm,
-} from '@/domain/models/Algorithm';
-import type { Criterion } from '@/domain/models/Algorithm/Criterion';
-import {
   GreaterThanCriterion,
   LessThanCriterion,
   NoCriterion,
-} from '@/domain/models/Algorithm/Criterion';
-import { Level, LevelId } from '@/domain/models/Algorithm/Switch';
+  Level,
+  LevelId,
+} from '@/domain/models/Algorithm';
 import { Image } from '@/domain/models/Image';
 import type { StrapiAlgorithmData } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 

@@ -1,6 +1,10 @@
 import type { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
-import type { AlgorithmId } from '@/domain/models/Algorithm';
+import type {
+  Algorithm,
+  AlgorithmId,
+  RenderedAlgorithm,
+} from '@/domain/models/Algorithm';
 
 class RenderAlgorithmByIdAction {
   constructor(
@@ -8,8 +12,16 @@ class RenderAlgorithmByIdAction {
     private renderAlgorithmAction: RenderAlgorithmAction
   ) {}
 
-  async execute(id: AlgorithmId) {
-    const algorithm = await this.getAlgorithmByIdAction.execute(id);
+  async execute(
+    id: AlgorithmId,
+    onStaleCallback: (renderedAlgorithm: RenderedAlgorithm) => void
+  ) {
+    const handleStale = (v: Algorithm) =>
+      this.renderAlgorithmAction.execute(v).then((r) => onStaleCallback(r));
+    const algorithm = await this.getAlgorithmByIdAction.execute(
+      id,
+      handleStale
+    );
     return this.renderAlgorithmAction.execute(algorithm);
   }
 }

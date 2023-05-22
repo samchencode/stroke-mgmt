@@ -1,6 +1,9 @@
-import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
+import type { BaseAlgorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
-import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
+import type {
+  AlgorithmInfo,
+  AlgorithmParams,
+} from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type { Image } from '@/domain/models/Image';
@@ -9,8 +12,10 @@ type TextAlgorithmParams = {
   info: AlgorithmInfo;
 };
 
-class TextAlgorithm implements Algorithm {
+class TextAlgorithm implements BaseAlgorithm {
   private info: AlgorithmInfo;
+
+  readonly type = 'TextAlgorithm';
 
   constructor({ info }: TextAlgorithmParams) {
     this.info = info;
@@ -18,6 +23,10 @@ class TextAlgorithm implements Algorithm {
 
   getOutcomes(): Outcome[] {
     return this.info.getOutcomes();
+  }
+
+  getDisplayedOutcomes(): Outcome[] {
+    return this.getOutcomes();
   }
 
   hasOutcomes(): boolean {
@@ -45,16 +54,21 @@ class TextAlgorithm implements Algorithm {
     return this.info.getSummary();
   }
 
-  getshouldShowOnHomeScreen(): boolean {
-    return this.info.getshouldShowOnHomeScreen();
+  getShouldShowOnHomeScreen(): boolean {
+    return this.info.getShouldShowOnHomeScreen();
   }
 
   getLastUpdated(): Date {
     return this.info.getLastUpdated();
   }
 
-  is(other: Algorithm): boolean {
+  is(other: BaseAlgorithm): boolean {
     return other.getId().is(this.getId());
+  }
+
+  setMetadata(info: Partial<AlgorithmParams>): TextAlgorithm {
+    const newInfo = this.info.clone(info);
+    return new TextAlgorithm({ info: newInfo });
   }
 
   acceptVisitor(v: AlgorithmVisitor): void {

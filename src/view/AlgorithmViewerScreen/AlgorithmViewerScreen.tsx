@@ -1,15 +1,10 @@
-import React, { useCallback, useRef, useState } from 'react';
-import type {
-  LayoutChangeEvent,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-} from 'react-native';
-import { StyleSheet, useWindowDimensions, ScrollView } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import type { LayoutChangeEvent } from 'react-native';
+import { View, StyleSheet, useWindowDimensions } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { AlgorithmCollectionView } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/AlgorithmCollectionView';
-import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
 
 function factory(
   renderAlgorithmByIdAction: RenderAlgorithmByIdAction,
@@ -19,31 +14,17 @@ function factory(
     route,
   }: AppNavigationProps<'AlgorithmViewerScreen'>) {
     const { id } = route.params;
+
     const { width } = useWindowDimensions();
-    const scrollView = useRef<ScrollView>(null);
     const [height, setHeight] = useState(0);
 
-    const handleNextAlgorithm = useCallback(() => {
-      scrollView.current?.scrollToEnd({ animated: true });
-    }, []);
-
-    type ScrollEvent = NativeSyntheticEvent<NativeScrollEvent>;
-
-    const handleScroll = useHeaderScrollResponder<ScrollEvent>(
-      useCallback((e: ScrollEvent) => e.nativeEvent.contentOffset.y, [])
+    const handleLayout = useCallback(
+      (e: LayoutChangeEvent) => setHeight(e.nativeEvent.layout.height - 20),
+      []
     );
 
     return (
-      <ScrollView
-        style={styles.container}
-        ref={scrollView}
-        onLayout={useCallback(
-          (e: LayoutChangeEvent) => setHeight(e.nativeEvent.layout.height - 20),
-          []
-        )}
-        onScroll={handleScroll}
-        scrollEventThrottle={300}
-      >
+      <View style={styles.container} onLayout={handleLayout}>
         <AlgorithmCollectionView
           width={width}
           initialId={id}
@@ -52,13 +33,12 @@ function factory(
             []
           )}
           renderAlgorithmById={useCallback(
-            (aId) => renderAlgorithmByIdAction.execute(aId),
+            (aId, cb) => renderAlgorithmByIdAction.execute(aId, cb),
             []
           )}
-          onNextAlgorithm={handleNextAlgorithm}
           minHeight={height}
         />
-      </ScrollView>
+      </View>
     );
   };
 }

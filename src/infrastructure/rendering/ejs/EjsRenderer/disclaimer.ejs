@@ -159,11 +159,9 @@
         context.state = window.navigator.onLine ? OnlineState(context) : OfflineState(context)
 
         window.addEventListener('online', function() {
-          console.log('to online')
           context.state.toOnline()
         })
         window.addEventListener('offline', function() {
-          console.log('to offline')
           context.state.toOffline()
         })
         return context

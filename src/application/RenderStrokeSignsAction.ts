@@ -1,22 +1,19 @@
 import type { GetStrokeSignsAction } from '@/application/GetStrokeSignsAction';
+import type { Article } from '@/domain/models/Article';
 import type { ArticleRenderer } from '@/domain/models/Article/ports/ArticleRenderer';
 
 class RenderStrokeSignsAction {
-  getStrokeSigns: GetStrokeSignsAction;
-
-  renderer: ArticleRenderer;
-
   constructor(
-    getStrokeSignsAction: GetStrokeSignsAction,
-    articleRenderer: ArticleRenderer
-  ) {
-    this.getStrokeSigns = getStrokeSignsAction;
-    this.renderer = articleRenderer;
-  }
+    private readonly getStrokeSignsAction: GetStrokeSignsAction,
+    private readonly articleRenderer: ArticleRenderer
+  ) {}
 
-  async execute() {
-    const article = await this.getStrokeSigns.execute();
-    return this.renderer.renderStrokeSigns(article);
+  async execute(onStale: (html: string) => void) {
+    const handleStale = (article: Article) => {
+      this.articleRenderer.renderArticle(article).then(onStale);
+    };
+    const article = await this.getStrokeSignsAction.execute(handleStale);
+    return this.articleRenderer.renderStrokeSigns(article);
   }
 }
 

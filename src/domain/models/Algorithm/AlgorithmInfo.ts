@@ -74,13 +74,28 @@ class AlgorithmInfo {
     return this.summary;
   }
 
-  getshouldShowOnHomeScreen() {
+  getShouldShowOnHomeScreen() {
     return this.shouldShowOnHomeScreen;
   }
 
   getLastUpdated() {
     return this.lastUpdated;
   }
+
+  clone(params: Partial<AlgorithmParams>) {
+    return new AlgorithmInfo({
+      id: this.getId(),
+      title: this.getTitle(),
+      body: this.getBody(),
+      thumbnail: this.getThumbnail(),
+      summary: this.getSummary(),
+      outcomes: this.getOutcomes(),
+      shouldShowOnHomeScreen: this.getShouldShowOnHomeScreen(),
+      lastUpdated: this.getLastUpdated(),
+      ...params,
+    });
+  }
 }
 
 export { AlgorithmInfo };
+export type { AlgorithmParams };

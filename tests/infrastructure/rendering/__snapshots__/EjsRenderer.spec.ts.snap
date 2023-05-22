@@ -156,11 +156,9 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       context.state = window.navigator.onLine ? OnlineState(context) : OfflineState(context)
 
       window.addEventListener('online', function() {
-        console.log('to online')
         context.state.toOnline()
       })
       window.addEventListener('offline', function() {
-        console.log('to offline')
         context.state.toOffline()
       })
       return context
@@ -345,11 +343,9 @@ exports[`EjsAlgorithmRenderer Behavior should render disclaimer html 1`] = `
         context.state = window.navigator.onLine ? OnlineState(context) : OfflineState(context)
 
         window.addEventListener('online', function() {
-          console.log('to online')
           context.state.toOnline()
         })
         window.addEventListener('offline', function() {
-          console.log('to offline')
           context.state.toOffline()
         })
         return context
@@ -937,11 +933,9 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
       context.state = window.navigator.onLine ? OnlineState(context) : OfflineState(context)
 
       window.addEventListener('online', function() {
-        console.log('to online')
         context.state.toOnline()
       })
       window.addEventListener('offline', function() {
-        console.log('to offline')
         context.state.toOffline()
       })
       return context
@@ -1436,11 +1430,9 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
       context.state = window.navigator.onLine ? OnlineState(context) : OfflineState(context)
 
       window.addEventListener('online', function() {
-        console.log('to online')
         context.state.toOnline()
       })
       window.addEventListener('offline', function() {
-        console.log('to offline')
         context.state.toOffline()
       })
       return context

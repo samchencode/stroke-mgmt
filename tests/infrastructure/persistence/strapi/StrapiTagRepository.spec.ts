@@ -5,10 +5,15 @@ import { StrapiTagRepository } from '@/infrastructure/persistence/strapi/StrapiT
 describe('StrapiTagRepository', () => {
   const strapiApiHost = 'http://localhost:1337';
 
+  const mockNetworkInfo = {
+    isInternetReachable: jest.fn().mockResolvedValue(true),
+  };
+
   describe('Instantiation', () => {
     it('should be created with a api host', () => {
-      const create = () => new StrapiTagRepository(strapiApiHost, jest.fn());
-      expect(create).not.toThrowError();
+      const create = () =>
+        new StrapiTagRepository(strapiApiHost, jest.fn(), mockNetworkInfo);
+      expect(create).not.toThrow();
     });
   });
 
@@ -35,7 +40,11 @@ describe('StrapiTagRepository', () => {
       };
 
       const mockFetch = jest.fn().mockResolvedValue(mockResponse);
-      const repo = new StrapiTagRepository(strapiApiHost, mockFetch);
+      const repo = new StrapiTagRepository(
+        strapiApiHost,
+        mockFetch,
+        mockNetworkInfo
+      );
 
       const tags = await repo.getAll();
       expect(tags).toHaveLength(2);
@@ -63,9 +72,13 @@ describe('StrapiTagRepository', () => {
       };
 
       const mockFetch = jest.fn().mockResolvedValue(mockResponse);
-      const repo = new StrapiTagRepository(strapiApiHost, mockFetch);
+      const repo = new StrapiTagRepository(
+        strapiApiHost,
+        mockFetch,
+        mockNetworkInfo
+      );
       await expect(repo.getAll()).rejects.toThrow(StrapiApiError);
-      await expect(repo.getAll()).rejects.toThrowError(
+      await expect(repo.getAll()).rejects.toThrow(
         'Uh oh, something went wrong'
       );
 

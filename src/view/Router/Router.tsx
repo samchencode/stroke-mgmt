@@ -15,7 +15,7 @@ import type { ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { useShouldShowStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
 import { LoadingSpinnerView } from '@/view/components';
-import { Header } from '@/view/Router/Header';
+import type { Type as Header } from '@/view/Router/Header';
 import { NoHeader } from '@/view/Router/NoHeader';
 
 type AppNavigationParams = {
@@ -40,7 +40,8 @@ function factory(
   HomeScreen: HomeScreen,
   DisclaimerModal: DisclaimerModal,
   ArticleViewerScreen: ArticleViewerScreen,
-  AlgorithmViewerScreen: AlgorithmViewerScreen
+  AlgorithmViewerScreen: AlgorithmViewerScreen,
+  Header: Header
 ) {
   function AppNavigation() {
     const shouldShowFactsAndSignsOrLoading = useShouldShowStrokeFactsAndSigns();

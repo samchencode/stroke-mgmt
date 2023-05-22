@@ -23,6 +23,7 @@
     "@types/ejs": "^3.1.1",
     "@types/node": "^18.11.9",
     "@types/sha.js": "^2.4.0",
+    "cheerio": "^1.0.0-rc.12",
     "didi": "^8.0.0",
     "ejs": "^3.1.8",
     "expo": "~47.0.3",
@@ -31,18 +32,21 @@
     "expo-file-system": "~15.1.1",
     "expo-linking": "~3.3.1",
     "expo-navigation-bar": "~2.0.1",
+    "expo-sqlite": "~11.0.0",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.8",
     "react-native-gesture-handler": "~2.8.0",
+    "react-native-get-random-values": "~1.8.0",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
     "react-native-web": "~0.18.9",
     "react-native-webview": "11.23.1",
     "sanitize-html": "^2.10.0",
-    "sha.js": "^2.4.11"
+    "sha.js": "^2.4.11",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -52,6 +56,8 @@
     "@types/react-native": "^0.69.3",
     "@types/react-test-renderer": "^18.0.0",
     "@types/sanitize-html": "^2.9.0",
+    "@types/uuid": "^9.0.1",
+    "@types/websql": "^0.0.27",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "babel-jest": "^29.3.1",
@@ -62,6 +68,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
@@ -72,7 +79,8 @@
     "react-test-renderer": "^18.2.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "websql": "^2.0.3"
   },
   "private": true
 }

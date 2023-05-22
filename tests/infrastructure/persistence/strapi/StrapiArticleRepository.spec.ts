@@ -17,15 +17,24 @@ const makeFetch = (parsedResponse?: any) =>
     json: jest.fn().mockResolvedValue(parsedResponse),
   });
 
+const mockNetworkInfo = {
+  isInternetReachable: jest.fn().mockResolvedValue(true),
+};
+
 describe('StrapiArticleRepository', () => {
   describe('Instantiation', () => {
     it('should create a repo', () => {
       const imageRepo = new FakeImageRepository();
 
       const create = () =>
-        new StrapiArticleRepository('myhost.com', makeFetch(), imageRepo);
+        new StrapiArticleRepository(
+          'myhost.com',
+          makeFetch(),
+          imageRepo,
+          mockNetworkInfo
+        );
 
-      expect(create).not.toThrowError();
+      expect(create).not.toThrow();
     });
   });
 
@@ -36,7 +45,8 @@ describe('StrapiArticleRepository', () => {
       const repo = new StrapiArticleRepository(
         'myhost.com',
         makeFetch(allArticles),
-        imageRepo
+        imageRepo,
+        mockNetworkInfo
       );
       const articles = await repo.getAll();
       expect(articles).toHaveLength(5);
@@ -48,7 +58,8 @@ describe('StrapiArticleRepository', () => {
       const repo = new StrapiArticleRepository(
         'myhost.com',
         makeFetch(articleOne),
-        imageRepo
+        imageRepo,
+        mockNetworkInfo
       );
       const article = await repo.getById(new ArticleId('1'));
       expect(article.getTitle()).toBe(
@@ -61,7 +72,8 @@ describe('StrapiArticleRepository', () => {
       const repo = new StrapiArticleRepository(
         'myhost.com',
         makeFetch(designationStrokeFacts),
-        imageRepo
+        imageRepo,
+        mockNetworkInfo
       );
       const [strokeFacts] = await repo.getByDesignation(
         Designation.STROKE_FACTS
@@ -74,13 +86,14 @@ describe('StrapiArticleRepository', () => {
       const repo = new StrapiArticleRepository(
         'myhost.com',
         makeFetch(articleWithTag),
-        imageRepo
+        imageRepo,
+        mockNetworkInfo
       );
 
       const article = await repo.getById(new ArticleId('6'));
       const tags = article.getTags();
 
-      expect(tags[0].is(new Tag('General'))).toBe(true);
+      expect(tags[0].is(new Tag('General', new Date(0)))).toBe(true);
     });
   });
 });

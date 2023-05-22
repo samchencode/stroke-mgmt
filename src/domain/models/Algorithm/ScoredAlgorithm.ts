@@ -1,11 +1,14 @@
-import type { Algorithm } from '@/domain/models/Algorithm/Algorithm';
+import type { BaseAlgorithm } from '@/domain/models/Algorithm/Algorithm';
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
-import type { AlgorithmInfo } from '@/domain/models/Algorithm/AlgorithmInfo';
+import type {
+  AlgorithmInfo,
+  AlgorithmParams,
+} from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import { NoSwitchesError } from '@/domain/models/Algorithm/NoSwitchesError';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type {
-  YesNoSwitch,
+  Switch,
   SwitchId,
   LevelId,
 } from '@/domain/models/Algorithm/Switch';
@@ -13,13 +16,15 @@ import type { Image } from '@/domain/models/Image';
 
 type ScoredAlgorithmParams = {
   info: AlgorithmInfo;
-  switches: YesNoSwitch[];
+  switches: Switch[];
 };
 
-class ScoredAlgorithm implements Algorithm {
+class ScoredAlgorithm implements BaseAlgorithm {
   private info: AlgorithmInfo;
 
-  private switches: YesNoSwitch[];
+  private switches: Switch[];
+
+  readonly type = 'ScoredAlgorithm';
 
   constructor({ info, switches }: ScoredAlgorithmParams) {
     this.info = info;
@@ -28,6 +33,10 @@ class ScoredAlgorithm implements Algorithm {
   }
 
   getOutcomes(): Outcome[] {
+    return this.info.getOutcomes();
+  }
+
+  getDisplayedOutcomes(): Outcome[] {
     if (!this.hasOutcomes()) return [];
     const outcomes = this.info.getOutcomes();
     const score = this.calculateScore();
@@ -75,19 +84,19 @@ class ScoredAlgorithm implements Algorithm {
     return this.info.getSummary();
   }
 
-  getSwitches(): YesNoSwitch[] {
+  getSwitches(): Switch[] {
     return this.switches;
   }
 
-  getshouldShowOnHomeScreen(): boolean {
-    return this.info.getshouldShowOnHomeScreen();
+  getShouldShowOnHomeScreen(): boolean {
+    return this.info.getShouldShowOnHomeScreen();
   }
 
   getLastUpdated(): Date {
     return this.info.getLastUpdated();
   }
 
-  is(other: Algorithm): boolean {
+  is(other: BaseAlgorithm): boolean {
     return other.getId().is(this.getId());
   }
 
@@ -98,6 +107,11 @@ class ScoredAlgorithm implements Algorithm {
       ...params,
     };
     return new ScoredAlgorithm(newParams);
+  }
+
+  setMetadata(info: Partial<AlgorithmParams>): ScoredAlgorithm {
+    const newInfo = this.info.clone(info);
+    return this.clone({ info: newInfo });
   }
 
   acceptVisitor(v: AlgorithmVisitor): void {

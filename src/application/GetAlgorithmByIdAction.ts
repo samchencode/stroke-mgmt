@@ -1,17 +1,11 @@
-import type {
-  AlgorithmId,
-  AlgorithmRepository,
-} from '@/domain/models/Algorithm';
+import type { Algorithm, AlgorithmId } from '@/domain/models/Algorithm';
+import type { AlgorithmCache } from '@/domain/services/Cache';
 
 class GetAlgorithmByIdAction {
-  private repo: AlgorithmRepository;
+  constructor(private readonly algorithmCache: AlgorithmCache) {}
 
-  constructor(algorithmRepository: AlgorithmRepository) {
-    this.repo = algorithmRepository;
-  }
-
-  async execute(id: AlgorithmId) {
-    return this.repo.getById(id);
+  async execute(id: AlgorithmId, onStaleCallback: (v: Algorithm) => void) {
+    return this.algorithmCache.getById(id, onStaleCallback);
   }
 }
 

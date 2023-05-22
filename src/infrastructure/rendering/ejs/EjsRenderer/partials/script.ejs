@@ -78,6 +78,18 @@
     }
   })();
 
+  ; // Wrap tables with wrapper div
+  (function() {
+    const tables = Array.from(document.getElementsByTagName('table'))
+    tables.forEach(table => {
+      const wrapper = document.createElement('div')
+      wrapper.className = 'table__wrapper'
+      const newTable = table.cloneNode(true)
+      wrapper.appendChild(newTable)
+      table.replaceWith(wrapper)
+    })
+  })()
+
   ; // Listen to click of any link
   (function() {
     const isArticleLink = (href) => href.slice(0, 8) === 'article:'

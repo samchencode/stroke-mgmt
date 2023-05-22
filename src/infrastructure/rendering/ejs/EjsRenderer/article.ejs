@@ -65,6 +65,11 @@
       text-align: center;
     }
 
+    .table__wrapper {
+      width: 100%;
+      overflow-x: scroll;
+    }
+
     .iframe__wrapper {
       min-width: 100%;
       min-height: 300px;
@@ -229,6 +234,18 @@
       })
     );
   })();
+
+  ; // Wrap tables with wrapper div
+  (function() {
+    const tables = Array.from(document.getElementsByTagName('table'))
+    tables.forEach(table => {
+      const wrapper = document.createElement('div')
+      wrapper.className = 'table__wrapper'
+      const newTable = table.cloneNode(true)
+      wrapper.appendChild(newTable)
+      table.replaceWith(wrapper)
+    })
+  })()
 </script>
 
 </html>

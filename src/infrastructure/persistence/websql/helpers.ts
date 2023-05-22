@@ -50,3 +50,4 @@ function resultSetToArray<T>(result: SQLResultSet) {
 }
 
 export { sqlStr, executeSql, resultSetToArray };
+export type { Query };

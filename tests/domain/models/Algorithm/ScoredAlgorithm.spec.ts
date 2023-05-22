@@ -34,7 +34,7 @@ describe('ScoredAlgorithm', () => {
       ];
 
       const create = () => new ScoredAlgorithm({ info, switches });
-      expect(create).not.toThrowError();
+      expect(create).not.toThrow();
     });
   });
 
@@ -229,7 +229,7 @@ describe('ScoredAlgorithm', () => {
         lastUpdated: new Date(0),
       });
       const create = () => new ScoredAlgorithm({ info, switches: [] });
-      expect(create).toThrowError('No switches');
+      expect(create).toThrow('No switches');
     });
 
     it('should throw error if switchid not found', () => {
@@ -255,7 +255,7 @@ describe('ScoredAlgorithm', () => {
       const oneSwitchAlgo = new ScoredAlgorithm({ info, switches });
       const boom = () =>
         oneSwitchAlgo.setSwitchById(new SwitchId('1'), YesNoSwitch.NO);
-      expect(boom).toThrowError('id 1');
+      expect(boom).toThrow('id 1');
     });
 
     it('should preserve order of switches after setting switch', () => {

@@ -30,7 +30,11 @@ import { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { StrapiTagRepository } from '@/infrastructure/persistence/strapi/StrapiTagRepository';
 import { ReactNativeNetInfo } from '@/infrastructure/network-info/react-native-netinfo/ReactNativeNetInfo';
 import { ImageCache } from '@/domain/models/Image';
-import { ArticleCache, TagCache } from '@/domain/services/Cache';
+import {
+  AlgorithmCache,
+  ArticleCache,
+  TagCache,
+} from '@/domain/services/Cache';
 import { WebsqlCachedArticleRepository } from '@/infrastructure/persistence/websql/WebsqlCachedArticleRepository';
 import { cheerioGetImageSrcsInHtml } from '@/infrastructure/html-processing/cheerio/cheerioGetImageSrcsInHtml';
 import { cheerioReplaceImageSrcsInHtml } from '@/infrastructure/html-processing/cheerio/cheerioReplaceImageSrcsInHtml';
@@ -39,6 +43,7 @@ import { WebsqlCachedImageMetadataRepository } from '@/infrastructure/persistenc
 import { openExpoSqliteDatabase } from '@/infrastructure/persistence/websql/expo-sqlite';
 import { WebsqlCachedTagRepository } from '@/infrastructure/persistence/websql/WebsqlCachedTagRepository';
 import { ClearCacheAction } from '@/application/ClearCacheAction';
+import { WebsqlCachedAlgorithmRepostiory } from '@/infrastructure/persistence/websql/WebsqlCachedAlgorithmRepository/WebsqlCachedAlgorithmRepository';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -55,6 +60,7 @@ export const module = {
   imageCache: ['type', ImageCache],
   articleCache: ['type', ArticleCache],
   tagCache: ['type', TagCache],
+  algorithmCache: ['type', AlgorithmCache],
 
   // APPLICATION
   getAllArticlesAction: ['type', GetAllArticlesAction],
@@ -96,6 +102,7 @@ export const module = {
   cachedImageMetadataRepository: ['type', WebsqlCachedImageMetadataRepository],
   websqlDatabase: ['factory', openExpoSqliteDatabase],
   cachedTagRepository: ['type', WebsqlCachedTagRepository],
+  cachedAlgorithmRepository: ['type', WebsqlCachedAlgorithmRepostiory],
 
   // TEMPLATES
   App: ['factory', App],

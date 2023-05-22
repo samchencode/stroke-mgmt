@@ -1,5 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
-import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
+import React, { useCallback } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import type {
   Algorithm,
@@ -7,15 +6,18 @@ import type {
   RenderedAlgorithm,
 } from '@/domain/models/Algorithm';
 import { theme } from '@/view/theme';
-import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
-import { AlgorithmCollection } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/AlgorithmCollection';
 import { AlgorithmCollectionItem } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/AlgorithmCollectionItem';
+import { useAlgorithmCollection } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/useAlgorithmCollection';
+import { useScrollBehavior } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/useScrollBehavior';
 
 type Props = {
   width: number;
   minHeight: number;
   renderAlgorithm: (a: Algorithm) => Promise<RenderedAlgorithm>;
-  renderAlgorithmById: (id: AlgorithmId) => Promise<RenderedAlgorithm>;
+  renderAlgorithmById: (
+    id: AlgorithmId,
+    onStale: (id: RenderedAlgorithm) => void
+  ) => Promise<RenderedAlgorithm>;
   initialId: AlgorithmId;
 };
 
@@ -26,25 +28,15 @@ function BaseAlgorithmCollectionView({
   renderAlgorithm,
   initialId,
 }: Props) {
-  const scrollView = useRef<ScrollView>(null);
-  const scrollToEnd = useCallback(() => {
-    scrollView.current?.scrollToEnd({ animated: true });
-  }, []);
-  const handleScroll = useHeaderScrollResponder<
-    NativeSyntheticEvent<NativeScrollEvent>
-  >(useCallback((e) => e.nativeEvent.contentOffset.y, []));
+  const { scrollToEnd, scrollView, handleScroll } = useScrollBehavior();
 
-  const [collection, setCollection] = useState(
-    AlgorithmCollection.fromInitial(initialId)
-  );
-
-  const handleAppendToCollection = useCallback(
-    (after: AlgorithmId, newId: AlgorithmId) => {
-      const newCollection = collection.append(after, newId);
-      setCollection(newCollection);
-      setTimeout(scrollToEnd, 300);
-    },
-    [collection, scrollToEnd]
+  const {
+    collection,
+    handleAppendToCollection,
+    handleDropItemsFromCollectionAfter,
+  } = useAlgorithmCollection(
+    initialId,
+    useCallback(() => setTimeout(scrollToEnd, 300), [scrollToEnd])
   );
 
   return (
@@ -53,15 +45,17 @@ function BaseAlgorithmCollectionView({
       onScroll={handleScroll}
       scrollEventThrottle={300}
     >
-      {collection.getIds().map((id, i, arr) => (
+      {collection.getIds().map(({ id, uuid }, i, arr) => (
         <AlgorithmCollectionItem
-          key={id.toString()}
+          key={uuid}
           id={id}
+          uuid={uuid}
           width={width}
           style={[styles.algorithm, arr.length - 1 === i && { minHeight }]}
           renderAlgorithm={renderAlgorithm}
           renderAlgorithmById={renderAlgorithmById}
           appendToCollection={handleAppendToCollection}
+          dropItemsFromCollectionAfter={handleDropItemsFromCollectionAfter}
         />
       ))}
     </ScrollView>

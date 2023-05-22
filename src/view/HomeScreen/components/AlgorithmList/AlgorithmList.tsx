@@ -6,11 +6,11 @@ import type { AlgorithmId, Algorithm } from '@/domain/models/Algorithm';
 import { AlgorithmListFilled } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListFilled';
 import { AlgorithmListError } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListError';
 import { AlgorithmListLoading } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListLoading';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 
 type AlgorithmListProps = {
-  getAllAlgorithms: () => Promise<Algorithm[]>;
+  getAllAlgorithms: (cb: (as: Algorithm[]) => void) => Promise<Algorithm[]>;
   onSelectAlgorithm: (id: AlgorithmId) => void;
   style?: StyleProp<ViewStyle>;
 };
@@ -20,9 +20,13 @@ function AlgorithmList({
   onSelectAlgorithm,
   style = {},
 }: AlgorithmListProps) {
+  const queryClient = useQueryClient();
+  const onAlgorithmsStale = (algorithms: Algorithm[]) =>
+    queryClient.setQueryData(['algorithms'], algorithms);
+
   const query = useQuery({
     queryKey: ['algorithms'],
-    queryFn: getAllAlgorithms,
+    queryFn: () => getAllAlgorithms(onAlgorithmsStale),
   });
 
   return (

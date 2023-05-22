@@ -6,40 +6,56 @@ import type {
   AlgorithmId,
   RenderedAlgorithm,
 } from '@/domain/models/Algorithm';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
 import { LoadingSpinnerView } from '@/view/components';
 
 type Props = {
   id: AlgorithmId;
+  uuid: string;
   renderAlgorithm: (a: Algorithm) => Promise<RenderedAlgorithm>;
-  renderAlgorithmById: (id: AlgorithmId) => Promise<RenderedAlgorithm>;
-  appendToCollection: (after: AlgorithmId, newId: AlgorithmId) => void;
+  renderAlgorithmById: (
+    id: AlgorithmId,
+    onStale: (id: RenderedAlgorithm) => void
+  ) => Promise<RenderedAlgorithm>;
+  appendToCollection: (afterUuid: string, newId: AlgorithmId) => void;
+  dropItemsFromCollectionAfter: (afterUuid: string) => void;
   width: number;
   style?: StyleProp<ViewStyle>;
 };
 
 function AlgorithmCollectionItem({
   id,
+  uuid,
   renderAlgorithm,
   renderAlgorithmById,
   appendToCollection,
+  dropItemsFromCollectionAfter,
   width,
   style = {},
 }: Props) {
   const [renderedAlgorithm, setRenderedAlgorithm] =
     useState<RenderedAlgorithm | null>(null);
+  const queryClient = useQueryClient();
+  const handleStale = (rAlgo: RenderedAlgorithm) =>
+    queryClient.setQueryData(['algorithm', id.toString()], rAlgo);
 
   const query = useQuery({
     queryKey: ['algorithm', id.toString()],
-    queryFn: () => renderAlgorithmById(id),
-    staleTime: Infinity,
-    // TODO: don't update view onfocus and on network change
-    // 1. if you do, it resets algo state probably so need to clear the collection
-    // --> annoying UX?
-    // 2. good middle ground would be to check if it requires an update by .lastUpdated comparison
-    // and if it does, show a snackbar or banner with option to refresh.
+    queryFn: () => renderAlgorithmById(id, handleStale),
+    structuralSharing: (oldData, newData) => {
+      if (!oldData) return newData;
+      const isStale =
+        oldData.getAlgorithm().getLastUpdated() <
+        newData.getAlgorithm().getLastUpdated();
+      if (isStale) {
+        // runs once after both handleStale and query's refetch
+        dropItemsFromCollectionAfter(uuid);
+        return newData;
+      }
+      return oldData;
+    },
   });
 
   useEffect(() => {
@@ -55,11 +71,10 @@ function AlgorithmCollectionItem({
   );
 
   const handleNextAlgorithm = useCallback(
-    (nextId: AlgorithmId, thisAlgorithm: Algorithm) => {
-      const thisId = thisAlgorithm.getId();
-      appendToCollection(thisId, nextId);
+    (nextId: AlgorithmId) => {
+      appendToCollection(uuid, nextId);
     },
-    [appendToCollection]
+    [appendToCollection, uuid]
   );
 
   return (

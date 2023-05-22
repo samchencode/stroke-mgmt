@@ -33,7 +33,7 @@ function factory(
             []
           )}
           renderAlgorithmById={useCallback(
-            (aId) => renderAlgorithmByIdAction.execute(aId),
+            (aId, cb) => renderAlgorithmByIdAction.execute(aId, cb),
             []
           )}
           minHeight={height}

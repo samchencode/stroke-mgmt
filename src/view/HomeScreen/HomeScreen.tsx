@@ -4,7 +4,7 @@ import { StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import type { Article, ArticleId } from '@/domain/models/Article';
-import type { AlgorithmId } from '@/domain/models/Algorithm';
+import type { Algorithm, AlgorithmId } from '@/domain/models/Algorithm';
 import type { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetAllAlgorithmsShownOnHomeScreenAction';
 import type { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { theme } from '@/view/theme';
@@ -59,7 +59,8 @@ function factory(
       >
         <AlgorithmList
           getAllAlgorithms={useCallback(
-            () => getAllAlgorithmsShownOnHomeScreenAction.execute(),
+            (cb: (as: Algorithm[]) => void) =>
+              getAllAlgorithmsShownOnHomeScreenAction.execute(cb),
             []
           )}
           onSelectAlgorithm={handleSelectAlgorithm}

@@ -9,6 +9,7 @@ import { theme } from '@/view/theme';
 import { AlgorithmCollectionItem } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/AlgorithmCollectionItem';
 import { useAlgorithmCollection } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/useAlgorithmCollection';
 import { useScrollBehavior } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/useScrollBehavior';
+import type { ArticleId } from '@/domain/models/Article';
 
 type Props = {
   width: number;
@@ -18,6 +19,7 @@ type Props = {
     id: AlgorithmId,
     onStale: (id: RenderedAlgorithm) => void
   ) => Promise<RenderedAlgorithm>;
+  onPressArticleLink: (id: ArticleId) => void;
   initialId: AlgorithmId;
 };
 
@@ -26,6 +28,7 @@ function BaseAlgorithmCollectionView({
   minHeight,
   renderAlgorithmById,
   renderAlgorithm,
+  onPressArticleLink,
   initialId,
 }: Props) {
   const { scrollToEnd, scrollView, handleScroll } = useScrollBehavior();
@@ -56,6 +59,7 @@ function BaseAlgorithmCollectionView({
           renderAlgorithmById={renderAlgorithmById}
           appendToCollection={handleAppendToCollection}
           dropItemsFromCollectionAfter={handleDropItemsFromCollectionAfter}
+          onPressArticleLink={onPressArticleLink}
         />
       ))}
     </ScrollView>

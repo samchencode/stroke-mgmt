@@ -9,12 +9,14 @@ import {
   WebViewEventHandler,
   WebViewError,
 } from '@/infrastructure/rendering/WebViewEvent';
+import { ArticleId } from '@/domain/models/Article';
 
 type TextAlgorithmViewProps = {
   html: string;
   width: number;
   algorithm: Algorithm;
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
+  onPressArticleLink: (id: ArticleId) => void;
 };
 
 function TextAlgorithmView({
@@ -22,6 +24,7 @@ function TextAlgorithmView({
   width,
   algorithm,
   onNextAlgorithm,
+  onPressArticleLink,
 }: TextAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
 
@@ -34,8 +37,10 @@ function TextAlgorithmView({
         },
         nextpressed: ({ id }) =>
           onNextAlgorithm(new AlgorithmId(id), algorithm),
+        articlelinkpressed: ({ articleId }) =>
+          onPressArticleLink(new ArticleId(articleId)),
       }),
-    [algorithm, onNextAlgorithm]
+    [algorithm, onNextAlgorithm, onPressArticleLink]
   );
 
   const handleMessage = useCallback(

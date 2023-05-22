@@ -9,6 +9,7 @@ import { TextAlgorithmView } from '@/view/AlgorithmViewerScreen/components/Algor
 import { ScoredAlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView/ScoredAlgorithmView';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { View } from 'react-native';
+import type { ArticleId } from '@/domain/models/Article';
 
 type AlgorithmViewProps = {
   algorithm: Algorithm;
@@ -16,6 +17,7 @@ type AlgorithmViewProps = {
   width: number;
   onChangeAlgorithm: (a: Algorithm) => void;
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
+  onPressArticleLink: (id: ArticleId) => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -47,20 +49,28 @@ class AlgorithmView
   }
 
   private renderTextAlgorithm() {
-    const { html, width, onNextAlgorithm, algorithm } = this.props;
+    const { html, width, onNextAlgorithm, algorithm, onPressArticleLink } =
+      this.props;
     return (
       <TextAlgorithmView
         html={html}
         width={width}
         algorithm={algorithm}
         onNextAlgorithm={onNextAlgorithm}
+        onPressArticleLink={onPressArticleLink}
       />
     );
   }
 
   private renderScoredAlgorithm() {
-    const { html, width, onNextAlgorithm, onChangeAlgorithm, algorithm } =
-      this.props;
+    const {
+      html,
+      width,
+      onNextAlgorithm,
+      onChangeAlgorithm,
+      algorithm,
+      onPressArticleLink,
+    } = this.props;
     return (
       <ScoredAlgorithmView
         html={html}
@@ -68,6 +78,7 @@ class AlgorithmView
         algorithm={algorithm as ScoredAlgorithm}
         onNextAlgorithm={onNextAlgorithm}
         onChangeAlgorithm={onChangeAlgorithm}
+        onPressArticleLink={onPressArticleLink}
       />
     );
   }

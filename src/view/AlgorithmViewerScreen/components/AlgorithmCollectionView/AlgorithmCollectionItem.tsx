@@ -10,6 +10,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
 import { LoadingSpinnerView } from '@/view/components';
+import type { ArticleId } from '@/domain/models/Article';
 
 type Props = {
   id: AlgorithmId;
@@ -22,10 +23,11 @@ type Props = {
   appendToCollection: (afterUuid: string, newId: AlgorithmId) => void;
   dropItemsFromCollectionAfter: (afterUuid: string) => void;
   width: number;
+  onPressArticleLink: (id: ArticleId) => void;
   style?: StyleProp<ViewStyle>;
 };
 
-function AlgorithmCollectionItem({
+function BaseAlgorithmCollectionItem({
   id,
   uuid,
   renderAlgorithm,
@@ -33,6 +35,7 @@ function AlgorithmCollectionItem({
   appendToCollection,
   dropItemsFromCollectionAfter,
   width,
+  onPressArticleLink,
   style = {},
 }: Props) {
   const [renderedAlgorithm, setRenderedAlgorithm] =
@@ -96,6 +99,7 @@ function AlgorithmCollectionItem({
               onChangeAlgorithm={handleChangeAlgorithm}
               onNextAlgorithm={handleNextAlgorithm}
               style={style}
+              onPressArticleLink={onPressArticleLink}
             />
           ) : (
             <Text>Oh no! Something went wrong!</Text>
@@ -103,6 +107,7 @@ function AlgorithmCollectionItem({
         [
           handleChangeAlgorithm,
           handleNextAlgorithm,
+          onPressArticleLink,
           renderedAlgorithm,
           style,
           width,
@@ -118,4 +123,4 @@ function AlgorithmCollectionItem({
   );
 }
 
-export { AlgorithmCollectionItem };
+export const AlgorithmCollectionItem = React.memo(BaseAlgorithmCollectionItem);

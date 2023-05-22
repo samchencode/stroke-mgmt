@@ -5,6 +5,7 @@ import type { AppNavigationProps } from '@/view/Router';
 import type { RenderAlgorithmByIdAction } from '@/application/RenderAlgorithmByIdAction';
 import type { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { AlgorithmCollectionView } from '@/view/AlgorithmViewerScreen/components/AlgorithmCollectionView/AlgorithmCollectionView';
+import type { ArticleId } from '@/domain/models/Article';
 
 function factory(
   renderAlgorithmByIdAction: RenderAlgorithmByIdAction,
@@ -12,6 +13,7 @@ function factory(
 ) {
   return function AlgorithmViewerScreen({
     route,
+    navigation,
   }: AppNavigationProps<'AlgorithmViewerScreen'>) {
     const { id } = route.params;
 
@@ -21,6 +23,13 @@ function factory(
     const handleLayout = useCallback(
       (e: LayoutChangeEvent) => setHeight(e.nativeEvent.layout.height - 20),
       []
+    );
+
+    const onPressArticleLink = useCallback(
+      (aid: ArticleId) => {
+        navigation.navigate('ArticleViewerScreen', { id: aid });
+      },
+      [navigation]
     );
 
     return (
@@ -37,6 +46,7 @@ function factory(
             []
           )}
           minHeight={height}
+          onPressArticleLink={onPressArticleLink}
         />
       </View>
     );

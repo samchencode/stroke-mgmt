@@ -10,6 +10,7 @@ import {
   WebViewError,
 } from '@/infrastructure/rendering/WebViewEvent';
 import { LevelId } from '@/domain/models/Algorithm/Switch';
+import { ArticleId } from '@/domain/models/Article';
 
 type ScoredAlgorithmViewProps = {
   html: string;
@@ -17,6 +18,7 @@ type ScoredAlgorithmViewProps = {
   algorithm: ScoredAlgorithm;
   onChangeAlgorithm: (algo: ScoredAlgorithm) => void;
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
+  onPressArticleLink: (id: ArticleId) => void;
 };
 
 function ScoredAlgorithmView({
@@ -25,6 +27,7 @@ function ScoredAlgorithmView({
   algorithm,
   onChangeAlgorithm,
   onNextAlgorithm,
+  onPressArticleLink,
 }: ScoredAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
 
@@ -44,8 +47,10 @@ function ScoredAlgorithmView({
         },
         nextpressed: ({ id }) =>
           onNextAlgorithm(new AlgorithmId(id), algorithm),
+        articlelinkpressed: ({ articleId }) =>
+          onPressArticleLink(new ArticleId(articleId)),
       }),
-    [algorithm, onChangeAlgorithm, onNextAlgorithm]
+    [algorithm, onChangeAlgorithm, onNextAlgorithm, onPressArticleLink]
   );
 
   const handleMessage = useCallback(

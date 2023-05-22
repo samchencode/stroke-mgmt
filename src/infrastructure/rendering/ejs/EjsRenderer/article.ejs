@@ -53,11 +53,19 @@
     .iframe__wrapper--loading iframe {
       visibility: hidden;
     }
+
+    .template.last-updated {
+      display: block;
+      align-self: flex-end;
+      margin-right: 16px;
+      text-align: right;
+    }
   </style>
 </head>
 
 <body>
   <%- body %>
+  <i class="template last-updated">Last Updated: <%- lastUpdated.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
 </body>
 
 <script>

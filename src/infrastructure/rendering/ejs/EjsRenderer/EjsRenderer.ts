@@ -86,6 +86,7 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
     return template({
       title: article.getTitle(),
       body: article.getHtml(),
+      lastUpdated: article.getLastUpdated(),
     });
   }
 

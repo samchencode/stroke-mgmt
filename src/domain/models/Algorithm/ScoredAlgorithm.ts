@@ -33,6 +33,10 @@ class ScoredAlgorithm implements BaseAlgorithm {
   }
 
   getOutcomes(): Outcome[] {
+    return this.info.getOutcomes();
+  }
+
+  getDisplayedOutcomes(): Outcome[] {
     if (!this.hasOutcomes()) return [];
     const outcomes = this.info.getOutcomes();
     const score = this.calculateScore();

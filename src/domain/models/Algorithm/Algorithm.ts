@@ -14,6 +14,7 @@ interface BaseAlgorithm {
   getBody(): string;
   getThumbnail(): Image;
   getOutcomes(): Outcome[];
+  getDisplayedOutcomes(): Outcome[];
   hasOutcomes(): boolean;
   getShouldShowOnHomeScreen(): boolean;
   getLastUpdated(): Date;

@@ -25,6 +25,10 @@ class TextAlgorithm implements BaseAlgorithm {
     return this.info.getOutcomes();
   }
 
+  getDisplayedOutcomes(): Outcome[] {
+    return this.getOutcomes();
+  }
+
   hasOutcomes(): boolean {
     const outcomes = this.info.getOutcomes();
     return outcomes.length > 0;

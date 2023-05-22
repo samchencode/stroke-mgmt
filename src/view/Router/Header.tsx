@@ -178,6 +178,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '100%',
     right: 0,
+    zIndex: 2,
     ...theme.elevations[2],
   },
 });

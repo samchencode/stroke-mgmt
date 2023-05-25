@@ -5,7 +5,7 @@ import type { RootNavigationProps } from '@/view/Router';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { DisclaimerView } from '@/view/DisclaimerModal/DisclaimerView';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
-import { LoadingSpinnerView } from '@/view/components';
+import { LoadingSpinnerView, TextButton } from '@/view/components';
 import { theme } from '@/view/theme';
 
 function factory(renderDisclaimerAction: RenderDisclaimerAction) {
@@ -32,9 +32,9 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
             query={query}
             renderData={useCallback(
               (html: string) => (
-                <DisclaimerView onDismiss={handleDismiss} html={html} />
+                <DisclaimerView html={html} />
               ),
-              [handleDismiss]
+              []
             )}
             renderError={useCallback(
               () => (
@@ -48,6 +48,11 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
               ),
               []
             )}
+          />
+          <TextButton
+            title="Got it"
+            onPress={handleDismiss}
+            style={styles.btnDismiss}
           />
         </View>
       </View>
@@ -74,9 +79,14 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: theme.colors.background,
     padding: theme.spaces.lg,
+    justifyContent: 'space-between',
     minHeight: 280,
     maxHeight: 560,
     borderRadius: 28,
+  },
+  btnDismiss: {
+    marginTop: theme.spaces.lg,
+    alignSelf: 'flex-end',
   },
 });
 

@@ -41,3 +41,4 @@ class AlgorithmCollection {
 }
 
 export { AlgorithmCollection };
+export type { AlgorithmIdWithUuid };

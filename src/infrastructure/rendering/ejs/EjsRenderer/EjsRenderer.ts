@@ -97,14 +97,6 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
       body: article.getHtml(),
     });
   }
-
-  async renderStrokeFacts(article: Article): Promise<string> {
-    return this.renderArticle(article);
-  }
-
-  async renderStrokeSigns(article: Article): Promise<string> {
-    return this.renderArticle(article);
-  }
 }
 
 export { EjsRenderer };

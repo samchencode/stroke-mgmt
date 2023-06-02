@@ -29,7 +29,7 @@ describe('EjsAlgorithmRenderer', () => {
   describe('Instantiation', () => {
     it('should be created given file system with template', () => {
       const create = () => new EjsRenderer(fs);
-      expect(create).not.toThrowError();
+      expect(create).not.toThrow();
     });
   });
 

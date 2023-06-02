@@ -13,7 +13,7 @@ class RenderStrokeSignsAction {
       this.articleRenderer.renderArticle(article).then(onStale);
     };
     const article = await this.getStrokeSignsAction.execute(handleStale);
-    return this.articleRenderer.renderStrokeSigns(article);
+    return this.articleRenderer.renderArticle(article);
   }
 }
 

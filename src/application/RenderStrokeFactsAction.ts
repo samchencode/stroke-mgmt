@@ -13,7 +13,7 @@ class RenderStrokeFactsAction {
       this.articleRenderer.renderArticle(article).then(onStale);
     };
     const article = await this.getStrokeFactsAction.execute(handleStale);
-    return this.articleRenderer.renderStrokeFacts(article);
+    return this.articleRenderer.renderArticle(article);
   }
 }
 

@@ -11,6 +11,7 @@ import type { Type as HomeScreen } from '@/view/HomeScreen';
 import type { Type as DisclaimerModal } from '@/view/DisclaimerModal';
 import type { Type as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
 import type { Type as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
+import type { Type as AboutUsScreen } from '@/view/AboutUsScreen';
 import type { ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { useShouldShowStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
@@ -24,6 +25,7 @@ type AppNavigationParams = {
   HomeScreen: undefined;
   ArticleViewerScreen: { id: ArticleId };
   AlgorithmViewerScreen: { id: AlgorithmId };
+  AboutUsScreen: undefined;
 };
 
 type RootNavigationParams = {
@@ -41,6 +43,7 @@ function factory(
   DisclaimerModal: DisclaimerModal,
   ArticleViewerScreen: ArticleViewerScreen,
   AlgorithmViewerScreen: AlgorithmViewerScreen,
+  AboutUsScreen: AboutUsScreen,
   Header: Header
 ) {
   function AppNavigation() {
@@ -69,6 +72,11 @@ function factory(
           name="StrokeSignsScreen"
           component={StrokeSignsScreen}
           options={{ header: NoHeader }}
+        />
+        <AppStack.Screen
+          name="AboutUsScreen"
+          component={AboutUsScreen}
+          options={{ title: '' }}
         />
         <AppStack.Screen
           name="HomeScreen"

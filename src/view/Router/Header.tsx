@@ -80,6 +80,11 @@ function factory(clearCacheAction: ClearCacheAction) {
       );
     }, [refreshQueries, showSnack]);
 
+    const handlePressAbout = useCallback(() => {
+      setMenuOpen(false);
+      navigation.navigate('AboutUsScreen');
+    }, [navigation]);
+
     const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
       useNoInternetBanner();
 
@@ -113,7 +118,7 @@ function factory(clearCacheAction: ClearCacheAction) {
           <Menu
             visible={menuOpen}
             style={styles.menu}
-            onPressAbout={useCallback(() => alert('about'), [])}
+            onPressAbout={handlePressAbout}
             onPressDisclaimer={handlePressDisclaimer}
             onPressLicense={useCallback(() => alert('license'), [])}
             onPressClearCache={handlePressClearCache}

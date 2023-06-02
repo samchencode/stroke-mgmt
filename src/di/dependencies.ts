@@ -4,10 +4,12 @@ import { GetArticleByIdAction } from '@/application/GetArticleByIdAction';
 import { GetDisclaimerAction } from '@/application/GetDisclaimerAction';
 import { GetStrokeFactsAction } from '@/application/GetStrokeFactsAction';
 import { GetStrokeSignsAction } from '@/application/GetStrokeSignsAction';
+import { GetAboutUsAction } from '@/application/GetAboutUsAction';
 import { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import { RenderDisclaimerAction } from '@/application/RenderDisclaimerAction';
 import { RenderStrokeFactsAction } from '@/application/RenderStrokeFactsAction';
 import { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
+import { RenderAboutUsAction } from '@/application/RenderAboutUsAction';
 import { ExpoAssetFileSystem } from '@/infrastructure/file-system/expo-asset/ExpoAssetFileSystem';
 import { factory as App } from '@/view/App/App';
 import { factory as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
@@ -18,6 +20,7 @@ import { factory as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
 import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
 import { factory as Router } from '@/view/Router';
 import { factory as Header } from '@/view/Router/Header';
+import { factory as AboutUsScreen } from '@/view/AboutUsScreen';
 import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetAllAlgorithmsShownOnHomeScreenAction';
 import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
@@ -68,6 +71,7 @@ export const module = {
   getDisclaimerAction: ['type', GetDisclaimerAction],
   getStrokeFactsAction: ['type', GetStrokeFactsAction],
   getStrokeSignsAction: ['type', GetStrokeSignsAction],
+  getAboutUsAction: ['type', GetAboutUsAction],
   getAllAlgorithmsShownOnHomeScreenAction: [
     'type',
     GetAllAlgorithmsShownOnHomeScreenAction,
@@ -80,6 +84,7 @@ export const module = {
   renderDisclaimerAction: ['type', RenderDisclaimerAction],
   renderStrokeFactsAction: ['type', RenderStrokeFactsAction],
   renderStrokeSignsAction: ['type', RenderStrokeSignsAction],
+  renderAboutUsAction: ['type', RenderAboutUsAction],
   clearCacheAction: ['type', ClearCacheAction],
 
   // INFRASTRUCTURE
@@ -109,6 +114,7 @@ export const module = {
   Router: ['factory', Router],
   StrokeFactsScreen: ['factory', StrokeFactsScreen],
   StrokeSignsScreen: ['factory', StrokeSignsScreen],
+  AboutUsScreen: ['factory', AboutUsScreen],
   HomeScreen: ['factory', HomeScreen],
   DisclaimerModal: ['factory', DisclaimerModal],
   ArticleViewerScreen: ['factory', ArticleViewerScreen],

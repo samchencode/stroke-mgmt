@@ -68,6 +68,24 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       text-align: center;
     }
 
+    /* Responsive Page Width */
+
+    @media screen and (min-width: 900px) {
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .template.header,
+      .template.main {
+        width: 868px;
+      }
+    }
+
+    /* Wrappers */
+
     .table__wrapper {
       width: 100%;
       overflow-x: scroll;
@@ -120,7 +138,7 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
 </head>
 
 <body>
-  <h1>foo bar</h1>
+  <main class="template main"><h1>foo bar</h1></main>
   <i class="template last-updated">Last Updated: December 31, 1969</i>
 </body>
 
@@ -511,10 +529,30 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     text-align: center;
   }
 
+  /* Responsive Page Width */
+
+  @media screen and (min-width: 900px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .template.header,
+    .template.main {
+      width: 868px;
+    }
+  }
+
+  /* Wrapper */
+
   .table__wrapper {
     width: 100%;
     overflow-x: scroll;
   }
+
+  /* Template */
 
   .template {
     box-sizing: border-box;
@@ -756,11 +794,11 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
 </head>
 
 <body>
-  <header>
+  <header class="template header">
     <h1 class="template header__title">GWNS</h1>
     <i>Last Updated: December 31, 1969</i>
   </header>
-  <main>
+  <main class="template main">
     <p class="template body__paragraph">
       All need immediate Rx and activate brain attack team immediately. ABCT = (airway, breathing, circulation, time of stroke onset). Endotracheal intubation if compromised airway or GCS less than eight. Maintain SBP 140 to 180 mmHg. HR 60-100. Establish IV access and hydration is recommended based on height/weight and clinical scenarios
     </p>
@@ -1158,10 +1196,30 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     text-align: center;
   }
 
+  /* Responsive Page Width */
+
+  @media screen and (min-width: 900px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .template.header,
+    .template.main {
+      width: 868px;
+    }
+  }
+
+  /* Wrapper */
+
   .table__wrapper {
     width: 100%;
     overflow-x: scroll;
   }
+
+  /* Template */
 
   .template {
     box-sizing: border-box;
@@ -1403,11 +1461,11 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
 </head>
 
 <body>
-  <header>
+  <header class="template header">
     <h1 class="template header__title">ABCTs</h1>
     <i>Last Updated: December 31, 1969</i>
   </header>
-  <main>
+  <main class="template main">
     <p class="template body__paragraph">
       <img src="https://placeimg.com/640/480/any" height="100"><ul><li>airway</li><li>breathing</li><li>circulation</li><li>time of stroke onset</li><a href="google.com">google</a></ul>
     </p>

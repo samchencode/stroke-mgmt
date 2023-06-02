@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import type { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
-import { StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import type { Article, ArticleId } from '@/domain/models/Article';
@@ -51,37 +51,46 @@ function factory(
     useSetAndroidBottomNavigationBarColor(theme.colors.surface, 'dark');
 
     return (
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingBottom: bottomNavigationBarHeight }}
-        onScroll={handleScroll}
-        scrollEventThrottle={300}
-      >
-        <AlgorithmList
-          getAllAlgorithms={useCallback(
-            (cb: (as: Algorithm[]) => void) =>
-              getAllAlgorithmsShownOnHomeScreenAction.execute(cb),
-            []
-          )}
-          onSelectAlgorithm={handleSelectAlgorithm}
-        />
-        <ArticleList
-          getAllArticles={useCallback(
-            (cb: (as: Article[]) => void) => getAllArticlesAction.execute(cb),
-            []
-          )}
-          getAllTags={useCallback((cb) => getAllTagsAction.execute(cb), [])}
-          onSelectArticle={handleSelectArticle}
-          style={styles.articleList}
-        />
-      </ScrollView>
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={{ paddingBottom: bottomNavigationBarHeight }}
+          onScroll={handleScroll}
+          scrollEventThrottle={300}
+        >
+          <AlgorithmList
+            getAllAlgorithms={useCallback(
+              (cb: (as: Algorithm[]) => void) =>
+                getAllAlgorithmsShownOnHomeScreenAction.execute(cb),
+              []
+            )}
+            onSelectAlgorithm={handleSelectAlgorithm}
+          />
+          <ArticleList
+            getAllArticles={useCallback(
+              (cb: (as: Article[]) => void) => getAllArticlesAction.execute(cb),
+              []
+            )}
+            getAllTags={useCallback((cb) => getAllTagsAction.execute(cb), [])}
+            onSelectArticle={handleSelectArticle}
+            style={styles.articleList}
+          />
+        </ScrollView>
+      </View>
     );
   };
 }
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
     flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+    maxWidth: theme.breakpoints.width.tablet,
     paddingTop: theme.spaces.md,
     paddingLeft: theme.spaces.md,
     paddingRight: theme.spaces.md,

@@ -59,10 +59,30 @@
     text-align: center;
   }
 
+  /* Responsive Page Width */
+
+  @media screen and (min-width: 900px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .template.header,
+    .template.main {
+      width: 868px;
+    }
+  }
+
+  /* Wrapper */
+
   .table__wrapper {
     width: 100%;
     overflow-x: scroll;
   }
+
+  /* Template */
 
   .template {
     box-sizing: border-box;

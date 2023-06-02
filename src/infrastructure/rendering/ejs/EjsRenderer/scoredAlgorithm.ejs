@@ -7,11 +7,11 @@
 </head>
 
 <body>
-  <header>
+  <header class="template header">
     <h1 class="template header__title"><%- algorithm.getTitle() _%></h1>
     <i>Last Updated: <%- algorithm.getLastUpdated().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
   </header>
-  <main>
+  <main class="template main">
     <p class="template body__paragraph">
       <%- algorithm.getBody() %>
     </p>

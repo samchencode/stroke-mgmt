@@ -65,6 +65,24 @@
       text-align: center;
     }
 
+    /* Responsive Page Width */
+
+    @media screen and (min-width: 900px) {
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .template.header,
+      .template.main {
+        width: 868px;
+      }
+    }
+
+    /* Wrappers */
+
     .table__wrapper {
       width: 100%;
       overflow-x: scroll;
@@ -117,7 +135,7 @@
 </head>
 
 <body>
-  <%- body %>
+  <main class="template main"><%- body %></main>
   <i class="template last-updated">Last Updated: <%- lastUpdated.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
 </body>
 

@@ -2,7 +2,12 @@ type FakeArticle = {
   id: string;
   title: string;
   html: string;
-  designation: 'DISCLAIMER' | 'STROKE_SIGNS' | 'STROKE_FACTS' | 'ARTICLE';
+  designation:
+    | 'DISCLAIMER'
+    | 'STROKE_SIGNS'
+    | 'STROKE_FACTS'
+    | 'ARTICLE'
+    | 'ABOUT';
   thumbnail: string;
   summary: string;
 };

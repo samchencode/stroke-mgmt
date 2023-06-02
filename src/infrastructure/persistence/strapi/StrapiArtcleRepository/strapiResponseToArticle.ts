@@ -20,6 +20,9 @@ export const strapiResponseToArticle = (
     case 'Disclaimer':
       designation = Designation.DISCLAIMER;
       break;
+    case 'About':
+      designation = Designation.ABOUT;
+      break;
     default:
       break;
   }

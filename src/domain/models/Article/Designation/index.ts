@@ -2,6 +2,7 @@ import { Article } from '@/domain/models/Article/Designation/Article';
 import { Disclaimer } from '@/domain/models/Article/Designation/Disclaimer';
 import { StrokeFacts } from '@/domain/models/Article/Designation/StrokeFacts';
 import { StrokeSigns } from '@/domain/models/Article/Designation/StrokeSigns';
+import { About } from '@/domain/models/Article/Designation/About';
 
 export const Designation = {
   get DISCLAIMER() {
@@ -16,6 +17,9 @@ export const Designation = {
   get ARTICLE() {
     return new Article();
   },
+  get ABOUT() {
+    return new About();
+  },
   fromString(str: string) {
     switch (str) {
       case Disclaimer.prototype.type:
@@ -26,6 +30,8 @@ export const Designation = {
         return Designation.STROKE_SIGNS;
       case Article.prototype.type:
         return Designation.ARTICLE;
+      case About.prototype.type:
+        return Designation.ABOUT;
       default:
         return Designation.ARTICLE;
     }

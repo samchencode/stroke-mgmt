@@ -3,7 +3,12 @@ export type StrapiArticleData = {
   attributes: {
     Title: string;
     Body: string;
-    Designation: 'Article' | 'Stroke Facts' | 'Stroke Signs' | 'Disclaimer';
+    Designation:
+      | 'Article'
+      | 'Stroke Facts'
+      | 'Stroke Signs'
+      | 'Disclaimer'
+      | 'About';
     ArticleId: string;
     Summary: string | null;
     ShowOnHomeScreen: boolean;

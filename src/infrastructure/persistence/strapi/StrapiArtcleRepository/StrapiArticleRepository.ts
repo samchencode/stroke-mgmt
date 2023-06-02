@@ -110,6 +110,10 @@ class StrapiArticleRepository implements ArticleRepository {
       searchParams.set('filters[Designation]', 'Stroke Facts');
     else if (designation.is(Designation.STROKE_SIGNS))
       searchParams.set('filters[Designation]', 'Stroke Signs');
+    else if (designation.is(Designation.ABOUT))
+      searchParams.set('filters[Designation]', 'About');
+    else if (designation.is(Designation.DISCLAIMER))
+      searchParams.set('filters[Designation]', 'Disclaimer');
 
     const { data } = await this.getMultiple<StrapiArticleMetadata>(
       `/api/articles?${searchParams}`

@@ -7,6 +7,7 @@ import { DisclaimerView } from '@/view/DisclaimerModal/DisclaimerView';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView, TextButton } from '@/view/components';
 import { theme } from '@/view/theme';
+import { setSeenDisclaimer } from '@/view/lib/useHasSeenDisclaimer';
 
 function factory(renderDisclaimerAction: RenderDisclaimerAction) {
   return function DisclaimerModal({
@@ -22,7 +23,10 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
       retry: false,
     });
 
-    const handleDismiss = useCallback(() => navigation.goBack(), [navigation]);
+    const handleDismiss = useCallback(() => {
+      setSeenDisclaimer();
+      navigation.goBack();
+    }, [navigation]);
 
     return (
       <View style={styles.container}>

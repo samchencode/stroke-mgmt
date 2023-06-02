@@ -9,7 +9,7 @@ import type { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetA
 import type { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { theme } from '@/view/theme';
 import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
-import { useHasSeenDisclaimer } from '@/view/HomeScreen/useHasSeenDisclaimer';
+import { useHasSeenDisclaimer } from '@/view/lib/useHasSeenDisclaimer';
 import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
 import { useBottomNavigationBarHeight } from '@/view/lib/getBottomNavigationBarHeight';
 import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';

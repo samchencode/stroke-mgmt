@@ -11,17 +11,23 @@ type Props = {
 };
 
 function DisclaimerView({ html }: Props) {
-  const { width } = useWindowDimensions();
-  const maxWebviewWidth = 560;
+  const { width, height } = useWindowDimensions();
+  // minus padding of modal
+  const maxWebviewWidth = 560 - theme.spaces.lg * 2;
+  // minus margin of screen and padding of modal
   const screenWidthMinusSpace =
     width - theme.spaces.md * 2 - theme.spaces.lg * 2;
+
   const webViewWidth = Math.min(screenWidthMinusSpace, maxWebviewWidth);
-  const [webViewHeight, setWebViewHeight] = useState(1);
+  const [webViewInnerHeight, setWebViewInnerHeight] = useState(1);
+  // minus button, button margin and padding of modal
+  const maxWebviewHeight = Math.min(height, 560) - theme.spaces.lg * 3 - 40;
+  const webViewHeight = Math.min(webViewInnerHeight, maxWebviewHeight);
 
   const eventHandler = useMemo(
     () =>
       new WebViewEventHandler({
-        layout: ({ height }) => setWebViewHeight(height),
+        layout: ({ height: h }) => setWebViewInnerHeight(h),
       }),
     []
   );
@@ -39,9 +45,12 @@ function DisclaimerView({ html }: Props) {
       <WebView
         source={{ html }}
         originWhitelist={['*']}
-        style={{ width: webViewWidth }}
+        style={{
+          width: webViewWidth,
+          backgroundColor: theme.colors.background,
+        }}
         onMessage={handleMessage}
-        scrollEnabled={false}
+        scrollEnabled={webViewInnerHeight > maxWebviewHeight}
       />
     </View>
   );

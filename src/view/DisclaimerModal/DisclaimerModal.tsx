@@ -86,6 +86,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     minHeight: 280,
     maxHeight: 560,
+    minWidth: 280,
+    maxWidth: 560,
     borderRadius: 28,
   },
   btnDismiss: {

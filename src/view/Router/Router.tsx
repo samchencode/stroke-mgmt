@@ -18,6 +18,7 @@ import { useShouldShowStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFac
 import { LoadingSpinnerView } from '@/view/components';
 import type { Type as Header } from '@/view/Router/Header';
 import { NoHeader } from '@/view/Router/NoHeader';
+import { LicenseScreen } from '@/view/LicenseScreen';
 
 type AppNavigationParams = {
   StrokeFactsScreen: undefined;
@@ -26,6 +27,7 @@ type AppNavigationParams = {
   ArticleViewerScreen: { id: ArticleId };
   AlgorithmViewerScreen: { id: AlgorithmId };
   AboutUsScreen: undefined;
+  LicenseScreen: undefined;
 };
 
 type RootNavigationParams = {
@@ -76,6 +78,11 @@ function factory(
         <AppStack.Screen
           name="AboutUsScreen"
           component={AboutUsScreen}
+          options={{ title: '' }}
+        />
+        <AppStack.Screen
+          name="LicenseScreen"
+          component={LicenseScreen}
           options={{ title: '' }}
         />
         <AppStack.Screen

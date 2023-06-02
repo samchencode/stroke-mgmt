@@ -85,6 +85,11 @@ function factory(clearCacheAction: ClearCacheAction) {
       navigation.navigate('AboutUsScreen');
     }, [navigation]);
 
+    const handlePressLicense = useCallback(
+      () => navigation.navigate('LicenseScreen'),
+      [navigation]
+    );
+
     const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
       useNoInternetBanner();
 
@@ -120,7 +125,7 @@ function factory(clearCacheAction: ClearCacheAction) {
             style={styles.menu}
             onPressAbout={handlePressAbout}
             onPressDisclaimer={handlePressDisclaimer}
-            onPressLicense={useCallback(() => alert('license'), [])}
+            onPressLicense={handlePressLicense}
             onPressClearCache={handlePressClearCache}
             onPressRefresh={refreshQueries}
           />

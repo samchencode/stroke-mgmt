@@ -90,6 +90,11 @@ function factory(clearCacheAction: ClearCacheAction) {
       [navigation]
     );
 
+    const handlePressStrokeFacts = useCallback(
+      () => navigation.navigate('StrokeFactsScreen'),
+      [navigation]
+    );
+
     const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
       useNoInternetBanner();
 
@@ -123,6 +128,7 @@ function factory(clearCacheAction: ClearCacheAction) {
           <Menu
             visible={menuOpen}
             style={styles.menu}
+            onPressStrokeFacts={handlePressStrokeFacts}
             onPressAbout={handlePressAbout}
             onPressDisclaimer={handlePressDisclaimer}
             onPressLicense={handlePressLicense}

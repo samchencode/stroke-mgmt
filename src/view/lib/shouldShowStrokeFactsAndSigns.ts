@@ -5,10 +5,16 @@ const STORAGE_KEY = '@shouldShowStrokeFactsAndSigns';
 
 const HIDE = 'hide';
 
+const SHOW = 'show';
+
 type ShouldShow = 'loading' | 'yes' | 'no';
 
 export async function hideStrokeFactsAndSigns() {
   return AsyncStorage.setItem(STORAGE_KEY, HIDE);
+}
+
+export async function showStrokeFactsAndSigns() {
+  return AsyncStorage.setItem(STORAGE_KEY, SHOW);
 }
 
 export async function checkShouldShow() {

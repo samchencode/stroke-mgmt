@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import type { RenderStrokeSignsAction } from '@/application/RenderStrokeSignsAction';
 import type { AppNavigationProps } from '@/view/Router';
@@ -8,9 +8,25 @@ import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { StrokeSignsError } from '@/view/StrokeSignsScreen/StrokeSignsError';
 import { LoadingSpinnerView } from '@/view/components';
 import { StrokeSignsBottomBar } from '@/view/StrokeSignsScreen/StrokeSignsBottomBar';
-import { hideStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
+import {
+  hideStrokeFactsAndSigns,
+  showStrokeFactsAndSigns,
+  useShouldShowStrokeFactsAndSigns,
+} from '@/view/lib/shouldShowStrokeFactsAndSigns';
 import { IconButton } from '@/view/StrokeSignsScreen/IconButton';
 import { theme } from '@/view/theme';
+
+const reconcileDontShowValue = (
+  dontShowCheckboxValue: boolean,
+  dontShowStoredValue: boolean
+) => {
+  if (dontShowCheckboxValue && !dontShowStoredValue) {
+    hideStrokeFactsAndSigns();
+  }
+  if (!dontShowCheckboxValue && dontShowStoredValue) {
+    showStrokeFactsAndSigns();
+  }
+};
 
 function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
   return function StrokeSignsScreen({
@@ -26,12 +42,23 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
       retry: false,
     });
 
-    const [dontShow, setDontShow] = useState(false);
+    const shouldShowValueFromStorage = useShouldShowStrokeFactsAndSigns();
+    const [dontShowCheckbox, setDontShowCheckbox] = useState(false);
+    useEffect(() => {
+      // set initial state to stated state
+      if (shouldShowValueFromStorage !== 'loading')
+        setDontShowCheckbox(shouldShowValueFromStorage === 'no');
+    }, [shouldShowValueFromStorage]);
 
     const handlePressButton = useCallback(() => {
-      if (dontShow) hideStrokeFactsAndSigns();
+      if (shouldShowValueFromStorage !== 'loading') {
+        reconcileDontShowValue(
+          dontShowCheckbox,
+          shouldShowValueFromStorage === 'no'
+        );
+      }
       navigation.reset({ index: 0, routes: [{ name: 'HomeScreen' }] });
-    }, [dontShow, navigation]);
+    }, [dontShowCheckbox, navigation, shouldShowValueFromStorage]);
 
     const handlePressBack = useCallback(() => {
       navigation.goBack();
@@ -62,8 +89,8 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
         />
         <StrokeSignsBottomBar
           onPressButton={handlePressButton}
-          checkboxValue={dontShow}
-          onChangeCheckbox={setDontShow}
+          checkboxValue={dontShowCheckbox}
+          onChangeCheckbox={setDontShowCheckbox}
         />
         <IconButton
           iconName="arrow-left"

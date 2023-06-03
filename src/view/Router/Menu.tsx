@@ -7,6 +7,7 @@ import { MenuItem } from '@/view/Router/MenuItem';
 type Props = {
   visible: boolean;
   style?: StyleProp<ViewStyle>;
+  onPressStrokeFacts: () => void;
   onPressDisclaimer: () => void;
   onPressLicense: () => void;
   onPressAbout: () => void;
@@ -16,6 +17,7 @@ type Props = {
 
 function Menu({
   visible,
+  onPressStrokeFacts,
   onPressAbout,
   onPressDisclaimer,
   onPressLicense,
@@ -26,6 +28,7 @@ function Menu({
   return (
     <View style={[styles.menu, visible && styles.menuVisible, style]}>
       <View style={styles.content}>
+        <MenuItem onPress={onPressStrokeFacts}>Stroke Facts</MenuItem>
         <MenuItem onPress={onPressDisclaimer}>Disclaimer</MenuItem>
         <MenuItem onPress={onPressLicense}>License</MenuItem>
         <MenuItem onPress={onPressRefresh}>Refresh</MenuItem>

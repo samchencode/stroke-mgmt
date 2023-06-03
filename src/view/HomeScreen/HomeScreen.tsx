@@ -25,7 +25,7 @@ function factory(
   getAllTagsAction: GetAllTagsAction
 ) {
   return function HomeScreen({ navigation }: AppNavigationProps<'HomeScreen'>) {
-    const { width } = useWindowDimensions();
+    const { width, height: windowHeight } = useWindowDimensions();
     const innerWidth =
       Math.min(width, theme.breakpoints.width.tablet) - 2 * theme.spaces.md;
 
@@ -84,6 +84,9 @@ function factory(
             onSelectArticle={handleSelectArticle}
             style={styles.articleList}
             listWidth={innerWidth}
+            maxItemsPerPage={
+              windowHeight > theme.breakpoints.height.tablet ? 9 : 5
+            }
           />
         </ScrollView>
       </View>

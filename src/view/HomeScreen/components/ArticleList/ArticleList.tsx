@@ -19,6 +19,7 @@ type ArticleListProps = {
   getAllTags: (cb: (ts: Tag[]) => void) => Promise<Tag[]>;
   onSelectArticle: (id: ArticleId) => void;
   listWidth: number;
+  maxItemsPerPage?: number;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -29,6 +30,7 @@ function ArticleList({
   getAllTags,
   onSelectArticle,
   listWidth,
+  maxItemsPerPage = 5,
   style = {},
 }: ArticleListProps) {
   const queryClient = useQueryClient();
@@ -101,10 +103,11 @@ function ArticleList({
                 data={filteredArticles}
                 onSelectArticle={onSelectArticle}
                 listWidth={listWidth}
+                maxItemsPerPage={maxItemsPerPage}
               />
             );
           },
-          [activeTagFilters, listWidth, onSelectArticle]
+          [activeTagFilters, listWidth, maxItemsPerPage, onSelectArticle]
         )}
         renderError={useCallback(
           () => (

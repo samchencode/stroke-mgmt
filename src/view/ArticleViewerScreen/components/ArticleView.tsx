@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 import type { WebViewMessageEvent } from 'react-native-webview';
 import WebView from 'react-native-webview';
 import type {
@@ -8,6 +8,7 @@ import type {
 } from '@/infrastructure/rendering/WebViewEvent';
 import type { WebViewScrollEvent } from 'react-native-webview/lib/WebViewTypes';
 import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
+import { theme } from '@/view/theme';
 
 type Props = {
   html: string;
@@ -33,11 +34,17 @@ function ArticleView({ html, eventHandler }: Props) {
     <WebView
       source={{ html }}
       originWhitelist={['*']}
-      style={{ width }}
+      style={[styles.webView, { width }]}
       onMessage={handleMessage}
       onScroll={handleScroll}
     />
   );
 }
+
+const styles = StyleSheet.create({
+  webView: {
+    backgroundColor: theme.colors.background,
+  },
+});
 
 export { ArticleView };

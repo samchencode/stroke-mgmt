@@ -1,9 +1,11 @@
-import React, { useCallback, useMemo } from 'react';
-import { FlatList } from 'react-native';
-import type { ListRenderItemInfo } from 'react-native';
 import type { Article, ArticleId } from '@/domain/models/Article';
 import { ArticleListColumn } from '@/view/HomeScreen/components/ArticleList/ArticleListColumn';
+import { CarouselPaginationControls } from '@/view/HomeScreen/components/ArticleList/CarouselPaginationControl';
 import { ListEmptyComponent } from '@/view/HomeScreen/components/ArticleList/ListEmptyComponent';
+import { useCarouselPaginationControls } from '@/view/HomeScreen/components/ArticleList/useCarouselPaginationControls';
+import React, { useCallback, useMemo } from 'react';
+import type { ListRenderItemInfo } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 type Props = {
   maxItemsPerPage?: number;
@@ -36,6 +38,7 @@ function ArticleListCarousel({
     () => arrayToBatches(maxItemsPerPage, data),
     [data, maxItemsPerPage]
   );
+  const totalPages = batchedData.length;
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Article[]>) => (
@@ -49,16 +52,34 @@ function ArticleListCarousel({
     [listWidth, maxItemsPerPage, onSelectArticle]
   );
 
+  const {
+    flatListRef,
+    handleScroll,
+    handlePressLeft,
+    handlePressRight,
+    activePageIdx,
+  } = useCarouselPaginationControls(listWidth, totalPages);
+
   return (
-    <FlatList
-      data={batchedData}
-      renderItem={renderItem}
-      horizontal
-      pagingEnabled
-      initialNumToRender={3}
-      maxToRenderPerBatch={3}
-      ListEmptyComponent={ListEmptyComponent}
-    />
+    <View>
+      <FlatList
+        ref={flatListRef}
+        data={batchedData}
+        renderItem={renderItem}
+        horizontal
+        pagingEnabled
+        initialNumToRender={3}
+        maxToRenderPerBatch={3}
+        onScroll={handleScroll}
+        ListEmptyComponent={ListEmptyComponent}
+      />
+      <CarouselPaginationControls
+        pageIdx={activePageIdx}
+        totalPages={totalPages}
+        onPressLeft={handlePressLeft}
+        onPressRight={handlePressRight}
+      />
+    </View>
   );
 }
 

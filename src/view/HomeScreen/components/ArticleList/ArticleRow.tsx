@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 12,
     paddingBottom: 12,
-    mineight: 64 + 12 * 2,
+    minHeight: 64 + 12 * 2,
     display: 'flex',
     flexDirection: 'row',
   },

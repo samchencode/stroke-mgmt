@@ -1,8 +1,9 @@
+import React, { useCallback, useMemo } from 'react';
+import { FlatList } from 'react-native';
+import type { ListRenderItemInfo } from 'react-native';
 import type { Article, ArticleId } from '@/domain/models/Article';
 import { ArticleListColumn } from '@/view/HomeScreen/components/ArticleList/ArticleListColumn';
-import React, { useCallback, useMemo } from 'react';
-import type { ListRenderItemInfo } from 'react-native';
-import { FlatList } from 'react-native';
+import { ListEmptyComponent } from '@/view/HomeScreen/components/ArticleList/ListEmptyComponent';
 
 type Props = {
   maxItemsPerPage?: number;
@@ -56,6 +57,7 @@ function ArticleListCarousel({
       pagingEnabled
       initialNumToRender={3}
       maxToRenderPerBatch={3}
+      ListEmptyComponent={ListEmptyComponent}
     />
   );
 }

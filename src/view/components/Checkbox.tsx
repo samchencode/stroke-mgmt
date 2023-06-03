@@ -22,7 +22,9 @@ function Checkbox({ value, onChange, label = '', style = {} }: Props) {
       ) : (
         <FontAwesome5 name="square" size={24} />
       )}
-      <Text style={styles.text}>{label}</Text>
+      <Text style={styles.text} allowFontScaling={false}>
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 }

@@ -1,6 +1,11 @@
 import React, { useCallback } from 'react';
 import type { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import {
+  useWindowDimensions,
+  View,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { GetAllArticlesAction } from '@/application/GetAllArticlesAction';
 import type { Article, ArticleId } from '@/domain/models/Article';
@@ -20,6 +25,10 @@ function factory(
   getAllTagsAction: GetAllTagsAction
 ) {
   return function HomeScreen({ navigation }: AppNavigationProps<'HomeScreen'>) {
+    const { width } = useWindowDimensions();
+    const innerWidth =
+      Math.min(width, theme.breakpoints.width.tablet) - 2 * theme.spaces.md;
+
     const openDisclaimer = useCallback(() => {
       navigation.navigate('DisclaimerModal');
     }, [navigation]);
@@ -74,6 +83,7 @@ function factory(
             getAllTags={useCallback((cb) => getAllTagsAction.execute(cb), [])}
             onSelectArticle={handleSelectArticle}
             style={styles.articleList}
+            listWidth={innerWidth}
           />
         </ScrollView>
       </View>

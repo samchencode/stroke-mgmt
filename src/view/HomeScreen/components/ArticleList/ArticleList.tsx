@@ -4,7 +4,6 @@ import type { StyleProp, ViewStyle } from 'react-native';
 import type { Article, ArticleId } from '@/domain/models/Article';
 import { theme } from '@/view/theme';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
-import { ArticleListFilled } from '@/view/HomeScreen/components/ArticleList/ArticleListFilled';
 import { ArticleListError } from '@/view/HomeScreen/components/ArticleList/ArticleListError';
 import { ArticleListLoading } from '@/view/HomeScreen/components/ArticleList/ArticleListLoading';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -13,11 +12,13 @@ import type { TagState } from '@/view/HomeScreen/components/TagList';
 import { TagList } from '@/view/HomeScreen/components/TagList';
 import { filterArticlesOnHomeOrByTags } from '@/domain/services/filterArticlesOnHomeOrByTags';
 import { DeferredPromise } from '@/view/HomeScreen/components/ArticleList/DeferredPromise';
+import { ArticleListCarousel } from '@/view/HomeScreen/components/ArticleList/ArticleListCarousel';
 
 type ArticleListProps = {
   getAllArticles: (cb: (as: Article[]) => void) => Promise<Article[]>;
   getAllTags: (cb: (ts: Tag[]) => void) => Promise<Tag[]>;
   onSelectArticle: (id: ArticleId) => void;
+  listWidth: number;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -27,6 +28,7 @@ function ArticleList({
   getAllArticles,
   getAllTags,
   onSelectArticle,
+  listWidth,
   style = {},
 }: ArticleListProps) {
   const queryClient = useQueryClient();
@@ -95,13 +97,14 @@ function ArticleList({
               activeTagFilters
             );
             return (
-              <ArticleListFilled
+              <ArticleListCarousel
                 data={filteredArticles}
                 onSelectArticle={onSelectArticle}
+                listWidth={listWidth}
               />
             );
           },
-          [activeTagFilters, onSelectArticle]
+          [activeTagFilters, listWidth, onSelectArticle]
         )}
         renderError={useCallback(
           () => (

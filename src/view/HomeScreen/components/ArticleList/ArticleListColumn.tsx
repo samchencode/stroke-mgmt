@@ -1,16 +1,24 @@
+import React from 'react';
+import { View } from 'react-native';
+import sanitizeHtml from 'sanitize-html';
 import type { Article, ArticleId } from '@/domain/models/Article';
 import { ArticleRow } from '@/view/HomeScreen/components/ArticleList/ArticleRow';
-import React from 'react';
-import sanitizeHtml from 'sanitize-html';
 
 type Props = {
   data: Article[];
   onSelectArticle: (id: ArticleId) => void;
+  columnWidth: number;
+  maxRows: number;
 };
 
-function ArticleListFilled({ data, onSelectArticle }: Props) {
+function ArticleListColumn({
+  data,
+  onSelectArticle,
+  columnWidth,
+  maxRows,
+}: Props) {
   return (
-    <>
+    <View style={{ width: columnWidth, minHeight: maxRows * 88 }}>
       {data.map((a) => (
         <ArticleRow
           key={a.getId().toString()}
@@ -21,8 +29,8 @@ function ArticleListFilled({ data, onSelectArticle }: Props) {
           onSelectArticle={onSelectArticle}
         />
       ))}
-    </>
+    </View>
   );
 }
 
-export { ArticleListFilled };
+export { ArticleListColumn };

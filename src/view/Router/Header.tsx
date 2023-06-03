@@ -1,41 +1,16 @@
-import React, { useCallback, useContext, useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import type { ViewStyle, StyleProp, TextStyle } from 'react-native';
-import { StatusBar } from '@/view/StatusBar';
-import type { StackHeaderProps } from '@react-navigation/stack';
-import { getHeaderTitle } from '@react-navigation/elements';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { theme } from '@/view/theme';
-import { Menu } from '@/view/Router/Menu';
+import type { ClearCacheAction } from '@/application/ClearCacheAction';
 import { NoInternetBanner, useNoInternetBanner } from '@/view/NoInternetBanner';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
-import type { ClearCacheAction } from '@/application/ClearCacheAction';
+import { Menu } from '@/view/Router/Menu';
 import { useShowSnack } from '@/view/Snackbar/useShowSnack';
+import { StatusBar } from '@/view/StatusBar';
+import { IconButton } from '@/view/components';
+import { theme } from '@/view/theme';
+import { getHeaderTitle } from '@react-navigation/elements';
+import type { StackHeaderProps } from '@react-navigation/stack';
 import { useQueryClient } from '@tanstack/react-query';
-
-type IconButtonProps = {
-  iconName: string;
-  onPress: () => void;
-  style?: StyleProp<ViewStyle>;
-  iconStyle?: StyleProp<ViewStyle | TextStyle>;
-};
-
-function IconButton({
-  iconName,
-  onPress,
-  style = {},
-  iconStyle = {},
-}: IconButtonProps) {
-  return (
-    <TouchableOpacity onPress={onPress} style={[styles.iconButton, style]}>
-      <FontAwesome5
-        name={iconName}
-        size={24}
-        style={[styles.icon, iconStyle]}
-      />
-    </TouchableOpacity>
-  );
-}
+import React, { useCallback, useContext, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 type Props = StackHeaderProps;
 
@@ -165,15 +140,6 @@ const styles = StyleSheet.create({
     left: 56,
     top: '50%',
     transform: [{ translateY: -14 }],
-  },
-  icon: {
-    color: theme.colors.onSurface,
-  },
-  iconButton: {
-    height: 48,
-    width: 48,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   backButton: {
     position: 'absolute',

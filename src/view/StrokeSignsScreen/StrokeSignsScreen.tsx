@@ -6,14 +6,13 @@ import { StrokeSignsView } from '@/view/StrokeSignsScreen/StrokeSignsView';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { StrokeSignsError } from '@/view/StrokeSignsScreen/StrokeSignsError';
-import { LoadingSpinnerView } from '@/view/components';
+import { LoadingSpinnerView, IconButton } from '@/view/components';
 import { StrokeSignsBottomBar } from '@/view/StrokeSignsScreen/StrokeSignsBottomBar';
 import {
   hideStrokeFactsAndSigns,
   showStrokeFactsAndSigns,
   useShouldShowStrokeFactsAndSigns,
 } from '@/view/lib/shouldShowStrokeFactsAndSigns';
-import { IconButton } from '@/view/StrokeSignsScreen/IconButton';
 import { theme } from '@/view/theme';
 
 const reconcileDontShowValue = (

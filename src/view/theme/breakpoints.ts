@@ -3,6 +3,6 @@ export const breakpoints = {
     tablet: 900,
   },
   height: {
-    tablet: 900,
+    tablet: 1000,
   },
 } as const;

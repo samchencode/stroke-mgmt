@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import type { RenderDisclaimerAction } from '@/application/RenderDisclaimerAction';
 import type { RootNavigationProps } from '@/view/Router';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -8,6 +8,7 @@ import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView, TextButton } from '@/view/components';
 import { theme } from '@/view/theme';
 import { setSeenDisclaimer } from '@/view/lib/useHasSeenDisclaimer';
+import { DisclaimerErrorView } from '@/view/DisclaimerModal/DisclaimerErrorView';
 
 function factory(renderDisclaimerAction: RenderDisclaimerAction) {
   return function DisclaimerModal({
@@ -31,18 +32,30 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
     return (
       <View style={styles.container}>
         <View style={styles.background} />
-        <View style={styles.contentContainer}>
+        <View
+          style={[
+            styles.contentContainer,
+            query.isError && styles.contentContainerWithError,
+          ]}
+        >
           <UseQueryResultView
             query={query}
             renderData={useCallback(
               (html: string) => (
-                <DisclaimerView html={html} />
+                <>
+                  <DisclaimerView html={html} />
+                  <TextButton
+                    title="Got it"
+                    onPress={handleDismiss}
+                    style={styles.btnDismiss}
+                  />
+                </>
               ),
-              []
+              [handleDismiss]
             )}
             renderError={useCallback(
-              () => (
-                <Text>Uh oh! Something went wrong!</Text>
+              (error) => (
+                <DisclaimerErrorView error={error} />
               ),
               []
             )}
@@ -52,11 +65,6 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
               ),
               []
             )}
-          />
-          <TextButton
-            title="Got it"
-            onPress={handleDismiss}
-            style={styles.btnDismiss}
           />
         </View>
       </View>
@@ -89,6 +97,10 @@ const styles = StyleSheet.create({
     minWidth: 280,
     maxWidth: 560,
     borderRadius: 28,
+  },
+  contentContainerWithError: {
+    marginHorizontal: theme.spaces.md,
+    padding: 0,
   },
   btnDismiss: {
     marginTop: theme.spaces.lg,

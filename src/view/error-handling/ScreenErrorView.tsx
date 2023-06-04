@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import type { StyleProp, ViewStyle } from 'react-native';
 import { Platform, StyleSheet, Text, View, ScrollView } from 'react-native';
 import * as Updates from 'expo-updates';
 import { thrownToString } from '@/view/error-handling/thrownToString';
@@ -9,6 +10,8 @@ type Props = {
   error: unknown;
   showRestartButton?: boolean;
   message?: string;
+  transparentBackground?: boolean;
+  style?: StyleProp<ViewStyle>;
 };
 
 const DEFAULT_MESSAGE =
@@ -18,14 +21,22 @@ function ScreenErrorView({
   error,
   showRestartButton = false,
   message = DEFAULT_MESSAGE,
+  transparentBackground = false,
+  style = {},
 }: Props) {
   const handleRestart = useCallback(() => {
     Updates.reloadAsync();
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
+    <View
+      style={[
+        styles.container,
+        !transparentBackground && styles.containerSolidBackground,
+        !transparentBackground && style,
+      ]}
+    >
+      <View style={[styles.content, transparentBackground && style]}>
         <Text style={styles.subheading}>Something went wrong...</Text>
         <ScrollView style={styles.errorTextContainer}>
           <Text style={styles.errorText}>{thrownToString(error)}</Text>
@@ -46,7 +57,8 @@ function ScreenErrorView({
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container: {},
+  containerSolidBackground: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

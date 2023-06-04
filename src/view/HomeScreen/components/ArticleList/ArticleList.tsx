@@ -110,8 +110,8 @@ function ArticleList({
           [activeTagFilters, listWidth, maxItemsPerPage, onSelectArticle]
         )}
         renderError={useCallback(
-          () => (
-            <ArticleListError />
+          (error) => (
+            <ArticleListError error={error} />
           ),
           []
         )}

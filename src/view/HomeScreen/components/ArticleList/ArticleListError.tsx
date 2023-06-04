@@ -1,12 +1,21 @@
+import { ComponentErrorView } from '@/view/error-handling';
+import { theme } from '@/view/theme';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-function ArticleListError() {
-  return (
-    <View>
-      <Text>Uh oh, something went wrong!</Text>
-    </View>
-  );
+type Props = {
+  error: unknown;
+};
+
+function ArticleListError({ error }: Props) {
+  return <ComponentErrorView style={styles.errorView} error={error} />;
 }
+
+const styles = StyleSheet.create({
+  errorView: {
+    height: 350,
+    marginTop: theme.spaces.md,
+  },
+});
 
 export { ArticleListError };

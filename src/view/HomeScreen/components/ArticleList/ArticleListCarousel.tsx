@@ -1,7 +1,6 @@
 import type { Article, ArticleId } from '@/domain/models/Article';
 import { ArticleListColumn } from '@/view/HomeScreen/components/ArticleList/ArticleListColumn';
 import { CarouselPaginationControls } from '@/view/HomeScreen/components/ArticleList/CarouselPaginationControl';
-import { ListEmptyComponent } from '@/view/HomeScreen/components/ArticleList/ListEmptyComponent';
 import { useCarouselPaginationControls } from '@/view/HomeScreen/components/ArticleList/useCarouselPaginationControls';
 import React, { useCallback, useMemo } from 'react';
 import type { ListRenderItemInfo } from 'react-native';
@@ -71,7 +70,6 @@ function ArticleListCarousel({
         initialNumToRender={3}
         maxToRenderPerBatch={3}
         onScroll={handleScroll}
-        ListEmptyComponent={ListEmptyComponent}
       />
       <CarouselPaginationControls
         pageIdx={activePageIdx}

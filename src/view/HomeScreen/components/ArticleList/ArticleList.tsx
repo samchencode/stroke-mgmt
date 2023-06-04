@@ -13,6 +13,7 @@ import { TagList } from '@/view/HomeScreen/components/TagList';
 import { filterArticlesOnHomeOrByTags } from '@/domain/services/filterArticlesOnHomeOrByTags';
 import { DeferredPromise } from '@/view/HomeScreen/components/ArticleList/DeferredPromise';
 import { ArticleListCarousel } from '@/view/HomeScreen/components/ArticleList/ArticleListCarousel';
+import { ArticleListEmpty } from '@/view/HomeScreen/components/ArticleList/ArticleListEmpty';
 
 type ArticleListProps = {
   getAllArticles: (cb: (as: Article[]) => void) => Promise<Article[]>;
@@ -98,6 +99,7 @@ function ArticleList({
               data,
               activeTagFilters
             );
+            if (filteredArticles.length === 0) return <ArticleListEmpty />;
             return (
               <ArticleListCarousel
                 data={filteredArticles}

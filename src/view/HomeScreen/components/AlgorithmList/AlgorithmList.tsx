@@ -8,6 +8,7 @@ import { AlgorithmListError } from '@/view/HomeScreen/components/AlgorithmList/A
 import { AlgorithmListLoading } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListLoading';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
+import { AlgorithmListEmpty } from '@/view/HomeScreen/components/AlgorithmList/AlgorithmListEmpty';
 
 type AlgorithmListProps = {
   getAllAlgorithms: (cb: (as: Algorithm[]) => void) => Promise<Algorithm[]>;
@@ -35,12 +36,15 @@ function AlgorithmList({
       <UseQueryResultView
         query={query}
         renderData={useCallback(
-          (data: Algorithm[]) => (
-            <AlgorithmListFilled
-              data={data}
-              onSelectAlgorithm={onSelectAlgorithm}
-            />
-          ),
+          (data: Algorithm[]) =>
+            data.length !== 0 ? (
+              <AlgorithmListFilled
+                data={data}
+                onSelectAlgorithm={onSelectAlgorithm}
+              />
+            ) : (
+              <AlgorithmListEmpty />
+            ),
           [onSelectAlgorithm]
         )}
         renderError={useCallback(

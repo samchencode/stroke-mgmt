@@ -14,7 +14,6 @@ import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
-import { SnackbarGlobalErrorHandler } from '@/view/error-handling/SnackbarGlobalErrorHandler';
 import { ErrorBoundary } from '@/view/error-handling';
 
 function factory(Router: Router) {
@@ -33,9 +32,7 @@ function factory(Router: Router) {
               <QueryClientProvider client={queryClient}>
                 <HeaderScrollContext.Provider value={headerScrollState}>
                   <SnackbarProvider>
-                    <SnackbarGlobalErrorHandler>
-                      <Router />
-                    </SnackbarGlobalErrorHandler>
+                    <Router />
                   </SnackbarProvider>
                 </HeaderScrollContext.Provider>
               </QueryClientProvider>

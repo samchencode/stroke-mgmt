@@ -23,6 +23,10 @@ export const colors = {
   inversePrimary: '#eeeeee',
   outline: '#798679',
   outlineVariable: '#c9cfc9',
+  error: '#cb0e01',
+  onError: '#ffffff',
+  errorContainer: '#ffd0cc',
+  onErrorContainer: '#330400',
   opacity: (opacity: number) => ({
     onSurface: `rgba(26, 26, 26, ${opacity})`,
     onPrimaryContainer: `rgba(18, 35, 16, ${opacity})`,

@@ -14,6 +14,8 @@ import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
+import { SnackbarGlobalErrorHandler } from '@/view/error-handling/SnackbarGlobalErrorHandler';
+import { ErrorBoundary } from '@/view/error-handling';
 
 function factory(Router: Router) {
   return function App() {
@@ -24,17 +26,21 @@ function factory(Router: Router) {
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <NavigationContainer
-            theme={{ colors: { background: theme.colors.background } } as any}
-          >
-            <QueryClientProvider client={queryClient}>
-              <HeaderScrollContext.Provider value={headerScrollState}>
-                <SnackbarProvider>
-                  <Router />
-                </SnackbarProvider>
-              </HeaderScrollContext.Provider>
-            </QueryClientProvider>
-          </NavigationContainer>
+          <ErrorBoundary>
+            <NavigationContainer
+              theme={{ colors: { background: theme.colors.background } } as any}
+            >
+              <QueryClientProvider client={queryClient}>
+                <HeaderScrollContext.Provider value={headerScrollState}>
+                  <SnackbarProvider>
+                    <SnackbarGlobalErrorHandler>
+                      <Router />
+                    </SnackbarGlobalErrorHandler>
+                  </SnackbarProvider>
+                </HeaderScrollContext.Provider>
+              </QueryClientProvider>
+            </NavigationContainer>
+          </ErrorBoundary>
         </SafeAreaProvider>
       </GestureHandlerRootView>
     );

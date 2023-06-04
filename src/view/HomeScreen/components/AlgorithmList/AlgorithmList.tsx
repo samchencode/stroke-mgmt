@@ -44,8 +44,8 @@ function AlgorithmList({
           [onSelectAlgorithm]
         )}
         renderError={useCallback(
-          () => (
-            <AlgorithmListError />
+          (error) => (
+            <AlgorithmListError error={error} />
           ),
           []
         )}

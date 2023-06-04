@@ -47,8 +47,11 @@ import { openExpoSqliteDatabase } from '@/infrastructure/persistence/websql/expo
 import { WebsqlCachedTagRepository } from '@/infrastructure/persistence/websql/WebsqlCachedTagRepository';
 import { ClearCacheAction } from '@/application/ClearCacheAction';
 import { WebsqlCachedAlgorithmRepostiory } from '@/infrastructure/persistence/websql/WebsqlCachedAlgorithmRepository/WebsqlCachedAlgorithmRepository';
+import { Platform } from 'react-native';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
+
+const localhost = Platform.OS === 'ios' ? 'localhost' : '10.0.2.2';
 
 export const module = {
   // CONFIG
@@ -56,7 +59,7 @@ export const module = {
     'value',
     production
       ? 'https://stroke-mgmt-cms.a2hosted.com'
-      : 'http://localhost:1337',
+      : `http://${localhost}:1337`,
   ],
 
   // DOMAIN

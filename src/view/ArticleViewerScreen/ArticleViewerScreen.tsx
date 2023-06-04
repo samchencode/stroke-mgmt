@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
@@ -8,6 +8,7 @@ import { ArticleView } from '@/view/ArticleViewerScreen/components';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView } from '@/view/components';
+import { ScreenErrorView } from '@/view/error-handling';
 
 function factory(renderArticleByIdAction: RenderArticleByIdAction) {
   return function ArticleViewerScreen({
@@ -48,10 +49,13 @@ function factory(renderArticleByIdAction: RenderArticleByIdAction) {
             [eventHandler]
           )}
           renderError={useCallback(
-            () => (
-              <Text>Uh oh! Something went wrong!</Text>
+            (error) => (
+              <ScreenErrorView
+                error={error}
+                message={`We couldn't display this article (id: ${id}). If there is internet, then refreshing or clearing the cache may help. Restarting the app might also help.`}
+              />
             ),
-            []
+            [id]
           )}
           renderLoading={useCallback(
             () => (

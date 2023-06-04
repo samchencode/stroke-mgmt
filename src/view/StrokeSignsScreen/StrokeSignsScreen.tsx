@@ -5,7 +5,6 @@ import type { AppNavigationProps } from '@/view/Router';
 import { StrokeSignsView } from '@/view/StrokeSignsScreen/StrokeSignsView';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
-import { StrokeSignsError } from '@/view/StrokeSignsScreen/StrokeSignsError';
 import { LoadingSpinnerView, IconButton } from '@/view/components';
 import { StrokeSignsBottomBar } from '@/view/StrokeSignsScreen/StrokeSignsBottomBar';
 import {
@@ -14,6 +13,7 @@ import {
   useShouldShowStrokeFactsAndSigns,
 } from '@/view/lib/shouldShowStrokeFactsAndSigns';
 import { theme } from '@/view/theme';
+import { ScreenErrorView } from '@/view/error-handling';
 
 const reconcileDontShowValue = (
   dontShowCheckboxValue: boolean,
@@ -74,8 +74,11 @@ function factory(renderStrokeSignsAction: RenderStrokeSignsAction) {
             []
           )}
           renderError={useCallback(
-            () => (
-              <StrokeSignsError />
+            (error) => (
+              <ScreenErrorView
+                error={error}
+                message="We had trouble retrieving the stroke signs article. If there is internet, then refreshing or clearing the cache may help. Restarting the app might also help."
+              />
             ),
             []
           )}

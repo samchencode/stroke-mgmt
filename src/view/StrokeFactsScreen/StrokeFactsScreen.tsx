@@ -6,10 +6,10 @@ import { StrokeFactsView } from '@/view/StrokeFactsScreen/StrokeFactsView';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { LoadingSpinnerView } from '@/view/components';
-import { StrokeFactsError } from '@/view/StrokeFactsScreen/StrokeFactsError';
 import { StrokeFactsBottomBar } from '@/view/StrokeFactsScreen/StrokeFactsBottomBar';
 import { theme } from '@/view/theme';
 import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';
+import { ScreenErrorView } from '@/view/error-handling';
 
 function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
   return function StrokeFactsScreen({
@@ -45,8 +45,11 @@ function factory(renderStrokeFactsAction: RenderStrokeFactsAction) {
             []
           )}
           renderError={useCallback(
-            () => (
-              <StrokeFactsError />
+            (error) => (
+              <ScreenErrorView
+                error={error}
+                message="We had trouble retrieving the stroke facts article. If there is internet, then refreshing or clearing the cache may help. Restarting the app might also help."
+              />
             ),
             []
           )}

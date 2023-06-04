@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
-import { Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import type {
   Algorithm,
   AlgorithmId,
@@ -11,6 +11,7 @@ import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { AlgorithmView } from '@/view/AlgorithmViewerScreen/components/AlgorithmView';
 import { LoadingSpinnerView } from '@/view/components';
 import type { ArticleId } from '@/domain/models/Article';
+import { ScreenErrorView } from '@/view/error-handling';
 
 type Props = {
   id: AlgorithmId;
@@ -84,10 +85,15 @@ function BaseAlgorithmCollectionItem({
     <UseQueryResultView
       query={query}
       renderError={useCallback(
-        () => (
-          <Text>Uh oh, something went wrong!</Text>
+        (error) => (
+          <View style={styles.errorView}>
+            <ScreenErrorView
+              error={error}
+              message={`We had trouble getting this algorithm (id: ${id}). If there is internet, then refreshing or clearing the cache may help. Restarting the app might also help.`}
+            />
+          </View>
         ),
-        []
+        [id]
       )}
       renderData={useCallback(
         () =>
@@ -122,5 +128,11 @@ function BaseAlgorithmCollectionItem({
     />
   );
 }
+
+const styles = StyleSheet.create({
+  errorView: {
+    height: 350,
+  },
+});
 
 export const AlgorithmCollectionItem = React.memo(BaseAlgorithmCollectionItem);

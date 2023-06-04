@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import type { RenderAboutUsAction } from '@/application/RenderAboutUsAction';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -8,6 +8,7 @@ import { AboutUsView } from '@/view/AboutUsScreen/AboutUsView';
 import type { AppNavigationProps } from '@/view/Router';
 import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 import { ArticleId } from '@/domain/models/Article';
+import { ScreenErrorView } from '@/view/error-handling';
 
 type Props = AppNavigationProps<'AboutUsScreen'>;
 
@@ -46,8 +47,11 @@ function factory(renderAboutUsAction: RenderAboutUsAction) {
             [eventHandler]
           )}
           renderError={useCallback(
-            () => (
-              <Text>Oops something went wrong!</Text>
+            (error) => (
+              <ScreenErrorView
+                error={error}
+                message="We had trouble retrieving the about us article. If there is internet, then refreshing or clearing the cache may help. Restarting the app might also help."
+              />
             ),
             []
           )}

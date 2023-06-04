@@ -117,9 +117,9 @@ function ArticleList({
         )}
         renderLoading={useCallback(
           () => (
-            <ArticleListLoading />
+            <ArticleListLoading height={maxItemsPerPage * 88} />
           ),
-          []
+          [maxItemsPerPage]
         )}
       />
     </View>

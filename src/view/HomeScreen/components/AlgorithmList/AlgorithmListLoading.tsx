@@ -1,12 +1,21 @@
+import { LoadingSpinnerView } from '@/view/components';
+import { theme } from '@/view/theme';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 function AlgorithmListLoading() {
   return (
-    <View>
-      <Text>Loading...</Text>
+    <View style={styles.container}>
+      <LoadingSpinnerView />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: 246,
+    marginTop: theme.spaces.md,
+  },
+});
 
 export { AlgorithmListLoading };

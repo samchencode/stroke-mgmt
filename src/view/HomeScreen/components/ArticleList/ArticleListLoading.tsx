@@ -1,10 +1,15 @@
+import { LoadingSpinnerView } from '@/view/components';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
-function ArticleListLoading() {
+type Props = {
+  height: number;
+};
+
+function ArticleListLoading({ height }: Props) {
   return (
-    <View>
-      <Text>Loading...</Text>
+    <View style={{ height }}>
+      <LoadingSpinnerView />
     </View>
   );
 }

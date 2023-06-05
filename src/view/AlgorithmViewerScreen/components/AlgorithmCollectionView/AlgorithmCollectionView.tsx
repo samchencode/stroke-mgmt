@@ -87,6 +87,8 @@ function BaseAlgorithmCollectionView({
       ref={flatList}
       onScroll={handleScroll}
       scrollEventThrottle={300}
+      initialNumToRender={3}
+      maxToRenderPerBatch={3}
     />
   );
 }

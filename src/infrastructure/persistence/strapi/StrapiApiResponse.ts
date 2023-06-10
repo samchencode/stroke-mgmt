@@ -141,6 +141,28 @@ export type StrapiTag = {
   };
 };
 
+export type StrapiIdOnly = {
+  id: number;
+  attributes: Record<string, never>;
+};
+
+export type StrapiIntroSequence = {
+  id: number;
+  attributes: {
+    createdAt: string;
+    updatedAt: string;
+    articles: {
+      data: StrapiIdOnly[];
+    };
+    suggestedAlgorithm: {
+      data: StrapiIdOnly | null;
+    };
+    suggestAlgorithmAfterArticle: {
+      data: StrapiIdOnly | null;
+    };
+  };
+};
+
 export type StrapiPluralApiResponse<Data> = {
   data: Data[];
   meta: {

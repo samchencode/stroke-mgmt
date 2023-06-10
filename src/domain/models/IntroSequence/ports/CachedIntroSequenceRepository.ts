@@ -3,8 +3,8 @@ import type { IntroSequenceRepository } from '@/domain/models/IntroSequence/port
 
 interface CachedIntroSequenceRepository extends IntroSequenceRepository {
   save(v: IntroSequence): Promise<void>;
-  update(v: IntroSequence): Promise<void>;
   clearCache(): Promise<void>;
+  isEmpty(): Promise<boolean>;
 }
 
 export type { CachedIntroSequenceRepository };

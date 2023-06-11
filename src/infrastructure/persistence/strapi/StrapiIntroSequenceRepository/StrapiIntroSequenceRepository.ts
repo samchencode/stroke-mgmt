@@ -19,11 +19,11 @@ type StrapiResponse =
   | StrapiErrorResponse
   | StrapiSingularApiResponse<StrapiIntroSequence>;
 
-const searchParamPairs = [
-  ['populate[articles][fields][0]', 'id'],
-  ['populate[suggestedAlgorithm][fields][0]', 'id'],
-  ['populate[suggestAlgorithmAfterArticle][fields][0]', 'id'],
-];
+const searchParamPairs = {
+  'populate[articles][fields][0]': 'id',
+  'populate[suggestedAlgorithm][fields][0]': 'id',
+  'populate[suggestAlgorithmAfterArticle][fields][0]': 'id',
+};
 
 const searchParams = new URLSearchParams(searchParamPairs);
 
@@ -45,7 +45,6 @@ class StrapiIntroSequenceRepository implements IntroSequenceRepository {
 
   async get(): Promise<IntroSequence> {
     const { attributes } = (await this.getFromApi()).data;
-
     if (
       !attributes.suggestedAlgorithm.data ||
       !attributes.suggestAlgorithmAfterArticle.data

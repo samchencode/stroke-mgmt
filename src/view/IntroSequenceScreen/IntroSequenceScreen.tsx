@@ -13,6 +13,7 @@ import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAct
 import { IntroArticleView } from '@/view/IntroSequenceScreen/IntroArticleView';
 import { IntroSequenceBottomBar } from '@/view/IntroSequenceScreen/IntroSequenceBottomBar';
 import { useShouldShow } from '@/view/IntroSequenceScreen/useShouldShow';
+import { useNavigationState } from '@react-navigation/native';
 
 function factory(
   getIntroSequenceAction: GetIntroSequenceAction,
@@ -43,9 +44,22 @@ function factory(
 
     const [checkboxValue, setCheckboxValue, saveShouldShow] = useShouldShow();
 
+    // initial start = no, hasBack is true once nav to modal...
+    const { index, routes } = useNavigationState((state) => state);
+    const prevRouteName: string | undefined = routes?.[index - 1]?.name;
+    const shouldShowBack =
+      prevRouteName === 'HomeScreen' || sequenceCursor !== 0;
+
     const handlePressBack = useCallback(() => {
-      navigation.goBack();
-    }, [navigation]);
+      if (sequenceCursor > 0) {
+        setSequenceCursor(sequenceCursor - 1);
+        return;
+      }
+      if (prevRouteName === 'HomeScreen') {
+        // if cursor is at first article and came from home screen
+        navigation.goBack();
+      }
+    }, [navigation, prevRouteName, sequenceCursor]);
 
     const [seenEvalPtModal, setSeenEvalPtModal] = useState(false);
 
@@ -119,7 +133,7 @@ function factory(
           checkboxVisible={isLastArticle}
           buttonTitle={query.isError ? 'Go Home' : 'Proceed'}
         />
-        {navigation.canGoBack() && (
+        {shouldShowBack && (
           <IconButton
             iconName="arrow-left"
             onPress={handlePressBack}

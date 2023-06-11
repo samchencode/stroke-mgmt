@@ -1,7 +1,10 @@
 class CachedIntroSequenceNotFoundError extends Error {
   name = 'CachedIntroSequenceNotFoundError';
 
-  message = 'No Intro Sequence set in cache';
+  constructor() {
+    const message = 'No Intro Sequence set in cache';
+    super(message);
+  }
 }
 
 export { CachedIntroSequenceNotFoundError };

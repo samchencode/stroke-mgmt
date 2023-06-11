@@ -65,8 +65,8 @@ function factory(clearCacheAction: ClearCacheAction) {
       [navigation]
     );
 
-    const handlePressStrokeFacts = useCallback(
-      () => navigation.navigate('StrokeFactsScreen'),
+    const handlePressIntro = useCallback(
+      () => navigation.navigate('IntroSequenceScreen'),
       [navigation]
     );
 
@@ -103,7 +103,7 @@ function factory(clearCacheAction: ClearCacheAction) {
           <Menu
             visible={menuOpen}
             style={styles.menu}
-            onPressStrokeFacts={handlePressStrokeFacts}
+            onPressIntro={handlePressIntro}
             onPressAbout={handlePressAbout}
             onPressDisclaimer={handlePressDisclaimer}
             onPressLicense={handlePressLicense}

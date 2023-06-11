@@ -19,13 +19,13 @@ type StrapiResponse =
   | StrapiErrorResponse
   | StrapiSingularApiResponse<StrapiIntroSequence>;
 
-const searchParamPairs = {
+const searchParamRecord = {
   'populate[articles][fields][0]': 'id',
   'populate[suggestedAlgorithm][fields][0]': 'id',
   'populate[suggestAlgorithmAfterArticle][fields][0]': 'id',
 };
 
-const searchParams = new URLSearchParams(searchParamPairs);
+const searchParams = new URLSearchParams(searchParamRecord);
 
 class StrapiIntroSequenceRepository implements IntroSequenceRepository {
   constructor(

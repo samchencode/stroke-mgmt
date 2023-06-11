@@ -31,3 +31,15 @@ export function useShouldShowStrokeFactsAndSigns(): ShouldShow {
   }, []);
   return shouldShow;
 }
+
+export function reconcileDontShowValue(
+  dontShowCheckboxValue: boolean,
+  dontShowStoredValue: boolean
+) {
+  if (dontShowCheckboxValue && !dontShowStoredValue) {
+    hideStrokeFactsAndSigns();
+  }
+  if (!dontShowCheckboxValue && dontShowStoredValue) {
+    showStrokeFactsAndSigns();
+  }
+}

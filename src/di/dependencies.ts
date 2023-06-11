@@ -21,6 +21,7 @@ import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
 import { factory as Router } from '@/view/Router';
 import { factory as Header } from '@/view/Router/Header';
 import { factory as AboutUsScreen } from '@/view/AboutUsScreen';
+import { factory as IntroSequenceScreen } from '@/view/IntroSequenceScreen';
 import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
 import { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetAllAlgorithmsShownOnHomeScreenAction';
 import { GetAlgorithmByIdAction } from '@/application/GetAlgorithmByIdAction';
@@ -36,6 +37,7 @@ import { ImageCache } from '@/domain/models/Image';
 import {
   AlgorithmCache,
   ArticleCache,
+  IntroSequenceCache,
   TagCache,
 } from '@/domain/services/Cache';
 import { WebsqlCachedArticleRepository } from '@/infrastructure/persistence/websql/WebsqlCachedArticleRepository';
@@ -48,6 +50,9 @@ import { WebsqlCachedTagRepository } from '@/infrastructure/persistence/websql/W
 import { ClearCacheAction } from '@/application/ClearCacheAction';
 import { WebsqlCachedAlgorithmRepostiory } from '@/infrastructure/persistence/websql/WebsqlCachedAlgorithmRepository/WebsqlCachedAlgorithmRepository';
 import { Platform } from 'react-native';
+import { GetIntroSequenceAction } from '@/application/GetIntroSequenceAction';
+import { StrapiIntroSequenceRepository } from '@/infrastructure/persistence/strapi/StrapiIntroSequenceRepository/StrapiIntroSequenceRepository';
+import { AsyncStorageCachedIntroSequenceRepository } from '@/infrastructure/persistence/async-storage/AsyncStorageCachedIntroSequenceRepository';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -67,6 +72,7 @@ export const module = {
   articleCache: ['type', ArticleCache],
   tagCache: ['type', TagCache],
   algorithmCache: ['type', AlgorithmCache],
+  introSequenceCache: ['type', IntroSequenceCache],
 
   // APPLICATION
   getAllArticlesAction: ['type', GetAllArticlesAction],
@@ -81,6 +87,7 @@ export const module = {
   ],
   getAlgorithmByIdAction: ['type', GetAlgorithmByIdAction],
   getAllTagsAction: ['type', GetAllTagsAction],
+  getIntroSequenceAction: ['type', GetIntroSequenceAction],
   renderArticleByIdAction: ['type', RenderArticleByIdAction],
   renderAlgorithmByIdAction: ['type', RenderAlgorithmByIdAction],
   renderAlgorithmAction: ['type', RenderAlgorithmAction],
@@ -95,6 +102,7 @@ export const module = {
   algorithmRepository: ['type', StrapiAlgorithmRepository],
   placeholderImageRepository: ['type', StrapiPlaceholderImageRepository],
   tagRepository: ['type', StrapiTagRepository],
+  introSequenceRepository: ['type', StrapiIntroSequenceRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   networkInfo: ['type', ReactNativeNetInfo],
   articleRenderer: [
@@ -111,6 +119,10 @@ export const module = {
   websqlDatabase: ['factory', openExpoSqliteDatabase],
   cachedTagRepository: ['type', WebsqlCachedTagRepository],
   cachedAlgorithmRepository: ['type', WebsqlCachedAlgorithmRepostiory],
+  cachedIntroSequenceRepository: [
+    'type',
+    AsyncStorageCachedIntroSequenceRepository,
+  ],
 
   // TEMPLATES
   App: ['factory', App],
@@ -122,6 +134,7 @@ export const module = {
   DisclaimerModal: ['factory', DisclaimerModal],
   ArticleViewerScreen: ['factory', ArticleViewerScreen],
   AlgorithmViewerScreen: ['factory', AlgorithmViewerScreen],
+  IntroSequenceScreen: ['factory', IntroSequenceScreen],
   Header: ['factory', Header],
 
   // BUILT-INS

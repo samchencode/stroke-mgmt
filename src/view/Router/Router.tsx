@@ -7,6 +7,7 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import { createStackNavigator } from '@react-navigation/stack';
 import type { Type as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
 import type { Type as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
+import type { Type as IntroSequenceScreen } from '@/view/IntroSequenceScreen';
 import type { Type as HomeScreen } from '@/view/HomeScreen';
 import type { Type as DisclaimerModal } from '@/view/DisclaimerModal';
 import type { Type as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
@@ -23,6 +24,7 @@ import { LicenseScreen } from '@/view/LicenseScreen';
 type AppNavigationParams = {
   StrokeFactsScreen: undefined;
   StrokeSignsScreen: undefined;
+  IntroSequenceScreen: undefined;
   HomeScreen: undefined;
   ArticleViewerScreen: { id: ArticleId };
   AlgorithmViewerScreen: { id: AlgorithmId };
@@ -41,6 +43,7 @@ const RootStack = createStackNavigator<RootNavigationParams>();
 function factory(
   StrokeFactsScreen: StrokeFactsScreen,
   StrokeSignsScreen: StrokeSignsScreen,
+  IntroSequenceScreen: IntroSequenceScreen,
   HomeScreen: HomeScreen,
   DisclaimerModal: DisclaimerModal,
   ArticleViewerScreen: ArticleViewerScreen,
@@ -61,7 +64,7 @@ function factory(
         }}
         initialRouteName={
           shouldShowFactsAndSignsOrLoading === 'yes'
-            ? 'StrokeFactsScreen'
+            ? 'IntroSequenceScreen'
             : 'HomeScreen'
         }
       >
@@ -73,6 +76,11 @@ function factory(
         <AppStack.Screen
           name="StrokeSignsScreen"
           component={StrokeSignsScreen}
+          options={{ header: NoHeader }}
+        />
+        <AppStack.Screen
+          name="IntroSequenceScreen"
+          component={IntroSequenceScreen}
           options={{ header: NoHeader }}
         />
         <AppStack.Screen

@@ -20,6 +20,7 @@ import { LoadingSpinnerView } from '@/view/components';
 import type { Type as Header } from '@/view/Router/Header';
 import { NoHeader } from '@/view/Router/NoHeader';
 import { LicenseScreen } from '@/view/LicenseScreen';
+import { EvaluatingPatientModal } from '@/view/EvaluatingPatientModal/EvaluatingPatientModal';
 
 type AppNavigationParams = {
   StrokeFactsScreen: undefined;
@@ -35,6 +36,7 @@ type AppNavigationParams = {
 type RootNavigationParams = {
   App: NavigatorScreenParams<AppNavigationParams>;
   DisclaimerModal: undefined;
+  EvaluatingPatientModal: { suggestedAlgorithmId: AlgorithmId };
 };
 
 const AppStack = createStackNavigator<AppNavigationParams>();
@@ -123,6 +125,11 @@ function factory(
         <RootStack.Screen
           name="DisclaimerModal"
           component={DisclaimerModal}
+          options={{ presentation: 'transparentModal' }}
+        />
+        <RootStack.Screen
+          name="EvaluatingPatientModal"
+          component={EvaluatingPatientModal}
           options={{ presentation: 'transparentModal' }}
         />
       </RootStack.Navigator>

@@ -4,6 +4,11 @@ export const fonts = {
     fontSize: 32,
     fontWeight: '400',
   },
+  headlineSmall: {
+    lineHeight: 32,
+    fontSize: 24,
+    fontWeight: '400',
+  },
   titleLarge: {
     lineHeight: 28,
     fontSize: 22,

@@ -47,12 +47,22 @@ function factory(
       navigation.goBack();
     }, [navigation]);
 
+    const [seenEvalPtModal, setSeenEvalPtModal] = useState(false);
+
     const handlePressButton = useCallback(() => {
       if (query.isError) {
         navigation.reset({ index: 0, routes: [{ name: 'HomeScreen' }] });
         return;
       }
       if (query.isLoading || !query.data) return;
+      const suggestAfterId = query.data.getSuggestAlgorithmAfterArticleId();
+      const currentId = query.data.getArticleIds()[sequenceCursor];
+      const suggestedAlgorithmId = query.data.getSuggestedAlgorithmId();
+      if (suggestAfterId.is(currentId) && !seenEvalPtModal) {
+        setSeenEvalPtModal(true);
+        navigation.navigate('EvaluatingPatientModal', { suggestedAlgorithmId });
+        return;
+      }
       const { length } = query.data.getArticleIds();
       if (sequenceCursor !== length - 1) {
         // not done with sequence
@@ -68,6 +78,7 @@ function factory(
       query.isError,
       query.isLoading,
       saveShouldShow,
+      seenEvalPtModal,
       sequenceCursor,
     ]);
 

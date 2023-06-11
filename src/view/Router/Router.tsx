@@ -5,8 +5,6 @@ import type {
 } from '@react-navigation/native';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { createStackNavigator } from '@react-navigation/stack';
-import type { Type as StrokeFactsScreen } from '@/view/StrokeFactsScreen';
-import type { Type as StrokeSignsScreen } from '@/view/StrokeSignsScreen';
 import type { Type as IntroSequenceScreen } from '@/view/IntroSequenceScreen';
 import type { Type as HomeScreen } from '@/view/HomeScreen';
 import type { Type as DisclaimerModal } from '@/view/DisclaimerModal';
@@ -15,7 +13,7 @@ import type { Type as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen
 import type { Type as AboutUsScreen } from '@/view/AboutUsScreen';
 import type { ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
-import { useShouldShowStrokeFactsAndSigns } from '@/view/lib/shouldShowStrokeFactsAndSigns';
+import { useShouldShowIntroSequence } from '@/view/lib/shouldShowIntroSequence';
 import { LoadingSpinnerView } from '@/view/components';
 import type { Type as Header } from '@/view/Router/Header';
 import { NoHeader } from '@/view/Router/NoHeader';
@@ -23,8 +21,6 @@ import { LicenseScreen } from '@/view/LicenseScreen';
 import { EvaluatingPatientModal } from '@/view/EvaluatingPatientModal/EvaluatingPatientModal';
 
 type AppNavigationParams = {
-  StrokeFactsScreen: undefined;
-  StrokeSignsScreen: undefined;
   IntroSequenceScreen: undefined;
   HomeScreen: undefined;
   ArticleViewerScreen: { id: ArticleId };
@@ -43,8 +39,6 @@ const AppStack = createStackNavigator<AppNavigationParams>();
 const RootStack = createStackNavigator<RootNavigationParams>();
 
 function factory(
-  StrokeFactsScreen: StrokeFactsScreen,
-  StrokeSignsScreen: StrokeSignsScreen,
   IntroSequenceScreen: IntroSequenceScreen,
   HomeScreen: HomeScreen,
   DisclaimerModal: DisclaimerModal,
@@ -54,7 +48,7 @@ function factory(
   Header: Header
 ) {
   function AppNavigation() {
-    const shouldShowFactsAndSignsOrLoading = useShouldShowStrokeFactsAndSigns();
+    const shouldShowFactsAndSignsOrLoading = useShouldShowIntroSequence();
 
     if (shouldShowFactsAndSignsOrLoading === 'loading')
       return <LoadingSpinnerView />;
@@ -70,16 +64,6 @@ function factory(
             : 'HomeScreen'
         }
       >
-        <AppStack.Screen
-          name="StrokeFactsScreen"
-          component={StrokeFactsScreen}
-          options={{ header: NoHeader }}
-        />
-        <AppStack.Screen
-          name="StrokeSignsScreen"
-          component={StrokeSignsScreen}
-          options={{ header: NoHeader }}
-        />
         <AppStack.Screen
           name="IntroSequenceScreen"
           component={IntroSequenceScreen}

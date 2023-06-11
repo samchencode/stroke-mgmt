@@ -2,12 +2,7 @@ type FakeArticle = {
   id: string;
   title: string;
   html: string;
-  designation:
-    | 'DISCLAIMER'
-    | 'STROKE_SIGNS'
-    | 'STROKE_FACTS'
-    | 'ARTICLE'
-    | 'ABOUT';
+  designation: 'DISCLAIMER' | 'ARTICLE' | 'ABOUT';
   thumbnail: string;
   summary: string;
 };
@@ -18,41 +13,6 @@ export const fakeArticles: FakeArticle[] = [
     title: 'Disclaimer',
     html: `<h1>Dear colleague,</h1><p>Optimal management of your patient is based on your examination and evaluation of the patient at the bedside. This guide cannot good clinical judgement from a board certified physician. The materials presented in this app are for educational purposes only. <a href="https://termly.io/resources/articles/medical-disclaimer-examples/#medical-disclaimer-vs-health-disclaimer">Some Examples of Medical Disclaimers for our edification</a></p>`,
     designation: 'DISCLAIMER',
-    thumbnail: '/thumbnail.png',
-    summary: 'My Summary',
-  },
-  {
-    id: '-1',
-    title: 'Stroke Signs',
-    html: `
-    <h1>Are you having a stroke?</h1>
-    <ul>
-    <li>Sudden numbness.</li>
-    <li>Sudden confusion.</li>
-    <li>Sudden trouble seeing.</li>
-    <li>Sudden trouble walking, dizziness, or loss of balance.</li>
-    <li>Sudden severe headache with no known cause.</li>
-    </ul>
-    <a href="https://www.ahajournals.org/doi/10.1161/CIR.0000000000001123">AHA Stroke Guidelines</a>
-    `,
-    designation: 'STROKE_SIGNS',
-    thumbnail: '/thumbnail.png',
-    summary: 'My Summary',
-  },
-  {
-    id: '0',
-    title: 'Stroke Facts',
-    html: `
-    <h1>Stroke Facts</h1>
-    <ul>
-    <li>1.9 million cells die in each minute of stroke.</li>
-    <li>Early treatment is associated with better outcomes.</li>
-    <li>Stroke with large vessels occlusion (LVO) is associated with severe life threatening stroke.</li>
-    <li>Stroke patients with LVO can receive mechanical removal of clot up to 24 hours and save lives with good functional outcomes</li>
-    <li>Patients with stroke with vertebral (VA) and basilar artery (BA) LVO could be treated beyond 24 hours.</li>
-    <li>VA and BA stroke can’t be evaluated by all stroke scales. If not detected and treated in timely manner, which may leads to death unfortunately.</li>
-    </ul>`,
-    designation: 'STROKE_FACTS',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
   },

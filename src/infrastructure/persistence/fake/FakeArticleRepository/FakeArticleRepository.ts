@@ -26,11 +26,7 @@ class FakeArticleRepository implements ArticleRepository {
 
   async getByDesignation(d: BaseDesignation): Promise<Article[]> {
     let articles = this.fakeArticles;
-    if (d.type === 'StrokeFacts') {
-      articles = fakeArticles.filter((a) => a.designation === 'STROKE_FACTS');
-    } else if (d.type === 'StrokeSigns') {
-      articles = fakeArticles.filter((a) => a.designation === 'STROKE_SIGNS');
-    } else if (d.type === 'Disclaimer') {
+    if (d.type === 'Disclaimer') {
       articles = fakeArticles.filter((a) => a.designation === 'DISCLAIMER');
     } else {
       articles = fakeArticles.filter((a) => a.designation === 'ARTICLE');
@@ -71,11 +67,7 @@ class FakeArticleRepository implements ArticleRepository {
     d: BaseDesignation
   ): Promise<ArticleMetadata[]> {
     let articles = this.fakeArticles;
-    if (d.type === 'StrokeFacts') {
-      articles = fakeArticles.filter((a) => a.designation === 'STROKE_FACTS');
-    } else if (d.type === 'StrokeSigns') {
-      articles = fakeArticles.filter((a) => a.designation === 'STROKE_SIGNS');
-    } else if (d.type === 'Disclaimer') {
+    if (d.type === 'Disclaimer') {
       articles = fakeArticles.filter((a) => a.designation === 'DISCLAIMER');
     } else {
       articles = fakeArticles.filter((a) => a.designation === 'ARTICLE');

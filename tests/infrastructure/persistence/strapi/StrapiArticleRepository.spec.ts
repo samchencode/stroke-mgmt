@@ -1,15 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Article, ArticleId, Designation } from '@/domain/models/Article';
+import { Article, ArticleId } from '@/domain/models/Article';
 import { StrapiArticleRepository } from '@/infrastructure/persistence/strapi/StrapiArtcleRepository';
 import { FakeImageRepository } from '@/infrastructure/persistence/fake/FakeAlgorithmRepository/FakeImageRepository';
 import { Tag } from '@/domain/models/Tag';
-import {
-  allArticles,
-  articleOne,
-  articleWithTag,
-  designationStrokeFacts,
-} from './fakeResponses';
+import { allArticles, articleOne, articleWithTag } from './fakeResponses';
 
 const makeFetch = (parsedResponse?: any) =>
   jest.fn().mockResolvedValue({
@@ -65,20 +60,6 @@ describe('StrapiArticleRepository', () => {
       expect(article.getTitle()).toBe(
         'Stroke Prevention: Easy Steps You Can Take Every Day'
       );
-    });
-
-    it('should get article by designation', async () => {
-      const imageRepo = new FakeImageRepository();
-      const repo = new StrapiArticleRepository(
-        'myhost.com',
-        makeFetch(designationStrokeFacts),
-        imageRepo,
-        mockNetworkInfo
-      );
-      const [strokeFacts] = await repo.getByDesignation(
-        Designation.STROKE_FACTS
-      );
-      expect(strokeFacts.getTitle()).toBe('Stroke Facts');
     });
 
     it('should get articles with tags', async () => {

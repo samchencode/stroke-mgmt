@@ -11,12 +11,6 @@ export const strapiResponseToArticle = (
 ): Article => {
   let designation: BaseDesignation = Designation.ARTICLE;
   switch (attributes.Designation) {
-    case 'Stroke Signs':
-      designation = Designation.STROKE_SIGNS;
-      break;
-    case 'Stroke Facts':
-      designation = Designation.STROKE_FACTS;
-      break;
     case 'Disclaimer':
       designation = Designation.DISCLAIMER;
       break;

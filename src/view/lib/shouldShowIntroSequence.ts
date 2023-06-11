@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 
-const STORAGE_KEY = '@shouldShowStrokeFactsAndSigns';
+const STORAGE_KEY = '@shouldShowIntroSequence-v1';
 
 const HIDE = 'hide';
 
@@ -9,11 +9,11 @@ const SHOW = 'show';
 
 type ShouldShow = 'loading' | 'yes' | 'no';
 
-export async function hideStrokeFactsAndSigns() {
+export async function hideIntroSequence() {
   return AsyncStorage.setItem(STORAGE_KEY, HIDE);
 }
 
-export async function showStrokeFactsAndSigns() {
+export async function showIntroSequence() {
   return AsyncStorage.setItem(STORAGE_KEY, SHOW);
 }
 
@@ -22,7 +22,7 @@ export async function checkShouldShow() {
   return value !== HIDE;
 }
 
-export function useShouldShowStrokeFactsAndSigns(): ShouldShow {
+export function useShouldShowIntroSequence(): ShouldShow {
   const [shouldShow, setShouldShow] = useState<ShouldShow>('loading');
   useEffect(() => {
     checkShouldShow()
@@ -37,9 +37,9 @@ export function reconcileDontShowValue(
   dontShowStoredValue: boolean
 ) {
   if (dontShowCheckboxValue && !dontShowStoredValue) {
-    hideStrokeFactsAndSigns();
+    hideIntroSequence();
   }
   if (!dontShowCheckboxValue && dontShowStoredValue) {
-    showStrokeFactsAndSigns();
+    showIntroSequence();
   }
 }

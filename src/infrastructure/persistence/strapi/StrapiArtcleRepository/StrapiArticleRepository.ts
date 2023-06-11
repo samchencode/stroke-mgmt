@@ -74,9 +74,7 @@ class StrapiArticleRepository implements ArticleRepository {
   }
 
   async getByDesignation(designation: BaseDesignation): Promise<Article[]> {
-    let designationName = designation.toString();
-    if (designationName === 'StrokeFacts') designationName = 'Stroke Facts';
-    if (designationName === 'StrokeSigns') designationName = 'Stroke Signs';
+    const designationName = designation.toString();
 
     const { data } = await this.get(
       `/api/articles/?filters[Designation]=${encodeURI(
@@ -106,10 +104,6 @@ class StrapiArticleRepository implements ArticleRepository {
     });
     if (designation.is(Designation.ARTICLE))
       searchParams.set('filters[Designation]', 'Article');
-    else if (designation.is(Designation.STROKE_FACTS))
-      searchParams.set('filters[Designation]', 'Stroke Facts');
-    else if (designation.is(Designation.STROKE_SIGNS))
-      searchParams.set('filters[Designation]', 'Stroke Signs');
     else if (designation.is(Designation.ABOUT))
       searchParams.set('filters[Designation]', 'About');
     else if (designation.is(Designation.DISCLAIMER))

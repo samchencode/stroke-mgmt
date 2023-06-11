@@ -1,11 +1,11 @@
 import {
   reconcileDontShowValue,
-  useShouldShowStrokeFactsAndSigns,
-} from '@/view/lib/shouldShowStrokeFactsAndSigns';
+  useShouldShowIntroSequence,
+} from '@/view/lib/shouldShowIntroSequence';
 import { useCallback, useEffect, useState } from 'react';
 
 function useShouldShow() {
-  const shouldShowValueFromStorage = useShouldShowStrokeFactsAndSigns();
+  const shouldShowValueFromStorage = useShouldShowIntroSequence();
   const [dontShowCheckboxValue, setDontShowCheckboxValue] = useState(false);
   useEffect(() => {
     // set initial state to stated state

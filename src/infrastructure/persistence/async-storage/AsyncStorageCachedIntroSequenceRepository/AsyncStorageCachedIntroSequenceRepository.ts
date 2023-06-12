@@ -25,7 +25,7 @@ class AsyncStorageCachedIntroSequenceRepository
 
   async isEmpty(): Promise<boolean> {
     const storedValue = await AsyncStorage.getItem(STORAGE_KEY);
-    return storedValue !== null;
+    return storedValue === null;
   }
 
   async get(): Promise<IntroSequence> {

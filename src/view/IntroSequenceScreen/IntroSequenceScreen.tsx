@@ -14,6 +14,7 @@ import { IntroArticleView } from '@/view/IntroSequenceScreen/IntroArticleView';
 import { IntroSequenceBottomBar } from '@/view/IntroSequenceScreen/IntroSequenceBottomBar';
 import { useShouldShow } from '@/view/IntroSequenceScreen/useShouldShow';
 import { useNavigationState } from '@react-navigation/native';
+import { useHasSeenDisclaimer } from '@/view/lib/useHasSeenDisclaimer';
 
 function factory(
   getIntroSequenceAction: GetIntroSequenceAction,
@@ -26,6 +27,12 @@ function factory(
       theme.colors.secondaryContainer,
       'dark'
     );
+
+    const openDisclaimer = useCallback(() => {
+      navigation.navigate('DisclaimerModal');
+    }, [navigation]);
+
+    useHasSeenDisclaimer(openDisclaimer);
 
     const [sequenceCursor, setSequenceCursor] = useState(0);
     const queryClient = useQueryClient();

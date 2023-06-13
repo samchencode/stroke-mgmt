@@ -14,7 +14,6 @@ import type { GetAllAlgorithmsShownOnHomeScreenAction } from '@/application/GetA
 import type { GetAllTagsAction } from '@/application/GetAllTagsAction';
 import { theme } from '@/view/theme';
 import { ArticleList, AlgorithmList } from '@/view/HomeScreen/components';
-import { useHasSeenDisclaimer } from '@/view/lib/useHasSeenDisclaimer';
 import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
 import { useBottomNavigationBarHeight } from '@/view/lib/getBottomNavigationBarHeight';
 import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';
@@ -28,12 +27,6 @@ function factory(
     const { width, height: windowHeight } = useWindowDimensions();
     const innerWidth =
       Math.min(width, theme.breakpoints.width.tablet) - 2 * theme.spaces.md;
-
-    const openDisclaimer = useCallback(() => {
-      navigation.navigate('DisclaimerModal');
-    }, [navigation]);
-
-    useHasSeenDisclaimer(openDisclaimer);
 
     const handleSelectArticle = useCallback(
       (id: ArticleId) => {

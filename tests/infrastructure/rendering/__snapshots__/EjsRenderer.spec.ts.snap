@@ -790,13 +790,20 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   .iframe__wrapper--loading iframe {
     visibility: hidden;
   }
+
+  .template.last-updated {
+    display: block;
+    align-self: flex-end;
+    margin-right: 16px;
+    margin-top: 16px;
+    text-align: right;
+  }
 </style>
 </head>
 
 <body>
   <header class="template header">
     <h1 class="template header__title">GWNS</h1>
-    <i>Last Updated: December 31, 1969</i>
   </header>
   <main class="template main">
     <p class="template body__paragraph">
@@ -912,7 +919,7 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   
 </ul>
   </main>
-
+  <i class="template last-updated">Last Updated: December 31, 1969</i>
   <script>
   function notifyReactNative(messageType, content) {
     const message = {
@@ -1457,13 +1464,20 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   .iframe__wrapper--loading iframe {
     visibility: hidden;
   }
+
+  .template.last-updated {
+    display: block;
+    align-self: flex-end;
+    margin-right: 16px;
+    margin-top: 16px;
+    text-align: right;
+  }
 </style>
 </head>
 
 <body>
   <header class="template header">
     <h1 class="template header__title">ABCTs</h1>
-    <i>Last Updated: December 31, 1969</i>
   </header>
   <main class="template main">
     <p class="template body__paragraph">
@@ -1496,7 +1510,7 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   
 </ul>
   </main>
-
+  <i class="template last-updated">Last Updated: December 31, 1969</i>
   <script>
   function notifyReactNative(messageType, content) {
     const message = {

@@ -9,7 +9,6 @@
 <body>
   <header class="template header">
     <h1 class="template header__title"><%- algorithm.getTitle() _%></h1>
-    <i>Last Updated: <%- algorithm.getLastUpdated().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
   </header>
   <main class="template main">
     <p class="template body__paragraph">
@@ -17,7 +16,7 @@
     </p>
     <%- include('outcomeList', { algorithm }) %>
   </main>
-
+  <i class="template last-updated">Last Updated: <%- algorithm.getLastUpdated().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
   <%- include('script') %>
 </body>
 

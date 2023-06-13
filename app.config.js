@@ -21,8 +21,8 @@ module.exports = {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/icon.png',
-        backgroundColor: '#FFFFFF',
+        foregroundImage: './assets/adaptive-icon.png',
+        backgroundColor: '#000000',
       },
       package: 'com.samuel88835.strokemgmt',
     },

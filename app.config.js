@@ -24,6 +24,7 @@ module.exports = {
         foregroundImage: './assets/icon.png',
         backgroundColor: '#FFFFFF',
       },
+      package: 'com.samuel88835.strokemgmt',
     },
     androidNavigationBar: {
       barStyle: 'dark-content',

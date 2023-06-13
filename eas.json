@@ -13,6 +13,14 @@
       "extends": "production",
       "distribution": "internal"
     },
+    "emulator": {
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
     "production": {}
   },
   "submit": {

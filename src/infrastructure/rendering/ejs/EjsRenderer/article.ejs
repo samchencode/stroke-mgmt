@@ -172,9 +172,9 @@
     for (const a of links) {
       const href = a.getAttribute('href')
       if (href.slice(0, 1) === '#') continue
-      a.addEventListener('click', (e) => {
+      a.addEventListener('click', function(e) {
         e.preventDefault()
-        const href = e.target.getAttribute('href')
+        const href = this.getAttribute('href')
         if (isArticleLink(href)) handleArticleLinkPressed(href)
         else handleLinkPressed(href)
       })

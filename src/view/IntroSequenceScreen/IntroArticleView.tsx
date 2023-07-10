@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import type { ArticleId } from '@/domain/models/Article';
+import { ArticleId } from '@/domain/models/Article';
 import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
 import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
@@ -16,12 +16,14 @@ type Props = {
   id: ArticleId;
   renderArticleByIdAction: RenderArticleByIdAction;
   onPressExternalLink: (url: string) => void;
+  onPressArticleLink: (id: ArticleId) => void;
 };
 
 function IntroArticleView({
   id,
   renderArticleByIdAction,
   onPressExternalLink,
+  onPressArticleLink,
 }: Props) {
   const eventHandler = useMemo(
     () =>
@@ -29,8 +31,11 @@ function IntroArticleView({
         linkpressed: ({ href }) => {
           onPressExternalLink(href);
         },
+        articlelinkpressed: ({ articleId }) => {
+          onPressArticleLink(new ArticleId(articleId));
+        },
       }),
-    [onPressExternalLink]
+    [onPressArticleLink, onPressExternalLink]
   );
 
   const handleMessage = useCallback(

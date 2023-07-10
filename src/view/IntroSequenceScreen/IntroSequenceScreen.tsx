@@ -15,6 +15,7 @@ import { IntroSequenceBottomBar } from '@/view/IntroSequenceScreen/IntroSequence
 import { useShouldShow } from '@/view/IntroSequenceScreen/useShouldShow';
 import { useNavigationState } from '@react-navigation/native';
 import { useHasSeenDisclaimer } from '@/view/lib/useHasSeenDisclaimer';
+import type { ArticleId } from '@/domain/models/Article';
 
 function factory(
   getIntroSequenceAction: GetIntroSequenceAction,
@@ -108,15 +109,21 @@ function factory(
       [navigation]
     );
 
+    const handlePressArticleLink = useCallback(
+      (id: ArticleId) => navigation.navigate('ArticleViewerScreen', { id }),
+      [navigation]
+    );
+
     const renderData = useCallback(
       (seq: IntroSequence) => (
         <IntroArticleView
           id={seq.getArticleIds()[sequenceCursor]}
           renderArticleByIdAction={renderArticleByIdAction}
           onPressExternalLink={handlePressExternalLink}
+          onPressArticleLink={handlePressArticleLink}
         />
       ),
-      [handlePressExternalLink, sequenceCursor]
+      [handlePressArticleLink, handlePressExternalLink, sequenceCursor]
     );
 
     const renderError = useCallback(

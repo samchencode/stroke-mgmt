@@ -15,10 +15,23 @@ import { LoadingSpinnerView } from '@/view/components';
 type Props = {
   id: ArticleId;
   renderArticleByIdAction: RenderArticleByIdAction;
+  onPressExternalLink: (url: string) => void;
 };
 
-function IntroArticleView({ id, renderArticleByIdAction }: Props) {
-  const eventHandler = useMemo(() => new WebViewEventHandler({}), []);
+function IntroArticleView({
+  id,
+  renderArticleByIdAction,
+  onPressExternalLink,
+}: Props) {
+  const eventHandler = useMemo(
+    () =>
+      new WebViewEventHandler({
+        linkpressed: ({ href }) => {
+          onPressExternalLink(href);
+        },
+      }),
+    [onPressExternalLink]
+  );
 
   const handleMessage = useCallback(
     ({ nativeEvent }: WebViewMessageEvent) => {

@@ -19,6 +19,7 @@ type ScoredAlgorithmViewProps = {
   onChangeAlgorithm: (algo: ScoredAlgorithm) => void;
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
   onPressArticleLink: (id: ArticleId) => void;
+  onPressExternalLink: (url: string) => void;
 };
 
 function ScoredAlgorithmView({
@@ -28,6 +29,7 @@ function ScoredAlgorithmView({
   onChangeAlgorithm,
   onNextAlgorithm,
   onPressArticleLink,
+  onPressExternalLink,
 }: ScoredAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
 
@@ -49,8 +51,17 @@ function ScoredAlgorithmView({
           onNextAlgorithm(new AlgorithmId(id), algorithm),
         articlelinkpressed: ({ articleId }) =>
           onPressArticleLink(new ArticleId(articleId)),
+        linkpressed: ({ href }) => {
+          onPressExternalLink(href);
+        },
       }),
-    [algorithm, onChangeAlgorithm, onNextAlgorithm, onPressArticleLink]
+    [
+      algorithm,
+      onChangeAlgorithm,
+      onNextAlgorithm,
+      onPressArticleLink,
+      onPressExternalLink,
+    ]
   );
 
   const handleMessage = useCallback(

@@ -32,6 +32,11 @@ function factory(
       [navigation]
     );
 
+    const onPressExternalLink = useCallback(
+      (url: string) => navigation.navigate('ExternalLinkModal', { url }),
+      [navigation]
+    );
+
     return (
       <View style={styles.container} onLayout={handleLayout}>
         <AlgorithmCollectionView
@@ -47,6 +52,7 @@ function factory(
           )}
           minHeight={height}
           onPressArticleLink={onPressArticleLink}
+          onPressExternalLink={onPressExternalLink}
         />
       </View>
     );

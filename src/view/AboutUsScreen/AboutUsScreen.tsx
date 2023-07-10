@@ -32,6 +32,9 @@ function factory(renderAboutUsAction: RenderAboutUsAction) {
               id: new ArticleId(articleId),
             });
           },
+          linkpressed: ({ href }) => {
+            navigation.navigate('ExternalLinkModal', { url: href });
+          },
         }),
       [navigation]
     );

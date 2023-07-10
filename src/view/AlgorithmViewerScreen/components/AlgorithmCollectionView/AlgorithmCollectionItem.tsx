@@ -25,6 +25,7 @@ type Props = {
   dropItemsFromCollectionAfter: (afterUuid: string) => void;
   width: number;
   onPressArticleLink: (id: ArticleId) => void;
+  onPressExternalLink: (url: string) => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -37,6 +38,7 @@ function BaseAlgorithmCollectionItem({
   dropItemsFromCollectionAfter,
   width,
   onPressArticleLink,
+  onPressExternalLink,
   style = {},
 }: Props) {
   const [renderedAlgorithm, setRenderedAlgorithm] =
@@ -106,6 +108,7 @@ function BaseAlgorithmCollectionItem({
               onNextAlgorithm={handleNextAlgorithm}
               style={style}
               onPressArticleLink={onPressArticleLink}
+              onPressExternalLink={onPressExternalLink}
             />
           ) : (
             <Text>Oh no! Something went wrong!</Text>
@@ -114,6 +117,7 @@ function BaseAlgorithmCollectionItem({
           handleChangeAlgorithm,
           handleNextAlgorithm,
           onPressArticleLink,
+          onPressExternalLink,
           renderedAlgorithm,
           style,
           width,

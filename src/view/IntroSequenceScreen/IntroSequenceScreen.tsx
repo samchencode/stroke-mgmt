@@ -103,14 +103,20 @@ function factory(
       sequenceCursor,
     ]);
 
+    const handlePressExternalLink = useCallback(
+      (url: string) => navigation.navigate('ExternalLinkModal', { url }),
+      [navigation]
+    );
+
     const renderData = useCallback(
       (seq: IntroSequence) => (
         <IntroArticleView
           id={seq.getArticleIds()[sequenceCursor]}
           renderArticleByIdAction={renderArticleByIdAction}
+          onPressExternalLink={handlePressExternalLink}
         />
       ),
-      [sequenceCursor]
+      [handlePressExternalLink, sequenceCursor]
     );
 
     const renderError = useCallback(

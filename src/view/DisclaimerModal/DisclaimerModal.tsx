@@ -29,6 +29,13 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
       navigation.goBack();
     }, [navigation]);
 
+    const onPressExternalLink = useCallback(
+      (url: string) => {
+        navigation.navigate('ExternalLinkModal', { url });
+      },
+      [navigation]
+    );
+
     return (
       <View style={styles.container}>
         <View style={styles.background} />
@@ -43,7 +50,10 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
             renderData={useCallback(
               (html: string) => (
                 <>
-                  <DisclaimerView html={html} />
+                  <DisclaimerView
+                    html={html}
+                    onPressExternalLink={onPressExternalLink}
+                  />
                   <TextButton
                     title="Got it"
                     onPress={handleDismiss}
@@ -51,7 +61,7 @@ function factory(renderDisclaimerAction: RenderDisclaimerAction) {
                   />
                 </>
               ),
-              [handleDismiss]
+              [handleDismiss, onPressExternalLink]
             )}
             renderError={useCallback(
               (error) => (

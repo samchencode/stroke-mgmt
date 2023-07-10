@@ -22,6 +22,7 @@ type Props = {
     onStale: (id: RenderedAlgorithm) => void
   ) => Promise<RenderedAlgorithm>;
   onPressArticleLink: (id: ArticleId) => void;
+  onPressExternalLink: (url: string) => void;
   initialId: AlgorithmId;
 };
 
@@ -31,6 +32,7 @@ function BaseAlgorithmCollectionView({
   renderAlgorithmById,
   renderAlgorithm,
   onPressArticleLink,
+  onPressExternalLink,
   initialId,
 }: Props) {
   const { scrollToEnd, flatList, handleScroll } = useScrollBehavior();
@@ -60,6 +62,7 @@ function BaseAlgorithmCollectionView({
         appendToCollection={handleAppendToCollection}
         dropItemsFromCollectionAfter={handleDropItemsFromCollectionAfter}
         onPressArticleLink={onPressArticleLink}
+        onPressExternalLink={onPressExternalLink}
       />
     ),
     [
@@ -68,6 +71,7 @@ function BaseAlgorithmCollectionView({
       handleDropItemsFromCollectionAfter,
       minHeight,
       onPressArticleLink,
+      onPressExternalLink,
       renderAlgorithm,
       renderAlgorithmById,
       width,

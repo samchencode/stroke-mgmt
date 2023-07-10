@@ -18,6 +18,7 @@ type AlgorithmViewProps = {
   onChangeAlgorithm: (a: Algorithm) => void;
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
   onPressArticleLink: (id: ArticleId) => void;
+  onPressExternalLink: (url: string) => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -49,8 +50,14 @@ class AlgorithmView
   }
 
   private renderTextAlgorithm() {
-    const { html, width, onNextAlgorithm, algorithm, onPressArticleLink } =
-      this.props;
+    const {
+      html,
+      width,
+      onNextAlgorithm,
+      algorithm,
+      onPressArticleLink,
+      onPressExternalLink,
+    } = this.props;
     return (
       <TextAlgorithmView
         html={html}
@@ -58,6 +65,7 @@ class AlgorithmView
         algorithm={algorithm}
         onNextAlgorithm={onNextAlgorithm}
         onPressArticleLink={onPressArticleLink}
+        onPressExternalLink={onPressExternalLink}
       />
     );
   }
@@ -70,6 +78,7 @@ class AlgorithmView
       onChangeAlgorithm,
       algorithm,
       onPressArticleLink,
+      onPressExternalLink,
     } = this.props;
     return (
       <ScoredAlgorithmView
@@ -79,6 +88,7 @@ class AlgorithmView
         onNextAlgorithm={onNextAlgorithm}
         onChangeAlgorithm={onChangeAlgorithm}
         onPressArticleLink={onPressArticleLink}
+        onPressExternalLink={onPressExternalLink}
       />
     );
   }

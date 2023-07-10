@@ -19,6 +19,7 @@ import type { Type as Header } from '@/view/Router/Header';
 import { NoHeader } from '@/view/Router/NoHeader';
 import { LicenseScreen } from '@/view/LicenseScreen';
 import { EvaluatingPatientModal } from '@/view/EvaluatingPatientModal/EvaluatingPatientModal';
+import { ExternalLinkModal } from '@/view/ExternalLinkModal';
 
 type AppNavigationParams = {
   IntroSequenceScreen: undefined;
@@ -33,6 +34,7 @@ type RootNavigationParams = {
   App: NavigatorScreenParams<AppNavigationParams>;
   DisclaimerModal: undefined;
   EvaluatingPatientModal: { suggestedAlgorithmId: AlgorithmId };
+  ExternalLinkModal: { url: string };
 };
 
 const AppStack = createStackNavigator<AppNavigationParams>();
@@ -114,6 +116,11 @@ function factory(
         <RootStack.Screen
           name="EvaluatingPatientModal"
           component={EvaluatingPatientModal}
+          options={{ presentation: 'transparentModal' }}
+        />
+        <RootStack.Screen
+          name="ExternalLinkModal"
+          component={ExternalLinkModal}
           options={{ presentation: 'transparentModal' }}
         />
       </RootStack.Navigator>

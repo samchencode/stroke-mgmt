@@ -8,9 +8,10 @@ import { WebViewEventHandler } from '@/infrastructure/rendering/WebViewEvent';
 
 type Props = {
   html: string;
+  onPressExternalLink: (url: string) => void;
 };
 
-function DisclaimerView({ html }: Props) {
+function DisclaimerView({ html, onPressExternalLink }: Props) {
   const { width, height } = useWindowDimensions();
   // minus padding of modal
   const maxWebviewWidth = 560 - theme.spaces.lg * 2;
@@ -28,8 +29,11 @@ function DisclaimerView({ html }: Props) {
     () =>
       new WebViewEventHandler({
         layout: ({ height: h }) => setWebViewInnerHeight(h),
+        linkpressed: ({ href }) => {
+          onPressExternalLink(href);
+        },
       }),
-    []
+    [onPressExternalLink]
   );
 
   const handleMessage = useCallback(

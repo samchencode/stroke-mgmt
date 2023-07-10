@@ -17,6 +17,7 @@ type TextAlgorithmViewProps = {
   algorithm: Algorithm;
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
   onPressArticleLink: (id: ArticleId) => void;
+  onPressExternalLink: (url: string) => void;
 };
 
 function TextAlgorithmView({
@@ -25,6 +26,7 @@ function TextAlgorithmView({
   algorithm,
   onNextAlgorithm,
   onPressArticleLink,
+  onPressExternalLink,
 }: TextAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
 
@@ -39,8 +41,11 @@ function TextAlgorithmView({
           onNextAlgorithm(new AlgorithmId(id), algorithm),
         articlelinkpressed: ({ articleId }) =>
           onPressArticleLink(new ArticleId(articleId)),
+        linkpressed: ({ href }) => {
+          onPressExternalLink(href);
+        },
       }),
-    [algorithm, onNextAlgorithm, onPressArticleLink]
+    [algorithm, onNextAlgorithm, onPressArticleLink, onPressExternalLink]
   );
 
   const handleMessage = useCallback(

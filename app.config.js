@@ -17,14 +17,14 @@ module.exports = {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.samuel88835.strokemgmt',
+      bundleIdentifier: 'com.strokemgmtapp.strokemgmt',
     },
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#000000',
       },
-      package: 'com.samuel88835.strokemgmt',
+      package: 'com.strokemgmtapp.strokemgmt',
     },
     androidNavigationBar: {
       barStyle: 'dark-content',

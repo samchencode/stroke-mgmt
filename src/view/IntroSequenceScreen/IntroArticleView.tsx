@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import WebView from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
+import type { WebViewScrollEvent } from 'react-native-webview/lib/WebViewTypes';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { ArticleId } from '@/domain/models/Article';
 import type { WebViewEvent } from '@/infrastructure/rendering/WebViewEvent';
@@ -11,6 +12,7 @@ import { theme } from '@/view/theme';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
 import { ScreenErrorView } from '@/view/error-handling';
 import { LoadingSpinnerView } from '@/view/components';
+import { useHeaderScrollResponder } from '@/view/Router/HeaderScrollContext';
 
 type Props = {
   id: ArticleId;
@@ -46,6 +48,10 @@ function IntroArticleView({
     [eventHandler]
   );
 
+  const handleScroll = useHeaderScrollResponder<WebViewScrollEvent>(
+    useCallback((e: WebViewScrollEvent) => e.nativeEvent.contentOffset.y, [])
+  );
+
   const queryClient = useQueryClient();
   const onStale = (html: string) =>
     queryClient.setQueryData(['article', id], html);
@@ -61,10 +67,11 @@ function IntroArticleView({
         source={{ html }}
         originWhitelist={['*']}
         onMessage={handleMessage}
+        onScroll={handleScroll}
         style={styles.webView}
       />
     ),
-    [handleMessage]
+    [handleMessage, handleScroll]
   );
 
   const renderError = useCallback(

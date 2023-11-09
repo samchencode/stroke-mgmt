@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import type { StackHeaderProps } from '@react-navigation/stack';
 import type { Route } from '@react-navigation/native';
@@ -6,6 +6,7 @@ import { NoInternetBanner, useNoInternetBanner } from '@/view/NoInternetBanner';
 import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
 import { IconButton, TextButton } from '@/view/components';
+import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
 
 type IntroSequenceParams = {
   cursor: number;
@@ -17,7 +18,8 @@ function IntroSequenceHeader({ route, navigation }: StackHeaderProps) {
   const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
     useNoInternetBanner();
 
-  const headerHasElevation = shouldShowNoInternetBanner;
+  const { scrolledToTop } = useContext(HeaderScrollContext);
+  const headerHasElevation = !scrolledToTop || shouldShowNoInternetBanner;
 
   if (!route || !route.params)
     throw Error('No Intro Sequence cursor provided to header');

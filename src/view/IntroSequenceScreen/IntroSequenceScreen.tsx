@@ -23,6 +23,7 @@ function factory(
 ) {
   return function IntroSequenceScreen({
     navigation,
+    route,
   }: AppNavigationProps<'IntroSequenceScreen'>) {
     useSetAndroidBottomNavigationBarColor(
       theme.colors.secondaryContainer,
@@ -35,7 +36,11 @@ function factory(
 
     useHasSeenDisclaimer(openDisclaimer);
 
-    const [sequenceCursor, setSequenceCursor] = useState(0);
+    const sequenceCursor = route.params.cursor;
+    const setSequenceCursor = useCallback(
+      (cursor: number) => navigation.setParams({ cursor }),
+      [navigation]
+    );
     const queryClient = useQueryClient();
     const onIntroStale = (seq: IntroSequence) => {
       queryClient.setQueryData(['intro-sequence'], seq);
@@ -67,7 +72,7 @@ function factory(
         // if cursor is at first article and came from home screen
         navigation.goBack();
       }
-    }, [navigation, prevRouteName, sequenceCursor]);
+    }, [navigation, prevRouteName, sequenceCursor, setSequenceCursor]);
 
     const [seenEvalPtModal, setSeenEvalPtModal] = useState(false);
 
@@ -102,6 +107,7 @@ function factory(
       saveShouldShow,
       seenEvalPtModal,
       sequenceCursor,
+      setSequenceCursor,
     ]);
 
     const handlePressExternalLink = useCallback(

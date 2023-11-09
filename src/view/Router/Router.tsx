@@ -22,7 +22,7 @@ import { EvaluatingPatientModal } from '@/view/EvaluatingPatientModal/Evaluating
 import { ExternalLinkModal } from '@/view/ExternalLinkModal';
 
 type AppNavigationParams = {
-  IntroSequenceScreen: undefined;
+  IntroSequenceScreen: { cursor: number };
   HomeScreen: undefined;
   ArticleViewerScreen: { id: ArticleId };
   AlgorithmViewerScreen: { id: AlgorithmId };
@@ -69,7 +69,7 @@ function factory(
         <AppStack.Screen
           name="IntroSequenceScreen"
           component={IntroSequenceScreen}
-          options={{ header: NoHeader }}
+          initialParams={{ cursor: 0 }}
         />
         <AppStack.Screen
           name="AboutUsScreen"

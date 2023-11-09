@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import type { AppNavigationProps } from '@/view/Router';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { UseQueryResultView } from '@/view/lib/UseQueryResultView';
-import { IconButton, LoadingSpinnerView } from '@/view/components';
+import { LoadingSpinnerView } from '@/view/components';
 import { theme } from '@/view/theme';
 import { useSetAndroidBottomNavigationBarColor } from '@/view/lib/useSetAndroidBottomNavigationBarColor';
 import { ScreenErrorView } from '@/view/error-handling';
@@ -13,7 +13,6 @@ import type { RenderArticleByIdAction } from '@/application/RenderArticleByIdAct
 import { IntroArticleView } from '@/view/IntroSequenceScreen/IntroArticleView';
 import { IntroSequenceBottomBar } from '@/view/IntroSequenceScreen/IntroSequenceBottomBar';
 import { useShouldShow } from '@/view/IntroSequenceScreen/useShouldShow';
-import { useNavigationState } from '@react-navigation/native';
 import { useHasSeenDisclaimer } from '@/view/lib/useHasSeenDisclaimer';
 import type { ArticleId } from '@/domain/models/Article';
 
@@ -56,23 +55,6 @@ function factory(
       sequenceCursor + 1 === query.data.getArticleIds().length;
 
     const [checkboxValue, setCheckboxValue, saveShouldShow] = useShouldShow();
-
-    // initial start = no, hasBack is true once nav to modal...
-    const { index, routes } = useNavigationState((state) => state);
-    const prevRouteName: string | undefined = routes?.[index - 1]?.name;
-    const shouldShowBack =
-      prevRouteName === 'HomeScreen' || sequenceCursor !== 0;
-
-    const handlePressBack = useCallback(() => {
-      if (sequenceCursor > 0) {
-        setSequenceCursor(sequenceCursor - 1);
-        return;
-      }
-      if (prevRouteName === 'HomeScreen') {
-        // if cursor is at first article and came from home screen
-        navigation.goBack();
-      }
-    }, [navigation, prevRouteName, sequenceCursor, setSequenceCursor]);
 
     const [seenEvalPtModal, setSeenEvalPtModal] = useState(false);
 
@@ -159,13 +141,6 @@ function factory(
           checkboxVisible={isLastArticle}
           buttonTitle={query.isError ? 'Go Home' : 'Proceed'}
         />
-        {shouldShowBack && (
-          <IconButton
-            iconName="arrow-left"
-            onPress={handlePressBack}
-            style={styles.backButton}
-          />
-        )}
       </View>
     );
   };
@@ -173,11 +148,6 @@ function factory(
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  backButton: {
-    position: 'absolute',
-    top: theme.spaces.sm,
-    left: theme.spaces.xs,
-  },
 });
 
 export { factory };

@@ -16,10 +16,10 @@ import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { useShouldShowIntroSequence } from '@/view/lib/shouldShowIntroSequence';
 import { LoadingSpinnerView } from '@/view/components';
 import type { Type as Header } from '@/view/Router/Header';
-import { NoHeader } from '@/view/Router/NoHeader';
 import { LicenseScreen } from '@/view/LicenseScreen';
 import { EvaluatingPatientModal } from '@/view/EvaluatingPatientModal/EvaluatingPatientModal';
 import { ExternalLinkModal } from '@/view/ExternalLinkModal';
+import { IntroSequenceHeader } from '@/view/IntroSequenceScreen/IntroSequenceHeader';
 
 type AppNavigationParams = {
   IntroSequenceScreen: { cursor: number };
@@ -69,6 +69,7 @@ function factory(
         <AppStack.Screen
           name="IntroSequenceScreen"
           component={IntroSequenceScreen}
+          options={{ header: IntroSequenceHeader }}
           initialParams={{ cursor: 0 }}
         />
         <AppStack.Screen

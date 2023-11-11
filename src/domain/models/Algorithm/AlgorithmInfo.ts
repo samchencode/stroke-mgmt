@@ -1,5 +1,6 @@
 import type { AlgorithmId } from '@/domain/models/Algorithm/AlgorithmId';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
+import type { Citation } from '@/domain/models/Citation';
 import type { Image } from '@/domain/models/Image';
 
 type AlgorithmParams = {
@@ -9,6 +10,7 @@ type AlgorithmParams = {
   thumbnail: Image;
   summary: string;
   outcomes: Outcome[];
+  citations: Citation[];
   shouldShowOnHomeScreen: boolean;
   lastUpdated: Date;
 };
@@ -30,6 +32,8 @@ class AlgorithmInfo {
 
   private lastUpdated: Date;
 
+  private citations: Citation[];
+
   constructor({
     id,
     title,
@@ -39,6 +43,7 @@ class AlgorithmInfo {
     thumbnail,
     shouldShowOnHomeScreen,
     lastUpdated,
+    citations,
   }: AlgorithmParams) {
     this.id = id;
     this.title = title;
@@ -48,6 +53,7 @@ class AlgorithmInfo {
     this.summary = summary;
     this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
     this.lastUpdated = lastUpdated;
+    this.citations = citations;
   }
 
   getId() {
@@ -74,6 +80,10 @@ class AlgorithmInfo {
     return this.summary;
   }
 
+  getCitations() {
+    return this.citations;
+  }
+
   getShouldShowOnHomeScreen() {
     return this.shouldShowOnHomeScreen;
   }
@@ -90,6 +100,7 @@ class AlgorithmInfo {
       thumbnail: this.getThumbnail(),
       summary: this.getSummary(),
       outcomes: this.getOutcomes(),
+      citations: this.getCitations(),
       shouldShowOnHomeScreen: this.getShouldShowOnHomeScreen(),
       lastUpdated: this.getLastUpdated(),
       ...params,

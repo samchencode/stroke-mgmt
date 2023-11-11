@@ -11,6 +11,7 @@ class ScoredAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
   makeSaveQuery(): Query {
     const serializedOutcomes = serializeOutcomes(this.algo.getOutcomes());
     const serializedSwitches = serializeSwitches(this.algo.getSwitches());
+    const serializedCitations = JSON.stringify(this.algo.getCitations());
     return sqlStr`
     INSERT INTO algorithms (
       id, 
@@ -22,7 +23,8 @@ class ScoredAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
       shouldShowOnHomeScreen,
       lastUpdatedTimestamp, 
       switchesJson,
-      type
+      type,
+      citationsJson
     ) VALUES (
       ${this.algo.getId().toString()},
       ${this.algo.getTitle()},
@@ -33,13 +35,15 @@ class ScoredAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
       ${this.algo.getShouldShowOnHomeScreen() ? 1 : 0},
       ${this.algo.getLastUpdated().getTime()},
       ${serializedSwitches},
-      ${this.algo.type}
+      ${this.algo.type},
+      ${serializedCitations}
     )`;
   }
 
   makeUpdateQuery(): Query {
     const serializedOutcomes = serializeOutcomes(this.algo.getOutcomes());
     const serializedSwitches = serializeSwitches(this.algo.getSwitches());
+    const serializedCitations = JSON.stringify(this.algo.getCitations());
     return sqlStr`
     UPDATE algorithms SET 
       title = ${this.algo.getTitle()},
@@ -49,7 +53,8 @@ class ScoredAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
       outcomesJson = ${serializedOutcomes},
       shouldShowOnHomeScreen = ${this.algo.getShouldShowOnHomeScreen() ? 1 : 0},
       lastUpdatedTimestamp = ${this.algo.getLastUpdated().getTime()},
-      switchesJson = ${serializedSwitches}
+      switchesJson = ${serializedSwitches},
+      citationsJson = ${serializedCitations}
     WHERE 
       id = ${this.algo.getId().toString()} AND
       type = ${this.algo.type}

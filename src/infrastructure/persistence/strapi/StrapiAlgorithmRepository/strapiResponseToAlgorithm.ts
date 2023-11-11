@@ -13,6 +13,7 @@ import {
   Level,
   LevelId,
 } from '@/domain/models/Algorithm';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 import type { StrapiAlgorithmData } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
 
@@ -29,6 +30,7 @@ export const strapiResponseToAlgorithm = (
     updatedAt,
     outcomes: outcomeData,
     switches: switchData,
+    citations: citationData,
   } = attributes;
 
   const outcomes = outcomeData.map(
@@ -56,6 +58,8 @@ export const strapiResponseToAlgorithm = (
     );
   }
 
+  const citations = citationData.map((c) => new Citation(c.Citation));
+
   const info = new AlgorithmInfo({
     id: new AlgorithmId(algoId.toString()),
     title: Title,
@@ -65,6 +69,7 @@ export const strapiResponseToAlgorithm = (
     thumbnail,
     shouldShowOnHomeScreen: ShowOnHomeScreen ?? true,
     lastUpdated: new Date(updatedAt),
+    citations,
   });
 
   if (switchData.length === 0) {

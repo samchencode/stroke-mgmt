@@ -1,5 +1,6 @@
 import type { ArticleId } from '@/domain/models/Article/ArticleId';
 import type { BaseDesignation } from '@/domain/models/Article/Designation/BaseDesignation';
+import type { Citation } from '@/domain/models/Citation';
 import type { Image } from '@/domain/models/Image';
 import type { Tag } from '@/domain/models/Tag';
 
@@ -13,6 +14,7 @@ type ArticleParams = {
   shouldShowOnHomeScreen: boolean;
   tags?: Tag[] | Map<string, Tag>;
   lastUpdated: Date;
+  citations: Citation[];
 };
 
 class Article {
@@ -34,6 +36,8 @@ class Article {
 
   private lastUpdated: Date;
 
+  private citations: Citation[];
+
   constructor({
     id,
     title,
@@ -44,6 +48,7 @@ class Article {
     shouldShowOnHomeScreen,
     lastUpdated,
     tags = [],
+    citations = [],
   }: ArticleParams) {
     this.id = id;
     this.title = title;
@@ -57,6 +62,7 @@ class Article {
         : new Map(tags.map((t) => [t.getName(), t] as const));
     this.shouldShowOnHomeScreen = shouldShowOnHomeScreen;
     this.lastUpdated = lastUpdated;
+    this.citations = citations;
   }
 
   getId() {
@@ -93,6 +99,10 @@ class Article {
     return [...this.tags.values()];
   }
 
+  getCitations() {
+    return this.citations;
+  }
+
   hasTag(tag: Tag): boolean {
     return this.tags.has(tag.getName());
   }
@@ -120,6 +130,7 @@ class Article {
       shouldShowOnHomeScreen: this.shouldShowOnHomeScreen,
       lastUpdated: this.lastUpdated,
       tags: this.tags,
+      citations: this.citations,
       ...newParams,
     });
   }

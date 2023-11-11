@@ -1,5 +1,6 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 import { Tag } from '@/domain/models/Tag';
 import type { StrapiArticleData } from '@/infrastructure/persistence/strapi/StrapiApiResponse';
@@ -45,5 +46,6 @@ export const strapiResponseToArticle = (
           td.attributes.Description ?? undefined
         )
     ),
+    citations: attributes.citations.map((c) => new Citation(c.Citation)),
   });
 };

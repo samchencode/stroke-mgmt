@@ -1,8 +1,10 @@
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 import { Tag } from '@/domain/models/Tag';
 import type {
   CachedArticleRow,
+  CitationsJson,
   TagsJson,
 } from '@/infrastructure/persistence/websql/WebsqlCachedArticleRepository/tableSchema';
 
@@ -19,6 +21,9 @@ function cachedArticleRowToArticle(row: CachedArticleRow): Article {
     ),
     shouldShowOnHomeScreen: row.shouldShowOnHomeScreen === 1,
     lastUpdated: new Date(row.lastUpdatedTimestamp),
+    citations: (JSON.parse(row.citationsJson) as CitationsJson).map(
+      (c) => new Citation(c.value)
+    ),
   });
 }
 

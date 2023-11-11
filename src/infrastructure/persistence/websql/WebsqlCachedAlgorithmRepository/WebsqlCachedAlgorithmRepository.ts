@@ -36,7 +36,8 @@ class WebsqlCachedAlgorithmRepostiory implements CachedAlgorithmRepository {
       shouldShowOnHomeScreen INTEGER,
       lastUpdatedTimestamp INTEGER,
       switchesJson TEXT,
-      type TEXT
+      type TEXT,
+      citationsJson TEXT
     )`;
     await executeSql(this.websqlDatabase, [query]);
   }
@@ -106,7 +107,8 @@ class WebsqlCachedAlgorithmRepostiory implements CachedAlgorithmRepository {
       shouldShowOnHomeScreen,
       lastUpdatedTimestamp,
       switchesJson,
-      type
+      type,
+      citationsJson
     FROM algorithms`;
     const [resultSet] = await executeSql(this.websqlDatabase, [query]);
     const rows = resultSetToArray<CachedAlgorithmRow>(resultSet);
@@ -126,7 +128,8 @@ class WebsqlCachedAlgorithmRepostiory implements CachedAlgorithmRepository {
       shouldShowOnHomeScreen,
       lastUpdatedTimestamp,
       switchesJson,
-      type
+      type,
+      citationsJson
     FROM algorithms
     WHERE id = ${id.toString()}`;
     const [resultSet] = await executeSql(this.websqlDatabase, [query]);
@@ -147,7 +150,8 @@ class WebsqlCachedAlgorithmRepostiory implements CachedAlgorithmRepository {
       shouldShowOnHomeScreen,
       lastUpdatedTimestamp,
       switchesJson,
-      type
+      type,
+      citationsJson
     FROM algorithms
     WHERE shouldShowOnHomeScreen`;
     const [resultSet] = await executeSql(this.websqlDatabase, [query]);

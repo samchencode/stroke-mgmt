@@ -58,6 +58,7 @@ describe('EjsAlgorithmRenderer', () => {
         designation: Designation.ARTICLE,
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const renderer = new EjsRenderer(fs);
@@ -75,6 +76,7 @@ describe('EjsAlgorithmRenderer', () => {
         designation: Designation.DISCLAIMER,
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const renderer = new EjsRenderer(fs);

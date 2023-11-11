@@ -13,6 +13,7 @@ export const designationStrokeFacts = {
         updatedAt: '2023-02-11T15:59:51.033Z',
         publishedAt: '2023-02-11T15:59:31.928Z',
         tags: { data: [] },
+        citations: [],
       },
     },
   ],
@@ -41,6 +42,7 @@ export const allArticles = {
         updatedAt: '2023-01-28T16:03:44.659Z',
         publishedAt: '2023-01-28T16:03:44.569Z',
         tags: { data: [] },
+        citations: [],
       },
     },
     {
@@ -56,6 +58,7 @@ export const allArticles = {
         updatedAt: '2023-02-11T15:56:33.726Z',
         publishedAt: '2023-01-28T16:07:21.162Z',
         tags: { data: [] },
+        citations: [],
       },
     },
     {
@@ -71,6 +74,12 @@ export const allArticles = {
         updatedAt: '2023-01-28T16:11:39.317Z',
         publishedAt: '2023-01-28T16:05:22.161Z',
         tags: { data: [] },
+        citations: [
+          {
+            id: 3,
+            Citation: 'Fisher, M. (2009). Stroke. Elsevier. ',
+          },
+        ],
       },
     },
     {
@@ -86,6 +95,7 @@ export const allArticles = {
         updatedAt: '2023-02-11T15:59:41.759Z',
         publishedAt: '2023-02-11T15:59:41.748Z',
         tags: { data: [] },
+        citations: [],
       },
     },
     {
@@ -101,6 +111,7 @@ export const allArticles = {
         updatedAt: '2023-02-11T15:59:51.033Z',
         publishedAt: '2023-02-11T15:59:31.928Z',
         tags: { data: [] },
+        citations: [],
       },
     },
   ],
@@ -128,6 +139,7 @@ export const articleOne = {
       updatedAt: '2023-01-28T16:03:44.659Z',
       publishedAt: '2023-01-28T16:03:44.569Z',
       tags: { data: [] },
+      citations: [],
     },
   },
   meta: {},
@@ -162,6 +174,18 @@ export const articleWithTag = {
           },
         ],
       },
+      citations: [
+        {
+          id: 1,
+          Citation:
+            'The holy bible: Containing the old and new testaments ; translated out of the original tongues and with the former translations diligently compared and revised. (1986). . American Bible Society. ',
+        },
+        {
+          id: 2,
+          Citation:
+            'Armstrong, F. B. (1991). Biochemistry. Oxford University Press. ',
+        },
+      ],
     },
   },
   meta: {},

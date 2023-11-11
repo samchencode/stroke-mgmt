@@ -16,6 +16,7 @@ describe('filterArticlesByTags', () => {
     tags: [tag1],
     shouldShowOnHomeScreen: true,
     lastUpdated: new Date(0),
+    citations: [],
   });
   const article2 = new Article({
     id: new ArticleId('2'),
@@ -27,6 +28,7 @@ describe('filterArticlesByTags', () => {
     tags: [tag1, tag2],
     shouldShowOnHomeScreen: true,
     lastUpdated: new Date(0),
+    citations: [],
   });
   const article3 = new Article({
     id: new ArticleId('3'),
@@ -38,6 +40,7 @@ describe('filterArticlesByTags', () => {
     tags: [tag2],
     shouldShowOnHomeScreen: true,
     lastUpdated: new Date(0),
+    citations: [],
   });
 
   it('should return articles that have a single tag', () => {

@@ -12,6 +12,7 @@ import type {
   SwitchId,
   LevelId,
 } from '@/domain/models/Algorithm/Switch';
+import type { Citation } from '@/domain/models/Citation';
 import type { Image } from '@/domain/models/Image';
 
 type ScoredAlgorithmParams = {
@@ -86,6 +87,10 @@ class ScoredAlgorithm implements BaseAlgorithm {
 
   getSwitches(): Switch[] {
     return this.switches;
+  }
+
+  getCitations(): Citation[] {
+    return this.info.getCitations();
   }
 
   getShouldShowOnHomeScreen(): boolean {

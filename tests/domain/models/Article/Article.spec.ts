@@ -1,5 +1,6 @@
 import type { BaseDesignation } from '@/domain/models/Article';
 import { ArticleId, Designation, Article } from '@/domain/models/Article';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 
 describe('Article', () => {
@@ -22,8 +23,9 @@ describe('Article', () => {
           thumbnail,
           shouldShowOnHomeScreen: true,
           lastUpdated: new Date(0),
+          citations: [new Citation('My Citation')],
         });
-      expect(create).not.toThrowError();
+      expect(create).not.toThrow();
     });
   });
 
@@ -50,6 +52,7 @@ describe('Article', () => {
         designation,
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [new Citation('My Citation')],
       });
       expect(article.getTitle()).toBe(title);
       expect(article.getHtml()).toBe(html);

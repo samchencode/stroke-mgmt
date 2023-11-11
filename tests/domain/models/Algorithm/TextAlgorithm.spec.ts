@@ -18,10 +18,11 @@ describe('TextAlgorithm', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const create = () => new TextAlgorithm({ info });
-      expect(create).not.toThrowError();
+      expect(create).not.toThrow();
     });
   });
 
@@ -40,6 +41,7 @@ describe('TextAlgorithm', () => {
         outcomes: [new Outcome({ title: 'title', body: 'body' })],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       nextAlgo = new TextAlgorithm({ info: nextInfo });
 
@@ -57,6 +59,7 @@ describe('TextAlgorithm', () => {
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       algo = new TextAlgorithm({ info });
@@ -88,6 +91,7 @@ describe('TextAlgorithm', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const noOutcomesAlgo = new TextAlgorithm({
         info: noOutcomesAlgoInfo,

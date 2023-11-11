@@ -31,6 +31,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
       designation TEXT NOT NULL,
       thumbnailUri TEXT NOT NULL,
       tagsJson TEXT NOT NULL,
+      citationsJson TEXT NOT NULL,
       lastUpdatedTimestamp INTEGER NOT NULL,
       shouldShowOnHomeScreen INTEGER NOT NULL
     )`;
@@ -57,6 +58,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
         designation,
         thumbnailUri,
         tagsJson,
+        citationsJson,
         lastUpdatedTimestamp,
         shouldShowOnHomeScreen
       ) VALUES (
@@ -67,6 +69,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
         ${a.getDesignation().toString()},
         ${a.getThumbnail().getUri()},
         ${JSON.stringify(a.getTags())},
+        ${JSON.stringify(a.getCitations())},
         ${a.getLastUpdated().getTime()},
         ${a.getshouldShowOnHomeScreen() ? 1 : 0}
       )`
@@ -84,6 +87,7 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
       designation = ${a.getDesignation().toString()},
       thumbnailUri = ${a.getThumbnail().getUri()},
       tagsJson = ${JSON.stringify(a.getTags())},
+      citationsJson = ${JSON.stringify(a.getCitations())},
       lastUpdatedTimestamp = ${a.getLastUpdated().getTime()},
       shouldShowOnHomeScreen = ${a.getshouldShowOnHomeScreen() ? 1 : 0}
     WHERE id = ${a.getId().toString()}`;

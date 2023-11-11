@@ -16,6 +16,32 @@ import { openDatabase } from '@/vendor/websql';
 describe('WebsqlCachedArticleRepository', () => {
   let db: Database;
 
+  const createQuery = sqlStr`
+  CREATE TABLE IF NOT EXISTS articles (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    html TEXT NOT NULL,
+    summary TEXT,
+    designation TEXT NOT NULL,
+    thumbnailUri TEXT NOT NULL,
+    tagsJson TEXT NOT NULL,
+    citationsJson TEXT NOT NULL,
+    lastUpdatedTimestamp INTEGER NOT NULL,
+    shouldShowOnHomeScreen INTEGER DEFAULT 1
+  )`;
+
+  const insertQueryZero = sqlStr`INSERT INTO articles VALUES (
+    '0', 'my title', '<h1>hai</h1>', NULL, 'Article', 'foo.png', '[]', '[]', 0, 1
+  )`;
+
+  const insertQueryOne = sqlStr`INSERT INTO articles VALUES (
+    '0', 'My first title', '<h1>hai</h1>', NULL, 'Article', 'foo.png', '[]', '[]', 0, 1
+  )`;
+
+  const insertQueryTwo = sqlStr`INSERT INTO articles VALUES (
+    '1', 'My second title', '<h1>hello</h1>', 'quick summary', 'Article', 'bar.png', '[]', '[]', 0, 1
+  )`;
+
   const articleZero = new Article({
     id: new ArticleId('0'),
     title: 'My Title 0',
@@ -23,6 +49,7 @@ describe('WebsqlCachedArticleRepository', () => {
     designation: Designation.ARTICLE,
     thumbnail: new Image('https://foo.io/bar.png'),
     tags: [],
+    citations: [],
     lastUpdated: new Date(),
     shouldShowOnHomeScreen: true,
   });
@@ -33,6 +60,7 @@ describe('WebsqlCachedArticleRepository', () => {
     designation: Designation.ARTICLE,
     thumbnail: new Image('https://foo.io/baz.png'),
     tags: [],
+    citations: [],
     lastUpdated: new Date(),
     shouldShowOnHomeScreen: true,
   });
@@ -43,6 +71,7 @@ describe('WebsqlCachedArticleRepository', () => {
     designation: Designation.ARTICLE,
     thumbnail: new Image('https://foo.io/bar.png'),
     tags: [],
+    citations: [],
     lastUpdated: new Date(),
     shouldShowOnHomeScreen: true,
   });
@@ -53,6 +82,7 @@ describe('WebsqlCachedArticleRepository', () => {
     designation: Designation.DISCLAIMER,
     thumbnail: new Image('https://foo.io/disc.png'),
     tags: [],
+    citations: [],
     lastUpdated: new Date(),
     shouldShowOnHomeScreen: true,
   });
@@ -89,24 +119,7 @@ describe('WebsqlCachedArticleRepository', () => {
     });
 
     it('should not be empty if an article is present', async () => {
-      const createQuery = sqlStr`
-      CREATE TABLE IF NOT EXISTS articles (
-        id TEXT PRIMARY KEY,
-        title TEXT NOT NULL,
-        html TEXT NOT NULL,
-        summary TEXT,
-        designation TEXT NOT NULL,
-        thumbnailUri TEXT NOT NULL,
-        tagsJson TEXT NOT NULL,
-        lastUpdatedTimestamp INTEGER NOT NULL,
-        shouldShowOnHomeScreen INTEGER NOT NULL
-      )`;
-
-      const insertQuery = sqlStr`INSERT INTO articles VALUES (
-        '0', 'my title', '<h1>hai</h1>', NULL, 'Article', 'foo.png', '[]', 0, 1
-      )`;
-
-      await executeSql(db, [createQuery, insertQuery]);
+      await executeSql(db, [createQuery, insertQueryZero]);
 
       const repo = new WebsqlCachedArticleRepository(db);
       expect(await repo.isEmpty()).toBe(false);
@@ -139,24 +152,7 @@ describe('WebsqlCachedArticleRepository', () => {
 
   describe('update', () => {
     it('should update a saved article', async () => {
-      const createQuery = sqlStr`
-      CREATE TABLE IF NOT EXISTS articles (
-        id TEXT PRIMARY KEY,
-        title TEXT NOT NULL,
-        html TEXT NOT NULL,
-        summary TEXT,
-        designation TEXT NOT NULL,
-        thumbnailUri TEXT NOT NULL,
-        tagsJson TEXT NOT NULL,
-        lastUpdatedTimestamp INTEGER NOT NULL,
-        shouldShowOnHomeScreen INTEGER DEFAULT 1
-      )`;
-
-      const insertQuery = sqlStr`INSERT INTO articles VALUES (
-        '0', 'my title', '<h1>hai</h1>', NULL, 'Article', 'foo.png', '[]', 0, 1
-      )`;
-
-      await executeSql(db, [createQuery, insertQuery]);
+      await executeSql(db, [createQuery, insertQueryZero]);
 
       const repo = new WebsqlCachedArticleRepository(db);
       await repo.update(articleZero);
@@ -172,24 +168,7 @@ describe('WebsqlCachedArticleRepository', () => {
 
   describe('delete', () => {
     it('should delete one article', async () => {
-      const createQuery = sqlStr`
-      CREATE TABLE IF NOT EXISTS articles (
-        id TEXT PRIMARY KEY,
-        title TEXT NOT NULL,
-        html TEXT NOT NULL,
-        summary TEXT,
-        designation TEXT NOT NULL,
-        thumbnailUri TEXT NOT NULL,
-        tagsJson TEXT NOT NULL,
-        lastUpdatedTimestamp INTEGER NOT NULL,
-        shouldShowOnHomeScreen INTEGER DEFAULT 1
-      )`;
-
-      const insertQuery = sqlStr`INSERT INTO articles VALUES (
-        '0', 'my title', '<h1>hai</h1>', NULL, 'Article', 'foo.png', '[]', 0, 1
-      )`;
-
-      await executeSql(db, [createQuery, insertQuery]);
+      await executeSql(db, [createQuery, insertQueryZero]);
 
       const repo = new WebsqlCachedArticleRepository(db);
       await repo.delete(new ArticleId('0'));
@@ -200,26 +179,6 @@ describe('WebsqlCachedArticleRepository', () => {
     });
 
     it('should delete only one article when others exist', async () => {
-      const createQuery = sqlStr`
-      CREATE TABLE IF NOT EXISTS articles (
-        id TEXT PRIMARY KEY,
-        title TEXT NOT NULL,
-        html TEXT NOT NULL,
-        summary TEXT,
-        designation TEXT NOT NULL,
-        thumbnailUri TEXT NOT NULL,
-        tagsJson TEXT NOT NULL,
-        lastUpdatedTimestamp INTEGER NOT NULL,
-        shouldShowOnHomeScreen INTEGER DEFAULT 1
-      )`;
-
-      const insertQueryOne = sqlStr`INSERT INTO articles VALUES (
-        '0', 'My first title', '<h1>hai</h1>', NULL, 'Article', 'foo.png', '[]', 0, 1
-      )`;
-      const insertQueryTwo = sqlStr`INSERT INTO articles VALUES (
-        '1', 'My second title', '<h1>hello</h1>', 'quick summary', 'Article', 'bar.png', '[]', 0, 1
-      )`;
-
       await executeSql(db, [createQuery, insertQueryOne, insertQueryTwo]);
 
       const repo = new WebsqlCachedArticleRepository(db);
@@ -238,25 +197,6 @@ describe('WebsqlCachedArticleRepository', () => {
 
   describe('clearCache', () => {
     it('should delete all cached articles', async () => {
-      const createQuery = sqlStr`
-      CREATE TABLE IF NOT EXISTS articles (
-        id TEXT PRIMARY KEY,
-        title TEXT NOT NULL,
-        html TEXT NOT NULL,
-        summary TEXT,
-        designation TEXT NOT NULL,
-        thumbnailUri TEXT NOT NULL,
-        tagsJson TEXT NOT NULL,
-        lastUpdatedTimestamp INTEGER NOT NULL,
-        shouldShowOnHomeScreen INTEGER DEFAULT 1
-      )`;
-
-      const insertQueryOne = sqlStr`INSERT INTO articles VALUES (
-        '0', 'My first title', '<h1>hai</h1>', NULL, 'Article', 'foo.png', '[]', 0, 1
-      )`;
-      const insertQueryTwo = sqlStr`INSERT INTO articles VALUES (
-        '1', 'My second title', '<h1>hello</h1>', 'quick summary', 'Article', 'bar.png', '[]', 0, 1
-      )`;
       await executeSql(db, [createQuery, insertQueryOne, insertQueryTwo]);
 
       const repo = new WebsqlCachedArticleRepository(db);

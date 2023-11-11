@@ -2,6 +2,7 @@ import type { BaseDesignation } from '@/domain/models/Article';
 import { Article, ArticleId, Designation } from '@/domain/models/Article';
 import { ArticleMetadata } from '@/domain/models/Article/ArticleMetadata';
 import type { ArticleRepository } from '@/domain/models/Article/ports/ArticleRepository';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 import { fakeArticles } from '@/infrastructure/persistence/fake/FakeArticleRepository/fakeArticles';
 
@@ -20,6 +21,7 @@ class FakeArticleRepository implements ArticleRepository {
           thumbnail: new Image(p.thumbnail),
           shouldShowOnHomeScreen: true,
           lastUpdated: new Date(0),
+          citations: p.citations.map((c) => new Citation(c)),
         })
     );
   }
@@ -43,6 +45,7 @@ class FakeArticleRepository implements ArticleRepository {
           thumbnail: new Image(p.thumbnail),
           shouldShowOnHomeScreen: true,
           lastUpdated: new Date(0),
+          citations: p.citations.map((c) => new Citation(c)),
         })
     );
   }
@@ -60,6 +63,7 @@ class FakeArticleRepository implements ArticleRepository {
       thumbnail: new Image(articles.thumbnail),
       shouldShowOnHomeScreen: true,
       lastUpdated: new Date(0),
+      citations: articles.citations.map((c) => new Citation(c)),
     });
   }
 

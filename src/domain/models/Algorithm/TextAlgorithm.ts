@@ -6,6 +6,7 @@ import type {
 } from '@/domain/models/Algorithm/AlgorithmInfo';
 import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisitor';
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
+import type { Citation } from '@/domain/models/Citation';
 import type { Image } from '@/domain/models/Image';
 
 type TextAlgorithmParams = {
@@ -52,6 +53,10 @@ class TextAlgorithm implements BaseAlgorithm {
 
   getSummary(): string {
     return this.info.getSummary();
+  }
+
+  getCitations(): Citation[] {
+    return this.info.getCitations();
   }
 
   getShouldShowOnHomeScreen(): boolean {

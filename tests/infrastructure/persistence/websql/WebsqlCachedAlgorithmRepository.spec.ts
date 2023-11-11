@@ -10,6 +10,7 @@ import {
   TextAlgorithm,
   YesNoSwitch,
 } from '@/domain/models/Algorithm';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 import { NullImage } from '@/domain/models/Image/NullImage';
 import { WebsqlCachedAlgorithmRepostiory } from '@/infrastructure/persistence/websql/WebsqlCachedAlgorithmRepository/WebsqlCachedAlgorithmRepository';
@@ -34,7 +35,8 @@ describe('WebsqlCachedAlgorithmRepository', () => {
     shouldShowOnHomeScreen INTEGER,
     lastUpdatedTimestamp INTEGER,
     switchesJson TEXT,
-    type TEXT
+    type TEXT,
+    citationsJson TEXT
   )`;
 
   const insertTextAlgorithmQuery1 = sqlStr`
@@ -48,7 +50,8 @@ describe('WebsqlCachedAlgorithmRepository', () => {
     1,
     0,
     '[]',
-    'TextAlgorithm'
+    'TextAlgorithm',
+    '[]'
   )`;
 
   const insertTextAlgorithmQuery2 = sqlStr`
@@ -62,7 +65,8 @@ describe('WebsqlCachedAlgorithmRepository', () => {
     0,
     0,
     '[]',
-    'TextAlgorithm'
+    'TextAlgorithm',
+    '[]'
   )`;
 
   const insertScoredAlgorithmQuery3 = sqlStr`
@@ -76,7 +80,8 @@ describe('WebsqlCachedAlgorithmRepository', () => {
     1,
     0,
     '[{"id":"1","label":"MySwitch1","levels":[{"id":"0","label":"No","value":0},{"id":"1","label":"Yes","value":1}],"description":null},{"id":"2","label":"MySwitch2","levels":[{"id":"0","label":"No","value":0},{"id":"1","label":"Yes","value":1}],"description":"MyDescription2"}]',
-    'ScoredAlgorithm'
+    'ScoredAlgorithm',
+    '[]'
   )`;
 
   beforeEach(() => {
@@ -132,6 +137,7 @@ describe('WebsqlCachedAlgorithmRepository', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const textAlgorithm = new TextAlgorithm({ info: algorithmInfo0 });
       const algorithmInfo1 = new AlgorithmInfo({
@@ -143,6 +149,7 @@ describe('WebsqlCachedAlgorithmRepository', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [new Citation('My Citation')],
       });
       const scoredAlgorithm = new ScoredAlgorithm({
         info: algorithmInfo1,
@@ -183,6 +190,7 @@ describe('WebsqlCachedAlgorithmRepository', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [new Citation('My Citation')],
       });
       const textAlgorithm = new TextAlgorithm({ info: algorithmInfo });
 

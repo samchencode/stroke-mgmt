@@ -22,6 +22,7 @@ const populateSearchParams = new URLSearchParams({
   'populate[3]': 'outcomes.next',
   'populate[4]': 'switches.levels',
   'populate[5]': 'Thumbnail',
+  'populate[6]': 'citations',
 });
 
 class StrapiAlgorithmRepository implements AlgorithmRepository {

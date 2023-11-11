@@ -16,6 +16,7 @@ export type StrapiArticleData = {
     tags: {
       data: StrapiTag[];
     };
+    citations: StrapiCitation[];
   };
 };
 
@@ -65,6 +66,7 @@ export type StrapiAlgorithmData = {
         Value: number;
       }[];
     }[];
+    citations: StrapiCitation[];
   };
 };
 
@@ -73,6 +75,11 @@ export type StrapiAlgorithmMetadata = {
   attributes: {
     updatedAt: string;
   };
+};
+
+export type StrapiCitation = {
+  id: number;
+  Citation: string;
 };
 
 export type StrapiImageFormat = {

@@ -14,6 +14,7 @@ class NullAlgorithm extends TextAlgorithm {
       shouldShowOnHomeScreen: false,
       outcomes: [],
       lastUpdated: new Date(0),
+      citations: [],
     });
     super({ info: nullAlgorithmInfo });
   }

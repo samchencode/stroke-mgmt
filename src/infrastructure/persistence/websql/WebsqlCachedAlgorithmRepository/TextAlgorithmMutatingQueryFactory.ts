@@ -9,6 +9,7 @@ class TextAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
 
   makeSaveQuery() {
     const serializedOutcomes = serializeOutcomes(this.algo.getOutcomes());
+    const serializedCitations = JSON.stringify(this.algo.getCitations());
     return sqlStr`
     INSERT INTO algorithms (
       id, 
@@ -20,7 +21,8 @@ class TextAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
       shouldShowOnHomeScreen,
       lastUpdatedTimestamp, 
       switchesJson,
-      type
+      type,
+      citationsJson
     ) VALUES (
       ${this.algo.getId().toString()},
       ${this.algo.getTitle()},
@@ -31,12 +33,14 @@ class TextAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
       ${this.algo.getShouldShowOnHomeScreen() ? 1 : 0},
       ${this.algo.getLastUpdated().getTime()},
       '[]',
-      ${this.algo.type}
+      ${this.algo.type},
+      ${serializedCitations}
     )`;
   }
 
   makeUpdateQuery(): Query {
     const serializedOutcomes = serializeOutcomes(this.algo.getOutcomes());
+    const serializedCitations = JSON.stringify(this.algo.getCitations());
     return sqlStr`
     UPDATE algorithms SET
       title = ${this.algo.getTitle()},
@@ -45,7 +49,8 @@ class TextAlgorithmMutatingQueryFactory implements MutatingQueryFactory {
       thumbnailUri = ${this.algo.getThumbnail().getUri()},
       outcomesJson = ${serializedOutcomes},
       shouldShowOnHomeScreen = ${this.algo.getShouldShowOnHomeScreen() ? 1 : 0},
-      lastUpdatedTimestamp = ${this.algo.getLastUpdated().getTime()}
+      lastUpdatedTimestamp = ${this.algo.getLastUpdated().getTime()},
+      citationsJson = ${serializedCitations}
     WHERE
       id = ${this.algo.getId().toString()} AND
       type = ${this.algo.type}

@@ -117,6 +117,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -151,6 +152,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -185,6 +187,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -222,6 +225,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -257,6 +261,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -325,6 +330,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -340,6 +346,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([
@@ -382,6 +389,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -397,6 +405,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([
@@ -434,6 +443,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached and Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAndSourceAlgorithm = new TextAlgorithm({
         info: cachedAndSourceAlgorithmInfo,
@@ -453,6 +463,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([
@@ -492,6 +503,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -530,6 +542,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockRejectedValueOnce(
@@ -553,6 +566,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -585,6 +599,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -600,6 +615,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([
@@ -642,6 +658,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -681,6 +698,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -720,6 +738,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cachedAlgorithm]);
@@ -766,6 +785,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([
@@ -807,6 +827,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cache Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cacheAlgorithm = new TextAlgorithm({ info: cacheAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cacheAlgorithm]);
@@ -822,6 +843,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([
@@ -864,6 +886,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cache Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cacheAlgorithm = new TextAlgorithm({ info: cacheAlgorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([cacheAlgorithm]);
@@ -879,6 +902,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAllShownOnHomeScreen.mockResolvedValue([
@@ -930,6 +954,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -981,6 +1006,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -1030,6 +1056,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const algorithmSwitches = [
@@ -1095,6 +1122,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -1138,6 +1166,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAllShownOnHomeScreen.mockResolvedValue([algorithm]);
@@ -1173,6 +1202,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getById.mockResolvedValue(algorithm);
@@ -1208,6 +1238,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getById.mockResolvedValue(algorithm);
@@ -1241,6 +1272,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getById.mockResolvedValue(algorithm);
@@ -1280,6 +1312,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getById.mockResolvedValue(algorithm);
@@ -1312,6 +1345,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getById.mockResolvedValue(algorithm);
@@ -1381,6 +1415,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1396,6 +1431,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockResolvedValue(sourceAlgorithm);
@@ -1434,6 +1470,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1449,6 +1486,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockResolvedValue(sourceAlgorithm);
@@ -1487,6 +1525,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockResolvedValue(sourceAlgorithm);
@@ -1523,6 +1562,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1563,6 +1603,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockRejectedValueOnce(new Error('Boom!'));
@@ -1580,6 +1621,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1612,6 +1654,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1627,6 +1670,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockResolvedValue(sourceAlgorithm);
@@ -1666,6 +1710,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1704,6 +1749,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1742,6 +1788,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cachedAlgorithm);
@@ -1789,6 +1836,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockResolvedValue(sourceAlgorithm);
@@ -1828,6 +1876,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cache Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cacheAlgorithm = new TextAlgorithm({ info: cacheAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cacheAlgorithm);
@@ -1843,6 +1892,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockResolvedValue(sourceAlgorithm);
@@ -1883,6 +1933,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cache Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cacheAlgorithm = new TextAlgorithm({ info: cacheAlgorithmInfo });
       cacheRepo.getById.mockResolvedValue(cacheAlgorithm);
@@ -1898,6 +1949,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getById.mockResolvedValue(sourceAlgorithm);
@@ -1947,6 +1999,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getById.mockResolvedValue(algorithm);
@@ -1997,6 +2050,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getById.mockResolvedValue(algorithm);
@@ -2045,6 +2099,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const algorithmSwitches = [
@@ -2109,6 +2164,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getById.mockResolvedValue(algorithm);
@@ -2149,6 +2205,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getById.mockResolvedValue(algorithm);
@@ -2183,6 +2240,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([algorithm]);
@@ -2217,6 +2275,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([algorithm]);
@@ -2251,6 +2310,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([algorithm]);
@@ -2288,6 +2348,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAll.mockResolvedValue([algorithm]);
@@ -2321,6 +2382,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAll.mockResolvedValue([algorithm]);
@@ -2389,6 +2451,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2404,6 +2467,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([sourceAlgorithm]);
@@ -2444,6 +2508,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2459,6 +2524,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([sourceAlgorithm]);
@@ -2494,6 +2560,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached and Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAndSourceAlgorithm = new TextAlgorithm({
         info: cachedAndSourceAlgorithmInfo,
@@ -2511,6 +2578,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([
@@ -2550,6 +2618,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2588,6 +2657,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockRejectedValueOnce(new Error('Boom!'));
@@ -2605,6 +2675,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2637,6 +2708,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2652,6 +2724,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([sourceAlgorithm]);
@@ -2692,6 +2765,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2731,6 +2805,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2770,6 +2845,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cached Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cachedAlgorithm = new TextAlgorithm({ info: cachedAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cachedAlgorithm]);
@@ -2816,6 +2892,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([sourceAlgorithm]);
@@ -2855,6 +2932,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cache Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cacheAlgorithm = new TextAlgorithm({ info: cacheAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cacheAlgorithm]);
@@ -2870,6 +2948,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([sourceAlgorithm]);
@@ -2910,6 +2989,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Cache Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const cacheAlgorithm = new TextAlgorithm({ info: cacheAlgorithmInfo });
       cacheRepo.getAll.mockResolvedValue([cacheAlgorithm]);
@@ -2925,6 +3005,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Source Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(10),
+        citations: [],
       });
       const sourceAlgorithm = new TextAlgorithm({ info: sourceAlgorithmInfo });
       algorithmRepo.getAll.mockResolvedValue([sourceAlgorithm]);
@@ -2974,6 +3055,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAll.mockResolvedValue([algorithm]);
@@ -3025,6 +3107,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAll.mockResolvedValue([algorithm]);
@@ -3074,6 +3157,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const algorithmSwitches = [
@@ -3139,6 +3223,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAll.mockResolvedValue([algorithm]);
@@ -3182,6 +3267,7 @@ describe('AlgorithmCache', () => {
         summary: 'My Algorithm Summary',
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const algorithm = new TextAlgorithm({ info: algorithmInfo });
       cacheRepo.getAll.mockResolvedValue([algorithm]);

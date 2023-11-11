@@ -10,6 +10,7 @@ export type CachedAlgorithmRow = {
   shouldShowOnHomeScreen: 0 | 1;
   lastUpdatedTimestamp: number;
   switchesJson: string;
+  citationsJson: string;
   type: AlgorithmType;
 };
 
@@ -46,3 +47,5 @@ export type SwitchData = {
 };
 
 export type SwitchesJson = SwitchData[];
+
+export type CitationsJson = { value: string }[];

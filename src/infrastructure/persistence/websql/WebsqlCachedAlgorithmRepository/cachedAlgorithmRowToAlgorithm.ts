@@ -14,6 +14,7 @@ import {
   AlgorithmInfo,
   ScoredAlgorithm,
 } from '@/domain/models/Algorithm';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 import type {
   CachedAlgorithmRow,
@@ -21,6 +22,7 @@ import type {
   LevelData,
   OutcomesJson,
   SwitchesJson,
+  CitationsJson,
 } from '@/infrastructure/persistence/websql/WebsqlCachedAlgorithmRepository/tableSchema';
 
 function criterionDataToCriterion(d: CriterionData) {
@@ -70,8 +72,14 @@ function switchesJsonToSwitches(switchesJson: string): Switch[] {
   );
 }
 
+function citationsJsonToCitations(citationsJson: string): Citation[] {
+  const citationsData: CitationsJson = JSON.parse(citationsJson);
+  return citationsData.map((c) => new Citation(c.value));
+}
+
 function cachedAlgorithmRowToTextAlgorithm(row: CachedAlgorithmRow) {
   const outcomes = outcomesJsonToOutcomes(row.outcomesJson);
+  const citations = citationsJsonToCitations(row.citationsJson);
   const info = new AlgorithmInfo({
     id: new AlgorithmId(row.id),
     title: row.title,
@@ -79,6 +87,7 @@ function cachedAlgorithmRowToTextAlgorithm(row: CachedAlgorithmRow) {
     outcomes,
     summary: row.summary,
     thumbnail: new Image(row.thumbnailUri),
+    citations,
     shouldShowOnHomeScreen: row.shouldShowOnHomeScreen === 1,
     lastUpdated: new Date(row.lastUpdatedTimestamp),
   });
@@ -88,7 +97,7 @@ function cachedAlgorithmRowToTextAlgorithm(row: CachedAlgorithmRow) {
 function cachedAlgorithmRowToScoredAlgorithm(row: CachedAlgorithmRow) {
   const outcomes = outcomesJsonToOutcomes(row.outcomesJson);
   const switches = switchesJsonToSwitches(row.switchesJson);
-
+  const citations = citationsJsonToCitations(row.citationsJson);
   const info = new AlgorithmInfo({
     id: new AlgorithmId(row.id),
     title: row.title,
@@ -96,6 +105,7 @@ function cachedAlgorithmRowToScoredAlgorithm(row: CachedAlgorithmRow) {
     outcomes,
     summary: row.summary,
     thumbnail: new Image(row.thumbnailUri),
+    citations,
     shouldShowOnHomeScreen: row.shouldShowOnHomeScreen === 1,
     lastUpdated: new Date(row.lastUpdatedTimestamp),
   });

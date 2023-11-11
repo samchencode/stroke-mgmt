@@ -23,6 +23,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const switches = [
@@ -58,6 +59,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       aSwitch = new YesNoSwitch({
@@ -101,6 +103,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       let noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
@@ -124,6 +127,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const noOutcomesAlgo = new ScoredAlgorithm({
         info: noOutcomesAlgoInfo,
@@ -152,6 +156,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [gt5Outcome],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const val0Switch = new YesNoSwitch({
@@ -192,6 +197,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [gt5Outcome, lt7Outcome],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const val6Switch = new YesNoSwitch({
@@ -227,6 +233,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
       const create = () => new ScoredAlgorithm({ info, switches: [] });
       expect(create).toThrow('No switches');
@@ -242,6 +249,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const val6Switch = new YesNoSwitch({
@@ -268,6 +276,7 @@ describe('ScoredAlgorithm', () => {
         outcomes: [outcome],
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
+        citations: [],
       });
 
       const val6Switch = new YesNoSwitch({

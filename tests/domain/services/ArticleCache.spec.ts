@@ -87,6 +87,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -120,6 +121,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const cache = new ArticleCache(
@@ -154,6 +156,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -185,6 +188,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'isAvailable');
@@ -218,6 +222,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -270,6 +275,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -282,6 +288,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -316,6 +323,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([upToDateArticle]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -328,6 +336,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([upToDateArticle, sourceArticle1]);
       const callback = jest.fn();
@@ -364,6 +373,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -376,6 +386,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -404,6 +415,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -436,6 +448,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -465,6 +478,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockRejectedValueOnce(new Error('Boom 1'));
       spy.mockRejectedValueOnce(new Error('Boom 2'));
@@ -499,6 +513,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const sourceArticle = new Article({
@@ -510,6 +525,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
       spy.mockResolvedValue([sourceArticle]);
@@ -549,6 +565,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const getCachedImageAsFileUriSpy = jest.spyOn(
@@ -586,6 +603,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const getCachedImageAsFileUriSpy = jest.spyOn(
@@ -627,6 +645,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       getByDesignationSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -661,6 +680,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const getByDesignationSpy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -674,6 +694,7 @@ describe('ArticleCache', () => {
         // notice no new update from source
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       getByDesignationSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -715,6 +736,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([cachedArticle]);
       const getByDesignationSpy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -727,6 +749,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       getByDesignationSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -758,6 +781,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([originalArticle]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -805,6 +829,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([originalArticle]);
       getImageSrcsInHtml.mockReturnValue([imageUrl]);
@@ -846,6 +871,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getByDesignation.mockResolvedValue([originalArticle]);
       const spy = jest.spyOn(articleRepo, 'getByDesignation');
@@ -890,6 +916,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
@@ -919,6 +946,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue(sourceArticle);
       const cache = new ArticleCache(
@@ -951,6 +979,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
@@ -982,6 +1011,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const spy = jest.spyOn(articleRepo, 'isAvailable');
@@ -1011,6 +1041,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
@@ -1061,6 +1092,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
@@ -1073,6 +1105,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
@@ -1103,6 +1136,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
@@ -1115,6 +1149,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
@@ -1143,6 +1178,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
@@ -1181,6 +1217,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockRejectedValueOnce(new Error('Boom 1'));
       spy.mockRejectedValueOnce(new Error('Boom 2'));
@@ -1211,6 +1248,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const sourceArticle = new Article({
@@ -1222,6 +1260,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       const spy = jest.spyOn(articleRepo, 'getById');
       spy.mockResolvedValue(sourceArticle);
@@ -1257,6 +1296,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const getCachedImageAsFileUriSpy = jest.spyOn(
@@ -1290,6 +1330,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const getCachedImageAsFileUriSpy = jest.spyOn(
@@ -1327,6 +1368,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       getByIdSpy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
@@ -1361,6 +1403,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const getByIdSpy = jest.spyOn(articleRepo, 'getById');
@@ -1374,6 +1417,7 @@ describe('ArticleCache', () => {
         // notice no new update from source
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       getByIdSpy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
@@ -1415,6 +1459,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(cachedArticle);
       const getByIdSpy = jest.spyOn(articleRepo, 'getById');
@@ -1427,6 +1472,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       getByIdSpy.mockResolvedValue(sourceArticle);
       const callback = jest.fn();
@@ -1458,6 +1504,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(originalArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
@@ -1501,6 +1548,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(originalArticle);
       getImageSrcsInHtml.mockReturnValue([imageUrl]);
@@ -1536,6 +1584,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getById.mockResolvedValue(originalArticle);
       const spy = jest.spyOn(articleRepo, 'getById');
@@ -1574,6 +1623,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -1604,6 +1654,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const cache = new ArticleCache(
@@ -1635,6 +1686,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -1666,6 +1718,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'isAvailable');
@@ -1696,6 +1749,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getAll');
@@ -1745,6 +1799,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getAll');
@@ -1757,6 +1812,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -1788,6 +1844,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([upToDateArticle]);
       const spy = jest.spyOn(articleRepo, 'getAll');
@@ -1800,6 +1857,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([upToDateArticle, sourceArticle1]);
       const callback = jest.fn();
@@ -1834,6 +1892,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getAll');
@@ -1846,6 +1905,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -1874,6 +1934,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const spy = jest.spyOn(articleRepo, 'getAll');
@@ -1906,6 +1967,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       spy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -1935,6 +1997,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       spy.mockRejectedValueOnce(new Error('Boom 1'));
       spy.mockRejectedValueOnce(new Error('Boom 2'));
@@ -1966,6 +2029,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const sourceArticle = new Article({
@@ -1977,6 +2041,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       const spy = jest.spyOn(articleRepo, 'getAll');
       spy.mockResolvedValue([sourceArticle]);
@@ -2013,6 +2078,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const getCachedImageAsFileUriSpy = jest.spyOn(
@@ -2047,6 +2113,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const getCachedImageAsFileUriSpy = jest.spyOn(
@@ -2085,6 +2152,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       getAllSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -2119,6 +2187,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const getAllSpy = jest.spyOn(articleRepo, 'getAll');
@@ -2132,6 +2201,7 @@ describe('ArticleCache', () => {
         // notice no new update from source
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       getAllSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -2173,6 +2243,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([cachedArticle]);
       const getAllSpy = jest.spyOn(articleRepo, 'getAll');
@@ -2185,6 +2256,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(1),
         tags: [],
+        citations: [],
       });
       getAllSpy.mockResolvedValue([sourceArticle]);
       const callback = jest.fn();
@@ -2216,6 +2288,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([originalArticle]);
       const spy = jest.spyOn(articleRepo, 'getAll');
@@ -2260,6 +2333,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([originalArticle]);
       getImageSrcsInHtml.mockReturnValue([imageUrl]);
@@ -2298,6 +2372,7 @@ describe('ArticleCache', () => {
         shouldShowOnHomeScreen: true,
         lastUpdated: new Date(0),
         tags: [],
+        citations: [],
       });
       cacheRepo.getAll.mockResolvedValue([originalArticle]);
       const spy = jest.spyOn(articleRepo, 'getAll');

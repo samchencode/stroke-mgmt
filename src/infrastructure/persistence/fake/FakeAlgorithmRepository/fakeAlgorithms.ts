@@ -9,6 +9,7 @@ import {
   SwitchId,
   TextAlgorithm,
 } from '@/domain/models/Algorithm';
+import { Citation } from '@/domain/models/Citation';
 import { Image } from '@/domain/models/Image';
 
 const gwnsAlgorithm = (() => {
@@ -32,6 +33,7 @@ const gwnsAlgorithm = (() => {
     ],
     shouldShowOnHomeScreen: true,
     lastUpdated: new Date(0),
+    citations: [new Citation('My GWNS Citation')],
   });
 
   const switches = [
@@ -80,6 +82,10 @@ const abctAlgorithm = (() => {
     ],
     shouldShowOnHomeScreen: true,
     lastUpdated: new Date(0),
+    citations: [
+      new Citation('My ABCT Citation 1'),
+      new Citation('My ABCT Citation 2'),
+    ],
   });
 
   return new TextAlgorithm({ info });

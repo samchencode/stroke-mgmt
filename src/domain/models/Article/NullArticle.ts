@@ -17,6 +17,7 @@ class NullArticle extends Article {
       thumbnail: new NullImage(),
       tags: [],
       lastUpdated: new Date(0),
+      citations: [],
     });
   }
 }

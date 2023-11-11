@@ -25,6 +25,12 @@ type Fetch = typeof fetch;
 
 type ResponseData = StrapiArticleData | StrapiArticleMetadata;
 
+const populateSearchParams = new URLSearchParams({
+  'populate[0]': 'Thumbnail',
+  'populate[1]': 'citations',
+  'populate[2]': 'tags',
+});
+
 class StrapiArticleRepository implements ArticleRepository {
   constructor(
     private strapiHostUrl: string,
@@ -56,9 +62,7 @@ class StrapiArticleRepository implements ArticleRepository {
   }
 
   async getAll(): Promise<Article[]> {
-    const { data } = await this.get(
-      '/api/articles?populate[0]=Thumbnail&populate[1]=tags'
-    );
+    const { data } = await this.get(`/api/articles?${populateSearchParams}`);
     const promises = (data as StrapiArticleData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)
     );
@@ -68,7 +72,7 @@ class StrapiArticleRepository implements ArticleRepository {
   async getById(id: ArticleId): Promise<Article> {
     const idString = id.toString();
     const { data } = await this.get(
-      `/api/articles/${idString}?populate[0]=Thumbnail&populate[1]=tags`
+      `/api/articles/${idString}?${populateSearchParams}`
     );
     return this.getDefaultThumbnailAndMakeArticle(data as StrapiArticleData);
   }
@@ -79,7 +83,7 @@ class StrapiArticleRepository implements ArticleRepository {
     const { data } = await this.get(
       `/api/articles/?filters[Designation]=${encodeURI(
         designationName
-      )}&populate[0]=Thumbnail&populate[1]=tags`
+      )}&${populateSearchParams}`
     );
     const promises = (data as StrapiArticleData[]).map((d) =>
       this.getDefaultThumbnailAndMakeArticle(d)

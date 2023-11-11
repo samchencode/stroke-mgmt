@@ -6,6 +6,7 @@ export type CachedArticleRow = {
   designation: string;
   thumbnailUri: string;
   tagsJson: string;
+  citationsJson: string;
   lastUpdatedTimestamp: number;
   shouldShowOnHomeScreen: number;
 };
@@ -15,3 +16,5 @@ export type TagsJson = {
   description: string;
   lastUpdatedIsoString: string;
 }[];
+
+export type CitationsJson = { value: string }[];

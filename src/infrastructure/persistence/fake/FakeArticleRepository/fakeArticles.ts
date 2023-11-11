@@ -5,6 +5,7 @@ type FakeArticle = {
   designation: 'DISCLAIMER' | 'ARTICLE' | 'ABOUT';
   thumbnail: string;
   summary: string;
+  citations: string[];
 };
 
 export const fakeArticles: FakeArticle[] = [
@@ -15,6 +16,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'DISCLAIMER',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '1',
@@ -23,6 +25,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '2',
@@ -31,6 +34,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '3',
@@ -39,6 +43,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '4',
@@ -47,6 +52,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '5',
@@ -55,6 +61,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '6',
@@ -63,6 +70,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '7',
@@ -71,6 +79,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '8',
@@ -79,6 +88,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '9',
@@ -87,6 +97,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '10',
@@ -95,6 +106,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '11',
@@ -103,6 +115,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '12',
@@ -111,6 +124,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '13',
@@ -119,6 +133,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '14',
@@ -127,6 +142,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '15',
@@ -135,6 +151,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '16',
@@ -143,6 +160,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '17',
@@ -151,6 +169,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '18',
@@ -159,6 +178,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '19',
@@ -167,6 +187,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '20',
@@ -175,6 +196,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '21',
@@ -183,6 +205,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '22',
@@ -191,6 +214,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '23',
@@ -199,6 +223,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '24',
@@ -207,6 +232,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '25',
@@ -215,6 +241,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '26',
@@ -223,6 +250,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '27',
@@ -231,6 +259,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '28',
@@ -239,6 +268,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '29',
@@ -247,6 +277,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '30',
@@ -255,6 +286,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '31',
@@ -263,6 +295,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '32',
@@ -271,6 +304,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '33',
@@ -279,6 +313,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '34',
@@ -287,6 +322,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '35',
@@ -295,6 +331,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '36',
@@ -303,6 +340,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '37',
@@ -311,6 +349,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '38',
@@ -319,6 +358,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '39',
@@ -327,6 +367,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '40',
@@ -335,6 +376,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '41',
@@ -343,6 +385,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '42',
@@ -351,6 +394,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '43',
@@ -359,6 +403,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '44',
@@ -367,6 +412,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '45',
@@ -375,6 +421,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '46',
@@ -383,6 +430,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '47',
@@ -391,6 +439,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '48',
@@ -399,6 +448,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '49',
@@ -407,6 +457,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '50',
@@ -415,6 +466,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '51',
@@ -423,6 +475,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '52',
@@ -431,6 +484,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '53',
@@ -439,6 +493,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '54',
@@ -447,6 +502,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '55',
@@ -455,6 +511,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '56',
@@ -463,6 +520,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '57',
@@ -471,6 +529,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '58',
@@ -479,6 +538,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '59',
@@ -487,6 +547,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '60',
@@ -495,6 +556,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '61',
@@ -503,6 +565,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '62',
@@ -511,6 +574,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '63',
@@ -519,6 +583,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '64',
@@ -527,6 +592,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '65',
@@ -535,6 +601,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '66',
@@ -543,6 +610,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '67',
@@ -551,6 +619,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '68',
@@ -559,6 +628,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '69',
@@ -567,6 +637,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '70',
@@ -575,6 +646,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '71',
@@ -583,6 +655,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '72',
@@ -591,6 +664,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '73',
@@ -599,6 +673,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '74',
@@ -607,6 +682,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '75',
@@ -615,6 +691,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '76',
@@ -623,6 +700,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '77',
@@ -631,6 +709,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '78',
@@ -639,6 +718,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '79',
@@ -647,6 +727,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '80',
@@ -655,6 +736,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '81',
@@ -663,6 +745,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '82',
@@ -671,6 +754,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '83',
@@ -679,6 +763,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '84',
@@ -687,6 +772,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '85',
@@ -695,6 +781,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '86',
@@ -703,6 +790,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '87',
@@ -712,6 +800,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '88',
@@ -720,6 +809,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '89',
@@ -729,6 +819,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '90',
@@ -737,6 +828,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '91',
@@ -745,6 +837,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '92',
@@ -753,6 +846,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '93',
@@ -761,6 +855,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '94',
@@ -769,6 +864,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '95',
@@ -777,6 +873,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '96',
@@ -785,6 +882,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '97',
@@ -793,6 +891,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '98',
@@ -801,6 +900,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '99',
@@ -809,6 +909,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '100',
@@ -817,6 +918,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '101',
@@ -825,6 +927,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '102',
@@ -833,6 +936,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '103',
@@ -841,6 +945,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '104',
@@ -849,6 +954,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '105',
@@ -857,6 +963,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '106',
@@ -865,6 +972,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '107',
@@ -873,6 +981,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '108',
@@ -881,6 +990,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '109',
@@ -889,6 +999,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '110',
@@ -897,6 +1008,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '111',
@@ -905,6 +1017,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '112',
@@ -913,6 +1026,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '113',
@@ -921,6 +1035,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '114',
@@ -929,6 +1044,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '115',
@@ -937,6 +1053,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '116',
@@ -945,6 +1062,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '117',
@@ -953,6 +1071,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '118',
@@ -961,6 +1080,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '119',
@@ -969,6 +1089,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '120',
@@ -977,6 +1098,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '121',
@@ -985,6 +1107,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '122',
@@ -993,6 +1116,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '123',
@@ -1001,6 +1125,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '124',
@@ -1009,6 +1134,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '125',
@@ -1017,6 +1143,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '126',
@@ -1025,6 +1152,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '127',
@@ -1033,6 +1161,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '128',
@@ -1041,6 +1170,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '129',
@@ -1049,6 +1179,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '130',
@@ -1057,6 +1188,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '131',
@@ -1065,6 +1197,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '132',
@@ -1073,6 +1206,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '133',
@@ -1081,6 +1215,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '134',
@@ -1089,6 +1224,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '135',
@@ -1097,6 +1233,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '136',
@@ -1105,6 +1242,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '137',
@@ -1113,6 +1251,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '138',
@@ -1121,6 +1260,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '139',
@@ -1129,6 +1269,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '140',
@@ -1137,6 +1278,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '141',
@@ -1145,6 +1287,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '142',
@@ -1153,6 +1296,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '143',
@@ -1161,6 +1305,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '144',
@@ -1169,6 +1314,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '145',
@@ -1177,6 +1323,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '146',
@@ -1185,6 +1332,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '147',
@@ -1193,6 +1341,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '148',
@@ -1201,6 +1350,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '149',
@@ -1209,6 +1359,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '150',
@@ -1217,6 +1368,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '151',
@@ -1225,6 +1377,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '152',
@@ -1233,6 +1386,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '153',
@@ -1241,6 +1395,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '154',
@@ -1249,6 +1404,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '155',
@@ -1257,6 +1413,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '156',
@@ -1265,6 +1422,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '157',
@@ -1273,6 +1431,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '158',
@@ -1281,6 +1440,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '159',
@@ -1289,6 +1449,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '160',
@@ -1297,6 +1458,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '161',
@@ -1305,6 +1467,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '162',
@@ -1313,6 +1476,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '163',
@@ -1321,6 +1485,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '164',
@@ -1329,6 +1494,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '165',
@@ -1337,6 +1503,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '166',
@@ -1345,6 +1512,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '167',
@@ -1353,6 +1521,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '168',
@@ -1361,6 +1530,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '169',
@@ -1369,6 +1539,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '170',
@@ -1377,6 +1548,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '171',
@@ -1385,6 +1557,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '172',
@@ -1393,6 +1566,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '173',
@@ -1401,6 +1575,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '174',
@@ -1409,6 +1584,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '175',
@@ -1417,6 +1593,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '176',
@@ -1425,6 +1602,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '177',
@@ -1433,6 +1611,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '178',
@@ -1441,6 +1620,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '179',
@@ -1449,6 +1629,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '180',
@@ -1457,6 +1638,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '181',
@@ -1465,6 +1647,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '182',
@@ -1473,6 +1656,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '183',
@@ -1481,6 +1665,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '184',
@@ -1489,6 +1674,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '185',
@@ -1497,6 +1683,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '186',
@@ -1505,6 +1692,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '187',
@@ -1513,6 +1701,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '188',
@@ -1521,6 +1710,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '189',
@@ -1529,6 +1719,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '190',
@@ -1537,6 +1728,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '191',
@@ -1545,6 +1737,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '192',
@@ -1553,6 +1746,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '193',
@@ -1561,6 +1755,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '194',
@@ -1569,6 +1764,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '195',
@@ -1577,6 +1773,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '196',
@@ -1585,6 +1782,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '197',
@@ -1593,6 +1791,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '198',
@@ -1601,6 +1800,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '199',
@@ -1609,6 +1809,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '200',
@@ -1617,6 +1818,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '201',
@@ -1625,6 +1827,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '202',
@@ -1634,6 +1837,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '203',
@@ -1642,6 +1846,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '204',
@@ -1650,6 +1855,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '205',
@@ -1658,6 +1864,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '206',
@@ -1666,6 +1873,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '207',
@@ -1674,6 +1882,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '208',
@@ -1682,6 +1891,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '209',
@@ -1690,6 +1900,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '210',
@@ -1698,6 +1909,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '211',
@@ -1706,6 +1918,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '212',
@@ -1714,6 +1927,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '213',
@@ -1722,6 +1936,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '214',
@@ -1730,6 +1945,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '215',
@@ -1738,6 +1954,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '216',
@@ -1746,6 +1963,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '217',
@@ -1754,6 +1972,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '218',
@@ -1762,6 +1981,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '219',
@@ -1770,6 +1990,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '220',
@@ -1778,6 +1999,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '221',
@@ -1786,6 +2008,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '222',
@@ -1794,6 +2017,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '223',
@@ -1802,6 +2026,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '224',
@@ -1810,6 +2035,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '225',
@@ -1818,6 +2044,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '226',
@@ -1826,6 +2053,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '227',
@@ -1834,6 +2062,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '228',
@@ -1842,6 +2071,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '229',
@@ -1850,6 +2080,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '230',
@@ -1858,6 +2089,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '231',
@@ -1866,6 +2098,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '232',
@@ -1874,6 +2107,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '233',
@@ -1882,6 +2116,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '234',
@@ -1890,6 +2125,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '235',
@@ -1898,6 +2134,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '236',
@@ -1906,6 +2143,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '237',
@@ -1914,6 +2152,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '238',
@@ -1922,6 +2161,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '239',
@@ -1930,6 +2170,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '240',
@@ -1938,6 +2179,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '241',
@@ -1946,6 +2188,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '242',
@@ -1954,6 +2197,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '243',
@@ -1962,6 +2206,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '244',
@@ -1970,6 +2215,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '245',
@@ -1978,6 +2224,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '246',
@@ -1986,6 +2233,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '247',
@@ -1994,6 +2242,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '248',
@@ -2002,6 +2251,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '249',
@@ -2010,6 +2260,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '250',
@@ -2018,6 +2269,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '251',
@@ -2026,6 +2278,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '252',
@@ -2034,6 +2287,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '253',
@@ -2042,6 +2296,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '254',
@@ -2050,6 +2305,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '255',
@@ -2058,6 +2314,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '256',
@@ -2066,6 +2323,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '257',
@@ -2074,6 +2332,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '258',
@@ -2082,6 +2341,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '259',
@@ -2090,6 +2350,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '260',
@@ -2098,6 +2359,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '261',
@@ -2106,6 +2368,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '262',
@@ -2114,6 +2377,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '263',
@@ -2122,6 +2386,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '264',
@@ -2130,6 +2395,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '265',
@@ -2138,6 +2404,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '266',
@@ -2146,6 +2413,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '267',
@@ -2154,6 +2422,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '268',
@@ -2162,6 +2431,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '269',
@@ -2170,6 +2440,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '270',
@@ -2178,6 +2449,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '271',
@@ -2186,6 +2458,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '272',
@@ -2194,6 +2467,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '273',
@@ -2202,6 +2476,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '274',
@@ -2210,6 +2485,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '275',
@@ -2218,6 +2494,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '276',
@@ -2226,6 +2503,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '277',
@@ -2234,6 +2512,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '278',
@@ -2242,6 +2521,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '279',
@@ -2250,6 +2530,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '280',
@@ -2258,6 +2539,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '281',
@@ -2266,6 +2548,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '282',
@@ -2274,6 +2557,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '283',
@@ -2282,6 +2566,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '284',
@@ -2290,6 +2575,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '285',
@@ -2298,6 +2584,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '286',
@@ -2306,6 +2593,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '287',
@@ -2314,6 +2602,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '288',
@@ -2322,6 +2611,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '289',
@@ -2330,6 +2620,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '290',
@@ -2338,6 +2629,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '291',
@@ -2346,6 +2638,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '292',
@@ -2354,6 +2647,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '293',
@@ -2362,6 +2656,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '294',
@@ -2370,6 +2665,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '295',
@@ -2378,6 +2674,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '296',
@@ -2386,6 +2683,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '297',
@@ -2394,6 +2692,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '298',
@@ -2402,6 +2701,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '299',
@@ -2410,6 +2710,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '300',
@@ -2418,6 +2719,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '301',
@@ -2426,6 +2728,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '302',
@@ -2434,6 +2737,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '303',
@@ -2442,6 +2746,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '304',
@@ -2450,6 +2755,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '305',
@@ -2458,6 +2764,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '306',
@@ -2466,6 +2773,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '307',
@@ -2474,6 +2782,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '308',
@@ -2482,6 +2791,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '309',
@@ -2490,6 +2800,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '310',
@@ -2498,6 +2809,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '311',
@@ -2506,6 +2818,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '312',
@@ -2514,6 +2827,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '313',
@@ -2522,6 +2836,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '314',
@@ -2530,6 +2845,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '315',
@@ -2538,6 +2854,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '316',
@@ -2546,6 +2863,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '317',
@@ -2554,6 +2872,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '318',
@@ -2562,6 +2881,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '319',
@@ -2571,6 +2891,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '320',
@@ -2579,6 +2900,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '321',
@@ -2588,6 +2910,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '322',
@@ -2596,6 +2919,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '323',
@@ -2604,6 +2928,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '324',
@@ -2612,6 +2937,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '325',
@@ -2620,6 +2946,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '326',
@@ -2628,6 +2955,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '327',
@@ -2636,6 +2964,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '328',
@@ -2644,6 +2973,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '329',
@@ -2652,6 +2982,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '330',
@@ -2660,6 +2991,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '331',
@@ -2668,6 +3000,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '332',
@@ -2676,6 +3009,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '333',
@@ -2684,6 +3018,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '334',
@@ -2693,6 +3028,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '335',
@@ -2701,6 +3037,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '336',
@@ -2709,6 +3046,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '337',
@@ -2717,6 +3055,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '338',
@@ -2725,6 +3064,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '339',
@@ -2733,6 +3073,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '340',
@@ -2741,6 +3082,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '341',
@@ -2749,6 +3091,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '342',
@@ -2757,6 +3100,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '343',
@@ -2765,6 +3109,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '344',
@@ -2773,6 +3118,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '345',
@@ -2781,6 +3127,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '346',
@@ -2789,6 +3136,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '347',
@@ -2797,6 +3145,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '348',
@@ -2805,6 +3154,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '349',
@@ -2813,6 +3163,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '350',
@@ -2821,6 +3172,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '351',
@@ -2829,6 +3181,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '352',
@@ -2837,6 +3190,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '353',
@@ -2845,6 +3199,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '354',
@@ -2853,6 +3208,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '355',
@@ -2861,6 +3217,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '356',
@@ -2869,6 +3226,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '357',
@@ -2877,6 +3235,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '358',
@@ -2885,6 +3244,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '359',
@@ -2893,6 +3253,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '360',
@@ -2901,6 +3262,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '361',
@@ -2909,6 +3271,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '362',
@@ -2917,6 +3280,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '363',
@@ -2925,6 +3289,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '364',
@@ -2933,6 +3298,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '365',
@@ -2941,6 +3307,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '366',
@@ -2949,6 +3316,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '367',
@@ -2957,6 +3325,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '368',
@@ -2965,6 +3334,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '369',
@@ -2973,6 +3343,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '370',
@@ -2981,6 +3352,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '371',
@@ -2990,6 +3362,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '372',
@@ -2998,6 +3371,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '373',
@@ -3006,6 +3380,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '374',
@@ -3014,6 +3389,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '375',
@@ -3022,6 +3398,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '376',
@@ -3030,6 +3407,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '377',
@@ -3038,6 +3416,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '378',
@@ -3046,6 +3425,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '379',
@@ -3054,6 +3434,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '380',
@@ -3062,6 +3443,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '381',
@@ -3070,6 +3452,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '382',
@@ -3078,6 +3461,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '383',
@@ -3086,6 +3470,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '384',
@@ -3094,6 +3479,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '385',
@@ -3102,6 +3488,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '386',
@@ -3110,6 +3497,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '387',
@@ -3118,6 +3506,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '388',
@@ -3126,6 +3515,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '389',
@@ -3134,6 +3524,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '390',
@@ -3142,6 +3533,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '391',
@@ -3150,6 +3542,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '392',
@@ -3159,6 +3552,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '393',
@@ -3167,6 +3561,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '394',
@@ -3175,6 +3570,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '395',
@@ -3183,6 +3579,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '396',
@@ -3191,6 +3588,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '397',
@@ -3199,6 +3597,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '398',
@@ -3207,6 +3606,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '399',
@@ -3215,6 +3615,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '400',
@@ -3223,6 +3624,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '401',
@@ -3231,6 +3633,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '402',
@@ -3239,6 +3642,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '403',
@@ -3247,6 +3651,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '404',
@@ -3255,6 +3660,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '405',
@@ -3263,6 +3669,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '406',
@@ -3271,6 +3678,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '407',
@@ -3279,6 +3687,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '408',
@@ -3287,6 +3696,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '409',
@@ -3295,6 +3705,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '410',
@@ -3303,6 +3714,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '411',
@@ -3311,6 +3723,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '412',
@@ -3319,6 +3732,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '413',
@@ -3327,6 +3741,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '414',
@@ -3335,6 +3750,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '415',
@@ -3343,6 +3759,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '416',
@@ -3351,6 +3768,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '417',
@@ -3359,6 +3777,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '418',
@@ -3367,6 +3786,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '419',
@@ -3375,6 +3795,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '420',
@@ -3383,6 +3804,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '421',
@@ -3391,6 +3813,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '422',
@@ -3399,6 +3822,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '423',
@@ -3407,6 +3831,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '424',
@@ -3415,6 +3840,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '425',
@@ -3423,6 +3849,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '426',
@@ -3431,6 +3858,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '427',
@@ -3439,6 +3867,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '428',
@@ -3447,6 +3876,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '429',
@@ -3455,6 +3885,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '430',
@@ -3463,6 +3894,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '431',
@@ -3471,6 +3903,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '432',
@@ -3479,6 +3912,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '433',
@@ -3487,6 +3921,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '434',
@@ -3495,6 +3930,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '435',
@@ -3503,6 +3939,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '436',
@@ -3511,6 +3948,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '437',
@@ -3519,6 +3957,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '438',
@@ -3527,6 +3966,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '439',
@@ -3535,6 +3975,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '440',
@@ -3543,6 +3984,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '441',
@@ -3551,6 +3993,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '442',
@@ -3559,6 +4002,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '443',
@@ -3567,6 +4011,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '444',
@@ -3575,6 +4020,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '445',
@@ -3583,6 +4029,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '446',
@@ -3591,6 +4038,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '447',
@@ -3599,6 +4047,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '448',
@@ -3607,6 +4056,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '449',
@@ -3615,6 +4065,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '450',
@@ -3623,6 +4074,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '451',
@@ -3631,6 +4083,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '452',
@@ -3639,6 +4092,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '453',
@@ -3647,6 +4101,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '454',
@@ -3655,6 +4110,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '455',
@@ -3663,6 +4119,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '456',
@@ -3671,6 +4128,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '457',
@@ -3679,6 +4137,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '458',
@@ -3687,6 +4146,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '459',
@@ -3695,6 +4155,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '460',
@@ -3703,6 +4164,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '461',
@@ -3711,6 +4173,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '462',
@@ -3719,6 +4182,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '463',
@@ -3727,6 +4191,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '464',
@@ -3735,6 +4200,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '465',
@@ -3743,6 +4209,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '466',
@@ -3751,6 +4218,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '467',
@@ -3759,6 +4227,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '468',
@@ -3767,6 +4236,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '469',
@@ -3775,6 +4245,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '470',
@@ -3783,6 +4254,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '471',
@@ -3791,6 +4263,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '472',
@@ -3799,6 +4272,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '473',
@@ -3807,6 +4281,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '474',
@@ -3815,6 +4290,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '475',
@@ -3823,6 +4299,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '476',
@@ -3831,6 +4308,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '477',
@@ -3839,6 +4317,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '478',
@@ -3847,6 +4326,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '479',
@@ -3855,6 +4335,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '480',
@@ -3863,6 +4344,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '481',
@@ -3871,6 +4353,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '482',
@@ -3879,6 +4362,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '483',
@@ -3887,6 +4371,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '484',
@@ -3895,6 +4380,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '485',
@@ -3903,6 +4389,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '486',
@@ -3911,6 +4398,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '487',
@@ -3919,6 +4407,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '488',
@@ -3927,6 +4416,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '489',
@@ -3935,6 +4425,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '490',
@@ -3943,6 +4434,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '491',
@@ -3951,6 +4443,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '492',
@@ -3959,6 +4452,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '493',
@@ -3967,6 +4461,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '494',
@@ -3975,6 +4470,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '495',
@@ -3983,6 +4479,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '496',
@@ -3991,6 +4488,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '497',
@@ -3999,6 +4497,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '498',
@@ -4007,6 +4506,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '499',
@@ -4015,6 +4515,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '500',
@@ -4023,6 +4524,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '501',
@@ -4031,6 +4533,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '502',
@@ -4039,6 +4542,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '503',
@@ -4047,6 +4551,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '504',
@@ -4055,6 +4560,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '505',
@@ -4063,6 +4569,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '506',
@@ -4071,6 +4578,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '507',
@@ -4080,6 +4588,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '508',
@@ -4088,6 +4597,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '509',
@@ -4096,6 +4606,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '510',
@@ -4104,6 +4615,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '511',
@@ -4112,6 +4624,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '512',
@@ -4120,6 +4633,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '513',
@@ -4128,6 +4642,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '514',
@@ -4136,6 +4651,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '515',
@@ -4144,6 +4660,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '516',
@@ -4152,6 +4669,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '517',
@@ -4160,6 +4678,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '518',
@@ -4168,6 +4687,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '519',
@@ -4176,6 +4696,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '520',
@@ -4184,6 +4705,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '521',
@@ -4192,6 +4714,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '522',
@@ -4200,6 +4723,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '523',
@@ -4208,6 +4732,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '524',
@@ -4216,6 +4741,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '525',
@@ -4224,6 +4750,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '526',
@@ -4232,6 +4759,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '527',
@@ -4240,6 +4768,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '528',
@@ -4248,6 +4777,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '529',
@@ -4256,6 +4786,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '530',
@@ -4264,6 +4795,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '531',
@@ -4272,6 +4804,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '532',
@@ -4280,6 +4813,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '533',
@@ -4288,6 +4822,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '534',
@@ -4296,6 +4831,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '535',
@@ -4304,6 +4840,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '536',
@@ -4312,6 +4849,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '537',
@@ -4320,6 +4858,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '538',
@@ -4328,6 +4867,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '539',
@@ -4336,6 +4876,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '540',
@@ -4344,6 +4885,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '541',
@@ -4352,6 +4894,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '542',
@@ -4360,6 +4903,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '543',
@@ -4368,6 +4912,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '544',
@@ -4376,6 +4921,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '545',
@@ -4384,6 +4930,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '546',
@@ -4392,6 +4939,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '547',
@@ -4400,6 +4948,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '548',
@@ -4408,6 +4957,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '549',
@@ -4416,6 +4966,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '550',
@@ -4424,6 +4975,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '551',
@@ -4432,6 +4984,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '552',
@@ -4440,6 +4993,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '553',
@@ -4448,6 +5002,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '554',
@@ -4456,6 +5011,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '555',
@@ -4464,6 +5020,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '556',
@@ -4472,6 +5029,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '557',
@@ -4480,6 +5038,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '558',
@@ -4488,6 +5047,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '559',
@@ -4496,6 +5056,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '560',
@@ -4504,6 +5065,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '561',
@@ -4512,6 +5074,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '562',
@@ -4520,6 +5083,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '563',
@@ -4528,6 +5092,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '564',
@@ -4536,6 +5101,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '565',
@@ -4544,6 +5110,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '566',
@@ -4552,6 +5119,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '567',
@@ -4560,6 +5128,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '568',
@@ -4568,6 +5137,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '569',
@@ -4576,6 +5146,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '570',
@@ -4584,6 +5155,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '571',
@@ -4592,6 +5164,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '572',
@@ -4600,6 +5173,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '573',
@@ -4608,6 +5182,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '574',
@@ -4616,6 +5191,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '575',
@@ -4624,6 +5200,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '576',
@@ -4632,6 +5209,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '577',
@@ -4640,6 +5218,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '578',
@@ -4648,6 +5227,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '579',
@@ -4656,6 +5236,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '580',
@@ -4664,6 +5245,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '581',
@@ -4672,6 +5254,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '582',
@@ -4680,6 +5263,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '583',
@@ -4688,6 +5272,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '584',
@@ -4696,6 +5281,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '585',
@@ -4704,6 +5290,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '586',
@@ -4712,6 +5299,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '587',
@@ -4720,6 +5308,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '588',
@@ -4728,6 +5317,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '589',
@@ -4736,6 +5326,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '590',
@@ -4744,6 +5335,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '591',
@@ -4752,6 +5344,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '592',
@@ -4760,6 +5353,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '593',
@@ -4769,6 +5363,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '594',
@@ -4777,6 +5372,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '595',
@@ -4785,6 +5381,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '596',
@@ -4793,6 +5390,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '597',
@@ -4801,6 +5399,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '598',
@@ -4809,6 +5408,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '599',
@@ -4817,6 +5417,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '600',
@@ -4825,6 +5426,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '601',
@@ -4833,6 +5435,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '602',
@@ -4841,6 +5444,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '603',
@@ -4849,6 +5453,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '604',
@@ -4857,6 +5462,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '605',
@@ -4865,6 +5471,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '606',
@@ -4873,6 +5480,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '607',
@@ -4881,6 +5489,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '608',
@@ -4889,6 +5498,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '609',
@@ -4897,6 +5507,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '610',
@@ -4905,6 +5516,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '611',
@@ -4913,6 +5525,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '612',
@@ -4921,6 +5534,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '613',
@@ -4929,6 +5543,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '614',
@@ -4937,6 +5552,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '615',
@@ -4945,6 +5561,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '616',
@@ -4953,6 +5570,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '617',
@@ -4961,6 +5579,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '618',
@@ -4969,6 +5588,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '619',
@@ -4977,6 +5597,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '620',
@@ -4985,6 +5606,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '621',
@@ -4993,6 +5615,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '622',
@@ -5001,6 +5624,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '623',
@@ -5009,6 +5633,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '624',
@@ -5017,6 +5642,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '625',
@@ -5025,6 +5651,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '626',
@@ -5033,6 +5660,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '627',
@@ -5041,6 +5669,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '628',
@@ -5049,6 +5678,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '629',
@@ -5057,6 +5687,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '630',
@@ -5065,6 +5696,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '631',
@@ -5073,6 +5705,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '632',
@@ -5081,6 +5714,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '633',
@@ -5089,6 +5723,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '634',
@@ -5097,6 +5732,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '635',
@@ -5105,6 +5741,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '636',
@@ -5113,6 +5750,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '637',
@@ -5121,6 +5759,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '638',
@@ -5129,6 +5768,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '639',
@@ -5137,6 +5777,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '640',
@@ -5145,6 +5786,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '641',
@@ -5153,6 +5795,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '642',
@@ -5161,6 +5804,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '643',
@@ -5169,6 +5813,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '644',
@@ -5177,6 +5822,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '645',
@@ -5185,6 +5831,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '646',
@@ -5193,6 +5840,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '647',
@@ -5201,6 +5849,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '648',
@@ -5209,6 +5858,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '649',
@@ -5217,6 +5867,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '650',
@@ -5225,6 +5876,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '651',
@@ -5233,6 +5885,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '652',
@@ -5241,6 +5894,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '653',
@@ -5249,6 +5903,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '654',
@@ -5257,6 +5912,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '655',
@@ -5265,6 +5921,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '656',
@@ -5273,6 +5930,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '657',
@@ -5281,6 +5939,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '658',
@@ -5289,6 +5948,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '659',
@@ -5297,6 +5957,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '660',
@@ -5305,6 +5966,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '661',
@@ -5313,6 +5975,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '662',
@@ -5321,6 +5984,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '663',
@@ -5329,6 +5993,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '664',
@@ -5337,6 +6002,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '665',
@@ -5345,6 +6011,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '666',
@@ -5353,6 +6020,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '667',
@@ -5361,6 +6029,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '668',
@@ -5369,6 +6038,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '669',
@@ -5377,6 +6047,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '670',
@@ -5385,6 +6056,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '671',
@@ -5393,6 +6065,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '672',
@@ -5401,6 +6074,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '673',
@@ -5409,6 +6083,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '674',
@@ -5417,6 +6092,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '675',
@@ -5425,6 +6101,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '676',
@@ -5433,6 +6110,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '677',
@@ -5441,6 +6119,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '678',
@@ -5449,6 +6128,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '679',
@@ -5457,6 +6137,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '680',
@@ -5465,6 +6146,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '681',
@@ -5473,6 +6155,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '682',
@@ -5481,6 +6164,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '683',
@@ -5489,6 +6173,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '684',
@@ -5497,6 +6182,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '685',
@@ -5505,6 +6191,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '686',
@@ -5513,6 +6200,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '687',
@@ -5521,6 +6209,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '688',
@@ -5529,6 +6218,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '689',
@@ -5537,6 +6227,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '690',
@@ -5545,6 +6236,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '691',
@@ -5553,6 +6245,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '692',
@@ -5561,6 +6254,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '693',
@@ -5569,6 +6263,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '694',
@@ -5578,6 +6273,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '695',
@@ -5586,6 +6282,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '696',
@@ -5594,6 +6291,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '697',
@@ -5602,6 +6300,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '698',
@@ -5610,6 +6309,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '699',
@@ -5618,6 +6318,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '700',
@@ -5626,6 +6327,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '701',
@@ -5634,6 +6336,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '702',
@@ -5642,6 +6345,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '703',
@@ -5650,6 +6354,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '704',
@@ -5658,6 +6363,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '705',
@@ -5666,6 +6372,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '706',
@@ -5674,6 +6381,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '707',
@@ -5682,6 +6390,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '708',
@@ -5690,6 +6399,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '709',
@@ -5698,6 +6408,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '710',
@@ -5707,6 +6418,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '711',
@@ -5715,6 +6427,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '712',
@@ -5723,6 +6436,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '713',
@@ -5731,6 +6445,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '714',
@@ -5739,6 +6454,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '715',
@@ -5747,6 +6463,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '716',
@@ -5755,6 +6472,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '717',
@@ -5763,6 +6481,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '718',
@@ -5771,6 +6490,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '719',
@@ -5779,6 +6499,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '720',
@@ -5787,6 +6508,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '721',
@@ -5795,6 +6517,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '722',
@@ -5803,6 +6526,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '723',
@@ -5812,6 +6536,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '724',
@@ -5820,6 +6545,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '725',
@@ -5828,6 +6554,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '726',
@@ -5836,6 +6563,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '727',
@@ -5844,6 +6572,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '728',
@@ -5852,6 +6581,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '729',
@@ -5860,6 +6590,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '730',
@@ -5868,6 +6599,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '731',
@@ -5876,6 +6608,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '732',
@@ -5884,6 +6617,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '733',
@@ -5892,6 +6626,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '734',
@@ -5900,6 +6635,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '735',
@@ -5908,6 +6644,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '736',
@@ -5916,6 +6653,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '737',
@@ -5924,6 +6662,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '738',
@@ -5932,6 +6671,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '739',
@@ -5940,6 +6680,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '740',
@@ -5948,6 +6689,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '741',
@@ -5956,6 +6698,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '742',
@@ -5964,6 +6707,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '743',
@@ -5972,6 +6716,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '744',
@@ -5980,6 +6725,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '745',
@@ -5988,6 +6734,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '746',
@@ -5996,6 +6743,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '747',
@@ -6004,6 +6752,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '748',
@@ -6012,6 +6761,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '749',
@@ -6020,6 +6770,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '750',
@@ -6028,6 +6779,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '751',
@@ -6037,6 +6789,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '752',
@@ -6045,6 +6798,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '753',
@@ -6053,6 +6807,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '754',
@@ -6061,6 +6816,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '755',
@@ -6069,6 +6825,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '756',
@@ -6077,6 +6834,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '757',
@@ -6085,6 +6843,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '758',
@@ -6093,6 +6852,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '759',
@@ -6101,6 +6861,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '760',
@@ -6109,6 +6870,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '761',
@@ -6117,6 +6879,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '762',
@@ -6125,6 +6888,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '763',
@@ -6133,6 +6897,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '764',
@@ -6141,6 +6906,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '765',
@@ -6149,6 +6915,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '766',
@@ -6157,6 +6924,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '767',
@@ -6165,6 +6933,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '768',
@@ -6173,6 +6942,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '769',
@@ -6181,6 +6951,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '770',
@@ -6189,6 +6960,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '771',
@@ -6197,6 +6969,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '772',
@@ -6205,6 +6978,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '773',
@@ -6213,6 +6987,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '774',
@@ -6221,6 +6996,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '775',
@@ -6229,6 +7005,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '776',
@@ -6237,6 +7014,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '777',
@@ -6245,6 +7023,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '778',
@@ -6253,6 +7032,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '779',
@@ -6261,6 +7041,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '780',
@@ -6269,6 +7050,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '781',
@@ -6277,6 +7059,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '782',
@@ -6285,6 +7068,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '783',
@@ -6293,6 +7077,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '784',
@@ -6301,6 +7086,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '785',
@@ -6309,6 +7095,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '786',
@@ -6317,6 +7104,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '787',
@@ -6325,6 +7113,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '788',
@@ -6333,6 +7122,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '789',
@@ -6341,6 +7131,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '790',
@@ -6349,6 +7140,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '791',
@@ -6357,6 +7149,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '792',
@@ -6365,6 +7158,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '793',
@@ -6373,6 +7167,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '794',
@@ -6381,6 +7176,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '795',
@@ -6389,6 +7185,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '796',
@@ -6397,6 +7194,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '797',
@@ -6405,6 +7203,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '798',
@@ -6413,6 +7212,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '799',
@@ -6421,6 +7221,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '800',
@@ -6429,6 +7230,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '801',
@@ -6437,6 +7239,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '802',
@@ -6445,6 +7248,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '803',
@@ -6453,6 +7257,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '804',
@@ -6461,6 +7266,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '805',
@@ -6469,6 +7275,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '806',
@@ -6477,6 +7284,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '807',
@@ -6485,6 +7293,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '808',
@@ -6493,6 +7302,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '809',
@@ -6501,6 +7311,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '810',
@@ -6509,6 +7320,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '811',
@@ -6517,6 +7329,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '812',
@@ -6525,6 +7338,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '813',
@@ -6533,6 +7347,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '814',
@@ -6541,6 +7356,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '815',
@@ -6549,6 +7365,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '816',
@@ -6557,6 +7374,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '817',
@@ -6565,6 +7383,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '818',
@@ -6573,6 +7392,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '819',
@@ -6581,6 +7401,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '820',
@@ -6589,6 +7410,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '821',
@@ -6597,6 +7419,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '822',
@@ -6605,6 +7428,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '823',
@@ -6613,6 +7437,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '824',
@@ -6621,6 +7446,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '825',
@@ -6629,6 +7455,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '826',
@@ -6637,6 +7464,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '827',
@@ -6645,6 +7473,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '828',
@@ -6653,6 +7482,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '829',
@@ -6661,6 +7491,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '830',
@@ -6669,6 +7500,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '831',
@@ -6677,6 +7509,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '832',
@@ -6685,6 +7518,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '833',
@@ -6693,6 +7527,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '834',
@@ -6701,6 +7536,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '835',
@@ -6709,6 +7545,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '836',
@@ -6717,6 +7554,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '837',
@@ -6725,6 +7563,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '838',
@@ -6733,6 +7572,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '839',
@@ -6741,6 +7581,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '840',
@@ -6749,6 +7590,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '841',
@@ -6757,6 +7599,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '842',
@@ -6765,6 +7608,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '843',
@@ -6773,6 +7617,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '844',
@@ -6781,6 +7626,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '845',
@@ -6789,6 +7635,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '846',
@@ -6797,6 +7644,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '847',
@@ -6805,6 +7653,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '848',
@@ -6813,6 +7662,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '849',
@@ -6821,6 +7671,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '850',
@@ -6829,6 +7680,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '851',
@@ -6837,6 +7689,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '852',
@@ -6845,6 +7698,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '853',
@@ -6853,6 +7707,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '854',
@@ -6861,6 +7716,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '855',
@@ -6869,6 +7725,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '856',
@@ -6877,6 +7734,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '857',
@@ -6885,6 +7743,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '858',
@@ -6893,6 +7752,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '859',
@@ -6901,6 +7761,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '860',
@@ -6909,6 +7770,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '861',
@@ -6917,6 +7779,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '862',
@@ -6925,6 +7788,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '863',
@@ -6933,6 +7797,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '864',
@@ -6941,6 +7806,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '865',
@@ -6949,6 +7815,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '866',
@@ -6957,6 +7824,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '867',
@@ -6965,6 +7833,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '868',
@@ -6973,6 +7842,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '869',
@@ -6981,6 +7851,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '870',
@@ -6989,6 +7860,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '871',
@@ -6997,6 +7869,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '872',
@@ -7005,6 +7878,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '873',
@@ -7013,6 +7887,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '874',
@@ -7021,6 +7896,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '875',
@@ -7029,6 +7905,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '876',
@@ -7037,6 +7914,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '877',
@@ -7045,6 +7923,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '878',
@@ -7053,6 +7932,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '879',
@@ -7061,6 +7941,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '880',
@@ -7069,6 +7950,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '881',
@@ -7077,6 +7959,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '882',
@@ -7085,6 +7968,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '883',
@@ -7093,6 +7977,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '884',
@@ -7101,6 +7986,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '885',
@@ -7109,6 +7995,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '886',
@@ -7117,6 +8004,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '887',
@@ -7125,6 +8013,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '888',
@@ -7133,6 +8022,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '889',
@@ -7141,6 +8031,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '890',
@@ -7149,6 +8040,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '891',
@@ -7157,6 +8049,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '892',
@@ -7165,6 +8058,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '893',
@@ -7173,6 +8067,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '894',
@@ -7181,6 +8076,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '895',
@@ -7189,6 +8085,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '896',
@@ -7197,6 +8094,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '897',
@@ -7205,6 +8103,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '898',
@@ -7213,6 +8112,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '899',
@@ -7221,6 +8121,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '900',
@@ -7229,6 +8130,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '901',
@@ -7237,6 +8139,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '902',
@@ -7245,6 +8148,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '903',
@@ -7253,6 +8157,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '904',
@@ -7261,6 +8166,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '905',
@@ -7269,6 +8175,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '906',
@@ -7277,6 +8184,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '907',
@@ -7285,6 +8193,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '908',
@@ -7293,6 +8202,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '909',
@@ -7301,6 +8211,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '910',
@@ -7309,6 +8220,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '911',
@@ -7317,6 +8229,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '912',
@@ -7326,6 +8239,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '913',
@@ -7334,6 +8248,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '914',
@@ -7342,6 +8257,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '915',
@@ -7350,6 +8266,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '916',
@@ -7358,6 +8275,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '917',
@@ -7366,6 +8284,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '918',
@@ -7374,6 +8293,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '919',
@@ -7382,6 +8302,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '920',
@@ -7390,6 +8311,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '921',
@@ -7398,6 +8320,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '922',
@@ -7406,6 +8329,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '923',
@@ -7414,6 +8338,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '924',
@@ -7422,6 +8347,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '925',
@@ -7430,6 +8356,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '926',
@@ -7438,6 +8365,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '927',
@@ -7446,6 +8374,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '928',
@@ -7454,6 +8383,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '929',
@@ -7462,6 +8392,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '930',
@@ -7470,6 +8401,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '931',
@@ -7478,6 +8410,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '932',
@@ -7486,6 +8419,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '933',
@@ -7494,6 +8428,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '934',
@@ -7502,6 +8437,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '935',
@@ -7510,6 +8446,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '936',
@@ -7518,6 +8455,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '937',
@@ -7526,6 +8464,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '938',
@@ -7534,6 +8473,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '939',
@@ -7542,6 +8482,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '940',
@@ -7550,6 +8491,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '941',
@@ -7558,6 +8500,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '942',
@@ -7566,6 +8509,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '943',
@@ -7574,6 +8518,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '944',
@@ -7582,6 +8527,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '945',
@@ -7590,6 +8536,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '946',
@@ -7598,6 +8545,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '947',
@@ -7606,6 +8554,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '948',
@@ -7614,6 +8563,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '949',
@@ -7622,6 +8572,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '950',
@@ -7630,6 +8581,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '951',
@@ -7638,6 +8590,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '952',
@@ -7646,6 +8599,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '953',
@@ -7654,6 +8608,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '954',
@@ -7662,6 +8617,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '955',
@@ -7670,6 +8626,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '956',
@@ -7678,6 +8635,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '957',
@@ -7686,6 +8644,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '958',
@@ -7694,6 +8653,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '959',
@@ -7702,6 +8662,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '960',
@@ -7710,6 +8671,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '961',
@@ -7718,6 +8680,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '962',
@@ -7726,6 +8689,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '963',
@@ -7734,6 +8698,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '964',
@@ -7742,6 +8707,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '965',
@@ -7750,6 +8716,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '966',
@@ -7758,6 +8725,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '967',
@@ -7766,6 +8734,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '968',
@@ -7774,6 +8743,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '969',
@@ -7782,6 +8752,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '970',
@@ -7790,6 +8761,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '971',
@@ -7798,6 +8770,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '972',
@@ -7806,6 +8779,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '973',
@@ -7814,6 +8788,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '974',
@@ -7822,6 +8797,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '975',
@@ -7830,6 +8806,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '976',
@@ -7838,6 +8815,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '977',
@@ -7846,6 +8824,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '978',
@@ -7854,6 +8833,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '979',
@@ -7862,6 +8842,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '980',
@@ -7870,6 +8851,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '981',
@@ -7878,6 +8860,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '982',
@@ -7886,6 +8869,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '983',
@@ -7894,6 +8878,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '984',
@@ -7902,6 +8887,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '985',
@@ -7910,6 +8896,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '986',
@@ -7918,6 +8905,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '987',
@@ -7926,6 +8914,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '988',
@@ -7934,6 +8923,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '989',
@@ -7942,6 +8932,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '990',
@@ -7950,6 +8941,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '991',
@@ -7958,6 +8950,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '992',
@@ -7966,6 +8959,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '993',
@@ -7974,6 +8968,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '994',
@@ -7982,6 +8977,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '995',
@@ -7990,6 +8986,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '996',
@@ -7998,6 +8995,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '997',
@@ -8006,6 +9004,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '998',
@@ -8014,6 +9013,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '999',
@@ -8022,6 +9022,7 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
   {
     id: '1000',
@@ -8030,5 +9031,6 @@ export const fakeArticles: FakeArticle[] = [
     designation: 'ARTICLE',
     thumbnail: '/thumbnail.png',
     summary: 'My Summary',
+    citations: ['My Citation'],
   },
 ];

@@ -4,6 +4,7 @@ import type { AlgorithmVisitor } from '@/domain/models/Algorithm/AlgorithmVisito
 import type { Outcome } from '@/domain/models/Algorithm/Outcome';
 import type { ScoredAlgorithm } from '@/domain/models/Algorithm/ScoredAlgorithm';
 import type { TextAlgorithm } from '@/domain/models/Algorithm/TextAlgorithm';
+import type { Citation } from '@/domain/models/Citation';
 import type { Image } from '@/domain/models/Image';
 
 interface BaseAlgorithm {
@@ -15,6 +16,7 @@ interface BaseAlgorithm {
   getThumbnail(): Image;
   getOutcomes(): Outcome[];
   getDisplayedOutcomes(): Outcome[];
+  getCitations(): Citation[];
   hasOutcomes(): boolean;
   getShouldShowOnHomeScreen(): boolean;
   getLastUpdated(): Date;

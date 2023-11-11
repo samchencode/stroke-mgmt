@@ -59,6 +59,11 @@
     text-align: center;
   }
 
+  details summary::-webkit-details-marker,
+  ::marker {
+    display: none;
+  }
+
   /* Responsive Page Width */
 
   @media screen and (min-width: 900px) {
@@ -70,7 +75,8 @@
     }
 
     .template.header,
-    .template.main {
+    .template.main,
+    .template.citations {
       width: 868px;
     }
   }
@@ -329,5 +335,51 @@
     margin-right: 16px;
     margin-top: 16px;
     text-align: right;
+  }
+
+  .template.citations {
+    padding-top: 16px;
+  }
+
+  .template.citations__title {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    color: #0f1d24;
+    /* label-large */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    font-weight: 700;
+  }
+
+  .template.citations .template.citations__title::before {
+    content: "Show "
+  }
+
+  .template.citations[open] .template.citations__title::before {
+    content: "Hide "
+  }
+
+  .template.citations__list {
+    margin: 0;
+    padding: 0;
+    padding-left: 16px;
+    list-style: none;
+    counter-reset: citations__list;
+  }
+
+  .template.citations__item::before {
+    content: counter(citations__list) ". ";
+    counter-increment: citations__list;
+  }
+
+  .template.citations__item {
+    margin-top: 16px;
+    /* body-large */
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: 0.5;
+    font-weight: 400;
   }
 </style>

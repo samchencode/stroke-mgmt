@@ -68,6 +68,11 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       text-align: center;
     }
 
+    details summary::-webkit-details-marker,
+    ::marker {
+      display: none;
+    }
+
     /* Responsive Page Width */
 
     @media screen and (min-width: 900px) {
@@ -79,7 +84,8 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       }
 
       .template.header,
-      .template.main {
+      .template.main,
+      .template.citations {
         width: 868px;
       }
     }
@@ -128,17 +134,66 @@ exports[`EjsAlgorithmRenderer Behavior should render article title and html 1`] 
       visibility: hidden;
     }
 
+    /* Template */
+
     .template.last-updated {
       display: block;
       align-self: flex-end;
       margin-right: 16px;
       text-align: right;
     }
+
+    .template.citations {
+      padding-top: 16px;
+    }
+
+    .template.citations__title {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      color: #0f1d24;
+      /* label-large */
+      line-height: 20px;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+      font-weight: 700;
+    }
+
+    .template.citations .template.citations__title::before {
+      content: "Show "
+    }
+
+    .template.citations[open] .template.citations__title::before {
+      content: "Hide "
+    }
+
+    .template.citations__list {
+      margin: 0;
+      padding: 0;
+      padding-left: 16px;
+      list-style: none;
+      counter-reset: citations__list;
+    }
+
+    .template.citations__item::before {
+      content: counter(citations__list) ". ";
+      counter-increment: citations__list;
+    }
+
+    .template.citations__item {
+      margin-top: 16px;
+      /* body-large */
+      line-height: 24px;
+      font-size: 16px;
+      letter-spacing: 0.5;
+      font-weight: 400;
+    }
   </style>
 </head>
 
 <body>
   <main class="template main"><h1>foo bar</h1></main>
+  
   <i class="template last-updated">Last Updated: December 31, 1969</i>
 </body>
 
@@ -529,6 +584,11 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     text-align: center;
   }
 
+  details summary::-webkit-details-marker,
+  ::marker {
+    display: none;
+  }
+
   /* Responsive Page Width */
 
   @media screen and (min-width: 900px) {
@@ -540,7 +600,8 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     }
 
     .template.header,
-    .template.main {
+    .template.main,
+    .template.citations {
       width: 868px;
     }
   }
@@ -800,6 +861,52 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
     margin-top: 16px;
     text-align: right;
   }
+
+  .template.citations {
+    padding-top: 16px;
+  }
+
+  .template.citations__title {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    color: #0f1d24;
+    /* label-large */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    font-weight: 700;
+  }
+
+  .template.citations .template.citations__title::before {
+    content: "Show "
+  }
+
+  .template.citations[open] .template.citations__title::before {
+    content: "Hide "
+  }
+
+  .template.citations__list {
+    margin: 0;
+    padding: 0;
+    padding-left: 16px;
+    list-style: none;
+    counter-reset: citations__list;
+  }
+
+  .template.citations__item::before {
+    content: counter(citations__list) ". ";
+    counter-increment: citations__list;
+  }
+
+  .template.citations__item {
+    margin-top: 16px;
+    /* body-large */
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: 0.5;
+    font-weight: 400;
+  }
 </style>
 </head>
 
@@ -921,6 +1028,16 @@ exports[`EjsAlgorithmRenderer Behavior should render scored algorithm 1`] = `
   
 </ul>
   </main>
+  
+  <details class="template citations">
+    <summary class="template citations__title">Citations</summary>
+    <ol class="template citations__list">
+      
+      <li class="template citations__item">My GWNS Citation</li>
+      
+    </ol>
+  </details>
+  
   <i class="template last-updated">Last Updated: December 31, 1969</i>
   <script>
   function notifyReactNative(messageType, content) {
@@ -1205,6 +1322,11 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     text-align: center;
   }
 
+  details summary::-webkit-details-marker,
+  ::marker {
+    display: none;
+  }
+
   /* Responsive Page Width */
 
   @media screen and (min-width: 900px) {
@@ -1216,7 +1338,8 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     }
 
     .template.header,
-    .template.main {
+    .template.main,
+    .template.citations {
       width: 868px;
     }
   }
@@ -1476,6 +1599,52 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
     margin-top: 16px;
     text-align: right;
   }
+
+  .template.citations {
+    padding-top: 16px;
+  }
+
+  .template.citations__title {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    color: #0f1d24;
+    /* label-large */
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    font-weight: 700;
+  }
+
+  .template.citations .template.citations__title::before {
+    content: "Show "
+  }
+
+  .template.citations[open] .template.citations__title::before {
+    content: "Hide "
+  }
+
+  .template.citations__list {
+    margin: 0;
+    padding: 0;
+    padding-left: 16px;
+    list-style: none;
+    counter-reset: citations__list;
+  }
+
+  .template.citations__item::before {
+    content: counter(citations__list) ". ";
+    counter-increment: citations__list;
+  }
+
+  .template.citations__item {
+    margin-top: 16px;
+    /* body-large */
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: 0.5;
+    font-weight: 400;
+  }
 </style>
 </head>
 
@@ -1514,6 +1683,18 @@ exports[`EjsAlgorithmRenderer Behavior should render text algorithm 1`] = `
   
 </ul>
   </main>
+  
+  <details class="template citations">
+    <summary class="template citations__title">Citations</summary>
+    <ol class="template citations__list">
+      
+      <li class="template citations__item">My ABCT Citation 1</li>
+      
+      <li class="template citations__item">My ABCT Citation 2</li>
+      
+    </ol>
+  </details>
+  
   <i class="template last-updated">Last Updated: December 31, 1969</i>
   <script>
   function notifyReactNative(messageType, content) {

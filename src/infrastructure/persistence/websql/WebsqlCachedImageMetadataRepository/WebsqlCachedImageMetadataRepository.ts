@@ -17,6 +17,8 @@ class WebsqlCachedImageMetadataRepository
     this.ready = this.prepareDatabase();
   }
 
+  static $inject = ['websqlDatabase'];
+
   private async prepareDatabase() {
     const query = sqlStr`
     CREATE TABLE IF NOT EXISTS cachedImageMetadata (

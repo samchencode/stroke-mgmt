@@ -33,6 +33,13 @@ class StrapiAlgorithmRepository implements AlgorithmRepository {
     private networkInfo: NetworkInfo
   ) {}
 
+  static $inject = [
+    'strapiHostUrl',
+    'fetch',
+    'placeholderImageRepository',
+    'networkInfo',
+  ];
+
   private async get<D>(uri: string): Promise<StrapiApiResponse<D>> {
     const url = this.strapiHostUrl + uri;
     const response = await this.fetch(url);

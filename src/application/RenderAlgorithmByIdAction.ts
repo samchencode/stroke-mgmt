@@ -12,6 +12,8 @@ class RenderAlgorithmByIdAction {
     private renderAlgorithmAction: RenderAlgorithmAction
   ) {}
 
+  static $inject = ['getAlgorithmByIdAction', 'renderAlgorithmAction'];
+
   async execute(
     id: AlgorithmId,
     onStaleCallback: (renderedAlgorithm: RenderedAlgorithm) => void

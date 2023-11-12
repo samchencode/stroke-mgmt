@@ -10,6 +10,8 @@ class TagCache {
     private readonly cachedTagRepository: CachedTagRepository
   ) {}
 
+  static $inject = ['tagRepository', 'cachedTagRepository'];
+
   async getAll(onStale: (v: Tag[]) => void): Promise<Tag[]> {
     const sourceAvailable = await this.tagRepository.isAvailable();
 

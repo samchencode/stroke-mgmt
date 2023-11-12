@@ -4,6 +4,8 @@ import type { AlgorithmCache } from '@/domain/services/Cache';
 class GetAlgorithmByIdAction {
   constructor(private readonly algorithmCache: AlgorithmCache) {}
 
+  static $inject = ['algorithmCache'];
+
   async execute(id: AlgorithmId, onStaleCallback: (v: Algorithm) => void) {
     return this.algorithmCache.getById(id, onStaleCallback);
   }

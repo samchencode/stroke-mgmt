@@ -27,6 +27,14 @@ class AlgorithmCache {
     private readonly replaceImageSrcsInHtml: ReplaceImageSrcsInHtml
   ) {}
 
+  static $inject = [
+    'imageCache',
+    'algorithmRepository',
+    'cachedAlgorithmRepository',
+    'getImageSrcsInHtml',
+    'replaceImageSrcsInHtml',
+  ];
+
   async tryToUpdateCache() {
     if (!(await this.algorithmRepository.isAvailable())) return;
     const getFromRepo = () => this.algorithmRepository.getAll();

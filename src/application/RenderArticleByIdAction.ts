@@ -8,6 +8,8 @@ class RenderArticleByIdAction {
     private articleRenderer: ArticleRenderer
   ) {}
 
+  static $inject = ['getArticleByIdAction', 'articleRenderer'];
+
   async execute(id: ArticleId, onStale: (html: string) => void) {
     const handleStale = (article: Article) => {
       this.articleRenderer.renderArticle(article).then(onStale);

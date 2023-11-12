@@ -65,5 +65,7 @@ const styles = StyleSheet.create({
   },
 });
 
+factory.$inject = ['renderAlgorithmByIdAction', 'renderAlgorithmAction'];
+
 export { factory };
 export type Type = ReturnType<typeof factory>;

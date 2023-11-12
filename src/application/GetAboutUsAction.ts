@@ -5,6 +5,8 @@ import type { ArticleCache } from '@/domain/services/Cache';
 class GetAboutUsAction {
   constructor(private readonly articleCache: ArticleCache) {}
 
+  static $inject = ['articleCache'];
+
   async execute(onStale: (articles: Article) => void) {
     const results = await this.articleCache.getByDesignation(
       Designation.ABOUT,

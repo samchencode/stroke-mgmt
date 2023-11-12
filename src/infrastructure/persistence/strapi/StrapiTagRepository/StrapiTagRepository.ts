@@ -19,6 +19,8 @@ class StrapiTagRepository implements TagRepository {
     private readonly networkInfo: NetworkInfo
   ) {}
 
+  static $inject = ['strapiHostUrl', 'fetch', 'networkInfo'];
+
   private async get(): Promise<StrapiPluralApiResponse<StrapiTag>> {
     const url = `${this.strapiHostUrl}/api/tags`;
     const response = await this.fetch(url);

@@ -44,6 +44,8 @@ function factory(Router: Router) {
   };
 }
 
+factory.$inject = ['Router'];
+
 type Type = ReturnType<typeof factory>;
 
 export { factory };

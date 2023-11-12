@@ -34,6 +34,8 @@ class StrapiIntroSequenceRepository implements IntroSequenceRepository {
     private readonly networkInfo: NetworkInfo
   ) {}
 
+  static $inject = ['strapiHostUrl', 'fetch', 'networkInfo'];
+
   private async getFromApi() {
     const url = `${this.strapiHostUrl}/api/intro-sequence?${searchParams}`;
     const response = await this.fetch(url);

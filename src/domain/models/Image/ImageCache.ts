@@ -9,6 +9,8 @@ class ImageCache {
     private readonly cachedImageMetadataRepository: CachedImageMetadataRepository
   ) {}
 
+  static $inject = ['imageStore', 'cachedImageMetadataRepository'];
+
   async saveImage(url: string) {
     // warning: may save repeats of same file with different names without deleting
     const metadata = await this.imageStore.saveFileFromUrl(url);

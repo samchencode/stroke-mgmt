@@ -14,6 +14,8 @@ class IntroSequenceCache {
     private readonly cachedIntroSequenceRepository: CachedIntroSequenceRepository
   ) {}
 
+  static $inject = ['introSequenceRepository', 'cachedIntroSequenceRepository'];
+
   async get(onStale: (v: IntroSequence) => void): Promise<IntroSequence> {
     const sourceAvailable = await this.introSequenceRepository.isAvailable();
     if (!sourceAvailable) return this.sourceUnavailableGet();

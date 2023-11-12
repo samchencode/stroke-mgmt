@@ -24,6 +24,8 @@ class WebsqlCachedAlgorithmRepostiory implements CachedAlgorithmRepository {
     this.getMutatingQueryFactory = this.getMutatingQueryFactory.bind(this);
   }
 
+  static $inject = ['websqlDatabase'];
+
   private async prepareDatabase() {
     const query = sqlStr`
     CREATE TABLE IF NOT EXISTS algorithms (

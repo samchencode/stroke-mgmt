@@ -21,6 +21,8 @@ class StrapiPlaceholderImageRepository implements ImageRepository {
     this.images = this.getAll();
   }
 
+  static $inject = ['strapiHostUrl'];
+
   private async fetchData(): Promise<
     StrapiApiResponse<StrapiPlaceholderImageData>
   > {

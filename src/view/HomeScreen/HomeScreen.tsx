@@ -106,5 +106,11 @@ const styles = StyleSheet.create({
   },
 });
 
+factory.$inject = [
+  'getAllArticlesAction',
+  'getAllAlgorithmsShownOnHomeScreenAction',
+  'getAllTagsAction',
+];
+
 export { factory };
 export type Type = ReturnType<typeof factory>;

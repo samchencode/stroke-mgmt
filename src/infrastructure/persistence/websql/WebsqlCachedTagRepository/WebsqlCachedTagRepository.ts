@@ -15,6 +15,8 @@ class WebsqlCachedTagRepository implements CachedTagRepository {
     this.ready = this.prepareDatabase();
   }
 
+  static $inject = ['websqlDatabase'];
+
   async prepareDatabase() {
     const query = sqlStr`
     CREATE TABLE IF NOT EXISTS tags (

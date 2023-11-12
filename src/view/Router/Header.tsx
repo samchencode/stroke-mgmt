@@ -165,5 +165,7 @@ const styles = StyleSheet.create({
   },
 });
 
+factory.$inject = ['clearCacheAction'];
+
 export { factory };
 export type Type = ReturnType<typeof factory>;

@@ -28,6 +28,14 @@ class ArticleCache {
     private readonly replaceImageSrcsInHtml: ReplaceImageSrcsInHtml
   ) {}
 
+  static $inject = [
+    'imageCache',
+    'articleRepository',
+    'cachedArticleRepository',
+    'getImageSrcsInHtml',
+    'replaceImageSrcsInHtml',
+  ];
+
   async getByDesignation(
     d: BaseDesignation,
     cb: CacheInvalidatedCallback<Article[]>

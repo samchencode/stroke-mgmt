@@ -52,6 +52,12 @@ const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
 const localhost = Platform.OS === 'ios' ? 'localhost' : '10.0.2.2';
 
+function forward(key: string) {
+  const identity = (i: unknown) => i;
+  identity.$inject = [key];
+  return identity;
+}
+
 export const module = {
   // CONFIG
   strapiHostUrl: [
@@ -95,11 +101,7 @@ export const module = {
   introSequenceRepository: ['type', StrapiIntroSequenceRepository],
   fileSystem: ['type', ExpoAssetFileSystem],
   networkInfo: ['type', ReactNativeNetInfo],
-  articleRenderer: [
-    'factory',
-    // use same EjsRenderer instance as algorithmRenderer does
-    (algorithmRenderer: unknown) => algorithmRenderer,
-  ],
+  articleRenderer: ['factory', forward('algorithmRenderer')],
   algorithmRenderer: ['type', EjsRenderer],
   cachedArticleRepository: ['type', WebsqlCachedArticleRepository],
   getImageSrcsInHtml: ['value', cheerioGetImageSrcsInHtml],

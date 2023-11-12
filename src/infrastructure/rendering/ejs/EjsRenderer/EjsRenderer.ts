@@ -24,6 +24,8 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
     this.templates = this.init();
   }
 
+  static $inject = ['fileSystem'];
+
   async init(): Promise<TemplateGroup> {
     const assets = [
       require('@/infrastructure/rendering/ejs/EjsRenderer/partials/style.ejs'),

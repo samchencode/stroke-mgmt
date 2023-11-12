@@ -150,5 +150,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
 });
 
+factory.$inject = ['getIntroSequenceAction', 'renderArticleByIdAction'];
+
 export { factory };
 export type Type = ReturnType<typeof factory>;

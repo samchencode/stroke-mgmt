@@ -21,6 +21,8 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
     this.ready = this.prepareDatabase();
   }
 
+  static $inject = ['websqlDatabase'];
+
   private async prepareDatabase() {
     const createQuery = sqlStr`
     CREATE TABLE IF NOT EXISTS articles (

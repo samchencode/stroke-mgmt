@@ -15,6 +15,14 @@ class ClearCacheAction {
     private readonly introSequenceCache: IntroSequenceCache
   ) {}
 
+  static $inject = [
+    'articleCache',
+    'tagCache',
+    'imageCache',
+    'algorithmCache',
+    'introSequenceCache',
+  ];
+
   async execute() {
     return Promise.all([
       this.tagCache.clearCache(),

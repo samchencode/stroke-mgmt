@@ -118,5 +118,7 @@ const styles = StyleSheet.create({
   },
 });
 
+factory.$inject = ['renderDisclaimerAction'];
+
 export { factory };
 export type Type = ReturnType<typeof factory>;

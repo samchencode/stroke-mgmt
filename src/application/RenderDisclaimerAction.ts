@@ -8,6 +8,8 @@ class RenderDisclaimerAction {
     private readonly articleRenderer: ArticleRenderer
   ) {}
 
+  static $inject = ['getDisclaimerAction', 'articleRenderer'];
+
   async execute(onStale: (html: string) => void) {
     const handleStale = (article: Article) => {
       this.articleRenderer.renderDisclaimer(article).then(onStale);

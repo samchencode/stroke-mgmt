@@ -39,6 +39,13 @@ class StrapiArticleRepository implements ArticleRepository {
     private networkInfo: NetworkInfo
   ) {}
 
+  static $inject = [
+    'strapiHostUrl',
+    'fetch',
+    'placeholderImageRepository',
+    'networkInfo',
+  ];
+
   private async get<T extends ResponseData>(
     uri: string
   ): Promise<StrapiApiResponse<T>> {

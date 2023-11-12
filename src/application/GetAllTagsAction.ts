@@ -4,6 +4,8 @@ import type { TagCache } from '@/domain/services/Cache';
 class GetAllTagsAction {
   constructor(private readonly tagCache: TagCache) {}
 
+  static $inject = ['tagCache'];
+
   async execute(onStale: (t: Tag[]) => void) {
     return this.tagCache.getAll(onStale);
   }

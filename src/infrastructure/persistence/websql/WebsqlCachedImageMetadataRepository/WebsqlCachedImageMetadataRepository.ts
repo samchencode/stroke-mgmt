@@ -68,8 +68,9 @@ class WebsqlCachedImageMetadataRepository
 
   async clearCache(): Promise<void> {
     await this.ready;
-    const query = sqlStr`DELETE FROM cachedImageMetadata`;
+    const query = sqlStr`DROP TABLE cachedImageMetadata`;
     await executeSql(this.websqlDatabase, [query]);
+    this.ready = this.prepareDatabase();
   }
 
   private async exists(sourceUrl: string) {

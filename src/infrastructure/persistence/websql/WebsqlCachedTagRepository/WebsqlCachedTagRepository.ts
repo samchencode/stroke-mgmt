@@ -62,8 +62,9 @@ class WebsqlCachedTagRepository implements CachedTagRepository {
 
   async clearCache(): Promise<void> {
     await this.ready;
-    const query = sqlStr`DELETE FROM tags`;
+    const query = sqlStr`DROP TABLE tags`;
     await executeSql(this.websqlDatabase, [query]);
+    this.ready = this.prepareDatabase();
   }
 
   async getAll(): Promise<Tag[]> {

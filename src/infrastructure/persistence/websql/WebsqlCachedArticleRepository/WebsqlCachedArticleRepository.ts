@@ -107,8 +107,9 @@ class WebsqlCachedArticleRepository implements CachedArticleRepository {
 
   async clearCache(): Promise<void> {
     await this.ready;
-    const query = sqlStr`DELETE FROM articles`;
+    const query = sqlStr`DROP TABLE articles`;
     await executeSql(this.websqlDatabase, [query]);
+    this.ready = this.prepareDatabase();
   }
 
   async getByDesignation(d: BaseDesignation): Promise<Article[]> {

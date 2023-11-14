@@ -92,8 +92,9 @@ class WebsqlCachedAlgorithmRepostiory implements CachedAlgorithmRepository {
 
   async clearCache(): Promise<void> {
     await this.ready;
-    const query = sqlStr`DELETE FROM algorithms`;
+    const query = sqlStr`DROP TABLE algorithms`;
     await executeSql(this.websqlDatabase, [query]);
+    this.ready = this.prepareDatabase();
   }
 
   async getAll(): Promise<Algorithm[]> {

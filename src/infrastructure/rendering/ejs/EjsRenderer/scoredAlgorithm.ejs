@@ -8,14 +8,14 @@
 
 <body>
   <header class="template header">
-    <h1 class="template header__title"><%- algorithm.getTitle() _%></h1>
+    <h1 class="template header__title"><%- data.algorithm.getTitle() _%></h1>
   </header>
   <main class="template main">
     <p class="template body__paragraph">
-      <%- algorithm.getBody() %>
+      <%- data.algorithm.getBody() %>
     </p>
     <ul class="template switches__list">
-      <% for(const sw of algorithm.getSwitches()) { %>
+      <% for(const sw of data.algorithm.getSwitches()) { %>
       <li class="template switches__list-item">
         <label for="switches__tooltip-select--<%= sw.getId() %>" class="template switches__group-label <% if(sw.getDescription()) { %>switches__group-label--has-description<% } %>">
           <%- sw.getLabel() %>
@@ -37,19 +37,19 @@
       </li>
       <% } %>
     </ul>
-    <%- include('outcomeList', { algorithm }) %>
+    <%- include('outcomeList', { algorithm: data.algorithm }) %>
   </main>
-  <% if (algorithm.getCitations().length > 0) { %>
+  <% if (data.algorithm.getCitations().length > 0) { %>
   <details class="template citations">
     <summary class="template citations__title">Citations</summary>
     <ol class="template citations__list">
-      <% for(const c of algorithm.getCitations())  { %>
+      <% for(const c of data.algorithm.getCitations())  { %>
       <li class="template citations__item"><%- c.getValue() %></li>
       <% } %>
     </ol>
   </details>
   <% } %>
-  <i class="template last-updated">Last Updated: <%- algorithm.getLastUpdated().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
+  <i class="template last-updated">Last Updated: <%- data.algorithm.getLastUpdated().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
   <%- include('script') %>
 </body>
 

@@ -14,6 +14,8 @@ type TemplateGroup = {
   };
 };
 
+const ejsOptions = { client: true, _with: false, localsName: 'data' } as const;
+
 class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
   templates: Promise<TemplateGroup>;
 
@@ -51,16 +53,16 @@ class EjsRenderer implements AlgorithmRenderer, ArticleRenderer {
       disclaimerEjs,
     ] = await Promise.all(promises);
     return {
-      textAlgorithm: ejs.compile(textAlgorithmEjs, { client: true }),
-      scoredAlgorithm: ejs.compile(scoredAlgorithmEjs, { client: true }),
-      article: ejs.compile(articleEjs),
-      disclaimer: ejs.compile(disclaimerEjs),
+      textAlgorithm: ejs.compile(textAlgorithmEjs, ejsOptions),
+      scoredAlgorithm: ejs.compile(scoredAlgorithmEjs, ejsOptions),
+      article: ejs.compile(articleEjs, ejsOptions),
+      disclaimer: ejs.compile(disclaimerEjs, ejsOptions),
       partials: {
-        head: ejs.compile(headEjs, { client: true }),
-        script: ejs.compile(scriptEjs, { client: true }),
-        style: ejs.compile(styleEjs, { client: true }),
-        noOutcomesYet: ejs.compile(noOutcomesYetEjs, { client: true }),
-        outcomeList: ejs.compile(outcomeListEjs, { client: true }),
+        head: ejs.compile(headEjs, ejsOptions),
+        script: ejs.compile(scriptEjs, ejsOptions),
+        style: ejs.compile(styleEjs, ejsOptions),
+        noOutcomesYet: ejs.compile(noOutcomesYetEjs, ejsOptions),
+        outcomeList: ejs.compile(outcomeListEjs, ejsOptions),
       },
     };
   }

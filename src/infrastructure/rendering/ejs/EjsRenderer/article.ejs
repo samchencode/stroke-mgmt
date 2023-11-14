@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
+  <title><%= data.title %></title>
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -189,18 +189,18 @@
 </head>
 
 <body>
-  <main class="template main"><%- body %></main>
-  <% if (citations.length > 0) { %>
+  <main class="template main"><%- data.body %></main>
+  <% if (data.citations.length > 0) { %>
   <details class="template citations">
     <summary class="template citations__title">Citations</summary>
     <ol class="template citations__list">
-      <% for(const c of citations)  { %>
+      <% for(const c of data.citations)  { %>
       <li class="template citations__item"><%- c.getValue() %></li>
       <% } %>
     </ol>
   </details>
   <% } %>
-  <i class="template last-updated">Last Updated: <%- lastUpdated.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
+  <i class="template last-updated">Last Updated: <%- data.lastUpdated.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) _%></i>
 </body>
 
 <script>

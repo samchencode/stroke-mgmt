@@ -17,19 +17,19 @@
     <ul class="template switches__list">
       <% for(const sw of data.algorithm.getSwitches()) { %>
       <li class="template switches__list-item">
-        <label for="switches__tooltip-select--<%= sw.getId() %>" class="template switches__group-label <% if(sw.getDescription()) { %>switches__group-label--has-description<% } %>">
+        <label for="switches__tooltip-select--<%- sw.getId() %>" class="template switches__group-label <% if(sw.getDescription()) { %>switches__group-label--has-description<% } %>">
           <%- sw.getLabel() %>
         </label>
         <% if (sw.getDescription()) { %>
-        <input type="radio" class="template switches__tooltip-select" name="switches__tooltip-select" id="switches__tooltip-select--<%= sw.getId() %>">
+        <input type="radio" class="template switches__tooltip-select" name="switches__tooltip-select" id="switches__tooltip-select--<%- sw.getId() %>">
         <div class="template switches__tooltip"><%- sw.getDescription() %></div>
         <% } %>
         <div class="template switches__radiogroup">
           <% for(const lv of sw.getLevels()) { %>
           <div class="template switches__level <% if(sw.isSet() && sw.getActiveLevelId().is(lv.getId())) { %>switches__level--checked<% } %>">
-            <input class="template switches__input switches__input--<%= lv.getId() %>" name="switch-<%= sw.getId() %>" id="switch-<%= sw.getId() %>-<%= lv.getId() %>" type="radio" <% if(sw.isSet() && sw.getActiveLevelId().is(lv.getId())) { %> checked <% } %> data-switch-id="<%= sw.getId() %>" data-level-id="<%= lv.getId() %>">
-            <label class="template switches__radio-label switches__radio-label--<%= lv.getId() %>" for="switch-<%= sw.getId() %>-<%= lv.getId() %>">
-              <%= lv.getLabel() %>
+            <input class="template switches__input switches__input--<%- lv.getId() %>" name="switch-<%- sw.getId() %>" id="switch-<%- sw.getId() %>-<%- lv.getId() %>" type="radio" <% if(sw.isSet() && sw.getActiveLevelId().is(lv.getId())) { %> checked <% } %> data-switch-id="<%- sw.getId() %>" data-level-id="<%- lv.getId() %>">
+            <label class="template switches__radio-label switches__radio-label--<%- lv.getId() %>" for="switch-<%- sw.getId() %>-<%- lv.getId() %>">
+              <%- lv.getLabel() %>
             </label>
           </div>
           <% } %>

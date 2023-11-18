@@ -11,6 +11,10 @@ import type { StackHeaderProps } from '@react-navigation/stack';
 import { useQueryClient } from '@tanstack/react-query';
 import React, { useCallback, useContext, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {
+  useHowToOpenMenuBanner,
+  HowToOpenMenuBanner,
+} from '@/view/HowToOpenMenuBanner';
 
 type Props = StackHeaderProps;
 
@@ -73,8 +77,18 @@ function factory(clearCacheAction: ClearCacheAction) {
     const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
       useNoInternetBanner();
 
+    const {
+      shouldShowHowToOpenMenuBanner: shouldShowMenuBeforeOr,
+      handleDismissHowToOpenMenuBanner,
+    } = useHowToOpenMenuBanner();
+    const shouldShowHowToOpenMenuBanner =
+      shouldShowMenuBeforeOr && !shouldShowNoInternetBanner;
+
     const { scrolledToTop } = useContext(HeaderScrollContext);
-    const headerHasElevation = !scrolledToTop || shouldShowNoInternetBanner;
+    const headerHasElevation =
+      !scrolledToTop ||
+      shouldShowNoInternetBanner ||
+      shouldShowHowToOpenMenuBanner;
 
     return (
       <View
@@ -114,6 +128,10 @@ function factory(clearCacheAction: ClearCacheAction) {
         <NoInternetBanner
           visible={shouldShowNoInternetBanner}
           onPressDismiss={handleDismissNoInternetBanner}
+        />
+        <HowToOpenMenuBanner
+          visible={shouldShowHowToOpenMenuBanner}
+          onPressDismiss={handleDismissHowToOpenMenuBanner}
         />
       </View>
     );

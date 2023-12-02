@@ -7,6 +7,8 @@ const STORAGE_KEY = '@AsyncStorageVersionRepository-v1';
 class AsyncStorageVersionRepository implements VersionRepository {
   constructor(private readonly currentVersion: Version) {}
 
+  static $inject = ['currentVersion'];
+
   async getLastUsedVersion(): Promise<Version> {
     const result = await AsyncStorage.getItem(STORAGE_KEY);
     if (result === null) {

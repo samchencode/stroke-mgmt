@@ -47,6 +47,12 @@ import { Platform } from 'react-native';
 import { GetIntroSequenceAction } from '@/application/GetIntroSequenceAction';
 import { StrapiIntroSequenceRepository } from '@/infrastructure/persistence/strapi/StrapiIntroSequenceRepository/StrapiIntroSequenceRepository';
 import { AsyncStorageCachedIntroSequenceRepository } from '@/infrastructure/persistence/async-storage/AsyncStorageCachedIntroSequenceRepository';
+import {
+  UpdateService,
+  Version,
+  postUpdateChanges,
+} from '@/application/UpdateService';
+import { AsyncStorageVersionRepository } from '@/infrastructure/persistence/async-storage/AsyncStorageVersionRepository';
 
 const production = Constants.expoConfig?.extra?.NODE_ENV !== 'development';
 
@@ -66,6 +72,7 @@ export const module = {
       ? 'https://stroke-mgmt-cms.a2hosted.com'
       : `http://${localhost}:1337`,
   ],
+  currentVersion: ['value', new Version(1, 0, 0)],
 
   // DOMAIN
   imageCache: ['type', ImageCache],
@@ -92,6 +99,8 @@ export const module = {
   renderDisclaimerAction: ['type', RenderDisclaimerAction],
   renderAboutUsAction: ['type', RenderAboutUsAction],
   clearCacheAction: ['type', ClearCacheAction],
+  updateService: ['type', UpdateService],
+  postUpdateChanges: ['value', postUpdateChanges],
 
   // INFRASTRUCTURE
   articleRepository: ['type', StrapiArticleRepository],
@@ -115,6 +124,7 @@ export const module = {
     'type',
     AsyncStorageCachedIntroSequenceRepository,
   ],
+  versionRepository: ['type', AsyncStorageVersionRepository],
 
   // TEMPLATES
   App: ['factory', App],

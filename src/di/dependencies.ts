@@ -7,7 +7,7 @@ import { RenderArticleByIdAction } from '@/application/RenderArticleByIdAction';
 import { RenderDisclaimerAction } from '@/application/RenderDisclaimerAction';
 import { RenderAboutUsAction } from '@/application/RenderAboutUsAction';
 import { ExpoAssetFileSystem } from '@/infrastructure/file-system/expo-asset/ExpoAssetFileSystem';
-import { factory as App } from '@/view/App/App';
+import { appFactory as App, rootFactory as Root } from '@/view/App';
 import { factory as HomeScreen } from '@/view/HomeScreen';
 import { factory as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
 import { factory as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
@@ -127,6 +127,7 @@ export const module = {
   versionRepository: ['type', AsyncStorageVersionRepository],
 
   // TEMPLATES
+  Root: ['factory', Root],
   App: ['factory', App],
   Router: ['factory', Router],
   AboutUsScreen: ['factory', AboutUsScreen],

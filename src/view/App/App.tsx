@@ -1,4 +1,5 @@
 import React from 'react';
+import type { LayoutChangeEvent } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import type { Type as Router } from '@/view/Router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -16,17 +17,22 @@ import {
 } from 'react-native-safe-area-context';
 import { ErrorBoundary } from '@/view/error-handling';
 
+type AppProps = {
+  onLayout?: (e: LayoutChangeEvent) => void;
+};
+
 function factory(Router: Router) {
-  return function App() {
+  return function App({ onLayout = undefined }: AppProps) {
     useInitReactQuery();
 
     const headerScrollState = useHeaderScrollData();
 
     return (
-      <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayout}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <ErrorBoundary>
             <NavigationContainer
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               theme={{ colors: { background: theme.colors.background } } as any}
             >
               <QueryClientProvider client={queryClient}>

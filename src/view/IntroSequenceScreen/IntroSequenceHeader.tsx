@@ -7,6 +7,7 @@ import { theme } from '@/view/theme';
 import { StatusBar } from '@/view/StatusBar';
 import { IconButton, TextButton } from '@/view/components';
 import { HeaderScrollContext } from '@/view/Router/HeaderScrollContext';
+import { hideIntroSequence } from '@/view/lib/shouldShowIntroSequence';
 
 type IntroSequenceParams = {
   cursor: number;
@@ -48,6 +49,7 @@ function IntroSequenceHeader({ route, navigation }: StackHeaderProps) {
 
   const handlePressSkip = useCallback(() => {
     navigation.reset({ index: 0, routes: [{ name: 'HomeScreen' }] });
+    hideIntroSequence();
   }, [navigation]);
 
   return (

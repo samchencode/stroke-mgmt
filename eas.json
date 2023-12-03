@@ -11,7 +11,8 @@
     },
     "preview": {
       "extends": "production",
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "preview"
     },
     "emulator": {
       "ios": {
@@ -21,7 +22,9 @@
         "buildType": "apk"
       }
     },
-    "production": {}
+    "production": {
+      "channel": "production"
+    }
   },
   "submit": {
     "production": {}

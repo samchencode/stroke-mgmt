@@ -2,7 +2,7 @@ module.exports = {
   expo: {
     name: 'Stroke Management',
     slug: 'stroke-mgmt',
-    version: '1.0.0',
+    version: '1.1.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
@@ -26,6 +26,7 @@ module.exports = {
         backgroundColor: '#000000',
       },
       package: 'com.strokemgmtapp.strokemgmt',
+      versionCode: 2,
     },
     androidNavigationBar: {
       barStyle: 'dark-content',

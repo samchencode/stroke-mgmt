@@ -64,15 +64,15 @@ function factory(clearCacheAction: ClearCacheAction) {
       navigation.navigate('AboutUsScreen');
     }, [navigation]);
 
-    const handlePressLicense = useCallback(
-      () => navigation.navigate('LicenseScreen'),
-      [navigation]
-    );
+    const handlePressLicense = useCallback(() => {
+      setMenuOpen(false);
+      navigation.navigate('LicenseScreen');
+    }, [navigation]);
 
-    const handlePressIntro = useCallback(
-      () => navigation.navigate('IntroSequenceScreen'),
-      [navigation]
-    );
+    const handlePressIntro = useCallback(() => {
+      setMenuOpen(false);
+      navigation.navigate('IntroSequenceScreen');
+    }, [navigation]);
 
     const { shouldShowNoInternetBanner, handleDismissNoInternetBanner } =
       useNoInternetBanner();

@@ -15,7 +15,8 @@ import type { ArticleId } from '@/domain/models/Article';
 import type { AlgorithmId } from '@/domain/models/Algorithm';
 import { useShouldShowIntroSequence } from '@/view/lib/shouldShowIntroSequence';
 import { LoadingSpinnerView } from '@/view/components';
-import type { Type as Header } from '@/view/Router/Header';
+import { Header } from '@/view/Router/Header';
+import type { Type as Menu } from '@/view/Router/Menu';
 import { LicenseScreen } from '@/view/LicenseScreen';
 import { EvaluatingPatientModal } from '@/view/EvaluatingPatientModal/EvaluatingPatientModal';
 import { ExternalLinkModal } from '@/view/ExternalLinkModal';
@@ -35,6 +36,7 @@ type RootNavigationParams = {
   DisclaimerModal: undefined;
   EvaluatingPatientModal: { suggestedAlgorithmId: AlgorithmId };
   ExternalLinkModal: { url: string };
+  HeaderMenuModal: { translateY: number };
 };
 
 const AppStack = createStackNavigator<AppNavigationParams>();
@@ -47,7 +49,7 @@ function factory(
   ArticleViewerScreen: ArticleViewerScreen,
   AlgorithmViewerScreen: AlgorithmViewerScreen,
   AboutUsScreen: AboutUsScreen,
-  Header: Header
+  Menu: Menu
 ) {
   function AppNavigation() {
     const shouldShowFactsAndSignsOrLoading = useShouldShowIntroSequence();
@@ -124,6 +126,11 @@ function factory(
           component={ExternalLinkModal}
           options={{ presentation: 'transparentModal' }}
         />
+        <RootStack.Screen
+          name="HeaderMenuModal"
+          component={Menu}
+          options={{ presentation: 'transparentModal' }}
+        />
       </RootStack.Navigator>
     );
   };
@@ -136,7 +143,7 @@ factory.$inject = [
   'ArticleViewerScreen',
   'AlgorithmViewerScreen',
   'AboutUsScreen',
-  'Header',
+  'Menu',
 ];
 
 export { factory };

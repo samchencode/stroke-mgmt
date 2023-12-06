@@ -12,8 +12,7 @@ import { factory as HomeScreen } from '@/view/HomeScreen';
 import { factory as ArticleViewerScreen } from '@/view/ArticleViewerScreen';
 import { factory as AlgorithmViewerScreen } from '@/view/AlgorithmViewerScreen';
 import { factory as DisclaimerModal } from '@/view/DisclaimerModal';
-import { factory as Router } from '@/view/Router';
-import { factory as Header } from '@/view/Router/Header';
+import { factory as Router, menuFactory } from '@/view/Router';
 import { factory as AboutUsScreen } from '@/view/AboutUsScreen';
 import { factory as IntroSequenceScreen } from '@/view/IntroSequenceScreen';
 import { RenderAlgorithmAction } from '@/application/RenderAlgorithmAction';
@@ -136,7 +135,7 @@ export const module = {
   ArticleViewerScreen: ['factory', ArticleViewerScreen],
   AlgorithmViewerScreen: ['factory', AlgorithmViewerScreen],
   IntroSequenceScreen: ['factory', IntroSequenceScreen],
-  Header: ['factory', Header],
+  Menu: ['factory', menuFactory],
 
   // BUILT-INS
   fetch: ['value', fetch],

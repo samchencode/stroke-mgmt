@@ -1,4 +1,3 @@
-import Constants from 'expo-constants';
 import { Dimensions, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -11,10 +10,12 @@ function getAndroidNavigationBarHeight(
 }
 
 function useBottomNavigationBarHeight() {
-  const STATUS_BAR_HEIGHT = Constants.statusBarHeight;
+  const { top, bottom } = useSafeAreaInsets();
+
+  const STATUS_BAR_HEIGHT = top;
   const WINDOW_HEIGHT = Dimensions.get('window').height;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
-  const IOS_BOTTOM_INSET = useSafeAreaInsets().bottom;
+  const IOS_BOTTOM_INSET = bottom;
 
   return Platform.OS === 'ios'
     ? IOS_BOTTOM_INSET

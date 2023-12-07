@@ -3,7 +3,6 @@ module.exports = {
     name: 'Stroke Management',
     slug: 'stroke-mgmt',
     version: '1.1.0',
-    orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
     jsEngine: 'hermes',

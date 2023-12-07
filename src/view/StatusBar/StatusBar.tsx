@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import type { StatusBarAnimation, StatusBarStyle } from 'expo-status-bar';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import Constants from 'expo-constants';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type StatusBarProps = {
   animated?: boolean;
@@ -23,10 +23,12 @@ function StatusBar({
   hideTransitionAnimation = undefined,
   networkActivityIndicatorVisible = undefined,
 }: StatusBarProps) {
+  const { top: statusBarHeight } = useSafeAreaInsets();
+
   return (
     <View
       style={{
-        height: translucent ? 0 : Constants.statusBarHeight,
+        height: translucent ? 0 : statusBarHeight,
         width: '100%',
         backgroundColor: backgroundColor ?? 'transparent',
       }}

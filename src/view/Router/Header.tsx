@@ -1,6 +1,5 @@
 import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Constants from 'expo-constants';
 import { getHeaderTitle } from '@react-navigation/elements';
 import type { StackHeaderProps } from '@react-navigation/stack';
 import { NoInternetBanner, useNoInternetBanner } from '@/view/NoInternetBanner';
@@ -12,6 +11,7 @@ import {
   useHowToOpenMenuBanner,
   HowToOpenMenuBanner,
 } from '@/view/HowToOpenMenuBanner';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = StackHeaderProps;
 
@@ -20,11 +20,13 @@ const HEADER_HEIGHT = 64;
 function Header({ navigation, route, options, back }: Props) {
   const title = getHeaderTitle(options, route.name);
 
+  const { top: statusBarHeight } = useSafeAreaInsets();
+
   const handleMenuPress = useCallback(() => {
     navigation.navigate('HeaderMenuModal', {
-      translateY: HEADER_HEIGHT + Constants.statusBarHeight,
+      translateY: HEADER_HEIGHT + statusBarHeight,
     });
-  }, [navigation]);
+  }, [navigation, statusBarHeight]);
 
   const handleBack = useCallback(() => navigation.goBack(), [navigation]);
 

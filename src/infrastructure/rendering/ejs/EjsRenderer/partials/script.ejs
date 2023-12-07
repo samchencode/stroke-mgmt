@@ -40,6 +40,9 @@
       subtree: true
     })
 
+    // In case of window resizing
+    window.addEventListener('resize', notify)
+
     // Wait for any images to finish loading
     window.addEventListener('load', notify)
     notify()

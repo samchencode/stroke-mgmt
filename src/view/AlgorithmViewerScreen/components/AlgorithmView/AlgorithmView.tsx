@@ -19,6 +19,7 @@ type AlgorithmViewProps = {
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
   onPressArticleLink: (id: ArticleId) => void;
   onPressExternalLink: (url: string) => void;
+  onFirstLayout: () => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -57,6 +58,7 @@ class AlgorithmView
       algorithm,
       onPressArticleLink,
       onPressExternalLink,
+      onFirstLayout,
     } = this.props;
     return (
       <TextAlgorithmView
@@ -66,6 +68,7 @@ class AlgorithmView
         onNextAlgorithm={onNextAlgorithm}
         onPressArticleLink={onPressArticleLink}
         onPressExternalLink={onPressExternalLink}
+        onFirstLayout={onFirstLayout}
       />
     );
   }
@@ -79,6 +82,7 @@ class AlgorithmView
       algorithm,
       onPressArticleLink,
       onPressExternalLink,
+      onFirstLayout,
     } = this.props;
     return (
       <ScoredAlgorithmView
@@ -89,11 +93,12 @@ class AlgorithmView
         onChangeAlgorithm={onChangeAlgorithm}
         onPressArticleLink={onPressArticleLink}
         onPressExternalLink={onPressExternalLink}
+        onFirstLayout={onFirstLayout}
       />
     );
   }
 
-  renderAlgorithm() {
+  private renderAlgorithm() {
     if (this.type === 'text') return this.renderTextAlgorithm();
     if (this.type === 'scored') return this.renderScoredAlgorithm();
     throw Error('AlgorithmViewVisitor not visited');

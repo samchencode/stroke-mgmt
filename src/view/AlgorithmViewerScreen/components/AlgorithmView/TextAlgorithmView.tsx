@@ -18,6 +18,7 @@ type TextAlgorithmViewProps = {
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
   onPressArticleLink: (id: ArticleId) => void;
   onPressExternalLink: (url: string) => void;
+  onFirstLayout: () => void;
 };
 
 function TextAlgorithmView({
@@ -27,13 +28,22 @@ function TextAlgorithmView({
   onNextAlgorithm,
   onPressArticleLink,
   onPressExternalLink,
+  onFirstLayout,
 }: TextAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
+
+  const [isBeforeLayout, setIsBeforeLayout] = useState(true);
 
   const eventHandler = useMemo(
     () =>
       new WebViewEventHandler({
-        layout: ({ height: h }) => setHeight(h),
+        layout: ({ height: h }) => {
+          setHeight(h);
+          if (isBeforeLayout) {
+            setIsBeforeLayout(false);
+            onFirstLayout();
+          }
+        },
         error: ({ name, message }) => {
           throw new WebViewError(name, message);
         },
@@ -45,7 +55,14 @@ function TextAlgorithmView({
           onPressExternalLink(href);
         },
       }),
-    [algorithm, onNextAlgorithm, onPressArticleLink, onPressExternalLink]
+    [
+      algorithm,
+      isBeforeLayout,
+      onFirstLayout,
+      onNextAlgorithm,
+      onPressArticleLink,
+      onPressExternalLink,
+    ]
   );
 
   const handleMessage = useCallback(

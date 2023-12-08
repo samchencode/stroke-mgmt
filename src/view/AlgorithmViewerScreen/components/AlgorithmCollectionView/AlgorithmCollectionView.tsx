@@ -41,10 +41,9 @@ function BaseAlgorithmCollectionView({
     collection,
     handleAppendToCollection,
     handleDropItemsFromCollectionAfter,
-  } = useAlgorithmCollection(
-    initialId,
-    useCallback(() => setTimeout(scrollToEnd, 300), [scrollToEnd])
-  );
+  } = useAlgorithmCollection(initialId, scrollToEnd);
+
+  const noop = useCallback(() => {}, []);
 
   const renderItem = useCallback(
     ({ item, index }: ListRenderItemInfo<AlgorithmIdWithUuid>) => (
@@ -63,18 +62,21 @@ function BaseAlgorithmCollectionView({
         dropItemsFromCollectionAfter={handleDropItemsFromCollectionAfter}
         onPressArticleLink={onPressArticleLink}
         onPressExternalLink={onPressExternalLink}
+        onFirstLayout={index !== 0 ? scrollToEnd : noop}
       />
     ),
     [
+      width,
       collection.length,
-      handleAppendToCollection,
-      handleDropItemsFromCollectionAfter,
       minHeight,
-      onPressArticleLink,
-      onPressExternalLink,
       renderAlgorithm,
       renderAlgorithmById,
-      width,
+      handleAppendToCollection,
+      handleDropItemsFromCollectionAfter,
+      onPressArticleLink,
+      onPressExternalLink,
+      scrollToEnd,
+      noop,
     ]
   );
 

@@ -26,6 +26,7 @@ type Props = {
   width: number;
   onPressArticleLink: (id: ArticleId) => void;
   onPressExternalLink: (url: string) => void;
+  onFirstLayout: () => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -39,6 +40,7 @@ function BaseAlgorithmCollectionItem({
   width,
   onPressArticleLink,
   onPressExternalLink,
+  onFirstLayout,
   style = {},
 }: Props) {
   const [renderedAlgorithm, setRenderedAlgorithm] =
@@ -109,6 +111,7 @@ function BaseAlgorithmCollectionItem({
               style={style}
               onPressArticleLink={onPressArticleLink}
               onPressExternalLink={onPressExternalLink}
+              onFirstLayout={onFirstLayout}
             />
           ) : (
             <Text>Oh no! Something went wrong!</Text>
@@ -116,6 +119,7 @@ function BaseAlgorithmCollectionItem({
         [
           handleChangeAlgorithm,
           handleNextAlgorithm,
+          onFirstLayout,
           onPressArticleLink,
           onPressExternalLink,
           renderedAlgorithm,

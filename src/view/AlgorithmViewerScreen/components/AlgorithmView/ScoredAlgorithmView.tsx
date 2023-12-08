@@ -20,6 +20,7 @@ type ScoredAlgorithmViewProps = {
   onNextAlgorithm: (id: AlgorithmId, thisAlgorithm: Algorithm) => void;
   onPressArticleLink: (id: ArticleId) => void;
   onPressExternalLink: (url: string) => void;
+  onFirstLayout: () => void;
 };
 
 function ScoredAlgorithmView({
@@ -30,13 +31,22 @@ function ScoredAlgorithmView({
   onNextAlgorithm,
   onPressArticleLink,
   onPressExternalLink,
+  onFirstLayout,
 }: ScoredAlgorithmViewProps) {
   const [height, setHeight] = useState(1);
+
+  const [isBeforeLayout, setIsBeforeLayout] = useState(true);
 
   const eventHandler = useMemo(
     () =>
       new WebViewEventHandler({
-        layout: ({ height: h }) => setHeight(h),
+        layout: ({ height: h }) => {
+          setHeight(h);
+          if (isBeforeLayout) {
+            setIsBeforeLayout(false);
+            onFirstLayout();
+          }
+        },
         error: ({ name, message }) => {
           throw new WebViewError(name, message);
         },
@@ -57,7 +67,9 @@ function ScoredAlgorithmView({
       }),
     [
       algorithm,
+      isBeforeLayout,
       onChangeAlgorithm,
+      onFirstLayout,
       onNextAlgorithm,
       onPressArticleLink,
       onPressExternalLink,

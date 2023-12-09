@@ -1,6 +1,6 @@
 module.exports = {
   expo: {
-    name: 'Stroke Management',
+    name: 'Ischemic Stroke',
     slug: 'stroke-mgmt',
     version: '1.1.0',
     icon: './assets/icon.png',

@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "licensetext": "yarn licenses generate-disclaimer > disclaimer.txt"
   },
   "dependencies": {
     "@babel/preset-env": "^7.1.6",

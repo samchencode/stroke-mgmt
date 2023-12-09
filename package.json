@@ -11,7 +11,7 @@
     "eject": "expo eject",
     "test": "jest",
     "lint": "eslint .",
-    "licensetext": "yarn licenses generate-disclaimer > disclaimer.txt"
+    "updatelicenses": "yarn licenses generate-disclaimer > disclaimer.txt"
   },
   "dependencies": {
     "@babel/preset-env": "^7.1.6",
